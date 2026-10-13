@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+# Free replacement for GitHub branch protection on this private repo (GitHub Free does not enforce
+# protection rules on private repositories). Blocks any push that would update main directly;
+# work on an update/<date>-<topic> branch and merge through a pull request.
+# Enable once per clone:  git config core.hooksPath .githooks
+# Override deliberately:  git push --no-verify
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main)
+      echo "✖ Refusing to push directly to main. Push your branch and open a pull request."
+      echo "  (deliberate override: git push --no-verify)"
+      exit 1 ;;
+  esac
+done
+exit 0
