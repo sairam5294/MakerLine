@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+
+/* Colours come from src/theme/tokens.ts (injected as CSS variables in layout.tsx).
+   These lines expose them to Tailwind: bg-background, text-text-primary, border-border, … */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-on-primary: var(--text-on-primary);
+  --color-primary: var(--primary);
+  --color-primary-pressed: var(--primary-pressed);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-focus-ring: var(--focus-ring);
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Noto Sans Telugu',
+    'Noto Sans Devanagari', sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+/* Visible focus for keyboard users on every interactive element (WCAG 2.4.7 / 2.4.11). */
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Respect "reduce motion" system settings. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,66 @@
+# AI review on every pull request: Claude runs the Product Kit quality-review
+# (accessibility, UX, security, code, tests) on the PR diff and comments on the PR.
+#
+# One-time setup (pick ONE):
+#   • Claude Pro/Max subscription:  run `claude setup-token` on your Mac, then add the token as
+#     repo secret CLAUDE_CODE_OAUTH_TOKEN  (GitHub → Settings → Secrets and variables → Actions)
+#   • API key (pay per use):         add repo secret ANTHROPIC_API_KEY
+# No secret set → this workflow skips itself (CI stays green).
+name: AI review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+# Only one review per PR at a time; a new push cancels the old review (saves tokens).
+concurrency:
+  group: ai-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: Claude quality review
+    # Skip drafts and Dependabot's dependency-update PRs.
+    if: github.event.pull_request.draft == false && github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Is a Claude secret configured?
+        id: auth
+        env:
+          HAS_OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+          HAS_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+        run: |
+          if [ "$HAS_OAUTH" = "true" ] || [ "$HAS_KEY" = "true" ]; then echo "ok=true" >> "$GITHUB_OUTPUT";
+          else echo "No CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY secret — skipping AI review."; fi
+
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        if: steps.auth.outputs.ok == 'true'
+        with: { fetch-depth: 0 }
+
+      - uses: anthropics/claude-code-action@756cc22e19660d20e8cc9496b4f242475a7f7790 # v1
+        if: steps.auth.outputs.ok == 'true'
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Use this workflow's own token to comment (no extra GitHub App needed).
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            REPO: ${{ github.repository }}  PR: ${{ github.event.pull_request.number }}
+            The PR branch is checked out. Apply steps 1-3 of .agents/skills/quality-review/SKILL.md
+            (scope, reviewer angles, verify) YOURSELF in one pass: no subagents, no files written.
+            review ONLY the PR diff (`gh pr diff`) against the matching files in
+            .agents/skills/product-standards/references/. Verify every finding in the code; no guesses.
+            Severity: MUST-violation / SHOULD-gap / Suggestion (MUST = breaks a standards MUST rule).
+            Post ONE top-level comment with `gh pr comment`: verdict (Ready / Ready after fixes / Not ready)
+            and a findings table (severity · file:line · problem · fix), max ~40 lines, plain language
+            (the owner is a designer learning to code). Add inline comments only for MUST-violations.
+            Do not modify files or push commits.
+          # Faster model + turn cap keep each review cheap; raise for big PRs.
+          claude_args: |
+            --model sonnet
+            --max-turns 30
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Read,Grep,Glob"

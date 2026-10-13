@@ -1,0 +1,31 @@
+// Cursor permissions for this repo (JSONC — comments allowed).
+// Commands/MCP tools listed here run without asking; everything else asks first.
+{
+  // Safe, read-only or local-only commands.
+  "terminalAllowlist": [
+    "npm run check",
+    "npm run lint",
+    "npm test",
+    "npm run test",
+    "npx tsc",
+    "git status",
+    "git diff",
+    "git log"
+  ],
+  // Read-only MCP tools are fine to auto-run.
+  "mcpAllowlist": ["context7:*", "playwright:browser_snapshot", "playwright:browser_take_screenshot"],
+  // Guidance for Cursor's auto-review classifier.
+  "autoRun": {
+    "allow_instructions": [
+      "Reading project files and running tests, lint or typecheck is fine"
+    ],
+    "block_instructions": [
+      "Always ask before deleting files or folders",
+      "Always ask before git push, force push, reset --hard or rebase",
+      "Never read or print .env files or other secrets",
+      "Always ask before database migrations, resets or anything touching production",
+      "Always ask before installing packages or running deploy / store-submit commands",
+      "Do not edit app code while docs/product/STATUS.md lacks 'Evaluation: APPROVED'"
+    ]
+  }
+}

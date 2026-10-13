@@ -1,0 +1,102 @@
+# Runs on every pull request and every push to main.
+# A red check = something broke a rule; fix before merging. Works for code from any AI tool.
+# Actions are pinned to commit SHAs (security standard A03); Dependabot keeps them updated.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Least privilege: CI can read the repo, nothing else.
+permissions:
+  contents: read
+
+# Cancel older runs of the same branch to save CI minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: Approval gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { fetch-depth: 0 }
+      - name: App code only after the owner approved the evaluation
+        run: |
+          base="${{ github.event.pull_request.base.sha || github.event.before }}"
+          # First push of a new repo has no "before" commit → nothing to compare, skip.
+          if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ]; then exit 0; fi
+          git diff --name-only -z "$base" HEAD | xargs -0 -r scripts/check-gate.sh
+
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with: { fetch-depth: 0 }
+      # Scans the whole history for leaked keys/tokens.
+      - uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  check:
+    name: Typecheck · lint · tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # Before the app exists (discovery/evaluation) there's no package.json → nothing to test yet.
+      - id: app
+        run: '[ -f package.json ] && echo "exists=true" >> "$GITHUB_OUTPUT" || echo "No package.json yet — skipping."'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        if: steps.app.outputs.exists == 'true'
+        with: { node-version: 22, cache: npm }
+      - if: steps.app.outputs.exists == 'true'
+        run: npm ci
+      - if: steps.app.outputs.exists == 'true'
+        run: npm run check
+      # Fail on known high/critical vulnerabilities in the app's dependencies.
+      - if: steps.app.outputs.exists == 'true'
+        run: npm audit --omit=dev --audit-level=high
+
+  web-quality:
+    name: Web build · accessibility · Lighthouse
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - id: web
+        run: '[ -f playwright.config.ts ] && echo "exists=true" >> "$GITHUB_OUTPUT" || echo "No web tests — skipping."'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        if: steps.web.outputs.exists == 'true'
+        with: { node-version: 22, cache: npm }
+      - if: steps.web.outputs.exists == 'true'
+        run: npm ci && npm run build:web
+      # Chromium + WebKit (Safari engine): testing standard requires both.
+      - if: steps.web.outputs.exists == 'true'
+        run: npx playwright install --with-deps chromium webkit
+      # axe accessibility scan + user flows on the production build.
+      - if: steps.web.outputs.exists == 'true'
+        run: npm run test:e2e
+      # Performance/accessibility/SEO budgets from lighthouserc.json (reports stay private: filesystem).
+      - if: steps.web.outputs.exists == 'true'
+        run: npx @lhci/cli autorun
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: failure() && steps.web.outputs.exists == 'true'
+        with: { name: playwright-report, path: playwright-report }
+
+  database:
+    name: Database security (RLS tests)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - id: db
+        run: '[ -d supabase/tests ] && echo "exists=true" >> "$GITHUB_OUTPUT" || echo "No database tests — skipping."'
+      - uses: supabase/setup-cli@45a513f8c64c0bc8e0e3dfe572b5c95be85f6359 # v3
+        if: steps.db.outputs.exists == 'true'
+        with: { version: latest }
+      # Starts a local Supabase (Docker), applies migrations, runs supabase/tests/*.sql (pgTAP).
+      - if: steps.db.outputs.exists == 'true'
+        run: supabase start && supabase test db

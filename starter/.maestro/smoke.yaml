@@ -1,0 +1,10 @@
+# Mobile smoke test (iOS simulator / Android emulator). Run: maestro test .maestro/
+# Install Maestro: https://maestro.mobile.dev  ·  Uses accessibility labels/text, like real users.
+appId: com.example.starter
+---
+- launchApp
+- assertVisible: "Welcome"
+- tapOn: "Sign in"
+- assertVisible: "Send code"
+- tapOn: "Send code"
+- assertVisible: "Enter your email address."

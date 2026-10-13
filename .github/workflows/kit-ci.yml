@@ -1,0 +1,59 @@
+# CI for the Product Kit repo itself: keeps generated files in sync and both starters green.
+name: Kit CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    name: Kit sync
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # template/ is generated from plugin/. If sync.py changes anything, someone forgot to run it.
+      - run: python3 scripts/sync.py && test -z "$(git status --porcelain template/)"
+      # Both starters must use the kit's canonical design tokens + generator.
+      - run: for s in starter starter-web; do cmp design/tokens.json $s/design/tokens.json || exit 1; cmp design/build-tokens.mjs $s/design/build-tokens.mjs || exit 1; done
+      # Scripts must parse, and the safety hooks must block/allow exactly what they promise.
+      - run: for f in scripts/*.sh template/scripts/*.sh template/.claude/hooks/*.sh; do bash -n "$f" || exit 1; done
+      - run: bash tests/hooks.test.sh
+      # Marketplace + plugin manifests must be valid JSON.
+      - run: python3 -c "import json; json.load(open('.claude-plugin/marketplace.json')); json.load(open('plugin/.claude-plugin/plugin.json'))"
+      # Workflow files must be valid GitHub Actions (catches mistakes that silently disable CI).
+      - run: |
+          bash <(curl -sSL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint template/.github/workflows/*.yml .github/workflows/*.yml
+
+  expo:
+    name: Expo starter
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: starter } }
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: starter/package-lock.json }
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build:web
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm run test:e2e
+
+  web:
+    name: Web starter
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: starter-web } }
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: starter-web/package-lock.json }
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm run test:e2e
+      - run: npx @lhci/cli autorun

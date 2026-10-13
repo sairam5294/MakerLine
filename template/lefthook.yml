@@ -1,0 +1,33 @@
+# Git hooks that run no matter which AI tool (or human) makes the commit.
+# Install once per clone (after scripts/setup-github.sh):  npx lefthook install
+pre-commit:
+  # Sequential on purpose: lint-fix then format touch the same files.
+  parallel: false
+  commands:
+    1_approval-gate:
+      run: scripts/check-gate.sh
+    2_secrets:
+      # Blocks commits containing API keys/tokens. Install once: brew install gitleaks
+      run: |
+        if command -v gitleaks >/dev/null; then
+          gitleaks protect --staged --redact --no-banner
+        else
+          echo "gitleaks not installed — skipping local secret scan (CI still checks)"
+        fi
+    3_lint:
+      # Lint + auto-fix only the staged JS/TS files (fast). Skipped until the project has a package.json.
+      glob: "*.{ts,tsx,js,jsx}"
+      run: '[ ! -f package.json ] || npx eslint --fix {staged_files}'
+      stage_fixed: true
+    4_format:
+      glob: "*.{ts,tsx,js,jsx,json,md,yml,yaml,css}"
+      run: '[ ! -f package.json ] || npx prettier --write --log-level warn {staged_files}'
+      stage_fixed: true
+pre-push:
+  commands:
+    no-push-to-main:
+      # Free replacement for GitHub branch protection: work on branches, merge via pull request.
+      run: '[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ] || { echo "Push a branch and open a pull request instead of pushing to main (override once: git push --no-verify)"; exit 1; }'
+    check:
+      # Full typecheck + lint + tests before code leaves your machine (skipped before there's an app).
+      run: '[ ! -f package.json ] || npm run check'

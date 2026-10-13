@@ -1,0 +1,17 @@
+---
+description: Testing rules for unit, integration, e2e and accessibility tests
+globs: **/*.{test,spec}.{ts,tsx,js,jsx}, **/e2e/**, **/__tests__/**, **/.maestro/**, **/*Tests.swift, **/*Test.kt
+alwaysApply: false
+---
+
+# Testing (MUST)
+
+- Every acceptance criterion (`US-xx` in `docs/product/PRD.md`) maps to at least one test; name tests after the behaviour.
+- Query by role and label (`getByRole('button', { name: 'Save' })`), not CSS classes.
+- Deterministic: mock network (MSW), fake timers, seeded data, no order dependence.
+- Cover unhappy paths: validation, network failure, empty, offline, permission denied, session expiry, double submit.
+- Authorization tests for every resource endpoint.
+- Bug fix = failing test first. Never delete or weaken a test to make it pass.
+- Include automated accessibility checks (axe) in component/e2e tests for new screens.
+
+Full standard: @.agents/skills/product-standards/references/testing.md

@@ -1,0 +1,32 @@
+# Codex project settings for Product Kit projects.
+# Loaded only after you mark this folder as a trusted project in Codex.
+
+# Codex may edit files inside this project but not elsewhere on your computer.
+sandbox_mode = "workspace-write"
+
+# Codex asks before running commands that need more access than the sandbox allows
+# (e.g. network, files outside the project). Safer default for a solo builder.
+approval_policy = "on-request"
+
+[sandbox_workspace_write]
+# No internet from commands by default: stops accidental uploads of code/secrets and
+# surprise package installs. Codex will ask when it needs network (e.g. npm install).
+network_access = false
+
+# ---- MCP servers (tools Codex can call). Remove any you don't use. ----
+
+# Up-to-date library docs → fewer invented APIs.
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]
+
+# Real browser for checking UI, screenshots, accessibility tree.
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest"]
+
+# Supabase, READ-ONLY and scoped to one project. Put your project ref below and
+# set SUPABASE_ACCESS_TOKEN in your shell (never in this file).
+# [mcp_servers.supabase]
+# command = "npx"
+# args = ["-y", "@supabase/mcp-server-supabase@latest", "--read-only", "--project-ref=YOUR_PROJECT_REF"]

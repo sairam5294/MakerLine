@@ -1,0 +1,6 @@
+dist
+.expo
+coverage
+playwright-report
+package-lock.json
+src/theme/tokens.generated.ts

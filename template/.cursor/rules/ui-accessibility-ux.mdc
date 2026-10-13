@@ -1,0 +1,19 @@
+---
+description: Accessibility (WCAG 2.2 AA) and UX rules for any UI code — web, iOS, Android
+globs: **/*.{tsx,jsx,ts,html,css,scss,vue,svelte,swift,kt}
+alwaysApply: false
+---
+
+# UI: accessibility & UX (MUST)
+
+- Native/semantic elements first; every control has an accessible name, role and state (`aria-*` / `accessibilityLabel`, `accessibilityRole`, `accessibilityState` / `contentDescription`).
+- Colours and spacing only from design tokens (`docs/product/DESIGN_SYSTEM.md`); no raw hex values. Text contrast ≥ 4.5:1, UI boundaries ≥ 3:1, in light and dark.
+- Targets ≥ 44pt (iOS) / 48dp (Android) / 44px web (never below 24px). Drag actions need a tap alternative.
+- Visible focus, logical focus order, focus moves into modals and back to the trigger; focus never hidden behind sticky UI.
+- Text scales to 200% / largest Dynamic Type without clipping; never disable font scaling.
+- Every screen implements loading, empty, error (with retry, input preserved), offline and success states.
+- Forms: visible labels (not placeholders), correct keyboard + autocomplete, inline validation after blur, errors announced.
+- Status changes announced via live regions / accessibility announcements. Respect reduced motion.
+- One primary action per screen; follow platform navigation (iOS swipe-back, Android back, real URLs on web).
+
+Full standards: @.agents/skills/product-standards/references/accessibility.md @.agents/skills/product-standards/references/ux.md

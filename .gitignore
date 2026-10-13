@@ -1,0 +1,22 @@
+# Product Kit repo
+node_modules/
+.next/
+dist/
+web-build/
+.expo/
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
+*.tsbuildinfo
+next-env.d.ts
+product-kit.plugin
+portfolio/index.html
+portfolio/PORTFOLIO.md
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Personal owner profile (copy owner/OWNER.example.md to owner/OWNER.md)
+owner/OWNER.md

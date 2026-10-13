@@ -1,0 +1,18 @@
+---
+description: Security, privacy and backend rules for APIs, server functions, database and auth code
+globs: **/{api,server,backend,functions,supabase,db,lib/server}/**, **/*.sql, **/middleware.*, **/route.ts
+alwaysApply: false
+---
+
+# Backend & security (MUST)
+
+- Authorize every request on the server (deny by default); row-level security on every user-data table with tests that user A can't access user B's data.
+- Validate every input with a schema (Zod/Valibot); parameterized queries/ORM only; no `eval` or raw HTML from user data.
+- Secrets only in server env vars; never in client code, logs, commits or error messages. Update `.env.example` with placeholder keys.
+- Consistent error shape `{ error: { code, message } }` with correct status codes; fail closed; no stack traces to users.
+- Rate limit auth, OTP, AI and other costly endpoints; idempotency keys for payments; verify webhook signatures.
+- Migrations versioned in git; timestamps in UTC; indexes for filtered columns.
+- Log security-relevant events without personal data. Minimum personal data; children's data needs verifiable parental consent.
+- New dependency? State why, check it's real and maintained, and record it in `docs/product/DECISIONS.md`.
+
+Full standards: @.agents/skills/product-standards/references/security.md @.agents/skills/product-standards/references/backend.md @.agents/skills/product-standards/references/privacy.md

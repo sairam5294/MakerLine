@@ -1,0 +1,19 @@
+# Files Cursor's AI must never read or index (secrets + heavy generated files = wasted tokens).
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p8
+*.keystore
+google-services.json
+GoogleService-Info.plist
+node_modules/
+dist/
+build/
+.expo/
+ios/
+android/
+coverage/
+*.lock
+package-lock.json

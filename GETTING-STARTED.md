@@ -1,0 +1,139 @@
+# Getting started with the Product Kit
+
+Plain-language guide. The kit lives in `~/Documents/product-kit` on your Mac.
+
+---
+
+## Part 1 — One-time setup (about 20 minutes)
+
+### 1. Check your Mac has the basics
+Open **Terminal** (Spotlight → "Terminal") and paste:
+```bash
+node -v && git --version && brew --version
+```
+- If `node` is missing or below v22: `brew install node`
+- If `brew` is missing: install Homebrew from https://brew.sh
+- Then: `brew install gh gitleaks` (GitHub tool + secret scanner)
+
+### 2. Install the kit in Claude
+Double-click / open **`~/Documents/product-kit.plugin`** in a Claude chat → press **Install**.
+Now Claude knows all the kit's skills (you'll see them as `/product-kit:…`).
+
+### 3. Fill in your profile (once)
+Copy `owner/OWNER.example.md` to `owner/OWNER.md` (it is git-ignored, so your details stay private), then fill in hours per week, budget and which accounts you have (GitHub, Apple, Google Play, Supabase, Vercel…). Every new project copies it, so you're never asked twice.
+
+### 4. (Optional, recommended) Put the kit on GitHub
+```bash
+cd ~/Documents/product-kit
+git init && git add -A && git commit -m "Product Kit"
+REQUIRED_CHECKS='"Kit sync", "Expo starter", "Web starter"' scripts/setup-github.sh product-kit
+```
+This backs it up and lets Claude Code install updates from GitHub.
+
+---
+
+## Part 2 — Starting a new idea
+
+You can start in two ways. **Start with A** — no terminal needed.
+
+### A. Thinking phases in the Claude app (discovery → evaluation → approval)
+1. In Claude (Cowork), connect an empty folder for the idea (e.g. `~/Projects/bakery-orders`).
+2. Say: **"I have a new idea: …"** (2–5 sentences).
+3. Claude interviews you in short rounds → writes `docs/product/PROJECT_BRIEF.md`.
+4. It researches and writes an honest **Evaluation report** (`EVALUATION.md`) with a verdict, risks, user base, competitors, improvements.
+5. You push back, refine, repeat. Optionally run a cheap **validation test** (interviews, landing page).
+6. When you're convinced: **you approve**. In Cowork, say "I approve the evaluation" — Claude records your exact words. (From a terminal it's `scripts/approve.sh`.)
+
+Then naming, tech stack, design system, PRD and plan also work in the Claude app — they're documents.
+
+### B. Building phases (code) — use Claude Code, Cursor or Codex
+Create the project folder with the kit's starter (in Terminal):
+```bash
+cd ~/Documents/product-kit
+./scripts/new-project.sh ~/Projects/bakery-orders --starter   # phone app (iOS + Android + web)
+# or
+./scripts/new-project.sh ~/Projects/bakery-site --web         # website / landing page
+```
+If you already did Part A in that folder, it only adds the missing files — your docs are kept.
+
+Then, once:
+```bash
+cd ~/Projects/bakery-orders
+npm install
+cp .env.example .env.local        # add keys later (Supabase etc.)
+scripts/setup-github.sh           # private GitHub repo (optional but recommended)
+npx lefthook install              # turns on the safety checks for commits
+npm run dev                       # see the app: press w for web, or scan the QR code with Expo Go
+```
+
+Open the folder in **Claude Code, Cursor or Codex** and just talk to it:
+
+| You say | What happens |
+|---|---|
+| "Where are we? What's next?" | Reads STATUS/HANDOFF, tells you the phase and next step |
+| "Build the next task" | Builds one task from PLAN.md with tests, runs checks, commits on a branch |
+| "Review this" | Accessibility, UX, security, code and test review → report with fixes |
+| "Does it match the Figma?" + link | Design QA against your Figma frame |
+| "We're adding an AI feature" | Runs ai-feature: when to use AI, UX, evals, cost |
+| "Handoff" (end of every session) | Saves where you stopped so any tool can continue |
+| "Show my portfolio" | All projects, their phase, blockers, costs |
+
+**The one rule:** only **you** approve the evaluation (`scripts/approve.sh`). Until then the tools won't write app code.
+
+### Which tool when
+- **Claude app (Cowork):** ideas, interviews, evaluation, planning, documents.
+- **Claude Code:** building features, reviews (strongest safety checks).
+- **Cursor:** visual UI tweaks with live preview.
+- **Codex:** well-defined separate tasks (tests, small features) in parallel.
+All of them read the same `AGENTS.md` and `docs/product/` — switch any time, just say "handoff" before switching.
+
+---
+
+## Part 3 — Updating
+
+### A. Update the kit itself (improve a skill, rule or starter)
+Easiest: open `~/Documents/product-kit` in **Claude Code** and ask, e.g.
+> "Update the Product Kit: the evaluation report should also include a pricing page benchmark. Then release it as 0.6.0."
+
+Claude edits the files in `plugin/` and runs the release. Or do it yourself:
+1. Edit files in **`plugin/`** only (never edit `template/.agents` — it's generated).
+2. Release:
+   ```bash
+   cd ~/Documents/product-kit
+   ./scripts/release-kit.sh 0.6.0 "What changed, in one line"
+   ```
+   This copies changes into the template, runs the kit tests, sets the version, adds a CHANGELOG line, rebuilds `~/Documents/product-kit.plugin`, and commits.
+3. **Reinstall the plugin in Claude**: open the new `product-kit.plugin` → Install.
+4. If the kit is on GitHub: `git push` (CI checks everything again).
+5. If you changed a skill, the monthly evals (3rd of each month) will tell you if it got worse. To check now: in Claude Code say "Run the kit evals following evals/RUNBOOK.md".
+
+### B. Bring an existing project up to the new kit version
+```bash
+cd ~/Documents/product-kit
+./scripts/upgrade-project.sh ~/Projects/bakery-orders          # preview only
+./scripts/upgrade-project.sh ~/Projects/bakery-orders --apply  # do it
+```
+Kit files (skills, agents, rules, hooks) are replaced, with backups. **Your** files (AGENTS.md, settings, code, docs) are never overwritten — the output lists differences; ask your AI tool to "merge the Product Kit template changes into AGENTS.md".
+
+### C. Update standards (laws, WCAG, store rules)
+Every quarter a scheduled report arrives by email/phone. Open the kit in Claude Code and say:
+> "Run standards-refresh with this report: <paste>". Then release (A.2).
+
+### D. Update design tokens (colours, spacing)
+Change them in Figma (the "Product Kit — Design System" file or your product's copy) or in `design/tokens.json`, then in the project:
+```bash
+npm run tokens && npm run contrast
+```
+Or ask Claude: "Sync my Figma variables to design/tokens.json".
+
+### E. Update app libraries (Expo, Next.js, packages)
+- GitHub sends weekly **Dependabot** pull requests — CI tests them; merge when green.
+- Big upgrades (e.g. new Expo SDK): ask Claude Code "upgrade Expo to the latest SDK following the official upgrade guide", then run `npm run check`.
+
+---
+
+## If something goes wrong
+- "Blocked by Product Kit approval gate" → you haven't approved yet (`scripts/approve.sh`).
+- "Blocked by safety hook" → the AI tried something risky (delete, force-push, read secrets). Good. Do it yourself if you really mean it.
+- Commit refused → read the message: usually a leaked key, lint error or the approval gate.
+- Lost track → "Where are we?" or `python3 ~/Documents/product-kit/scripts/portfolio.py` and open `portfolio/index.html`.

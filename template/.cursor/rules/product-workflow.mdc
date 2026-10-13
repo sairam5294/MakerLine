@@ -1,0 +1,14 @@
+---
+description: Product workflow and phase gates — use when working on docs/product files, starting a new idea, or deciding what to do next
+globs: docs/product/**
+alwaysApply: false
+---
+
+# Product workflow
+
+Phases: new-idea → evaluate-idea → validate-idea → **owner approval (scripts/approve.sh)** → name-product → tech-stack → design-system → write-prd → plan-build → build-feature (+ design-qa) → quality-review → test-plan → ship-checklist → post-launch. Anytime: handoff, portfolio, ai-feature, standards-refresh.
+
+- Each phase has a skill in `.agents/skills/<name>/SKILL.md` — invoke it with `/` in chat or read and follow it.
+- Never scaffold code or choose a stack before `docs/product/STATUS.md` shows `Evaluation: APPROVED`. Never write that line yourself — the owner runs `scripts/approve.sh`.
+- Update `STATUS.md` after each phase/task; log decisions in `DECISIONS.md`.
+- Be candid in evaluations: critique before praise, evidence with sources, no inflated scores.

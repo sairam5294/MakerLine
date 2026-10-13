@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Starter",
+    "slug": "starter",
+    "scheme": "starter",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.starter"
+    },
+    "android": {
+      "package": "com.example.starter",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "static"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "asyncRoutes": {
+            "web": "production",
+            "default": false
+          }
+        }
+      ],
+      "expo-secure-store",
+      "expo-localization",
+      "@sentry/react-native"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
