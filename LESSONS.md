@@ -17,3 +17,4 @@ After each project (post-launch retro), add what the kit got wrong or missed. Tu
 | 2026-09-28 | kit build | Nonce CSP forces per-request rendering — measured no Lighthouse loss (1.0) on the landing page | starter-web | 0.5.0 |
 | 2026-09-28 | kit build | Code Connect needs a Figma Organization/Enterprise plan; templates added but inactive on Pro | starter/figma | 0.5.0 |
 | 2026-09-28 | kit build | Lazy SDK imports + async routes cut Expo web first load ~14%; RN web still ~0.75 Lighthouse — keep public pages on Next.js | starter | 0.5.0 |
+| 2026-10-13 | kit CI | Web starter e2e failed on mobile-safari only: WebKit applies CSP `upgrade-insecure-requests` to localhost (open WebKit bug 250776), so the server-action fetch was upgraded to https and failed silently | starter-web `csp.ts` emits the directive only on HTTPS requests; CI prints Playwright error context + uploads traces on failure | 0.5.1 |

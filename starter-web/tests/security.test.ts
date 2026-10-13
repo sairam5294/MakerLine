@@ -14,6 +14,11 @@ describe('buildCsp', () => {
   it('adds unsafe-eval only in development', () => {
     expect(buildCsp('abc', { dev: true })).toContain("'unsafe-eval'");
   });
+  it('upgrades insecure requests on HTTPS only (WebKit upgrades localhost too)', () => {
+    expect(buildCsp('abc')).toContain('upgrade-insecure-requests');
+    expect(buildCsp('abc', { https: true })).toContain('upgrade-insecure-requests');
+    expect(buildCsp('abc', { https: false })).not.toContain('upgrade-insecure-requests');
+  });
   it('creates a different nonce every time', () => {
     expect(createNonce()).not.toBe(createNonce());
   });
