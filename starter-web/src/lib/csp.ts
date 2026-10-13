@@ -5,7 +5,7 @@
  */
 export const TURNSTILE_ORIGIN = 'https://challenges.cloudflare.com';
 
-export function buildCsp(nonce: string, { dev = false } = {}): string {
+export function buildCsp(nonce: string, { dev = false, https = true } = {}): string {
   return [
     "default-src 'self'",
     // 'strict-dynamic' lets nonce'd scripts load their own chunks; dev needs eval for React debugging.
@@ -19,7 +19,10 @@ export function buildCsp(nonce: string, { dev = false } = {}): string {
     "base-uri 'self'",
     "form-action 'self'",
     "frame-ancestors 'none'", // nobody can embed the site in an iframe (clickjacking)
-    'upgrade-insecure-requests',
+    // Only on HTTPS: on plain http://localhost there is nothing to upgrade, and WebKit (Safari)
+    // applies this directive to localhost too, which breaks fetch/server actions in local
+    // and e2e runs (https://bugs.webkit.org/show_bug.cgi?id=250776).
+    ...(https ? ['upgrade-insecure-requests'] : []),
   ].join('; ');
 }
 
