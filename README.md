@@ -88,7 +88,7 @@ Then say **"I have a new idea"** in Claude, Cursor or Codex. After the evaluatio
 Keep projects current when the kit improves: `./scripts/upgrade-project.sh ~/Projects/my-app` (preview) → add `--apply`.
 See everything at once: `python3 scripts/portfolio.py` → open `portfolio/index.html`.
 
-GitHub Free can't protect `main` on private repos. setup-github.sh tells you if so, and the `no-push-to-main` git hook covers it locally.
+GitHub Free can't protect `main` on private repos. setup-github.sh tells you if so, and the `no-push-to-main` git hook covers it locally. The kit repo itself uses the same idea: run `git config core.hooksPath .githooks` once per clone, and pushes to `main` are refused — work on `update/<date>-<topic>` branches and merge through pull requests.
 
 ## Using the three tools together
 
