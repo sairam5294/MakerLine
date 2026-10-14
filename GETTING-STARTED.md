@@ -6,6 +6,15 @@ Plain-language guide. The kit lives in `~/Documents/product-kit` on your Mac.
 
 ## Part 1 — One-time setup (about 20 minutes)
 
+Works on macOS today. The terminal parts also run on Linux; Windows is untested (use WSL).
+
+### 0. Get the kit
+```bash
+git clone https://github.com/sairam5294/product-kit ~/Documents/product-kit
+cd ~/Documents/product-kit
+```
+Planning to contribute? Fork it on GitHub first and clone your fork instead. The rest of this guide assumes the kit is at `~/Documents/product-kit`; any folder works, just adjust the paths.
+
 ### 1. Check your Mac has the basics
 Open **Terminal** (Spotlight → "Terminal") and paste:
 ```bash
@@ -15,20 +24,30 @@ node -v && git --version && brew --version
 - If `brew` is missing: install Homebrew from https://brew.sh
 - Then: `brew install gh gitleaks` (GitHub tool + secret scanner)
 
-### 2. Install the kit in Claude
-Double-click / open **`~/Documents/product-kit.plugin`** in a Claude chat → press **Install**.
-Now Claude knows all the kit's skills (you'll see them as `/product-kit:…`).
+### 2. Install the kit in your AI tools
+**Claude Code** (recommended; updates with one command):
+```bash
+claude plugin marketplace add sairam5294/product-kit
+claude plugin install product-kit@product-kit-marketplace
+```
+Later, `claude plugin marketplace update product-kit-marketplace` picks up new versions.
+
+**Claude app (Cowork / desktop):** build the plugin file, then open it in a chat and press **Install**:
+```bash
+./scripts/build-plugin.sh      # writes ~/Documents/product-kit.plugin
+```
+Either way, Claude now knows the kit's skills (you'll see them as `/product-kit:…`).
+
+**Cursor and Codex** need nothing here: every project you create in Part 2 carries their rules and agents.
 
 ### 3. Fill in your profile (once)
 Copy `owner/OWNER.example.md` to `owner/OWNER.md` (it is git-ignored, so your details stay private), then fill in hours per week, budget and which accounts you have (GitHub, Apple, Google Play, Supabase, Vercel…). Every new project copies it, so you're never asked twice.
 
-### 4. (Optional, recommended) Put the kit on GitHub
+### 4. Stay current
 ```bash
-cd ~/Documents/product-kit
-git init && git add -A && git commit -m "Product Kit"
-REQUIRED_CHECKS='"Kit sync", "Expo starter", "Web starter"' scripts/setup-github.sh product-kit
+cd ~/Documents/product-kit && git pull
 ```
-This backs it up and lets Claude Code install updates from GitHub.
+Then re-run step 2's install (Claude Code: `claude plugin marketplace update product-kit-marketplace`) and, for existing projects, Part 3B.
 
 ---
 
@@ -103,7 +122,7 @@ Claude edits the files in `plugin/` and runs the release. Or do it yourself:
    ./scripts/release-kit.sh 0.6.0 "What changed, in one line"
    ```
    This copies changes into the template, runs the kit tests, sets the version, adds a CHANGELOG line, rebuilds `~/Documents/product-kit.plugin`, and commits.
-3. **Reinstall the plugin in Claude**: open the new `product-kit.plugin` → Install.
+3. **Reinstall the plugin in Claude**: Claude Code → `claude plugin marketplace update product-kit-marketplace` (after you push); Claude app → open the new `product-kit.plugin` → Install.
 4. If the kit is on GitHub: `git push` (CI checks everything again).
 5. If you changed a skill, the monthly evals (3rd of each month) will tell you if it got worse. To check now: in Claude Code say "Run the kit evals following evals/RUNBOOK.md".
 
