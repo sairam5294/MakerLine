@@ -1,4 +1,4 @@
-# Product Kit v0.5
+# Product Kit v0.6
 
 **The open-source designer's AI toolkit.** One setup that takes an idea from "I have a new idea" to a shipped web / iOS / Android product, and works the same way in **Claude**, **Cursor** and **Codex**. Built by a designer with light coding skills, for designers and solo makers who build with AI. The rules are enforced by checks, not just written down.
 
@@ -24,7 +24,7 @@ product-kit/
 ├── template/      Copied into every project: AGENTS.md, safety settings, CI, git hooks, MCP, Cursor/Codex adapters
 ├── starter/       Tested Expo (iOS/Android/Web) + Supabase app: i18n (en/te/hi), Sentry, PostHog
 ├── starter-web/   Tested Next.js site: landing page + waitlist (nonce CSP, rate limit, optional Turnstile), AI harness with evals; Lighthouse 1.0/1.0/1.0
-├── design/        tokens.json (single source for Figma + code) + build-tokens.mjs · Figma library: https://www.figma.com/design/Vjdm4Jlw4SnV5Prtaz1IFP
+├── design/        tokens.json (single source for Figma + code) + build-tokens.mjs · Figma library on Community via https://www.figma.com/@sairammogullapa (publishing: design/FIGMA-COMMUNITY.md)
 ├── owner/         OWNER.example.md → copy to OWNER.md (git-ignored): your profile, copied into every project
 ├── portfolio/     OUTCOMES.md (idea outcomes) + generated dashboard (index.html)
 ├── evals/         Sample cases with planted flaws + RUNBOOK (runs monthly on your Mac)
@@ -90,7 +90,7 @@ npx lefthook install                                   # git hooks (after setup-
 
 Then say **"I have a new idea"** in Claude, Cursor or Codex. After the evaluation, **you** approve with `scripts/approve.sh`. AI tools can't approve for you.
 
-Keep projects current when the kit improves: `./scripts/upgrade-project.sh ~/Projects/my-app` (preview) → add `--apply`.
+Keep projects current when the kit improves: `./scripts/upgrade-project.sh ~/Projects/my-app` (preview) → add `--apply`. The same command adopts a project built before the kit, in any stack, without overwriting anything it already has.
 See everything at once: `python3 scripts/portfolio.py` → open `portfolio/index.html`.
 
 GitHub Free can't protect `main` on private repos. setup-github.sh tells you if so, and the `no-push-to-main` git hook covers it locally. The kit repo itself uses the same idea: run `git config core.hooksPath .githooks` once per clone, and pushes to `main` are refused — work on `update/<date>-<topic>` branches and merge through pull requests.

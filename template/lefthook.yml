@@ -30,4 +30,9 @@ pre-push:
       run: '[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ] || { echo "Push a branch and open a pull request instead of pushing to main (override once: git push --no-verify)"; exit 1; }'
     check:
       # Full typecheck + lint + tests before code leaves your machine (skipped before there's an app).
-      run: '[ ! -f package.json ] || npm run check'
+      # Order: the project's own scripts/check.sh → npm run check → pytest (Python projects).
+      run: |
+        if [ -x scripts/check.sh ]; then scripts/check.sh
+        elif [ -f package.json ]; then npm run check
+        elif command -v pytest >/dev/null && { [ -d tests ] || ls test_*.py >/dev/null 2>&1; }; then pytest -q
+        fi

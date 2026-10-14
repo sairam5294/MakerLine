@@ -21,6 +21,7 @@ cd "$KIT"
 # 2. Copy the source (plugin/) into the project template, then run the kit's own tests.
 python3 scripts/sync.py
 bash tests/hooks.test.sh
+bash tests/upgrade.test.sh
 
 # 3. Set the version everywhere it's shown.
 sed -i.bak "s/\"version\": *\"$OLD\"/\"version\": \"$NEW\"/" "$MANIFEST" && rm -f "$MANIFEST.bak"

@@ -22,6 +22,7 @@ jobs:
       # Scripts must parse, and the safety hooks must block/allow exactly what they promise.
       - run: for f in scripts/*.sh template/scripts/*.sh template/.claude/hooks/*.sh; do bash -n "$f" || exit 1; done
       - run: bash tests/hooks.test.sh
+      - run: bash tests/upgrade.test.sh
       # Marketplace + plugin manifests must be valid JSON.
       - run: python3 -c "import json; json.load(open('.claude-plugin/marketplace.json')); json.load(open('plugin/.claude-plugin/plugin.json'))"
       # Workflow files must be valid GitHub Actions (catches mistakes that silently disable CI).
