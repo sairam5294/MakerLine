@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## 0.6.0 — 2026-10-14
+Open-source baseline (MIT, governance, public repo, CI green), quick start for strangers (clone + marketplace install + build-plugin), adopt mode in upgrade-project for existing projects of any stack with tests, projects git-ignore OWNER.md, stack-aware pre-push check, actions pinned to current majors, examples/ with the RhythmBuddy case study and review, quality-review scope rule for adopted projects, Lighthouse median-of-3, WebKit CSP fix in the web starter
+
 ## 0.5.0 — 2026-09-28
 **Figma library** — "Product Kit — Design System": Primitives + Semantic (Light/Dark modes) + Dimensions variables from tokens.json, 5 type styles, Button / TextField / ScreenState component sets bound to variables. Code Connect templates (`starter/figma/*.figma.ts`, parse-validated) switch on with a Figma Organization/Enterprise plan.
 **Expo web** — Sentry/PostHog load lazily (dynamic import) + async routes on web: first load 509 KB → ~440 KB gzipped; SDKs only download when keys are set.
