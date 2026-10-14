@@ -90,7 +90,7 @@ npx lefthook install                                   # git hooks (after setup-
 
 Then say **"I have a new idea"** in Claude, Cursor or Codex. After the evaluation, **you** approve with `scripts/approve.sh`. AI tools can't approve for you.
 
-Keep projects current when the kit improves: `./scripts/upgrade-project.sh ~/Projects/my-app` (preview) → add `--apply`.
+Keep projects current when the kit improves: `./scripts/upgrade-project.sh ~/Projects/my-app` (preview) → add `--apply`. The same command adopts a project built before the kit, in any stack, without overwriting anything it already has.
 See everything at once: `python3 scripts/portfolio.py` → open `portfolio/index.html`.
 
 GitHub Free can't protect `main` on private repos. setup-github.sh tells you if so, and the `no-push-to-main` git hook covers it locally. The kit repo itself uses the same idea: run `git config core.hooksPath .githooks` once per clone, and pushes to `main` are refused — work on `update/<date>-<topic>` branches and merge through pull requests.

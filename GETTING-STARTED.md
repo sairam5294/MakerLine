@@ -134,6 +134,8 @@ cd ~/Documents/product-kit
 ```
 Kit files (skills, agents, rules, hooks) are replaced, with backups. **Your** files (AGENTS.md, settings, code, docs) are never overwritten — the output lists differences; ask your AI tool to "merge the Product Kit template changes into AGENTS.md".
 
+**Adopting a project that was built before the kit** (any stack, including Python): run the same command. The script notices the project has never seen the kit and switches to *adopt mode*: nothing that exists is overwritten (your CI, rules and scripts stay, and are listed in `.product-kit-keep` so later upgrades leave them alone), missing kit files are added, and `docs/product/STATUS.md` is created marked approved-by-adoption so the review, test and ship skills start from where the project really is. It warns if your `.gitignore` hides anything it added or if you already use another hook manager.
+
 ### C. Update standards (laws, WCAG, store rules)
 Every quarter a scheduled report arrives by email/phone. Open the kit in Claude Code and say:
 > "Run standards-refresh with this report: <paste>". Then release (A.2).
