@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## 0.6.1 — 2026-10-14
+Figma library published to Community (https://www.figma.com/community/file/1692097443572763844/product-kit-design-system); kit docs link to it; publish guide updated with the real thumbnail, category and author steps
+
 ## 0.6.0 — 2026-10-14
 Open-source baseline (MIT, governance, public repo, CI green), quick start for strangers (clone + marketplace install + build-plugin), adopt mode in upgrade-project for existing projects of any stack with tests, projects git-ignore OWNER.md, stack-aware pre-push check, actions pinned to current majors, examples/ with the RhythmBuddy case study and review, quality-review scope rule for adopted projects, Lighthouse median-of-3, WebKit CSP fix in the web starter
 

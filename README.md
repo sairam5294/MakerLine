@@ -24,7 +24,7 @@ product-kit/
 ├── template/      Copied into every project: AGENTS.md, safety settings, CI, git hooks, MCP, Cursor/Codex adapters
 ├── starter/       Tested Expo (iOS/Android/Web) + Supabase app: i18n (en/te/hi), Sentry, PostHog
 ├── starter-web/   Tested Next.js site: landing page + waitlist (nonce CSP, rate limit, optional Turnstile), AI harness with evals; Lighthouse 1.0/1.0/1.0
-├── design/        tokens.json (single source for Figma + code) + build-tokens.mjs · Figma library on Community via https://www.figma.com/@sairammogullapa (publishing: design/FIGMA-COMMUNITY.md)
+├── design/        tokens.json (single source for Figma + code) + build-tokens.mjs · Figma library: https://www.figma.com/community/file/1692097443572763844/product-kit-design-system
 ├── owner/         OWNER.example.md → copy to OWNER.md (git-ignored): your profile, copied into every project
 ├── portfolio/     OUTCOMES.md (idea outcomes) + generated dashboard (index.html)
 ├── evals/         Sample cases with planted flaws + RUNBOOK (runs monthly on your Mac)

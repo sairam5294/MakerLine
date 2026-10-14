@@ -1,5 +1,7 @@
 # Publishing the kit's Figma library to Community
 
+**Published 2026-10-14:** https://www.figma.com/community/file/1692097443572763844/product-kit-design-system
+
 The file **"Product Kit — Design System"** (Primitives, Semantic Light/Dark, Dimensions, type styles; Button, TextField, ScreenState bound to variables) is published on Figma Community so anyone using the kit can duplicate it. Publisher profile: https://www.figma.com/@sairammogullapa
 
 ## Listing copy (paste into the publish dialog)
@@ -17,8 +19,8 @@ Duplicate it, rename it for your product, then sync `tokens.json` from your copy
 
 ## Steps (owner only, about 5 minutes)
 1. Open the file in Figma → **Share** → **Publish to Community** (first time: Figma asks you to set up a Community profile; it is already at the URL above).
-2. Paste the name, description and tags; set the cover to the page named **Cover** (make one if missing: the three collections and the three components on a 1920×960 frame).
-3. Licence: **CC BY 4.0** (matches the kit's MIT spirit and lets people remix).
+2. Paste the name, description and tags. Thumbnail: right-click the 1920×1080 frame **Community thumbnail** on the Cover page → Set as thumbnail, then choose "Use file thumbnail" (Figma requires 1920×1080; the old 1028×290 Cover frame crops badly). Author: your individual profile, not a team. Support contact: the GitHub issues page.
+3. Category: Libraries → UI kits. (Figma applies its standard Community licence; there is no licence picker in the dialog.)
 4. Publish. Copy the Community link (`https://www.figma.com/community/file/…`).
 5. Replace the two links in the kit with it — `README.md` ("What's inside" table) and `plugin/skills/design-system/references/tokens-figma-sync.md` — then `./scripts/release-kit.sh 0.6.1 "Figma library published to Community"`.
 
