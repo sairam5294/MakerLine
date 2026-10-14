@@ -5,7 +5,7 @@ description: Product Kit review (WCAG 2.2, OWASP 2025, kit standards) — parall
 
 # Quality Review
 
-1. Scope: diff/branch/files/screens + stories implemented. Prefer the diff (`git diff main...`) over whole files.
+1. Scope: diff/branch/files/screens + stories implemented. Prefer the diff (`git diff main...`) over whole files. Adopted project with no diff (STATUS.md says "adopted"): scope = the boot-path modules the project's own README/STATUS lists, plus `tests/`, config and workflows; sample large files by code path instead of reading them whole.
 2. Run applicable reviewers in parallel (subagents) or in sequence; skip non-applicable ones and say so:
    accessibility-auditor → accessibility.md · ux-reviewer → ux.md + design system · security-reviewer → security/privacy/backend.md · code-reviewer → development/performance/mobile.md · qa-engineer → testing.md. Diff touches AI calls/prompts → security-reviewer + ux-reviewer also get ai.md.
    Pass each reviewer only the diff + its one standard file (saves tokens).
