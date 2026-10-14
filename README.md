@@ -28,7 +28,7 @@ product-kit/
 ├── owner/         OWNER.example.md → copy to OWNER.md (git-ignored): your profile, copied into every project
 ├── portfolio/     OUTCOMES.md (idea outcomes) + generated dashboard (index.html)
 ├── evals/         Sample cases with planted flaws + RUNBOOK (runs monthly on your Mac)
-├── scripts/       new-project · upgrade-project · release-kit · portfolio · setup-github · sync · install-global
+├── scripts/       new-project · upgrade-project · release-kit · build-plugin · portfolio · setup-github · sync · install-global
 ├── .github/       Kit CI: keeps template in sync, tests both starters
 ├── CHANGELOG.md   What changed per version
 └── LESSONS.md     What the kit got wrong, fed back after each project
@@ -64,11 +64,16 @@ product-kit/
 
 ## Setup (once)
 
-1. **Claude plugin:** open `product-kit.plugin` (next to this folder) in a Claude chat and press install. Once the kit is on GitHub, Claude Code can install and update it from the marketplace instead: `claude plugin marketplace add <your-github>/product-kit` then `claude plugin install product-kit@product-kit-marketplace`. Bump the version in `plugin/.claude-plugin/plugin.json` to ship an update.
-2. **Claude Code CLI (optional):** install the plugin, or run `./scripts/install-global.sh claude`.
-3. **Tools on your Mac:** `brew install gh gitleaks` (GitHub CLI + secret scanning); Node 22+.
-4. **Your profile:** copy `owner/OWNER.example.md` to `owner/OWNER.md` (git-ignored) and fill in hours, budget and accounts. Every new project copies it.
-5. **Kit repo on GitHub:** `git init && git add -A && git commit -m "Product Kit" && REQUIRED_CHECKS='"Kit sync", "Expo starter", "Web starter"' scripts/setup-github.sh product-kit`
+```bash
+git clone https://github.com/sairam5294/product-kit ~/Documents/product-kit
+cd ~/Documents/product-kit
+brew install gh gitleaks                                   # GitHub CLI + secret scanning; Node 22+ required
+claude plugin marketplace add sairam5294/product-kit       # Claude Code
+claude plugin install product-kit@product-kit-marketplace
+./scripts/build-plugin.sh                                  # Claude app instead: open ../product-kit.plugin → Install
+cp owner/OWNER.example.md owner/OWNER.md                   # your profile (git-ignored); fill in hours, budget, accounts
+```
+Full walkthrough, including Cursor and Codex: [GETTING-STARTED.md](GETTING-STARTED.md).
 
 Where the rules are enforced: Claude Code, Cursor and Codex get hooks, git hooks and CI. **Claude Cowork/desktop has no hooks**, so there the skills follow the gate rules themselves. Use Cowork for phases 1–8 (docs) and Claude Code, Cursor or Codex for building.
 Scheduled in Claude: a quarterly standards check (1 Jan, 1 Apr, 1 Jul, 1 Oct) and monthly evals on your Mac (3rd of each month).
