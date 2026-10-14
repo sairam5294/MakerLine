@@ -31,6 +31,7 @@ check "DECISIONS.md records the adoption"       'grep -q "Adopted into Product K
 check "warns about pre-commit"                  'grep -q "pre-commit/husky" <<<"$out"'
 check "warns about git-ignored additions"       'grep -q "git-ignored" <<<"$out" && grep -q ".cursor/agents" <<<"$out"'
 check "keep list written with ci.yml + rule"    'grep -qx ".github/workflows/ci.yml" "$P/.product-kit-keep" && grep -qx ".cursor/rules/testing.mdc" "$P/.product-kit-keep"'
+check "OWNER.md git-ignored in project"          'grep -qx "docs/product/OWNER.md" "$P/.gitignore"'
 check "version stamped"                         '[ "$(cat "$P/.product-kit-version")" != "" ]'
 check "gate passes on an adopted project"       '(cd "$P" && echo x > app.py && git add app.py && scripts/check-gate.sh)'
 

@@ -137,6 +137,9 @@ if [ "$APPLY" = "--apply" ]; then
   chmod +x "$DEST"/.claude/hooks/*.sh "$DEST"/scripts/*.sh 2>/dev/null || true
   echo "$NEW" > "$DEST/.product-kit-version"
   grep -q "^.product-kit-backup/" "$DEST/.gitignore" 2>/dev/null || echo ".product-kit-backup/" >> "$DEST/.gitignore"
+  grep -q "^docs/product/OWNER.md" "$DEST/.gitignore" 2>/dev/null || printf '# Your personal profile — copied in by the kit, never committed\ndocs/product/OWNER.md\n' >> "$DEST/.gitignore"
+  # Refresh the profile from the kit (it is git-ignored in projects, so this is the only way it travels).
+  [ -f "$KIT/owner/OWNER.md" ] && cp "$KIT/owner/OWNER.md" "$DEST/docs/product/OWNER.md" 2>/dev/null || true
   echo; echo "✅ Upgraded to $NEW. Backups: ${backup#$DEST/}. Tip: ask your AI tool"
   echo "   \"merge the Product Kit template changes into AGENTS.md/CLAUDE.md (see upgrade output)\"."
 fi
