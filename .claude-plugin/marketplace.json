@@ -1,12 +1,19 @@
 {
   "name": "product-kit-marketplace",
   "description": "Product Kit — the open-source designer's AI toolkit: idea-to-launch workflow with standards for accessibility, UX, security and AI",
-  "owner": { "name": "Sai" },
+  "owner": {
+    "name": "Sai"
+  },
   "plugins": [
     {
       "name": "product-kit",
       "source": "./plugin",
       "description": "Discovery, honest evaluation with approval gate, design system, PRD, build, multi-angle review, testing, shipping, portfolio and AI-feature skills"
+    },
+    {
+      "name": "idea-pack",
+      "source": "./idea-pack",
+      "description": "Just the idea stage: discovery, honest constructive evaluation with competitors and accessibility/compliance lens, design direction with wireframes, draft PRD and one-pager — no build phases"
     }
   ]
 }

@@ -41,8 +41,9 @@ entry = f"\n## {new} — {today}\n{note}\n"
 p.write_text(t[:i] + entry + t[i:] if i >= 0 else t + entry)
 PY
 
-# 5. Rebuild the Claude plugin file next to the kit folder.
+# 5. Rebuild the Claude plugin files next to the kit folder (full kit + standalone Idea Pack).
 "$KIT/scripts/build-plugin.sh" >/dev/null
+python3 scripts/build-idea-pack.py --zip "$KIT/.." >/dev/null
 
 # 6. Commit if this is a git repo.
 if git rev-parse >/dev/null 2>&1; then git add -A && git commit -q -m "Product Kit v$NEW: $NOTE" && echo "✔ committed (push with: git push)"; fi

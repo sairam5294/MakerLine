@@ -79,6 +79,8 @@ cp owner/OWNER.example.md owner/OWNER.md                   # your profile (git-i
 ```
 Full walkthrough, including Cursor and Codex: [GETTING-STARTED.md](GETTING-STARTED.md).
 
+**Only want the idea stage?** Install the standalone **Idea Pack** plugin instead (discovery → evaluation → design direction → draft PRD → one-pager, no build phases): `claude plugin install idea-pack@product-kit-marketplace`, or open `idea-pack.plugin` in the Claude app (built by `python3 scripts/build-idea-pack.py --zip ..`). See [idea-pack/README.md](idea-pack/README.md).
+
 Where the rules are enforced: Claude Code, Cursor and Codex get hooks, git hooks and CI. **Claude Cowork/desktop has no hooks**, so there the skills follow the gate rules themselves. Use Cowork for phases 1–8 (docs) and Claude Code, Cursor or Codex for building.
 Scheduled in Claude: a quarterly standards check (1 Jan, 1 Apr, 1 Jul, 1 Oct) and monthly evals on your Mac (3rd of each month).
 
