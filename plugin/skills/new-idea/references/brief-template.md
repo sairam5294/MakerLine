@@ -12,6 +12,13 @@ _Status: Draft / Confirmed_
 - Current workarounds:
 - Why now / why the owner:
 
+## 2b. Alternatives & differentiator (owner's hypothesis — verified in EVALUATION / COMPETITORS)
+- Who/what they're up against (incl. "doing nothing"):
+- Known complaints about those:
+- Differentiator hypothesis ("Unlike ___, we ___"):
+- Switching cost for users:
+- Why a bigger player hasn't done it:
+
 ## 3. Goal & success
 - Project goal: {{learning · side income · business · impact}}
 - Primary success metric (6 months):
@@ -62,4 +69,4 @@ Languages:
 -
 
 ## 11. Open questions
--
+See `CLARITY.md` — every open question with the phase it blocks and how to find out.

@@ -26,7 +26,7 @@ check "own cursor rule untouched"               'grep -q "My rule" "$P/.cursor/r
 check "kit cursor rules added alongside"        '[ "$(ls "$P/.cursor/rules" | wc -l)" -gt 1 ]'
 check "kit scripts added"                       '[ -x "$P/scripts/check-gate.sh" ] && [ -x "$P/scripts/approve.sh" ]'
 check "STATUS.md approved by adoption"          'grep -q "^Evaluation: APPROVED (.*adopted" "$P/docs/product/STATUS.md"'
-check "phases 1-9 marked done, 10-13 untouched" '[ "$(grep -c "Done (before kit)" "$P/docs/product/STATUS.md")" = 9 ] && grep -q "^| 10 | Review | Not started" "$P/docs/product/STATUS.md"'
+check "phases 1-9 marked done, 10-13 untouched" '[ "$(grep -c "Done (before kit)" "$P/docs/product/STATUS.md")" = 11 ] && grep -q "^| 10 | Review | Not started" "$P/docs/product/STATUS.md"'
 check "DECISIONS.md records the adoption"       'grep -q "Adopted into Product Kit" "$P/docs/product/DECISIONS.md"'
 check "warns about pre-commit"                  'grep -q "pre-commit/husky" <<<"$out"'
 check "warns about git-ignored additions"       'grep -q "git-ignored" <<<"$out" && grep -q ".cursor/agents" <<<"$out"'

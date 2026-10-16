@@ -5,7 +5,9 @@ Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approv
 | # | Phase | Status | Date | Notes |
 |---|---|---|---|---|
 | 1 | Discovery | Not started | | |
-| 2 | Evaluation | Not started | | |
+| 2 | Evaluation | Not started | | incl. COMPETITORS.md |
+| 2a | Design direction | Not started | | wireframes in design/wireframes |
+| 2b | PRD draft | Not started | | |
 | 3 | Validation | Not started | | recommended |
 | 4 | Naming | Not started | | |
 | 5 | Tech stack | Not started | | |

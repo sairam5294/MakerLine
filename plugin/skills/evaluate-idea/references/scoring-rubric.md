@@ -15,6 +15,12 @@ Score each dimension 1–10. Anchor to the descriptions; justify each score with
 
 **Weighted score** = Σ(score × weight). Show the calculation.
 
+## Strengthening rule
+
+Every dimension scored ≤ 6 gets a "Raise it by…" entry: the specific change (to audience, wedge, scope, model, channel or form), the evidence that would confirm it, and the realistic score after. Sum these into a **target weighted score**. The gap between today's score and the target is the strengthening plan; a Pivot or Drop must still show the best version worth testing, or say plainly that none was found and why.
+
+Differentiation can only score ≥ 7 if at least one differentiator passes the 5-question test in `competitive-analysis.md` (users care, noticeably better, owner can deliver, explainable in one sentence; and either hard to copy or backed by something that makes it stick).
+
 ## Verdict rules
 
 - **Go** — weighted ≥ 7.0 and no dimension ≤ 3 and no unresolved fatal flaw.

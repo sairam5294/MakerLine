@@ -110,7 +110,7 @@ if [ "$ADOPT" = 1 ]; then
     tpl="$KIT/plugin/skills/product-kickoff/templates"
     sed -e "s/<product>/$name/" -e "s/<YYYY-MM-DD>/$today/" -e "s/<version>/$NEW/" \
         -e "s/^Evaluation: PENDING.*/Evaluation: APPROVED ($today — adopted: built and shipped before the kit; discovery\/evaluation not run)/" \
-        -e "s/^| \([1-9]\) | \(.*\) | Not started | | \(.*\)|$/| \1 | \2 | Done (before kit) | $today | \3|/" \
+        -e "s/^| \([1-9][ab]*\) | \(.*\) | Not started | | \(.*\)|$/| \1 | \2 | Done (before kit) | $today | \3|/" \
         "$tpl/STATUS.md" > "$DEST/docs/product/STATUS.md"
     [ -f "$DEST/docs/product/DECISIONS.md" ] || cp "$tpl/DECISIONS.md" "$DEST/docs/product/DECISIONS.md"
     printf '| %s | Adopted into Product Kit %s: existing code, CI and rules kept; kit skills, agents and hooks added | — | Owner decision | — |\n' "$today" "$NEW" >> "$DEST/docs/product/DECISIONS.md"

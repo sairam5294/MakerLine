@@ -18,6 +18,14 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional.
 - (O) Accessibility needs likely in this audience (older adults, low literacy, low vision, children)?
 - (O) Languages needed at launch vs later?
 
+## B2. Alternatives & differentiator (hypotheses only — evaluate-idea researches the facts)
+- (C) Who or what are you up against? Name apps, sites, communities, people doing it by hand — and "doing nothing".
+- (C) What do people dislike about those today? (a real complaint you've heard or seen beats a guess)
+- (C) Why would someone switch to yours? Finish the sentence: "Unlike ___, we ___." — the differentiator hypothesis.
+- (C) What would it cost a user to switch (data to move, habits, people to bring along, money already paid)?
+- (O) Why hasn't a bigger player done this already? (too small for them, needs local knowledge, regulation, they tried and stopped)
+- (O) Is there an unfair advantage only you have here? (access to users, content, a community, a skill, lived experience)
+
 ## C. Scope & platforms
 - (C) Platforms: web app · iOS · Android · all three · web first then mobile. Recommend based on audience (e.g. Indian mass market → Android first).
 - (C) The 3–5 things a user must be able to do in version 1 (MVP). What's the ONE core action?
@@ -58,3 +66,6 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional.
 - Big scope → "If you could only ship one feature in 4 weeks, which one?"
 - Unclear value → "What would make someone stop using their current workaround?"
 - Unclear success → "What number, in 6 months, would make you happy to continue?"
+- "No competitors" → "What do people do today instead, even if it's clumsy? That's the competitor."
+- Feature-list differentiator ("more features", "AI-powered") → "Which one thing would a user notice in the first minute, and why can't the leader copy it in a month?"
+- Owner unsure → log it in CLARITY.md as an open question with how to find out; don't push for an answer they don't have.

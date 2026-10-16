@@ -45,3 +45,21 @@ Starting points — always verify current versions and pricing before recommendi
 | Cost | Free tier limits; cost at 10k users; store fees |
 | Lock-in | How hard to move off this provider later? |
 | AI-friendliness | Is it popular, well-documented, stable? |
+
+## Tools beyond code (for the evaluation's provisional tools table)
+
+Verify current pricing before recommending; prefer tools the owner already has (OWNER.md).
+
+| Need | Default | Alternatives | Notes |
+|---|---|---|---|
+| Design & prototyping | Figma (+ the kit's Community design system) | Penpot (open source) | Wireframes start as the kit's HTML template; push to Figma when the owner wants to iterate visually |
+| Landing page / waitlist | Kit `--web` starter on Vercel | Framer, Carrd | Validation before building |
+| Forms & surveys | Tally, Google Forms | Typeform | Interview screeners, waitlist questions |
+| User interviews | Google Meet / Zoom + Calendly | Cal.com | Record with consent; summarise with `scripts/local-ai.sh` |
+| Prototype testing | Wireframe prototype mode, Figma prototype | Maze, Lyssna | 5 users, 3 tasks |
+| Product analytics | PostHog | Plausible (web-only, simple) | No personal data in events |
+| Feedback & support | GitHub issues (dev tools), Tally form, WhatsApp Business (India consumer) | Canny, Crisp | One channel to start |
+| Project tracking | `docs/product/PLAN.md` + GitHub issues | Linear, Notion | Keep the plan in the repo so every AI tool reads it |
+| Building with AI | Claude Code + Product Kit | Cursor, Codex | Same AGENTS.md and skills in all three |
+| Payments (India) | Razorpay / UPI | Cashfree, PhonePe PG | App-store rules for digital goods |
+| Email | Resend | Postmark | |
