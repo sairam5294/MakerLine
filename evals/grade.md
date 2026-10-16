@@ -51,6 +51,7 @@ Pass bar for the Idea Pack: ≥ 80% of items 11–28, plus the universal 1–10 
 32. DESIGN_DIRECTION §9 states the conformance target, cognitive and language needs, and locked-in "cheap now" choices; wireframes carry accessibility notes
 33. PRD includes accessibility statement + feedback route, alternate formats when required, ACR when selling to organisations, assistive-tech users in tests
 34. `check_idea_pack.py --mode <mode>` passes with 0 FAIL
+35. Global baseline applied whatever the launch market (inclusion.md): no forced gender/name splits, languages and low-end devices considered, no decision based on protected characteristics
 
 ## Token efficiency (record every blind run)
 | Date | Case | Mode | Tokens | Tool calls | Minutes | Score | Notes |
