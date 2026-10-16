@@ -1,4 +1,4 @@
-# Product Kit (Claude plugin) v0.6
+# Product Kit (Claude plugin) v0.7
 
 This plugin takes an idea from first conversation to launch, with approval gates. Start by saying **"I have a new idea"** or running `/product-kit:product-kickoff`.
 

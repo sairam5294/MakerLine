@@ -15,7 +15,7 @@
     Mixed product (e.g. phone app + desktop admin): keep the body on "phone" and put data-device="desktop" on each desktop <section>.
   - Grey boxes only: .box (placeholder), .img (image), .btn / .btn.primary, .field, .list, .tabbar, .chip (status label),
     button.chip[aria-pressed] (selectable option), .offline (offline banner), .alert (error).
-  - Keep it accessible: real <button>/<a>, labels on fields, headings in order, targets ≥ 44px.
+  - Keep it accessible: real <button>/<a>, labels on fields, headings in order, targets ≥ 44px, a unique aria-label on each repeated <nav>.
   - Delete this comment when done.
 -->
 <style>
@@ -152,7 +152,7 @@
           </ul>
           <a class="btn primary block" href="#s-create">{{Primary action}}</a>
         </div>
-        <nav class="tabbar" aria-label="Main"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
+        <nav class="tabbar" aria-label="Main (screen 1)"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
       </div>
       <p class="note">{{Note}}</p>
     </section>
@@ -169,7 +169,7 @@
           <p class="sub">{{Why it's empty and what to do first}}</p>
           <a class="btn primary" href="#s-create">{{First action}}</a>
         </div>
-        <nav class="tabbar" aria-label="Main"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
+        <nav class="tabbar" aria-label="Main (screen 2)"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
       </div>
       <p class="note">{{Note}}</p>
     </section>
@@ -225,7 +225,7 @@
         <div class="body">
           <ul class="list" aria-label="Settings"><li class="grow">{{Language}}</li><li class="grow">{{Notifications}}</li><li class="grow">{{Privacy &amp; data}}</li><li class="grow">{{Help}}</li></ul>
         </div>
-        <nav class="tabbar" aria-label="Main"><a href="#s-home">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile" aria-current="page">{{Profile}}</a></nav>
+        <nav class="tabbar" aria-label="Main (screen 3)"><a href="#s-home">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile" aria-current="page">{{Profile}}</a></nav>
       </div>
       <p class="note">{{Note}}</p>
     </section>

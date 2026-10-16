@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## 0.7.0 — 2026-10-16
+Idea Pack: clarity log, honest-coach evaluation with strongest version and path to Go, COMPETITORS with differentiator test, idea-champion agent, design direction + clickable wireframes, draft PRD, one-pager; owner-unavailable mode; tested blind on two eval cases
+
 ## 0.6.1 — 2026-10-14
 Figma library published to Community (https://www.figma.com/community/file/1692097443572763844/product-kit-design-system); kit docs link to it; publish guide updated with the real thumbnail, category and author steps
 
