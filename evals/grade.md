@@ -43,3 +43,17 @@ PRD (draft) and one-pager
 28. ONE_PAGER.md fits one page and matches the evaluation; README index links every document
 
 Pass bar for the Idea Pack: ≥ 80% of items 11–28, plus the universal 1–10 and the case's expected list.
+
+## Accessibility, inclusion and compliance (v0.8+, 1 point each)
+29. EVALUATION §11 names who could be excluded (permanent / temporary / situational) with a source or labelled estimate
+30. Obligations-by-launch-market table uses `accessibility-law.md`, says *why* each law applies or not, flags uncertain + high-stakes items for a lawyer and CLARITY; includes the privacy row
+31. COMPETITORS records leaders' accessibility signals (statement, ACR/VPAT, store label, review mentions)
+32. DESIGN_DIRECTION §9 states the conformance target, cognitive and language needs, and locked-in "cheap now" choices; wireframes carry accessibility notes
+33. PRD includes accessibility statement + feedback route, alternate formats when required, ACR when selling to organisations, assistive-tech users in tests
+34. `check_idea_pack.py --mode <mode>` passes with 0 FAIL
+
+## Token efficiency (record every blind run)
+| Date | Case | Mode | Tokens | Tool calls | Minutes | Score | Notes |
+|---|---|---|---|---|---|---|---|
+| 2026-10-16 | community-amenities | Standard (v0.7.0) | ~224k | 72 | 18 | 6/6 must-catch | baseline before budgets |
+| 2026-10-16 | new-idea-pitch | discovery (v0.7.0) | ~115k | 14 | 3 | ≈ 10/11 | |

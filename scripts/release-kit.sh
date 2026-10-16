@@ -22,6 +22,7 @@ cd "$KIT"
 python3 scripts/sync.py
 bash tests/hooks.test.sh
 bash tests/upgrade.test.sh
+bash tests/idea-pack.test.sh
 
 # 3. Set the version everywhere it's shown.
 sed -i.bak "s/\"version\": *\"$OLD\"/\"version\": \"$NEW\"/" "$MANIFEST" && rm -f "$MANIFEST.bak"

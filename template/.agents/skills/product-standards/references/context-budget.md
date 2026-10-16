@@ -17,6 +17,23 @@ Tokens = cost + quality. A bloated context makes AI tools slower, pricier and sl
 - Prefer structured outputs (tables, checklists) over prose in docs the AI rereads.
 - Cache research: save sources and findings in docs/product so they aren't re-fetched.
 
+## Idea Pack depth (pick before starting; default Standard)
+| Mode | Use when | Produces | Research budget | Typical tokens |
+|---|---|---|---|---|
+| **Quick** | "Is this worth a weekend?" — early or many ideas | v0 brief, CLARITY, short EVALUATION (500–1,200 prose words), COMPETITORS lite (top 3 + doing nothing), ONE_PAGER | ≤ 8 searches, ≤ 4 page reads | ~50–70k |
+| **Standard** | Deciding whether to build | Full pack: + DESIGN_DIRECTION, wireframes (≤ 8 screens), PRD draft | ≤ 15 searches, ≤ 8 page reads | ~120–150k |
+| **Deep** | Before spending money, pitching or hiring | Standard + all four competitor rings in depth, 12+ screens, Figma, payer research | ≤ 30 searches | ~250k+ |
+
+Baseline before these rules: a blind Standard run (v0.7.0) used ~224k tokens and 72 tool calls.
+
+### Token rules for the Idea Pack (MUST)
+1. **Research once, cite everywhere.** Facts go to `docs/product/research/<topic>.md` with IDs (R1, R2…); other documents cite the ID instead of repeating the fact.
+2. **One home per fact.** Competitor detail lives in COMPETITORS; EVALUATION summarises it in ≤ 150 words. The PRD links personas, flows and screens by ID instead of copying them. ONE_PAGER ≤ 500 words.
+3. **Search before you read.** A search snippet with the figure and date is enough to cite. Open a page only for numbers or quotes you need. Stop a competitor ring when two sources agree.
+4. **Copy templates, don't read them.** `cp` the template into place, read only its HOW TO FILL notes and one example block, then fill it section by section with targeted edits.
+5. **Write once, check with a script.** Write each document in one pass from your notes. Don't re-read your own output — run `check_idea_pack.py` (product-kickoff/scripts) and fix only what it flags.
+6. **Small subagent briefs.** Give each perspective agent the brief plus the one reference it needs and the research file; replies ≤ 300 words. Agents read the research cache before searching.
+
 ## Cost reference (measured on kit evals, Sept 2026)
 | Activity | Typical tokens | How to keep it down |
 |---|---|---|

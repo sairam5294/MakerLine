@@ -52,6 +52,20 @@ Target: **WCAG 2.2 Level AA** on web, plus platform guidance for iOS (VoiceOver,
 **Android**: `contentDescription` on icons; `minTouchTargetSize`; test with TalkBack and at 200% font scale; use `semantics { heading() }` in Compose.
 **React Native / Expo**: `accessible`, `accessibilityRole`, `accessibilityLabel`, `accessibilityHint`, `accessibilityState`; don't disable `allowFontScaling`.
 
+## 5b. Custom widgets, ARIA and single-page apps (IAAP WAS Body of Knowledge, Domain 1)
+
+**MUST**
+- Native first; a custom widget follows the matching ARIA Authoring Practices Guide (APG) pattern: role, accessible name, states, and the documented keyboard model. Composite widgets (tabs, menus, grids, listboxes) use one tab stop plus arrow keys (roving `tabindex` or `aria-activedescendant`).
+- Never override a native role with ARIA (`<button role="link">`); document every custom component's keyboard and screen-reader behaviour next to the component.
+- Accessible name contains the visible label text (WCAG 2.5.3 Label in Name) so speech-input users can say what they see.
+- Single-page apps: on route change update `document.title`, move focus to the new view's heading (or main), and announce async results (loading → loaded, errors) with a polite live region.
+- Device-independent events: anything on hover or pointer-down also works on focus and keyboard; no action on focus alone.
+- If users create content (posts, notices, listings, pages), the editor itself is accessible and helps authors make accessible content — prompts for alt text, real headings, link text (ATAG 2.0).
+
+**User strategies to design and test for:** screen reader (desktop and mobile gestures), screen magnifier and 200–400% zoom, speech input, keyboard / switch, captions and transcripts, reading support for low literacy and cognitive disabilities.
+
+**Accessibility support:** test the combinations your audience uses, at minimum NVDA + Chrome or Firefox and JAWS + Chrome (Windows web), VoiceOver + Safari (macOS, iOS), TalkBack + Chrome (Android). A feature that works in one combination only is not done; when support is missing, use a well-supported pattern rather than a hack.
+
 ## 6. Testing checklist (every feature)
 
 1. Automated: axe-core (web: `@axe-core/playwright` or `jest-axe`), eslint-plugin-jsx-a11y, Accessibility Inspector (iOS), Accessibility Scanner (Android). Automation catches roughly a third of issues — manual checks are required.
@@ -61,6 +75,16 @@ Target: **WCAG 2.2 Level AA** on web, plus platform guidance for iOS (VoiceOver,
 5. Contrast check of all new colours in light and dark themes.
 6. Reduced-motion pass.
 
-## 7. Content for children or low-literacy users (when relevant)
+**Evaluating a whole product (audits, ship-checklist):** follow WCAG-EM — define scope and conformance target, explore, pick a representative sample (every template, key flows, every state), audit, report. Use tools that implement W3C ACT Rules (axe-core does) and record which success criteria were tested manually.
+
+**Prioritising fixes (WAS Domain 3):** severity = impact on the user (blocker · serious · moderate · minor) × how often the screen or flow is used. A WCAG failure is a MUST; a best practice that isn't a failure is a SHOULD — label which is which. When the same widget fails many criteria, recommend redesigning it with a native or APG pattern instead of patching each failure.
+
+## 7. Law, buyers and public statements
+
+- Which laws apply depends on where you launch and who pays: see `accessibility-law.md` (AODA, ADA, Section 508, European Accessibility Act, UK, India RPwD/GIGW, and others). WCAG 2.2 AA meets or exceeds the WCAG 2.0/2.1 AA levels most laws cite, but some laws ask for more (feedback routes, alternate formats, statements, reports).
+- MUST: an accessibility statement (conformance level, known gaps, contact) and a way to report barriers, from the first public release.
+- Selling to businesses, schools or government: expect to provide an Accessibility Conformance Report (VPAT template).
+
+## 8. Content for children or low-literacy users (when relevant)
 
 - Pair text with icons and audio; keep sentences short; large targets (≥ 56dp for young children); no reliance on reading to complete core tasks.

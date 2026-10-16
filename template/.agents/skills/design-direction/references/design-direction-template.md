@@ -65,8 +65,12 @@ Steps to the core action: {{n}} (leaders: {{n}})
 Platform conventions to follow: {{HIG / Material 3 / web}}
 
 ## 9. Accessibility and inclusion plan
-| Need (persona) | Design response |
-|---|---|
+- Conformance target: {{WCAG 2.2 AA (kit floor) + what launch markets require, from EVALUATION §11}}
+| Need (persona · permanent / temporary / situational) | Design response | Where (S-xx) |
+|---|---|---|
+- Cognitive: plain language (reading age {{n}}), one task per screen, no time pressure, forgiving inputs
+- Languages and scripts: {{launch / later}}
+- Locked in now (expensive to retrofit): {{no drag-only, no CAPTCHA, captions, text not in images, status never colour-only}}
 Floor: WCAG 2.2 AA — contrast, 44 pt / 48 dp targets, text to 200 %, screen-reader names, focus order, reduced motion.
 
 ## 10. Wireframes

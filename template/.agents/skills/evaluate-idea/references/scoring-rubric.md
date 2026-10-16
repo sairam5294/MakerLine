@@ -11,7 +11,7 @@ Score each dimension 1–10. Anchor to the descriptions; justify each score with
 | Feasibility for this owner | 15% | Needs skills/budget/time they don't have | Doable with significant help | Fits owner's skills; MVP Musts buildable in ≤ 8 weeks at the owner's hours |
 | Monetization / sustainability | 10% | No one pays; ads-only in a low-ARPU segment | Plausible but unproven | Proven willingness to pay in comparable products |
 | Distribution & retention | 10% | No reason to return; paid acquisition only | Some habit loop or channel | Built-in habit/network/SEO/community loop |
-| Risk (legal, platform, content rights incl. AI-generated content, trust) | 5% | High unmitigated risk | Manageable with effort | Low or well-mitigated |
+| Risk (legal incl. accessibility and privacy law in launch markets, platform, content rights incl. AI-generated content, trust) | 5% | High unmitigated risk | Manageable with effort | Low or well-mitigated |
 
 **Weighted score** = Σ(score × weight). Show the calculation.
 
@@ -20,6 +20,8 @@ Score each dimension 1–10. Anchor to the descriptions; justify each score with
 Every dimension scored ≤ 6 gets a "Raise it by…" entry: the specific change (to audience, wedge, scope, model, channel or form), the evidence that would confirm it, and the realistic score after. Sum these into a **target weighted score**. The gap between today's score and the target is the strengthening plan; a Pivot or Drop must still show the best version worth testing, or say plainly that none was found and why.
 
 Differentiation can only score ≥ 7 if at least one differentiator passes the 5-question test in `competitive-analysis.md` (users care, noticeably better, owner can deliver, explainable in one sentence; and either hard to copy or backed by something that makes it stick).
+
+**Accessibility and inclusion.** A legal accessibility obligation the owner can't meet at launch (e.g. EU consumer service, public-sector buyer) is a serious risk with a fix in the strengthening plan. An idea that leaves out a large share of its own audience (older adults, a language, low-end phones) scores lower on Audience. An accessibility-led differentiator counts for Differentiation only if it passes the 5-question test.
 
 ## Verdict rules
 

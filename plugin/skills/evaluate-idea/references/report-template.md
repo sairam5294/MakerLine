@@ -122,8 +122,23 @@ How to make this idea stronger — the core of the report, for every verdict.
 - Monthly running cost at 100 / 1,000 / 10,000 users (rough):
 - Skills gaps & how to cover them:
 
-## 11. Legal, platform & ethical considerations
--
+## 11. Accessibility, inclusion and compliance
+_Not legal advice; sources: `accessibility-law.md` (last verified date) and research files._
+### Who could be excluded
+| Group (permanent / temporary / situational) | Share of audience (source or estimate) | What would stop them | Design response |
+|---|---|---|---|
+### Obligations by launch market
+| Market | Law / rule | Applies? (why) | Standard | Must do (statement, feedback route, alternate formats, ACR) | From |
+|---|---|---|---|---|---|
+Include data-protection (DPDP / GDPR…) and platform rules (app stores, payments) as rows. Uncertain + high stakes → "confirm with a lawyer" + CLARITY id.
+### Competitors' accessibility
+| Leader | Statement | ACR / VPAT | Store label / reviews | Gap we could use |
+|---|---|---|---|---|
+### Accessibility as a strength (or "none found")
+### Cheap now, expensive later
+- {{design choices to lock in now}}
+### Ethics
+- {{dark patterns to avoid, trust, misuse}}
 
 ## 12. Cheapest validation tests (before building)
 | Test | Assumption it tests (CLARITY id) | Success threshold | Kill criterion | Cost/time |
