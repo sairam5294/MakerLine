@@ -25,6 +25,7 @@ jobs:
       - run: bash tests/upgrade.test.sh
       - run: bash tests/idea-pack.test.sh
       - run: python3 scripts/build-idea-pack.py --check
+      - run: python3 -m pip install --user markdown==3.10.3 && python3 scripts/build-site.py /tmp/site
       # Marketplace + plugin manifests must be valid JSON.
       - run: python3 -c "import json; json.load(open('.claude-plugin/marketplace.json')); json.load(open('plugin/.claude-plugin/plugin.json'))"
       # Workflow files must be valid GitHub Actions (catches mistakes that silently disable CI).

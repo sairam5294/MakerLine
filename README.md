@@ -2,7 +2,7 @@
 
 **The open-source designer's AI toolkit.** One setup that takes an idea from "I have a new idea" to a shipped web / iOS / Android product, and works the same way in **Claude**, **Cursor** and **Codex**. Built by a designer with light coding skills, for designers and solo makers who build with AI. The rules are enforced by checks, not just written down.
 
-> **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
+> **Website: https://sairam5294.github.io/product-kit/** · **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
 
 **Why it exists.** AI tools write working code fast, but they forget accessibility, UX heuristics, security, tests and honest evaluation unless you remind them every session, in every tool. Product Kit packages that know-how as skills, agents, standards, hooks and CI so every tool you use starts thinking like a senior product designer.
 
