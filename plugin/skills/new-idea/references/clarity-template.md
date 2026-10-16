@@ -1,6 +1,9 @@
 # Clarity Log — {{working name}}
 
-_Updated {{date}} · Readiness: {{n}} of {{m}} blocking questions answered_
+_Updated {{date}}_
+**Readiness:** Evaluation can start{{ (provisional) / — blocked by Q-xx}} · {{n}} questions block approval · {{m}} of {{k}} blocking answered
+
+A question is **blocking** if a phase can't sensibly proceed without it and it has no default (facts, assumptions), or the owner must confirm its default before approval (decisions).
 
 Every open question about the idea lives here until it is answered. Each one names the decision it blocks, so the owner can see at a glance what stands between the idea and the next step. Skills read and update this file; nothing is deleted, answered rows move to the bottom.
 
@@ -8,17 +11,20 @@ Every open question about the idea lives here until it is answered. Each one nam
 
 | Phase | Ready? | Blocked by |
 |---|---|---|
-| Evaluation | {{yes / no}} | {{Q-ids}} |
-| Design direction | | |
-| Validation test | | |
+| Evaluation (evaluate-idea) | {{yes / provisional / no}} | {{Q-ids}} |
+| Design direction (design-direction) | | |
+| PRD draft (write-prd) | | |
+| Validation test (validate-idea) | | |
 | Approval | | |
-| PRD (full) | | |
+| Naming (name-product) | | |
+| Tech stack (tech-stack) | | |
+| PRD full (write-prd) | | |
 
 ## Open questions
 
 | ID | Question | Why it matters | Blocks | Type | How to find out | Owner | Default if unanswered |
 |---|---|---|---|---|---|---|---|
-| Q-01 | | | Evaluation | Decision / Fact / Assumption | Ask owner · desk research · 5 interviews · landing-page test · prototype test | Owner / Claude | |
+| Q-01 | | | Evaluation / Design direction / PRD draft / Validation / Approval / Naming / Tech stack / PRD full | Decision / Fact / Assumption | Ask owner · desk research · 5 interviews · landing-page test · prototype test | Owner / Claude | |
 
 **Type.** *Decision* — the owner chooses (goal, platform, scope, price). *Fact* — knowable about users or the market; never assume, find out. *Assumption* — a belief the idea depends on; it becomes a validation test.
 
