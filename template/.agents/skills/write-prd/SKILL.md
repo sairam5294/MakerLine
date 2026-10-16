@@ -8,6 +8,7 @@ description: Product Kit PRD — a draft PRD at the idea stage (problem, goals a
 Template: `references/prd-template.md`. Read CLARITY.md first; move answered questions down with the source.
 
 **Two modes**
+- If EVALUATION's verdict is Pivot, spec the recommended pivot (see evaluate-idea) and label it at the top.
 - **Draft (v0.x) — before approval.** Docs only, so the gate allows it. Inputs: PROJECT_BRIEF, EVALUATION (personas, positioning, MVP cut, risks), COMPETITORS, DESIGN_DIRECTION (flows, screens, wireframes), VALIDATION if done. Fill every section except those marked **(full)** — write "after approval" under those headings. The draft makes the idea concrete enough to test, estimate and approve.
 - **Full (v1.x) — after `Evaluation: APPROVED`.** Adds NAMING, TECH_STACK, DESIGN_SYSTEM: data and permissions (→ RLS), analytics events, technology, non-functional detail. Promote the draft; don't start over.
 
@@ -15,8 +16,8 @@ Steps
 1. Write `docs/product/PRD.md` from the template.
 2. User stories `US-01…` by epic: As a / I want / so that · MoSCoW · Given/When/Then including error, empty, offline and permission-denied cases · the screen (S-xx) it lives on · personal data used and why.
 3. Make the differentiator visible: name the stories and screens where a user will notice it in the first session. If none, flag it — the MVP isn't testing the idea.
-4. Scope check: if Musts exceed ~6–8 weeks for this owner (OWNER.md hours), propose cuts that keep the core action and the differentiator.
+4. Scope check: if Musts exceed ~8 weeks for this owner (OWNER.md hours), propose cuts that keep the core action and the differentiator.
 5. Every acceptance criterion must be automatable; every metric needs an event that measures it.
-6. Present in ≤ 12 lines: the MVP in one sentence, number of Must stories, estimated build time, top 3 risks, open questions that block approval. Iterate → owner approves → STATUS.
+6. Present in ≤ 12 lines: the MVP in one sentence, number of Must stories, estimated build time, top 3 risks, open questions that block approval. Iterate → owner reviews (draft) or approves (full) → STATUS: PRD draft `Done` after review.
 
 Non-functional MUSTs come from `../product-standards/`; AI features → run ai-feature and link its document.

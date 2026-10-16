@@ -1,4 +1,4 @@
-# Status — <product>  ·  updated <YYYY-MM-DD>  ·  kit v<version>
+# Status — <product>  ·  updated <YYYY-MM-DD>  ·  kit v<version from the plugin's .claude-plugin/plugin.json>
 
 Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approves; the gate hook reads this line -->
 
@@ -9,6 +9,7 @@ Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approv
 | 2a | Design direction | Not started | | wireframes in design/wireframes |
 | 2b | PRD draft | Not started | | |
 | 3 | Validation | Not started | | recommended |
+| ✦ | Idea Pack | Not started | | ONE_PAGER.md + README.md index |
 | 4 | Naming | Not started | | |
 | 5 | Tech stack | Not started | | |
 | 6 | Design system | Not started | | |

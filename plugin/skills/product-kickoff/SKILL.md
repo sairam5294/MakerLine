@@ -27,14 +27,15 @@ Run phases in order, one at a time. Each phase = a skill in the sibling folder `
 | 12 | ship-checklist | RELEASE.md | checklist done |
 | 13 | post-launch | METRICS.md, LESSONS.md | loop weekly |
 
-Phases 1–3 make the **Idea Pack**: everything an owner needs to decide — honest verdict, competitors and differentiator, strengthening plan, tools and cost, draft design, draft PRD, open questions — before any code. All of it lives in `docs/` and `design/`, which the approval gate allows.
+Phases 1–2b plus the one-pager make the **Idea Pack** (validation, phase 3, then tests it with real people): everything an owner needs to decide — honest verdict, competitors and differentiator, strengthening plan, tools and cost, draft design, draft PRD, open questions — before any code. All of it lives in `docs/` and `design/`, which the approval gate allows.
 
 Anytime: `handoff` (end of session), `standards-refresh` (quarterly), `portfolio` (all projects), `ai-feature` (whenever a feature uses AI).
 
 ## Procedure
 1. Find `docs/product/STATUS.md` (read `HANDOFF.md` too if present). Found → state current phase in one line, continue. Not found → create `docs/product/`, copy `templates/STATUS.md`, `templates/DECISIONS.md` and `templates/COSTS.md` (and the kit's `owner/OWNER.md` if reachable, else ask the owner's profile questions once), start phase 1.
 2. Finish one phase, write its file, get owner confirmation, update STATUS.md, then offer the next. After 2b (and after every later phase), write or refresh `docs/product/ONE_PAGER.md` and `docs/product/README.md` from `templates/ONE_PAGER.md` and `templates/IDEA_PACK_README.md`.
-   - The owner can ask for the whole Idea Pack in one go ("give me everything for this idea"): run 1 → 2 → 2a → 2b → one-pager, pausing only for questions that block the next phase (CLARITY.md), and present the one-pager at the end.
+   - The owner can ask for the whole Idea Pack in one go ("give me everything for this idea"): run 1 → 2 → 2a → 2b → one-pager (skip 1 if a brief already exists), pausing only for questions that block the next phase (CLARITY.md). Skip the per-phase presentations; present the one-pager at the end with one line per phase.
+   - **Owner unavailable** (scheduled run, "just do it", no reply): take the recommended default for every decision, mark each one `[Default]` in the documents and "default (unconfirmed)" in DECISIONS.md, set those phases to `Waiting for owner` in STATUS, and list the defaults to confirm at the top of the one-pager. Facts stay unknown with a Q-id — never guess them.
 3. Gate: phases 4+ need `Evaluation: APPROVED`, set **only by the owner** (`scripts/approve.sh`, or their explicit words quoted in DECISIONS.md where there's no shell). Re-check STATUS before every build phase. If owner wants to skip: state top 2 risks, obey, log in DECISIONS.md.
 4. If goal/audience/scope changes later: update the brief (new version), log it, offer to re-evaluate the changed parts.
 5. End each turn with: produced · one decision needed · next phase.

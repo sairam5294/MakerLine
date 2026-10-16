@@ -49,7 +49,11 @@ Steps to the core action: {{n}} (leaders: {{n}})
 ## 8. Visual directions
 ### Option A — {{name}} (recommended)
 - Mood: {{3 words}}
-- Palette: | Role | Colour | On | Contrast |
+- Palette:
+
+  | Role | Colour | On | Contrast |
+  |---|---|---|---|
+
 - Type: {{display}} / {{text}}; base size {{n}}
 - Shape and spacing: {{radius, density}}
 - Imagery and icons:

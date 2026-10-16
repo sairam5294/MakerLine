@@ -1,5 +1,7 @@
 # {{Working name}} — one-pager
 
+<!-- ≤ 500 words; one line per label. Owner unavailable → put "Defaults to confirm: …" above the idea line. -->
+
 _{{date}} · Verdict: **{{Go / Go with changes / Pivot / Drop}}** ({{confidence}}) · Idea Pack index: `docs/product/README.md`_
 
 **The idea in one line.** For {{audience}} who {{need}}, {{name}} is a {{category}} that {{benefit}}. Unlike {{alternative}}, it {{differentiator}}.

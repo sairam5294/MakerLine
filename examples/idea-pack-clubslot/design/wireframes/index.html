@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClubSlot — Wireframes</title>
+<!--
+  Product Kit wireframe template (design-direction skill).
+  HOW TO FILL:
+  - Replace every {{…}}. Use real content from the brief and personas — never lorem ipsum.
+  - One <section class="screen"> per MVP screen. id="s-<slug>", data-title, data-note (designer note).
+  - Link screens with <a href="#s-<slug>"> so Prototype mode clicks through the core flow.
+  - Show at least one empty state and one error state as their own screens (e.g. s-home-empty).
+  - Mobile product: keep <body data-device="phone">. Web tool: data-device="desktop".
+  - Grey boxes only: .box (placeholder), .img (image), .btn / .btn.primary, .field, .list, .tabbar, .chip.
+  - Keep it accessible: real <button>/<a>, labels on fields, headings in order.
+-->
+<style>
+  :root{--ink:#1d1d1f;--muted:#5f6368;--line:#c7c9cc;--fill:#eceef0;--fill2:#dfe2e5;--paper:#fff;--canvas:#f4f5f6;--accent:#1d1d1f;--focus:#0b57d0;--danger:#a50e0e}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Noto Sans Telugu","Noto Sans Devanagari",sans-serif;color:var(--ink);background:var(--canvas)}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+  .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;background:#fff;padding:8px 12px;z-index:10}
+  header.bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 20px;background:#fff;border-bottom:1px solid var(--line)}
+  header.bar h1{font-size:16px;margin:0}
+  header.bar p{margin:0;color:var(--muted);font-size:13px}
+  .modes{display:flex;gap:6px}
+  .modes button{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer}
+  .modes button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  main{padding:24px 20px 64px}
+  nav.index{margin:0 0 20px;font-size:13px;color:var(--muted)}
+  nav.index ol{display:flex;flex-wrap:wrap;gap:6px 14px;margin:6px 0 0;padding:0;list-style:none;counter-reset:s}
+  nav.index li{counter-increment:s}
+  nav.index li::before{content:counter(s) ". "}
+  /* Canvas mode: all screens side by side */
+  .canvas{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+  .screen{display:flex;flex-direction:column;gap:8px;scroll-margin-top:80px}
+  .screen > h2{font-size:13px;font-weight:600;margin:0;color:var(--muted)}
+  .frame{background:var(--paper);border:1px solid var(--line);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
+  [data-device="phone"] .frame{width:360px;min-height:740px}
+  [data-device="desktop"] .frame{width:1024px;min-height:640px;border-radius:10px}
+  .note{max-width:360px;font-size:12.5px;color:var(--muted);border-left:3px solid var(--fill2);padding:2px 0 2px 10px}
+  [data-device="desktop"] .note{max-width:1024px}
+  /* Prototype mode: one screen at a time */
+  body.proto .canvas{justify-content:center}
+  body.proto .screen{display:none}
+  body.proto .screen.current{display:flex}
+  body.proto nav.index{display:none}
+  /* Wireframe kit */
+  .status{display:flex;justify-content:space-between;padding:10px 22px 4px;font-size:12px;color:var(--muted)}
+  .appbar{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--fill2)}
+  .appbar h3{font-size:17px;margin:0;flex:1}
+  .body{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px}
+  .box{background:var(--fill);border:1px dashed var(--line);border-radius:10px;padding:12px;color:var(--muted);font-size:13px}
+  .img{background:repeating-linear-gradient(45deg,var(--fill),var(--fill) 8px,var(--fill2) 8px,var(--fill2) 16px);border-radius:10px;min-height:120px}
+  .h{font-size:22px;font-weight:700;margin:0}
+  .sub{color:var(--muted);margin:0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid var(--ink);background:#fff;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+  .btn.primary{background:var(--ink);color:#fff}
+  .btn.block{width:100%}
+  .field{display:flex;flex-direction:column;gap:4px;font-size:13px}
+  .field input{font:inherit;min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:0 12px;background:#fff}
+  .field.error input{border-color:var(--danger)}
+  .field .msg{color:var(--danger)}
+  .list{list-style:none;margin:0;padding:0;border:1px solid var(--fill2);border-radius:12px}
+  .list li{display:flex;align-items:center;gap:12px;padding:12px;border-top:1px solid var(--fill2);min-height:56px}
+  .list li:first-child{border-top:0}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--fill2);flex:none}
+  .grow{flex:1}.meta{font-size:12px;color:var(--muted)}
+  .chip{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--fill);font-size:12px}
+  .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px}
+  .alert{border:1.5px solid var(--danger);color:var(--danger);border-radius:10px;padding:10px 12px;font-size:13px}
+  .tabbar{display:flex;border-top:1px solid var(--fill2);margin-top:auto}
+  .tabbar a{flex:1;text-align:center;padding:10px 0 18px;font-size:11px;color:var(--muted);text-decoration:none}
+  .tabbar a[aria-current="page"]{color:var(--ink);font-weight:700}
+  .tabbar a::before{content:"";display:block;width:22px;height:22px;margin:0 auto 4px;border-radius:6px;background:var(--fill2)}
+  .row{display:flex;gap:10px;align-items:center}
+  footer.legend{margin-top:32px;font-size:12px;color:var(--muted)}
+  @media (max-width:420px){[data-device="phone"] .frame{width:calc(100vw - 40px)}}
+</style>
+</head>
+<body data-device="phone">
+<a class="skip" href="#canvas">Skip to wireframes</a>
+<header class="bar">
+  <div>
+    <h1>ClubSlot — wireframes (draft)</h1>
+    <p>Grey-box fidelity · core flow: Join → Sign in → Book → Court slots → Booked · peak: Slots → Ballot → Result · 2026-10-16</p>
+  </div>
+  <div class="modes" role="group" aria-label="View mode">
+    <button type="button" id="m-canvas" aria-pressed="true">Canvas</button>
+    <button type="button" id="m-proto" aria-pressed="false">Prototype</button>
+  </div>
+</header>
+
+<main>
+  <nav class="index" aria-label="Screens"><strong>Screens</strong><ol id="index"></ol></nav>
+
+  <div class="canvas" id="canvas">
+
+    <!-- S-01 Join: opened from the WhatsApp invite link -->
+    <section class="screen" id="s-join" data-title="S-01 Join" aria-labelledby="t-join">
+      <h2 id="t-join">S-01 Join community</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="body">
+          <div class="img" role="img" aria-label="Illustration placeholder: badminton court, pool and party hall icons" style="min-height:220px"></div>
+          <p class="sub">Green Meadows · 900 flats</p>
+          <p class="h">Book the court, pool or hall in seconds — and get a fair shot at peak times.</p>
+          <p class="sub">Set up by your clubhouse committee. No app to install, no ads.</p>
+          <a class="btn primary block" href="#s-signin">Continue with phone number</a>
+          <a class="btn block" href="#s-rules">How booking works here</a>
+        </div>
+      </div>
+      <p class="note">Purpose: answer "what is this and is it legit?" in 5 seconds — community name + "set up by your committee". Open question: show committee member names for trust?</p>
+    </section>
+
+    <!-- S-02 Sign in with OTP; roster match -->
+    <section class="screen" id="s-signin" data-title="S-02 Sign in" aria-labelledby="t-signin">
+      <h2 id="t-signin">S-02 Sign in</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><a href="#s-join" aria-label="Back">←</a><h3>Sign in</h3></div>
+        <div class="body">
+          <div class="field"><label for="f-phone">Mobile number</label><input id="f-phone" inputmode="tel" autocomplete="tel" value="98480 12345"></div>
+          <div class="field"><label for="f-otp">6-digit code sent by SMS</label><input id="f-otp" inputmode="numeric" autocomplete="one-time-code" value="4 8 2 9 1 _"></div>
+          <a class="btn primary block" href="#s-home-empty">Verify and continue</a>
+          <p class="meta">We use your number only to sign you in and match you to your flat. Neighbours never see it.</p>
+        </div>
+      </div>
+      <p class="note">Number on the committee roster → straight in (flat B-1204 shown on next screen). Not on roster → "Request sent to the committee — we'll SMS you when approved." Error: "That code didn't match. Check the SMS or send a new code (in 30 s)."</p>
+    </section>
+
+    <!-- S-03b First run, empty -->
+    <section class="screen" id="s-home-empty" data-title="S-03b Book — first run" aria-labelledby="t-home-empty">
+      <h2 id="t-home-empty">S-03b Book — first run (empty state)</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><h3>Book</h3><span class="chip">Flat B-1204</span></div>
+        <div class="empty">
+          <div class="img" role="img" aria-label="Empty-state illustration placeholder: calendar with one free slot" style="width:140px;min-height:110px"></div>
+          <p class="h" style="font-size:18px">No bookings yet</p>
+          <p class="sub">Pick an amenity to see what's free today. Peak times use a weekly ballot, so every flat gets a fair shot.</p>
+          <a class="btn primary" href="#s-home">See what's free today</a>
+        </div>
+        <nav class="tabbar" aria-label="Main navigation 1"><a href="#s-home" aria-current="page">Book</a><a href="#s-mine">My bookings</a><a href="#s-rules">Rules</a></nav>
+      </div>
+      <p class="note">First-run empty, not "no results". One sentence introduces the ballot so S-04's "Peak · ballot" chip isn't a surprise.</p>
+    </section>
+
+    <!-- S-03 Book (home) with offline banner variant noted -->
+    <section class="screen" id="s-home" data-title="S-03 Book" aria-labelledby="t-home">
+      <h2 id="t-home">S-03 Book (home)</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><h3>Book</h3><span class="chip">Flat B-1204</span></div>
+        <div class="body">
+          <div class="box">Next: Badminton Court 1 · Today 6:00–7:00 pm · check in by 6:15 pm</div>
+          <p class="sub" style="font-weight:600;color:var(--ink)">What's free today</p>
+          <ul class="list" aria-label="Amenities">
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Badminton Court 1<br><span class="meta">4 slots free · 7–9 pm peak</span></span><a href="#s-slots" aria-label="Open Badminton Court 1">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Swimming pool — lane 2<br><span class="meta">6 slots free</span></span><a href="#s-slots" aria-label="Open Swimming pool lane 2">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Party hall<br><span class="meta">Free today · Sat 1 Nov in ballot</span></span><a href="#s-slots" aria-label="Open Party hall">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Tennis court<br><span class="meta">Closed for resurfacing till 20 Oct</span></span><a href="#s-slots" aria-label="Open Tennis court">›</a></li>
+          </ul>
+          <a class="btn primary block" href="#s-slots">Book Badminton Court 1</a>
+        </div>
+        <nav class="tabbar" aria-label="Main navigation 2"><a href="#s-home" aria-current="page">Book</a><a href="#s-mine">My bookings</a><a href="#s-rules">Rules</a></nav>
+      </div>
+      <p class="note">Offline variant: banner "You're offline — showing slots from 9:32 am. Booking needs a connection." Loading: skeleton rows. Committee members also see a "Committee" link in the app bar → S-10.</p>
+    </section>
+
+    <!-- S-04 Amenity slots: the core action -->
+    <section class="screen" id="s-slots" data-title="S-04 Court slots" aria-labelledby="t-slots">
+      <h2 id="t-slots">S-04 Badminton Court 1 — slots</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><a href="#s-home" aria-label="Back">←</a><h3>Badminton Court 1</h3></div>
+        <div class="body">
+          <div class="row" role="group" aria-label="Day"><span class="chip">Today</span><span class="chip">Fri 17</span><span class="chip">Sat 18</span><span class="chip">Sun 19</span></div>
+          <ul class="list" aria-label="Slots today">
+            <li><span class="grow">5:00–6:00 pm<br><span class="meta">Booked</span></span></li>
+            <li><span class="grow">6:00–7:00 pm<br><span class="meta">Free</span></span><a class="btn primary" href="#s-booked">Book</a></li>
+            <li><span class="grow">7:00–8:00 pm<br><span class="meta">Peak · ballot closes Thu 9 pm</span></span><a class="btn" href="#s-ballot">Enter ballot</a></li>
+            <li><span class="grow">8:00–9:00 pm<br><span class="meta">Free</span></span><a class="btn" href="#s-error" aria-label="Book 8 to 9 pm (shows error example)">Book</a></li>
+          </ul>
+          <p class="meta">Rules: 1 hour per slot · up to 3 court slots a week per flat · book up to 7 days ahead · <a href="#s-rules">all rules</a></p>
+        </div>
+      </div>
+      <p class="note">Steps to here: returning 2 (link → amenity). Status is text, never colour alone. Open question: show remaining weekly cap ("2 of 3 left") here or only on error?</p>
+    </section>
+
+    <!-- S-04b Error: slot just taken -->
+    <section class="screen" id="s-error" data-title="S-04b Slot taken (error)" aria-labelledby="t-error">
+      <h2 id="t-error">S-04b Booking error — slot just taken</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><a href="#s-slots" aria-label="Back">←</a><h3>Badminton Court 1</h3></div>
+        <div class="body">
+          <div class="alert" role="alert">Someone booked 8:00–9:00 pm a moment ago. Nothing was booked for you.</div>
+          <p class="sub" style="color:var(--ink);font-weight:600">Still free today</p>
+          <ul class="list" aria-label="Suggested slots">
+            <li><span class="grow">6:00–7:00 pm</span><a class="btn primary" href="#s-booked">Book 6:00 pm</a></li>
+            <li><span class="grow">9:00–10:00 pm</span><a class="btn" href="#s-booked">Book 9:00 pm</a></li>
+          </ul>
+          <p class="meta">Cap variant: "You've used 3 of 3 court slots this week. Your limit resets Monday at 6 am."</p>
+        </div>
+      </div>
+      <p class="note">Recovery path from DESIGN_DIRECTION §5.3. Never show "Booked" until the server confirms; keep the user's day selection.</p>
+    </section>
+
+    <!-- S-05 Success -->
+    <section class="screen" id="s-booked" data-title="S-05 Booked" aria-labelledby="t-booked">
+      <h2 id="t-booked">S-05 Booked (success)</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="empty">
+          <div class="img" role="img" aria-label="Success illustration placeholder: tick" style="width:120px;min-height:120px;border-radius:50%"></div>
+          <p class="h" style="font-size:20px">Booked: Badminton Court 1, today 6:00–7:00 pm</p>
+          <p class="sub">Check in at the court by 6:15 pm or it goes to the next person. Free cancellation until 5:00 pm.</p>
+          <a class="btn primary" href="#s-mine">Done</a>
+          <a class="btn" href="#s-booked">Add to calendar</a>
+        </div>
+      </div>
+      <p class="note">The "aha": booked in 4 taps from the WhatsApp link, with the no-show rule stated up front so release never feels unfair.</p>
+    </section>
+
+    <!-- S-06 Ballot entry: the differentiator -->
+    <section class="screen" id="s-ballot" data-title="S-06 Enter ballot" aria-labelledby="t-ballot">
+      <h2 id="t-ballot">S-06 Enter ballot — peak slot</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><a href="#s-slots" aria-label="Back">←</a><h3>Saturday 7:00–8:00 pm</h3></div>
+        <div class="body">
+          <div class="box">Badminton Court 1 · Sat 18 Oct · Peak slot</div>
+          <p>The ballot closes <strong>Thursday 9:00 pm</strong>. The draw is random, but flats that missed out recently get an extra entry.</p>
+          <ul class="list" aria-label="Ballot details">
+            <li><span class="grow">Flats entered so far<br><span class="meta">14</span></span></li>
+            <li><span class="grow">Your peak slots this month<br><span class="meta">0 of 2 — you get a bonus entry</span></span></li>
+          </ul>
+          <a class="btn primary block" href="#s-result">Enter ballot</a>
+          <a class="btn block" href="#s-rules">How the ballot works</a>
+        </div>
+      </div>
+      <p class="note">Differentiator screen (PRD US-06/07). Test question: do residents believe it's fair? Open question Q-10: should the committee choose weighting, or keep it simple random?</p>
+    </section>
+
+    <!-- S-07 Ballot result + check-in -->
+    <section class="screen" id="s-result" data-title="S-07 Ballot result" aria-labelledby="t-result">
+      <h2 id="t-result">S-07 Ballot result + check-in</h2>
+      <div class="frame">
+        <div class="status"><span>7:02 pm</span><span>●●● ▮</span></div>
+        <div class="appbar"><a href="#s-mine" aria-label="Back">←</a><h3>Saturday 7:00 pm</h3></div>
+        <div class="body">
+          <p class="h" style="font-size:20px">You got Saturday 7:00 pm</p>
+          <div class="box">Check in at Badminton Court 1 by 7:15 pm. Scan the QR code at the court or tap below when you're there.</div>
+          <a class="btn primary block" href="#s-mine">I'm at the court — check in</a>
+          <p class="meta">Not drawn variant: "Not drawn this week. You're first in line for next Saturday's ballot. Join the waitlist for today?"</p>
+          <p class="meta">Released variant (7:16 pm): "Not checked in by 7:15 pm, so the slot went to the waitlist. This counts as 1 no-show."</p>
+        </div>
+      </div>
+      <p class="note">Check-in method is open: QR at the court vs tap + location vs guard confirms. Location permission must be optional with a fallback.</p>
+    </section>
+
+    <!-- S-08 My bookings -->
+    <section class="screen" id="s-mine" data-title="S-08 My bookings" aria-labelledby="t-mine">
+      <h2 id="t-mine">S-08 My bookings</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><h3>My bookings</h3></div>
+        <div class="body">
+          <ul class="list" aria-label="Upcoming bookings">
+            <li><span class="grow">Badminton Court 1<br><span class="meta">Today 6:00–7:00 pm · Booked</span></span><a class="btn" href="#s-mine">Cancel</a></li>
+            <li><span class="grow">Badminton Court 1<br><span class="meta">Sat 18 Oct 7:00 pm · In ballot</span></span><a class="btn" href="#s-mine">Leave ballot</a></li>
+            <li><span class="grow">Party hall<br><span class="meta">Sat 1 Nov · In ballot · fee ₹2,000 billed with maintenance</span></span><a class="btn" href="#s-mine">Leave ballot</a></li>
+          </ul>
+          <p class="meta">Empty state: "Nothing booked. Your past bookings will show here too."</p>
+        </div>
+        <nav class="tabbar" aria-label="Main navigation 3"><a href="#s-home">Book</a><a href="#s-mine" aria-current="page">My bookings</a><a href="#s-rules">Rules</a></nav>
+      </div>
+      <p class="note">Cancel uses undo ("Cancelled. Undo") rather than a confirm dialog, except inside the late-cancel window where it counts as a no-show.</p>
+    </section>
+
+    <!-- S-09 Rules log -->
+    <section class="screen" id="s-rules" data-title="S-09 Rules log" aria-labelledby="t-rules">
+      <h2 id="t-rules">S-09 Rules log</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><h3>Rules</h3></div>
+        <div class="body">
+          <div class="box">Set by the Green Meadows clubhouse committee. Last changed 2 Oct.</div>
+          <ul class="list" aria-label="Recent activity">
+            <li><span class="grow">Ballot drawn: Sat 11 Oct, Court 1, 7 pm<br><span class="meta">22 flats entered · 1 winner · draw record kept</span></span></li>
+            <li><span class="grow">Released: Sun 12 Oct, pool lane 2, 6 am<br><span class="meta">No check-in by 6:15 · went to waitlist</span></span></li>
+            <li><span class="grow">Rule changed: court cap 4 → 3 a week<br><span class="meta">Committee meeting, 2 Oct</span></span></li>
+          </ul>
+        </div>
+        <nav class="tabbar" aria-label="Main navigation 4"><a href="#s-home">Book</a><a href="#s-mine">My bookings</a><a href="#s-rules" aria-current="page">Rules</a></nav>
+      </div>
+      <p class="note">Transparency without exposing people: no names or flat numbers in the public log. Open question: do committees want this public?</p>
+    </section>
+
+    <!-- S-10 Committee: amenity rules (desktop frame) -->
+    <section class="screen" id="s-admin" data-device="desktop" data-title="S-10 Committee rules" aria-labelledby="t-admin">
+      <h2 id="t-admin">S-10 Committee — amenity rules (desktop)</h2>
+      <div class="frame">
+        <div class="appbar"><a href="#s-home" aria-label="Back to resident view">←</a><h3>Committee · Badminton Court 1</h3><span class="chip">Draft — not saved</span></div>
+        <div class="body">
+          <div class="row">
+            <div class="field grow"><label for="a-len">Slot length</label><input id="a-len" value="60 minutes"></div>
+            <div class="field grow"><label for="a-hours">Open hours</label><input id="a-hours" value="5:00 am – 10:00 pm"></div>
+            <div class="field grow"><label for="a-adv">Book up to</label><input id="a-adv" value="7 days ahead"></div>
+          </div>
+          <div class="row">
+            <div class="field grow"><label for="a-cap">Slots per flat per week</label><input id="a-cap" value="3"></div>
+            <div class="field grow error"><label for="a-peak">Peak slots (ballot)</label><input id="a-peak" aria-invalid="true" aria-describedby="e-peak" value="Sat–Sun 7:00–10:00 pm, Mon–Fri 6:00–9:00 pm"><span class="msg" id="e-peak">Peak hours cover 85% of evening slots. Keep it under 50% so free booking still works.</span></div>
+            <div class="field grow"><label for="a-checkin">Check-in window</label><input id="a-checkin" value="15 minutes"></div>
+          </div>
+          <div class="field"><label for="a-black">Closed dates</label><input id="a-black" value="15–20 Oct (resurfacing)"></div>
+          <div class="row"><a class="btn primary" href="#s-rules">Save and publish to rules log</a><a class="btn" href="#s-admin">Preview as resident</a></div>
+        </div>
+      </div>
+      <p class="note">Desktop width because committees configure on laptops. Every save is written to the public rules log (S-09). Roster screen S-11 (CSV import, approve join requests) is in the inventory but not wireframed in this draft.</p>
+    </section>
+
+  </div>
+  <footer class="legend">Wireframe legend: dashed box = placeholder content · striped = image · dark button = primary action · red outline = error. Generated with the Product Kit design-direction skill.</footer>
+</main>
+
+<script>
+  // Index, Canvas / Prototype modes and hash navigation. No dependencies.
+  const screens = [...document.querySelectorAll('.screen')];
+  const index = document.getElementById('index');
+  screens.forEach(s => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = '#' + s.id; a.textContent = s.dataset.title; li.append(a); index.append(li); });
+  const proto = document.getElementById('m-proto'), canvas = document.getElementById('m-canvas');
+  function show() {
+    const id = location.hash.slice(1); const target = screens.find(s => s.id === id) || screens[0];
+    screens.forEach(s => s.classList.toggle('current', s === target));
+    if (document.body.classList.contains('proto')) { target.querySelector('h2').setAttribute('tabindex', '-1'); target.querySelector('h2').focus({ preventScroll: true }); window.scrollTo(0, 0); }
+  }
+  function setMode(p) { document.body.classList.toggle('proto', p); proto.setAttribute('aria-pressed', p); canvas.setAttribute('aria-pressed', !p); show(); }
+  proto.addEventListener('click', () => setMode(true)); canvas.addEventListener('click', () => setMode(false));
+  addEventListener('hashchange', show);
+  setMode(new URLSearchParams(location.search).get('mode') === 'prototype');
+</script>
+</body>
+</html>

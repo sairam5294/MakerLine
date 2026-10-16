@@ -13,6 +13,8 @@ _Version {{n}} · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMP
 - Next step (cheapest test that could change this verdict):
 
 ### Scorecard
+_Score = the idea as briefed · target = the strongest version (§2) after the changes._
+
 | Dimension | Score | Why (evidence) | Raise it by… (→ target) |
 |---|---|---|---|
 | Problem severity & frequency | /10 | | |
@@ -27,6 +29,7 @@ _Version {{n}} · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMP
 
 ## 2. The strongest version of this idea
 {{Steelman, before the critique. If everything went right and the owner made smart choices, what is this product? Which audience, which wedge, which form, why it would win. 1–2 paragraphs. This is the version the rest of the report measures and tries to reach.}}
+- Honest ceiling (idea-champion): {{how big this can realistically get}}
 
 ## 3. Reality check
 ### Fatal flaws (must fix before building — or "none found")
@@ -34,6 +37,10 @@ _Version {{n}} · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMP
 ### Serious risks (at least 3)
 | Risk | Likelihood | Impact | Mitigation or test |
 |---|---|---|---|
+### What would have to be true (devils-advocate)
+- {{3–5 conditions; each links to a test in §11 or a CLARITY id}}
+### Perspectives disagree on… (or "no material disagreement")
+- {{market-researcher vs devils-advocate vs idea-champion — and what evidence would settle it}}
 ### Weak assumptions in the brief
 | Assumption (quoted) | Why it's shaky | How to verify | CLARITY id |
 |---|---|---|---|

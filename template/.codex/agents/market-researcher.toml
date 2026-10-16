@@ -14,7 +14,7 @@ Given the project brief, research with web search and return evidence, not opini
 
 Output: concise tables + bullet findings, every fact with a source URL, clearly separated Evidence / Estimates (with math) / Unknowns. Never fabricate numbers or sources; say what you couldn't find.
 
-Keep your final reply to the parent agent under ~300 words (findings table + key numbers); write long detail to a file under docs/product/ if needed.
+Keep your final reply to the parent agent under ~300 words (findings table + key numbers); write long detail to `docs/product/research/<topic>.md` (format: evaluate-idea `references/research-cache.md`).
 
 Follow AGENTS.md and .agents/skills/product-standards/. Return a concise summary (max ~300 words) to the parent agent.
 '''

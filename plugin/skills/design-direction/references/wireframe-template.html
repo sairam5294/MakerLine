@@ -12,8 +12,11 @@
   - Link screens with <a href="#s-<slug>"> so Prototype mode clicks through the core flow.
   - Show at least one empty state and one error state as their own screens (e.g. s-home-empty).
   - Mobile product: keep <body data-device="phone">. Web tool: data-device="desktop".
-  - Grey boxes only: .box (placeholder), .img (image), .btn / .btn.primary, .field, .list, .tabbar, .chip.
-  - Keep it accessible: real <button>/<a>, labels on fields, headings in order.
+    Mixed product (e.g. phone app + desktop admin): keep the body on "phone" and put data-device="desktop" on each desktop <section>.
+  - Grey boxes only: .box (placeholder), .img (image), .btn / .btn.primary, .field, .list, .tabbar, .chip (status label),
+    button.chip[aria-pressed] (selectable option), .offline (offline banner), .alert (error).
+  - Keep it accessible: real <button>/<a>, labels on fields, headings in order, targets ≥ 44px, a unique aria-label on each repeated <nav>.
+  - Delete this comment when done.
 -->
 <style>
   :root{--ink:#1d1d1f;--muted:#5f6368;--line:#c7c9cc;--fill:#eceef0;--fill2:#dfe2e5;--paper:#fff;--canvas:#f4f5f6;--accent:#1d1d1f;--focus:#0b57d0;--danger:#a50e0e}
@@ -69,6 +72,9 @@
   .avatar{width:36px;height:36px;border-radius:50%;background:var(--fill2);flex:none}
   .grow{flex:1}.meta{font-size:12px;color:var(--muted)}
   .chip{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--fill);font-size:12px}
+  button.chip{font:inherit;font-size:13px;min-height:44px;padding:0 14px;border:1.5px solid var(--line);color:var(--ink);cursor:pointer}
+  button.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .offline{background:var(--fill2);border-radius:10px;padding:8px 12px;font-size:13px}
   .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px}
   .alert{border:1.5px solid var(--danger);color:var(--danger);border-radius:10px;padding:10px 12px;font-size:13px}
   .tabbar{display:flex;border-top:1px solid var(--fill2);margin-top:auto}
@@ -77,6 +83,8 @@
   .tabbar a::before{content:"";display:block;width:22px;height:22px;margin:0 auto 4px;border-radius:6px;background:var(--fill2)}
   .row{display:flex;gap:10px;align-items:center}
   footer.legend{margin-top:32px;font-size:12px;color:var(--muted)}
+  /* a desktop section inside a phone body wins because this rule comes after the phone rule */
+  section[data-device="desktop"] .frame{width:1024px;min-height:640px;border-radius:10px}
   @media (max-width:420px){[data-device="phone"] .frame{width:calc(100vw - 40px)}}
 </style>
 </head>
@@ -144,7 +152,7 @@
           </ul>
           <a class="btn primary block" href="#s-create">{{Primary action}}</a>
         </div>
-        <nav class="tabbar" aria-label="Main"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
+        <nav class="tabbar" aria-label="Main (screen 1)"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
       </div>
       <p class="note">{{Note}}</p>
     </section>
@@ -161,7 +169,7 @@
           <p class="sub">{{Why it's empty and what to do first}}</p>
           <a class="btn primary" href="#s-create">{{First action}}</a>
         </div>
-        <nav class="tabbar" aria-label="Main"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
+        <nav class="tabbar" aria-label="Main (screen 2)"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
       </div>
       <p class="note">{{Note}}</p>
     </section>
@@ -176,7 +184,7 @@
           <div class="alert" role="alert">{{Main error copy: what happened + what to do}}</div>
           <div class="field"><label for="f-a">{{Field}}</label><input id="f-a" value="{{example value}}"></div>
           <div class="field error"><label for="f-b">{{Field with error}}</label><input id="f-b" aria-invalid="true" aria-describedby="e-b" value="{{bad value}}"><span class="msg" id="e-b">{{Field error: how to fix}}</span></div>
-          <div class="row"><span class="chip">{{Option}}</span><span class="chip">{{Option}}</span><span class="chip">{{Option}}</span></div>
+          <div class="row" role="group" aria-label="{{Option group}}"><button type="button" class="chip" aria-pressed="true">{{Option}}</button><button type="button" class="chip" aria-pressed="false">{{Option}}</button><button type="button" class="chip" aria-pressed="false">{{Option}}</button></div>
           <a class="btn primary block" href="#s-success">{{Confirm}}</a>
         </div>
       </div>
@@ -217,7 +225,7 @@
         <div class="body">
           <ul class="list" aria-label="Settings"><li class="grow">{{Language}}</li><li class="grow">{{Notifications}}</li><li class="grow">{{Privacy &amp; data}}</li><li class="grow">{{Help}}</li></ul>
         </div>
-        <nav class="tabbar" aria-label="Main"><a href="#s-home">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile" aria-current="page">{{Profile}}</a></nav>
+        <nav class="tabbar" aria-label="Main (screen 3)"><a href="#s-home">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile" aria-current="page">{{Profile}}</a></nav>
       </div>
       <p class="note">{{Note}}</p>
     </section>
