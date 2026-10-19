@@ -43,7 +43,7 @@ Searches that return bare links (no snippets): two unused searches buy one extra
 ## 5. Model routing per step (when the tool lets you choose)
 | Step | Model |
 |---|---|
-| Interview questions, filling templates, tables, one-pager, index, formatting, renames, small UI/copy edits | **fast** (Sonnet/Haiku, GPT mini, Cursor auto) |
+| Interview questions, filling templates, tables, one-pager, index, formatting, renames, small UI/copy edits | **fast** (Claude Sonnet/Haiku, GPT-6 Luna, Gemini Flash, Cursor auto — names change; `standards-refresh` re-checks them) |
 | Market research, checklist reviews (`market-researcher`, `qa-engineer`, `accessibility-auditor`, `ux-reviewer`) | **fast** |
 | Evaluation verdict and scorecard, devil's advocate, architecture, security review, build tasks touching auth, data, payments or AI | **strongest** |
 

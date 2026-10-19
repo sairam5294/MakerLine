@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Build the Product Kit docs site (GitHub Pages) from the repo's own Markdown.
 
-Why: the site must never drift from the repo, so it has no content of its own.
-README, GETTING-STARTED, the Idea Pack README, the ClubSlot example pack,
-CHANGELOG and LESSONS are rendered into one accessible static site.
+Why: the site must never drift from the repo. Reference pages (README, GETTING-STARTED,
+the Idea Pack README, the ClubSlot example pack, CHANGELOG, LESSONS) are rendered as-is.
+The only site-specific words live in docs/site/*.md (landing page, 5-minute walkthrough,
+case studies, privacy) and link to the repo files they summarise, so a fact changes in one place.
 
     python3 scripts/build-site.py [out_dir]     default: _site/
 
@@ -23,14 +24,22 @@ REPO = "https://github.com/sairam5294/product-kit"
 BLOB = f"{REPO}/blob/main/"
 EX = "examples/idea-pack-clubslot"
 
+SITE = "docs/site"  # hand-written site pages (Markdown; simple HTML blocks allowed via md_in_html)
+
 # (source in repo, output page, nav label or None, page title)
 PAGES = [
-    ("README.md", "index.html", "Home", "Product Kit — the open-source designer's AI toolkit"),
+    (f"{SITE}/index.md", "index.html", "Home", "Product Kit — the open-source designer's AI toolkit"),
+    (f"{SITE}/five-minutes.md", "five-minutes.html", "5 minutes", "5 minutes with Product Kit"),
     ("GETTING-STARTED.md", "getting-started.html", "Getting started", "Getting started"),
+    (f"{SITE}/case-studies.md", "case-studies/index.html", "Case studies", "Case studies"),
     ("idea-pack/README.md", "idea-pack.html", "Idea Pack", "Idea Pack"),
-    (f"{EX}/README.md", "example/index.html", "Example", "Example Idea Pack: ClubSlot"),
+    ("README.md", "overview.html", "Full overview", "Product Kit — full overview"),
     ("CHANGELOG.md", "changelog.html", "Changelog", "Changelog"),
     ("LESSONS.md", "lessons.html", "Lessons", "What the kit got wrong"),
+    (f"{SITE}/case-rhythmbuddy.md", "case-studies/rhythmbuddy.html", None, "Case study: RhythmBuddy"),
+    (f"{SITE}/case-clubslot.md", "case-studies/clubslot.html", None, "Case study: ClubSlot"),
+    (f"{SITE}/privacy.md", "privacy.html", None, "Privacy and data handling"),
+    (f"{EX}/README.md", "example/index.html", None, "Example Idea Pack: ClubSlot"),
 ]
 EXAMPLE_DOCS = ["ONE_PAGER", "README", "PROJECT_BRIEF", "CLARITY", "EVALUATION", "COMPETITORS",
                 "DESIGN_DIRECTION", "PRD", "STATUS", "DECISIONS"]
@@ -79,6 +88,12 @@ blockquote{margin:1rem 0;padding:.5rem 1rem;border-left:4px solid var(--border);
 footer{border-top:1px solid var(--border);color:var(--muted);font-size:.9rem}
 footer .wrap{padding:1.5rem 1rem}
 img{max-width:100%;height:auto}
+.lead{font-size:1.25rem;line-height:1.5}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1rem;margin:1.5rem 0}
+.cards>section{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem}
+.cards h3{margin-top:0}
+.cards p:last-child{margin-bottom:0}
+.note{background:var(--surface);border-left:4px solid var(--focus);padding:.75rem 1rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
 main p,main li,main td,main th,main h1,main h2,main h3,main a{overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 """
@@ -104,8 +119,8 @@ PAGE = """<!doctype html>
 {crumbs}{subnav}{body}
 </main>
 <footer><div class="wrap">
-Created by <a href="https://github.com/sairam5294">Sairam Mogullapalli</a> · Open source under the MIT licence · <a href="{repo}">Source on GitHub</a> · Built from the repository's own files; edit them there.
-Found an accessibility barrier? <a href="{repo}/issues/new?title=Accessibility%20barrier">Tell us</a>.
+Created by <a href="https://github.com/sairam5294">Sairam Mogullapalli</a> · Open source under the MIT licence · <a href="{repo}">Source on GitHub</a> · <a href="{root}privacy.html">Privacy</a> · Built from the repository's own files; edit them there.
+Found an accessibility barrier? <a href="{repo}/issues/new?template=accessibility_barrier.yml">Tell us</a>. Something else? <a href="{repo}/issues/new/choose">Open an issue</a>.
 </div></footer>
 </body>
 </html>
@@ -160,7 +175,11 @@ def gfm_lists(text: str) -> str:
 
 def render(src: str, out: str, title: str, nav_items, root_out: pathlib.Path) -> None:
     text = gfm_lists((ROOT / src).read_text(encoding="utf-8"))
-    md = markdown.Markdown(extensions=["tables", "fenced_code", "toc", "sane_lists"],
+    extensions = ["tables", "fenced_code", "toc", "sane_lists"]
+    if src.startswith(SITE + "/"):
+        # Site pages may group content in <div markdown="1"> blocks (cards, notes); repo docs never need it.
+        extensions.append("md_in_html")
+    md = markdown.Markdown(extensions=extensions,
                            extension_configs={"toc": {"permalink": False}})
     body = md.convert(text)
     # Tables scroll on their own on small screens instead of the whole page (WCAG 1.4.10 Reflow).
@@ -180,12 +199,18 @@ def render(src: str, out: str, title: str, nav_items, root_out: pathlib.Path) ->
     depth = out.count("/")
     root = "../" * depth
     nav = []
+    # Pages inside a section (case-studies/…, and the ClubSlot example documents) mark that section's nav item.
+    section = "case-studies/" if out.startswith(("case-studies/", "example/")) else None
     for label, dest in nav_items:
-        current = ' aria-current="page"' if dest == out or (dest == "example/index.html" and out.startswith("example/")) else ""
+        current = ' aria-current="page"' if dest == out or (section and dest == section + "index.html") else ""
         nav.append(f'<li><a href="{root}{dest}"{current}>{label}</a></li>')
     crumbs = subnav = ""
     if out.startswith("example/") and out != "example/index.html":
         crumbs = f'<p class="crumbs"><a href="index.html">Example: ClubSlot</a> › {html.escape(title.split("— ")[-1])}</p>\n'
+    elif out == "example/index.html":
+        crumbs = '<p class="crumbs"><a href="../case-studies/clubslot.html">Case study: ClubSlot</a> › The full Idea Pack</p>\n'
+    elif out.startswith("case-studies/") and out != "case-studies/index.html":
+        crumbs = '<p class="crumbs"><a href="index.html">Case studies</a> › ' + html.escape(title.split(": ")[-1]) + "</p>\n"
     if out.startswith("example/"):
         links = [("One-pager", "one_pager.html"), ("Evaluation", "evaluation.html"), ("Competitors", "competitors.html"),
                  ("Design direction", "design_direction.html"), ("Wireframes", "wireframes/index.html"),
