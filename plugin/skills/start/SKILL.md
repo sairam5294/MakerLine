@@ -8,6 +8,8 @@ argument-hint: "<idea + 'everything' | 'set it all up' | 'build it' | nothing to
 
 Short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` and follow it exactly, choosing the mode from what the owner said.
 
+**Quick** ("quick", "worth a weekend?"): read only `../evaluate-idea/references/quick-run.md` and follow it — it is the whole Quick run in one file; don't open the orchestrator or the phase skills.
+
 ## Usage
 
 ```
@@ -21,7 +23,8 @@ Short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` 
 
 | Owner says | Mode |
 |---|---|
-| a new idea + "everything" / "all of it" / "the whole pack" (add "quick" or "deep" for depth) | full Idea Pack in one go: 1 → 2 → 2a → 2b → one-pager |
+| a new idea + "quick" | `../evaluate-idea/references/quick-run.md`: brief → evaluation → one-pager |
+| a new idea + "everything" / "all of it" / "the whole pack" (add "deep" for depth) | full Idea Pack in one go: 1 → 2 → 2a → 2b → one-pager |
 | "set it all up" / "everything after approval" (STATUS must say APPROVED) | tool-plan → name + brand → stack → design system → full PRD → engineering docs → project setup |
 | "build it" / "next task" | plan-build, then one build-feature task per session |
 | nothing specific | read STATUS.md, say the current phase in one line, and offer the next step with the one-go option |

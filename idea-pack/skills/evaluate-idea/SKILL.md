@@ -48,7 +48,7 @@ Give the owner an honest, researched verdict on their idea — and the best vers
 - `docs/product/OWNER.md` for feasibility (missing or blank → use the brief's owner section; log it in DECISIONS.md; calibration = *"No calibration data yet"*).
 - STATUS and DECISIONS: create from `../idea-pack/templates/STATUS.md` and `DECISIONS.md` if missing.
 - Owner unavailable or says *"just do it"*: don't ask — take marked defaults (`../new-idea/SKILL.md` → Owner unavailable), log each in DECISIONS.md as *unconfirmed*, list them first in CLARITY.md.
-- Depth: **Quick** (600–1,500 prose words, Lite competitors), **Standard** (default) or **Deep** — budgets in `../product-standards/references/context-budget.md`.
+- Depth: **Quick** — follow `references/quick-run.md` instead of this file (whole Quick run in one guide), **Standard** (default) or **Deep** — budgets in `../product-standards/references/context-budget.md`.
 - Quality bar: `examples/example-evaluation.md` (long — open only if unsure).
 
 ## Workflow

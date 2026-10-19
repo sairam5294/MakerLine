@@ -50,18 +50,17 @@ Give the repo one shared source of truth that every AI tool reads, plus the file
 ## Workflow
 
 1. **Read** the inputs above.
-2. **Folder structure** → `docs/STRUCTURE.md` from `templates/STRUCTURE.md`: the tree to two or three levels with a one-line purpose per folder, a "where does X go?" table (component, screen/route, API call, hook, store, type, constant, string, test, migration, asset, doc), naming rules, and what must never be created (e.g. a second `utils/`, files over ~300 lines without a reason).
-   - Before any code exists, STRUCTURE.md is the plan: don't create app folders now — the starter (`scripts/new-project.sh <path> --web | --starter`, which keeps existing files) or the first build task creates them. Only `design/brand/` and `docs/` exist at this point.
-3. **Environment** → `.env.example` from `templates/env.example`: every variable the stack uses, grouped by service, each with inline comments — what it is, where to get it (dashboard path), public or secret (and why a public one is safe), which environments need it, required or optional, example format. Never a real value. `.env*` stays git-ignored except `.env.example`. Note where production values live (Vercel/Supabase/EAS dashboards, GitHub Actions secrets).
-4. **Setup guide** → `docs/SETUP.md` from `templates/SETUP.md`: prerequisites with version-check commands; get the code (git clone, GitHub CLI, or Download ZIP — and what ZIP loses: no git history, no hooks until `git init`); install; env; local database; run; test; common errors and fixes; deploy (preview and production for this stack); rollback. Each step has the exact command and what "it worked" looks like.
-5. **README** → `README.md` from `templates/README.md`: what it is and who it's for, screenshot slot, features, tech stack, quick start (5 commands max, linking SETUP for detail), scripts table, folder summary (link STRUCTURE), docs index (link `docs/README.md`), accessibility statement link, contributing (branch convention), licence. Plain language, no badges you can't keep green.
-6. **GitHub rules** → `docs/GITHUB.md` from `templates/GITHUB.md`, plus `.github/` files from `templates/github/`: PR template (already in the kit template), `CODEOWNERS`, `copilot-instructions.md` (points to AGENTS.md), workflow `repo-health.yml` (monthly, read-only report: repo size, Actions storage, stale branches, open PR age). Fill free-tier limits only from the vendors' current pages, with the date checked; a number not on the page is "unverified" with a CLARITY question.
-7. **AI tool folders** (one source, thin pointers):
-   - `AGENTS.md` stays the shared rulebook (Codex reads it natively; Claude via CLAUDE.md; Copilot via `.github/copilot-instructions.md`).
-   - `.cursor/rules/`: write `project.mdc` (always applied: stack in one line, import aliases, hard rules with their enforcement, and the **rule index** table of every scoped rule and the globs it attaches to) and one scoped `.mdc` per area that exists in this project, from `templates/cursor-rules/`: architecture, components, design, data-api, forms-validation, errors-logging, permissions, i18n, dates-time, accessibility, security, testing, ai-features. Each: frontmatter `description` + `globs` for the real folders, the project's actual patterns with one short example, an "Enforced by" table (lint / hook / CI / review only — a rule whose lint config doesn't exist yet says "planned — first build task"), and "never" lines. Skip areas the project doesn't have. Don't duplicate the kit's own rules (`product-workflow`, `security-backend`, `testing`, `ui-accessibility-ux`) — link them.
-   - Claude: the root `CLAUDE.md` stays `@AGENTS.md` + Claude notes (Claude Code reads it from the repo root; don't put a CLAUDE.md inside `.claude/`). `.claude/` holds `settings.json`, `hooks/` and project skills — add project skills in `.claude/skills/` from `templates/claude-skill/SKILL.template.md` for the 1–3 jobs this project repeats most (e.g. "add a screen", "add a table + RLS + migration", "add a translated string") — each a short step list using this project's real paths and commands.
-   - Other agents: keep the kit's thin pointers (`GEMINI.md`, `.aider.conf.yml`, `.continue/rules/00-agents-md.md`) and add none for tools that read AGENTS.md natively — table and gotchas (Zed reads only the first rules file it finds) in `docs/kit/AGENT-ADAPTERS.md`. Never copy rules into them.
-   - `docs/CONTEXT_PACK.md` from `templates/CONTEXT_PACK.md`: ≤ 1 page for tools that can't read the repo (ChatGPT in the browser, a contractor): the product in 5 lines, stack, rules that matter, terminology, where answers must go back. Regenerate when RULES or BRAND change.
+2. **Folder structure** → `docs/STRUCTURE.md` (`templates/STRUCTURE.md`): tree with one-line purposes, a "where does X go?" table, naming rules, what must never be created. Before code exists it's a plan — don't create app folders; the starter (`scripts/new-project.sh <path> --web | --starter`) or the first build task does.
+3. **Environment** → `.env.example` (`templates/env.example`): every variable, grouped by service, each commented — what, where to get it, public or secret (and why public is safe), environments, required, format. Never a real value; note where production values live.
+4. **Setup guide** → `docs/SETUP.md` (`templates/SETUP.md`): prerequisites, get the code (clone, CLI or ZIP — and what ZIP loses), install, env, local DB, run, test, common errors, deploy, rollback — each with the exact command and what "it worked" looks like.
+5. **README** → `README.md` (`templates/README.md`): what and for whom, screenshot slot, features, stack, quick start (≤ 5 commands), scripts, links to STRUCTURE, `docs/README.md` and the accessibility statement, contributing, licence.
+6. **GitHub rules** → `docs/GITHUB.md` (`templates/GITHUB.md`) + `.github/` from `templates/github/`: `CODEOWNERS`, `copilot-instructions.md` (points to AGENTS.md), `repo-health.yml` (monthly read-only report). Free-tier limits only from the vendors' current pages, dated.
+7. **AI tool folders** — one rulebook, thin pointers:
+   - `AGENTS.md` stays the shared rulebook (Codex natively, Claude via root `CLAUDE.md` = `@AGENTS.md` + notes, Copilot via `.github/copilot-instructions.md`).
+   - `.cursor/rules/`: `project.mdc` (always on: stack, aliases, hard rules, the rule index) + one scoped `.mdc` per area this project has, from `templates/cursor-rules/` (architecture, components, design, data-api, forms-validation, errors-logging, permissions, i18n, dates-time, accessibility, security, testing, ai-features): real globs, one example, an "Enforced by" table (lint / hook / CI / review; "planned" if the config isn't there yet), "never" lines. Link the kit's own rules; don't duplicate them.
+   - `.claude/skills/` from `templates/claude-skill/SKILL.template.md` for the 1–3 jobs this project repeats most, with real paths and commands. No CLAUDE.md inside `.claude/`.
+   - Other agents: keep the kit's pointers (`GEMINI.md`, `.aider.conf.yml`, `.continue/rules/00-agents-md.md`); tools that read AGENTS.md natively need none (`docs/kit/AGENT-ADAPTERS.md`).
+   - `docs/CONTEXT_PACK.md` (`templates/CONTEXT_PACK.md`): ≤ 1 page for tools and people who can't read the repo; regenerate when RULES or BRAND change.
 8. **Check:**
    - a fresh clone → follow SETUP.md literally in a clean folder (or the kit's `scripts/new-project.sh` output) and confirm `install → run → test` works
    - every `.mdc` glob matches at least one existing path (`ls` the globs)
@@ -103,11 +102,7 @@ If **~~database** is connected:
 - Free-tier limits come only from the vendors' current pages, dated; otherwise "unverified" + a CLARITY question.
 - No badges you can't keep green.
 
-### Keeping it current
-
-- `build-feature` updates STRUCTURE and `.env.example` when it adds a folder or variable.
-- `quality-review` checks code against the scoped rules.
-- `standards-refresh` re-checks `GITHUB.md` limits.
+- Keeping it current: `build-feature` updates STRUCTURE and `.env.example`; `quality-review` checks the scoped rules; `standards-refresh` re-checks GITHUB limits.
 
 ## Tips
 

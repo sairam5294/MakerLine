@@ -8,6 +8,8 @@ argument-hint: "<idea + 'everything' (add 'quick' or 'deep'), or nothing to resu
 
 Short entry point: read `../idea-pack/SKILL.md` and follow it, choosing the mode from what the owner said.
 
+**Quick** ("quick", "worth a weekend?"): read only `../evaluate-idea/references/quick-run.md` and follow it — it is the whole Quick run in one file.
+
 ## Usage
 
 ```
