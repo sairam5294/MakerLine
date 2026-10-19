@@ -25,6 +25,9 @@ pre-commit:
       stage_fixed: true
 pre-push:
   commands:
+    branch-name:
+      # Branch names follow <type>/<Mon>-<DD>-<summary> (see AGENTS.md "Branches"); scripts/branch.sh makes one.
+      run: scripts/check-branch.sh
     no-push-to-main:
       # Free replacement for GitHub branch protection: work on branches, merge via pull request.
       run: '[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ] || { echo "Push a branch and open a pull request instead of pushing to main (override once: git push --no-verify)"; exit 1; }'

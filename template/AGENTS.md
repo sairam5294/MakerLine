@@ -5,12 +5,12 @@ Rules for every AI agent in this repo (Claude via CLAUDE.md, Cursor, Codex). Kee
 ## Start every session
 1. Read `docs/product/HANDOFF.md` (if present), `docs/product/STATUS.md` and `docs/product/OWNER.md` (who you're building with: skills, time, budget, tools).
 2. Read only the files the current task needs (see `.agents/skills/product-standards/references/context-budget.md`).
-3. End every session with the `handoff` skill.
+3. End every session with the `handoff` skill (it also updates `docs/MEMORY.md`, the project's long-lived memory).
 
 ## Workflow
-new-idea → evaluate-idea → design-direction → write-prd (draft) → validate-idea → **owner approval** → name-product → tech-stack → design-system → write-prd (full) → plan-build → build-feature (+ design-qa) → quality-review → test-plan → ship-checklist → post-launch.
+new-idea → evaluate-idea → design-direction → write-prd (draft) → validate-idea → **owner approval** → name-product → tech-stack → design-system → write-prd (full) → engineering-docs → plan-build → build-feature (+ design-qa) → quality-review → test-plan → ship-checklist → post-launch.
 Anytime: `handoff`, `portfolio`, `ai-feature` (any AI feature), `standards-refresh`.
-Skills live in `.agents/skills/<name>/SKILL.md`. Outputs live in `docs/product/`. Design tokens: `design/tokens.json` → `npm run tokens`.
+Skills live in `.agents/skills/<name>/SKILL.md`. Outputs live in `docs/product/`; engineering docs (architecture, database, security, code style, testing, rules, memory) in `docs/` — index: `docs/README.md`. Design tokens: `design/tokens.json` → `npm run tokens`.
 
 - No stack choice, scaffolding or app code until STATUS.md says `Evaluation: APPROVED`. Only the owner approves (`scripts/approve.sh`) — never write that line yourself. (Enforced by a Claude Code hook, git hooks and CI.)
 - Log decisions in `docs/product/DECISIONS.md`. Update STATUS.md after each phase/task.
@@ -26,11 +26,18 @@ Skills live in `.agents/skills/<name>/SKILL.md`. Outputs live in `docs/product/`
 - `npm run check` passes before saying "done".
 
 ## How to work
-- One `PLAN.md` task per branch (`feat/T-xx-name`); parallel tools use separate worktrees (`scripts/worktree.sh`).
+- One `PLAN.md` task per branch; parallel tools use separate worktrees (`scripts/worktree.sh`).
+- Keep every session inside the token budget (`context-budget.md`): read only what the task needs, search before reading, one task per session, reviewers get the diff + one standard file, run `handoff` then start fresh when the topic changes.
+- Security and AI rules are not optional: `security.md` (OWASP 2025, secrets, authz), `ai.md` (server-side calls, evals, labelling, cost caps). `docs/RULES.md` lists the ones that apply to this project.
 - State a short plan before editing more than 3 files. Keep the app runnable after every task.
 - Follow `docs/product/TECH_STACK.md`; ask before adding a dependency and record why. Verify APIs against real docs; never invent package names.
 - Comment the *why* of non-obvious code in plain English — the owner is a senior UX designer learning to code.
 - Ask before anything irreversible: deleting data, force-push, production settings, paid services.
+
+## Branches
+Name every branch `<type>/<Mon>-<DD>-<summary>` — e.g. `fix/Oct-19-login-focus-ring` — made with `scripts/branch.sh fix "login focus ring"`; the pre-push hook and CI reject other names. Type = the main purpose of the change:
+`feat` new page/section/feature · `fix` something broken · `content` copy, recommendations, case-study text · `design` visual or layout polish · `security` headers, privacy, removing personal data · `a11y` accessibility · `docs` README/AGENTS.md/guides only · `test` tests only · `ci` workflows, hooks, checks · `deps` dependency updates · `refactor` same behaviour, cleaner code · `perf` speed or size · `chore` housekeeping · `skill` a kit skill, agent or standard · `release` version bump · `eval` eval cases and blind runs.
+Every pull request says what changed and why; bots (Dependabot) keep their own names.
 
 ## Commands (same names in both kit starters — update if your stack differs)
 - Install: `npm install` · Run: `npm run dev` · Check everything: `npm run check`

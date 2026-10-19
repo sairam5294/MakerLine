@@ -30,6 +30,9 @@ jobs:
           # First push of a new repo has no "before" commit → nothing to compare, skip.
           if [ -z "$base" ] || [ "$base" = "0000000000000000000000000000000000000000" ]; then exit 0; fi
           git diff --name-only -z "$base" HEAD | xargs -0 -r scripts/check-gate.sh
+      - name: Branch name follows <type>/<Mon>-<DD>-<summary>
+        if: github.event_name == 'pull_request'
+        run: scripts/check-branch.sh "${{ github.head_ref }}"
 
   secrets:
     name: Secret scan

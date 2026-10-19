@@ -20,6 +20,7 @@ Run phases in order, one at a time. Each phase = a skill in the sibling folder `
 | 5 | tech-stack | TECH_STACK.md | owner approves |
 | 6 | design-system | DESIGN_SYSTEM.md + tokens (from the chosen direction) | owner approves |
 | 7 | write-prd (full) | PRD.md v1.x | owner approves |
+| 7a | engineering-docs | docs/ARCHITECTURE · DATABASE · SECURITY · CODE_STYLE · TESTING · RULES · MEMORY + docs/README index | owner confirms |
 | 8 | plan-build | PLAN.md | owner approves |
 | 9 | build-feature (+ design-qa) | code + tests | checks pass |
 | 10 | quality-review | reviews/*.md | no MUST violations |

@@ -21,6 +21,9 @@ jobs:
       - run: for s in starter starter-web; do cmp design/tokens.json $s/design/tokens.json || exit 1; cmp design/build-tokens.mjs $s/design/build-tokens.mjs || exit 1; done
       # Scripts must parse, and the safety hooks must block/allow exactly what they promise.
       - run: for f in scripts/*.sh template/scripts/*.sh template/.claude/hooks/*.sh; do bash -n "$f" || exit 1; done
+      # Pull-request branches follow <type>/<Mon>-<DD>-<summary> (bots exempt).
+      - if: github.event_name == 'pull_request'
+        run: scripts/check-branch.sh "${{ github.head_ref }}"
       - run: bash tests/hooks.test.sh
       - run: bash tests/upgrade.test.sh
       - run: bash tests/idea-pack.test.sh

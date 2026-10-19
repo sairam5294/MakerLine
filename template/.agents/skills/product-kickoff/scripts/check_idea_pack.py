@@ -140,6 +140,13 @@ def check_wireframes(path):
         text = html.unescape(re.sub(r"<[^>]+>", "", m.group(3))).strip()
         if not text and "aria-label" not in m.group(2):
             report("FAIL", f"wireframes: <{m.group(1)}> with no accessible name → {m.group(0)[:70]}")
+    # Inclusion checks (product-standards references/inclusion.md)
+    labels = [html.unescape(re.sub(r"<[^>]+>", "", x)).strip().lower() for x in re.findall(r"<label[^>]*>(.*?)</label>", body, flags=re.S)]
+    if any("first name" in x for x in labels) and any("last name" in x or "surname" in x for x in labels):
+        report("WARN", "wireframes: separate first/last name fields — prefer one 'Full name' field (inclusion.md §4)")
+    for x in labels:
+        if re.search(r"\b(gender|sex|religion|caste|ethnicity|marital|title)\b", x) and "optional" not in x:
+            report("WARN", f"wireframes: '{x[:40]}' looks required — make it optional with 'prefer not to say', or drop it (inclusion.md §4)")
     if re.search(r'<span[^>]*class="chip"[^>]*onclick', body):
         report("FAIL", "wireframes: clickable span chips — use <button class=\"chip\" aria-pressed>")
 

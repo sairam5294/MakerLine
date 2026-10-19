@@ -34,6 +34,16 @@ Baseline before these rules: a blind Standard run (v0.7.0) used ~224k tokens and
 5. **Write once, check with a script.** Write each document in one pass from your notes. Don't re-read your own output — run `check_idea_pack.py` (product-kickoff/scripts) and fix only what it flags.
 6. **Small subagent briefs.** Give each perspective agent the brief plus the one reference it needs and the research file; replies ≤ 300 words. Agents read the research cache before searching.
 
+## Which doc to load for which task (after engineering-docs)
+| Task touches | Load | Don't load |
+|---|---|---|
+| any task | AGENTS.md · docs/RULES.md · docs/MEMORY.md · HANDOFF/STATUS · the PLAN task · its PRD stories | the whole PRD, DESIGN_SYSTEM, EVALUATION |
+| a table, migration, policy | docs/DATABASE.md (that table's block) | ARCHITECTURE |
+| a new flow, service, integration | docs/ARCHITECTURE.md §4–5 | DATABASE |
+| first task in a repo, or a style question | docs/CODE_STYLE.md | — |
+| tests | docs/TESTING.md | — |
+| a review | the diff + docs/SECURITY.md or CODE_STYLE.md + one standard | the repo |
+
 ## Cost reference (measured on kit evals, Sept 2026)
 | Activity | Typical tokens | How to keep it down |
 |---|---|---|

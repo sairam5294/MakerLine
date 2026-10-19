@@ -17,3 +17,4 @@ Claude Cowork/desktop runs no hooks, so there the skills follow these rules them
 ## AI review on pull requests
 `.github/workflows/ai-review.yml` runs the kit's quality-review on every PR and comments the findings. Add ONE secret to the GitHub repo: `CLAUDE_CODE_OAUTH_TOKEN` (from `claude setup-token`, uses your Pro/Max plan) or `ANTHROPIC_API_KEY` (pay per use). Without a secret it skips itself. Cost control: faster model, 30-turn cap, one run per push (older runs cancelled), drafts and Dependabot PRs skipped.
 Codex alternative: if you connect Codex to GitHub, you can also ask it for a review from the PR (see Codex's GitHub integration docs).
+| Branch names drifting (nobody can tell what a branch is for) | — | rule | AGENTS.md "Branches" | `scripts/check-branch.sh` in pre-push + CI (`<type>/<Mon>-<DD>-<summary>`) |

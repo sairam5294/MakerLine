@@ -24,4 +24,4 @@ Phase/task: <phase> · <T-xx>   Branch/worktree: <name>
 <commands to run, screen to open>
 ```
 
-Then: add a row to `docs/product/COSTS.md` if money was spent this session (e.g. API usage shown by the tool, a new service plan) and update its "Total to date"; update STATUS.md (phase, current task, date), ensure DECISIONS.md has new decisions, commit docs (`docs: handoff`) if git is available. Confirm in one line.
+Then: if `docs/MEMORY.md` exists, move anything long-lived from "Gotchas" and "Decisions" into it (environment quirks, what broke and the fix, do-not-touch areas, conventions) and condense it to ≤ 60 lines — HANDOFF is for this session, MEMORY for every session; add a row to `docs/product/COSTS.md` if money was spent this session (e.g. API usage shown by the tool, a new service plan) and update its "Total to date"; update STATUS.md (phase, current task, date), ensure DECISIONS.md has new decisions, commit docs (`docs: handoff`) if git is available. Confirm in one line.
