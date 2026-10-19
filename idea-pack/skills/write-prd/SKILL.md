@@ -16,7 +16,8 @@ Steps
 1. Write `docs/product/PRD.md` from the template.
 2. User stories `US-01…` by epic: As a / I want / so that · MoSCoW · Given/When/Then including error, empty, offline and permission-denied cases · the screen (S-xx) it lives on · personal data used and why.
 3. Make the differentiator visible: name the stories and screens where a user will notice it in the first session. If none, flag it — the MVP isn't testing the idea.
-4. Scope check: if Musts exceed ~8 weeks for this owner (OWNER.md hours), propose cuts that keep the core action and the differentiator.
+4. Scope check: if Musts exceed ~8 weeks for this owner (OWNER.md hours), propose cuts that keep the core action and the differentiator. If even the smallest wedge is longer, define a **Release 0**: a standalone slice of ≤ 4 weeks that tests the riskiest assumption with real users (a free tool, a single flow, a concierge version), then the MVP as Release 1.
+   AI features before approval: describe them in PRD §12 (what the AI does, human approval, failure path, cost cap) and mark `ai-feature: after approval`; run ai-feature and link `AI_FEATURE_*.md` only once it exists.
 5. Every acceptance criterion must be automatable; every metric needs an event that measures it.
 6. Present in ≤ 12 lines: the MVP in one sentence, number of Must stories, estimated build time, top 3 risks, open questions that block approval. Iterate → owner reviews (draft) or approves (full) → STATUS: PRD draft `Done` after review.
 

@@ -21,7 +21,7 @@ Tokens = cost + quality. A bloated context makes AI tools slower, pricier and sl
 | Mode | Use when | Produces | Research budget | Typical tokens |
 |---|---|---|---|---|
 | **Quick** | "Is this worth a weekend?" — early or many ideas | v0 brief, CLARITY, short EVALUATION (600–1,500 prose words; sections marked *Quick: optional* in the template may be left out), COMPETITORS lite (`competitive-analysis.md` → Lite), ONE_PAGER. No design direction or PRD | ≤ 8 searches, ≤ 4 page reads (or 6 reads with 4 searches when results carry no snippets) | ~70–100k measured (first run 190k before these fixes) |
-| **Standard** | Deciding whether to build | Full pack: + DESIGN_DIRECTION, wireframes (≤ 8 screens), PRD draft | ≤ 15 searches, ≤ 8 page reads | ~120–150k |
+| **Standard** | Deciding whether to build | Full pack: + DESIGN_DIRECTION, wireframes (≤ 8 screens), PRD draft | ≤ 15 searches, ≤ 8 page reads (two unused searches buy one extra read when results carry no snippets) | ~120–150k (measured ~214–219k before template trims) |
 | **Deep** | Before spending money, pitching or hiring | Standard + all four competitor rings in depth, 12+ screens, Figma, payer research | ≤ 30 searches | ~250k+ |
 
 Baseline before these rules: a blind Standard run (v0.7.0) used ~224k tokens and 72 tool calls.

@@ -1,7 +1,7 @@
 # Project Brief — {{working name}}
 
 _Version {{0 = from the pitch only · 1+ = after owner answers}} · {{date}} · Owner: {{name or "—"}}_
-_Status: Draft — awaiting owner / Draft / Confirmed_
+_Status: Waiting for owner / Draft / Confirmed_
 _Source tags on unconfirmed lines: [Pitch] · [Owner] · [Default] (recommended option for a decision) · [Assumption] · [Research]_
 
 ## 1. One-liner

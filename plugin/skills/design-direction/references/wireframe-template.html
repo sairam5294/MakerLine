@@ -15,7 +15,8 @@
     Mixed product (e.g. phone app + desktop admin): keep the body on "phone" and put data-device="desktop" (1024px) or data-device="tablet" (768px) on individual <section>s.
   - This is the one template meant to be read once in full; the CSS kit below and the script's contract (.screen, data-title, data-note, #index) are what you fill against.
   - Grey boxes only: .box (placeholder), .img (image), .btn / .btn.primary, .field, .list, .tabbar, .chip (status label),
-    button.chip[aria-pressed] (selectable option), .offline (offline banner), .alert (error).
+    button.chip[aria-pressed] (selectable option), .offline (offline banner), .alert (error),
+    desktop tools: .layout (+ .with-panel) with .sidebar / .panel, .field textarea, .visually-hidden (screen-reader-only text).
   - Keep it accessible: real <button>/<a>, labels on fields, headings in order, targets ≥ 44px, a unique aria-label on each repeated <nav>.
   - Delete this comment when done.
 -->
@@ -83,6 +84,15 @@
   .tabbar a[aria-current="page"]{color:var(--ink);font-weight:700}
   .tabbar a::before{content:"";display:block;width:22px;height:22px;margin:0 auto 4px;border-radius:6px;background:var(--fill2)}
   .row{display:flex;gap:10px;align-items:center}
+  /* desktop tools: sidebar + main + optional side panel */
+  .layout{display:grid;grid-template-columns:220px 1fr;gap:0;min-height:600px}
+  .layout.with-panel{grid-template-columns:220px 1fr 280px}
+  .sidebar{border-right:1px solid var(--fill2);padding:16px;display:flex;flex-direction:column;gap:6px}
+  .sidebar a{padding:10px 8px;border-radius:8px;color:var(--ink);text-decoration:none;min-height:44px}
+  .sidebar a[aria-current="page"]{background:var(--fill);font-weight:700}
+  .panel{border-left:1px solid var(--fill2);padding:16px;display:flex;flex-direction:column;gap:10px}
+  .field textarea{font:inherit;min-height:120px;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   footer.legend{margin-top:32px;font-size:12px;color:var(--muted)}
   /* a desktop section inside a phone body wins because this rule comes after the phone rule */
   section[data-device="desktop"] .frame{width:1024px;min-height:640px;border-radius:10px}
