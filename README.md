@@ -1,4 +1,4 @@
-# Product Kit v0.11
+# Product Kit v0.12
 
 **The open-source designer's AI toolkit.** One setup that takes an idea from "I have a new idea" to a shipped web / iOS / Android product, and works the same way in **Claude**, **Cursor** and **Codex**. Built by a designer with light coding skills, for designers and solo makers who build with AI. The rules are enforced by checks, not just written down.
 
