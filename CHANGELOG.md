@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## 0.12.1 — 2026-10-20
+Quick run in one guide (157k → 120k tokens, 30 → 19 calls); project-setup trimmed; kit-ui accessibility check in CI (0 axe violations) and verified on Python 3.9; directory submission screenshots and checklist progress
+
 ## 0.12.0 — 2026-10-20
 Roadmap release: Try-it-ready skill descriptions and author credit; token trim round 2 (Quick 157k → 146k, 30 → 24 calls; Quick-only templates, accessibility-law summary, context-budget split, Idea card, model routing per step); validation results loop; Figma wireframes when connected; PR evidence (screenshots, axe, tests); 'what changed' on re-runs; connector privacy table; standards refresh (MASVS 2.1, DPDP Rules dates, COPPA, EU AI Act Art. 50, store policies, model names); docs site landing + walkthrough + case studies; directory submission pack; issue forms + monthly kit retro; rules for 12 more AI coding tools from one AGENTS.md; local web cockpit (kit-ui); branch cleanup script
 

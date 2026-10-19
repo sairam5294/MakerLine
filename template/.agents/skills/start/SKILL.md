@@ -14,7 +14,8 @@ Short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` 
 
 ```
 /start                                   # resume: read STATUS.md, say the phase, offer the next step
-/start <idea> — give me everything       # full Idea Pack in one go (add "quick" or "deep")
+/start <idea> — give me everything       # full Idea Pack in one go (add "deep" for more)
+/start <idea> — quick                    # Quick: one guide (evaluate-idea/references/quick-run.md)
 /start set it all up                     # everything after approval, in one go
 /start build it                          # plan-build, then one build-feature task per session
 ```
@@ -32,7 +33,7 @@ Short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` 
 ## Rules
 
 - Never write `Evaluation: APPROVED` yourself; the owner approves between the Idea Pack and setup.
-- Everything else (depth, gate, checks) lives in `../product-kickoff/SKILL.md`; the owner-unavailable path is kickoff step 8 plus `../new-idea/SKILL.md` → Owner unavailable — don't improvise.
+- Everything else (depth, gate, checks) lives in `../product-kickoff/SKILL.md`; the owner-unavailable path is kickoff step 8 plus `../new-idea/SKILL.md` → Owner unavailable (Quick: quick-run.md step 3 only) — don't improvise.
 
 ## Related
 

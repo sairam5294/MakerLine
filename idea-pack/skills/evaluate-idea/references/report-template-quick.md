@@ -1,4 +1,4 @@
-<!-- Quick mode. Cap 2,000 words incl. tables (aim 1,200–1,600). Same section numbers as the Standard template so a later Standard run fills the gaps. Cite R-ids; link COMPETITORS.md instead of repeating it. -->
+<!-- Quick mode. Cap 2,000 words incl. tables (aim 1,200–1,600 in all; prose alone 600–1,500). Same section numbers as the Standard template so a later Standard run fills the gaps. Cite R-ids; link COMPETITORS.md instead of repeating it. -->
 # Idea Evaluation Report — {{working name}}
 
 _Quick · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.md (Lite) · Open questions: CLARITY.md · Run Standard for the full report_
@@ -20,7 +20,7 @@ _Quick · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.
 | Risk | /10 | | |
 | **Weighted total** | **/10** | calculation | **target: /10** |
 
-_An unknown fact that decides a score caps it at 5 (scoring-rubric.md)._ Calibration: {{… or "No calibration data yet"}}
+_An unknown fact that decides a score caps it at 5 (rubric in quick-run.md)._ Calibration: No calibration data yet (Quick).
 
 ## 2. The strongest version
 {{One paragraph: audience, wedge, form, why it would win.}} Honest ceiling: {{one line}}

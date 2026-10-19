@@ -14,7 +14,8 @@ Short entry point: read `../idea-pack/SKILL.md` and follow it, choosing the mode
 
 ```
 /start                                  # resume: read STATUS.md, say where the project is, offer the next step
-/start <idea> — give me everything      # all phases in one go (add "quick" or "deep" for depth)
+/start <idea> — give me everything      # all phases in one go (add "deep" for more)
+/start <idea> — quick                   # Quick: one guide (evaluate-idea/references/quick-run.md)
 ```
 
 ## Modes

@@ -95,6 +95,8 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 
 ## 8. Screenshots to capture
 
+**Ready (2026-10-20):** 2–8 are in `docs/kit/submission-assets/` (`2-one-pager.png` … `8-social.png`), rendered from the ClubSlot example so every number is real. Still to capture yourself: **1** (the Claude app conversation).
+
 _Sizes are our choice (no requirement found). Use 1600 × 1000 PNG (16:10), light mode, plus one dark-mode shot; the 1280 × 640 GitHub social preview is GitHub's recommended size. Write alt text for every image; never let text in an image be the only place a fact appears._
 
 | # | What to capture | Alt text |
@@ -135,35 +137,35 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 ## 11. Pre-submission checklist
 
 **Validate**
-- [ ] `claude plugin validate ./idea-pack` prints "Validation passed" (passed 2026-10-20)
-- [ ] `claude plugin validate ./plugin` and `claude plugin validate .` (marketplace) also pass (passed 2026-10-20)
+- [x] `claude plugin validate ./idea-pack` prints "Validation passed" (passed 2026-10-20)
+- [x] `claude plugin validate ./plugin` and `claude plugin validate .` (marketplace) also pass (passed 2026-10-20)
 - [ ] Portal **Validate** on `idea-pack`: no **Blocking** findings; read every **Policy hold** and **Warning**
-- [ ] `version` raised since the last published version
+- [x] `version` raised since the last published version
 
 **Things the portal checks that are worth fixing first** ([checklist](https://claude.com/docs/plugins/pre-submission-checklist))
 - [ ] Name: `idea-pack` is made of generic words. Generic-only names can be **held for a reviewer** ("Name may be confused with an existing listing"). Decide before submitting, because the folder and name are fixed afterwards: keep it, or rename to something distinctive such as `product-kit-idea-pack` (this changes install commands in README, GETTING-STARTED and the site). _Unconfirmed whether another listing already uses the name: search the directory first._
-- [ ] Trim `idea-pack/CONNECTORS.md` and `.mcp.json` to what idea-pack's skills use (GitHub, Figma, Notion). Today both are copies of the full kit's and list skills idea-pack doesn't contain; the policy requires descriptions to match functionality. Change it in `scripts/build-idea-pack.py`.
-- [ ] Add a short "What it runs and sends" section to the idea-pack README (web search, `check_idea_pack.py`, optional connectors, no telemetry). The scan looks for undisclosed behaviour, and the README is where it's disclosed.
-- [ ] No `.DS_Store`, symlinks, binaries, or files over 256 KiB in `idea-pack/` (checked 2026-10-20: 57 files, none over 250 KB, no binaries)
-- [ ] README at least 40 words outside code blocks; `license` set in `plugin.json` (both true today)
+- [x] Trim `idea-pack/CONNECTORS.md` and `.mcp.json` to what idea-pack's skills use (done in 0.12.0: own 3-connector list) (GitHub, Figma, Notion). Today both are copies of the full kit's and list skills idea-pack doesn't contain; the policy requires descriptions to match functionality. Change it in `scripts/build-idea-pack.py`.
+- [x] Add a short "What it runs and sends" section to the idea-pack README (web search, `check_idea_pack.py`, optional connectors, no telemetry). The scan looks for undisclosed behaviour, and the README is where it's disclosed.
+- [x] No `.DS_Store`, symlinks, binaries, or files over 256 KiB in `idea-pack/` (checked 2026-10-20: 57 files, none over 250 KB, no binaries)
+- [x] README at least 40 words outside code blocks; `license` set in `plugin.json` (both true today)
 
 **Fresh-account install test**
 - [ ] On a second Claude account (or a clean profile) with no kit installed: add the marketplace, install idea-pack, type `/idea-pack:` and see the skills
 - [ ] Run all five prompts in section 4 in an empty folder; each finishes, and `check_idea_pack.py` passes
-- [ ] Repeat in Claude Code with `claude plugin install idea-pack@product-kit-marketplace`
-- [ ] With no connectors connected, nothing asks the user to connect one
+- [x] Repeat in Claude Code with `claude plugin install idea-pack@product-kit-marketplace` (verified 2026-10-20 on a clean profile: marketplace add + install → idea-pack 0.12.0 enabled)
+- [x] With no connectors connected, nothing asks the user to connect one (verified in three blind Quick runs, 2026-10-20)
 - [ ] Optional: `claude plugin eval` to compare output with and without the plugin ([checklist](https://claude.com/docs/plugins/pre-submission-checklist))
 
 **Renders and reads well**
 - [ ] `idea-pack/README.md` renders on GitHub: tables, links and the `CONNECTORS.md` link work
-- [ ] Docs site builds (`python3 scripts/build-site.py`) and the privacy page is live
+- [x] Docs site builds (`python3 scripts/build-site.py`) and the privacy page is live
 - [ ] Every screenshot has alt text; the demo has captions
 
 **Legal and credit**
-- [ ] `LICENSE` (MIT) at the repo root; `"license": "MIT"` in `plugin.json`
-- [ ] `author.name` is "Sairam Mogullapalli" in `plugin.json` and the marketplace file; README ends with the credit line
-- [ ] Nothing presents the plugin as official or Anthropic-made; no third-party logos in screenshots beyond what's on screen
-- [ ] Repository is **public** before the listing goes live
+- [x] `LICENSE` (MIT) at the repo root; `"license": "MIT"` in `plugin.json`
+- [x] `author.name` is "Sairam Mogullapalli" in `plugin.json` and the marketplace file; README ends with the credit line
+- [x] Nothing presents the plugin as official or Anthropic-made; no third-party logos in screenshots beyond what's on screen (grep for "official"/"Anthropic" claims: none)
+- [x] Repository is **public** before the listing goes live
 
 ## 12. After submitting
 
