@@ -1,5 +1,7 @@
 # Mobile Platform Standard (iOS & Android)
 
+What a mobile app must do to feel native, survive the platform's lifecycle and pass store review.
+
 ## 1. Cross-platform defaults
 
 - One codebase with Expo (React Native) unless the brief needs deep native features (AR, heavy real-time audio/video processing, widgets-first apps, watch apps) — then native Swift/SwiftUI and Kotlin/Jetpack Compose.

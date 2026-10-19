@@ -1,6 +1,6 @@
 ---
 name: write-prd
-description: Write the PRD — a draft PRD at the idea stage (problem, goals and metrics, personas, positioning, scope, journeys, user stories, design links, risks, release plan) and the full PRD after approval (adds data and permissions, analytics, stack, non-functional detail) → PRD.md. Trigger with "PRD", "spec", "requirements", "user stories", or after design-direction (draft) and design-system (full).
+description: Write the PRD — a draft PRD at the idea stage (problem, goals and metrics, personas, positioning, scope, journeys, user stories, design links, risks, release plan) and the full PRD after approval (adds data and permissions, analytics, stack, non-functional detail) → PRD.md. Trigger with "PRD", "spec", "requirements", "user stories", or after design-direction / design-system.
 argument-hint: "<'draft' or 'full', or nothing to pick the mode from STATUS.md>"
 ---
 

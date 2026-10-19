@@ -99,9 +99,9 @@ Run the kit's phases in order, one at a time. Each phase is a skill in the sibli
 
 | File | What | When |
 |---|---|---|
-| `docs/product/STATUS.md`, `DECISIONS.md`, `COSTS.md` | project state, decisions, running costs | created on first run, updated every phase |
-| `docs/product/ONE_PAGER.md` + `README.md` | the Idea Pack summary and index | after 2b, refreshed after every later phase |
-| each phase's file (table above) | written by that phase's skill | per phase |
+| `docs/product/STATUS.md`, `DECISIONS.md`, `COSTS.md` | project state, decisions, costs | first run; updated every phase |
+| `docs/product/ONE_PAGER.md` + `README.md` | Idea Pack summary and index | after 2b; refreshed every later phase |
+| each phase's file (table above) | by that phase's skill | per phase |
 
 End-of-turn line, always:
 
@@ -130,10 +130,8 @@ If **~~knowledge base** is connected:
 1. Say *"quick"* for a first look at an idea; go Standard once it survives.
 2. *"Give me everything for this idea"* gets the whole Idea Pack with one pause for blocking questions.
 3. After approval, *"set it all up"* does the whole setup in one go — have your name, stack and visual picks ready.
-4. Build one task per session; the gate and `quality-review` protect you from a half-finished app.
 
 ## Related
 
-- Entry point: `start` · Phases: `new-idea` → `evaluate-idea` → `design-direction` → `write-prd` → `validate-idea` → approval → `name-product` → `tech-stack` → `design-system` → `engineering-docs` → `project-setup` → `plan-build` → `build-feature` → `quality-review` → `test-plan` → `ship-checklist` → `post-launch`
-- Anytime: `tool-plan`, `handoff`, `standards-refresh`, `portfolio`, `ai-feature`
+- Entry point: `start` · Phases: the skills in the table above, in order · Anytime: `tool-plan`, `handoff`, `standards-refresh`, `portfolio`, `ai-feature`
 - Reads: `templates/*.md`, `scripts/check_idea_pack.py`, `../product-standards/references/context-budget.md`, `accessibility-law.md`

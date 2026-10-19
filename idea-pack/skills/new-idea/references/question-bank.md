@@ -1,8 +1,19 @@
-# Discovery Question Bank
+# Discovery question bank
 
-Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, or record a labelled default). **D** = decision (offer a recommended option first + one-line trade-off) · **F** = fact (never recommend an answer; add "I don't know yet") · **open** = free text with an example, not multiple choice.
+The questions `new-idea` picks from, by theme — pick adaptively; don't ask everything.
+
+## Legend
+
+| Tag | Meaning | How to ask |
+|---|---|---|
+| **C** | Core | required |
+| **O** | Optional | ask it, or record a labelled default |
+| **D** | Decision | offer a recommended option first + one-line trade-off |
+| **F** | Fact | never recommend an answer; add "I don't know yet" |
+| **open** | Free text | ask with an example, not multiple choice |
 
 ## A. Problem & goal
+
 - (C·F·open) What problem are you solving, and for whom? Describe a real moment when someone feels this problem.
 - (C·F) How do people solve it today? (other apps, WhatsApp groups, YouTube, paper, asking family, nothing)
 - (C·F) Why is now the right time / why you? (skills, network, personal experience, content access)
@@ -11,6 +22,7 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (O·D) What is explicitly NOT a goal?
 
 ## B. Target audience
+
 - (C·F) Who is the primary user? Age range, role, location/language, tech comfort, device.
 - (C·D) Who pays, if different from the user? (e.g. parents pay, kids use; company pays, employees use)
 - (C·F) Where do these people already spend time (communities, apps, events, influencers)? — needed for distribution.
@@ -18,7 +30,10 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (C·F) Who might struggle to use this? Older adults, low vision or blind, deaf or hard of hearing, motor or cognitive disabilities, low literacy, other languages, one-handed or on the move, low-end phones or poor connectivity. ("I don't know yet" is fine — evaluate-idea researches it.)
 - (O·D) Languages needed at launch vs later?
 
-## B2. Alternatives & differentiator (hypotheses only — evaluate-idea researches the facts)
+## B2. Alternatives & differentiator
+
+Hypotheses only — evaluate-idea researches the facts.
+
 - (C·F·open) Who or what are you up against? Name apps, sites, communities, people doing it by hand — and "doing nothing".
 - (C·F·open) What do people dislike about those today? (a real complaint you've heard or seen beats a guess)
 - (C·F·open) Why would someone switch to yours? Finish the sentence: "Unlike ___, we ___." — the differentiator hypothesis.
@@ -27,6 +42,7 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (O·F) Is there an unfair advantage only you have here? (access to users, content, a community, a skill, lived experience)
 
 ## C. Scope & platforms
+
 - (C·D) Platforms: web app · iOS · Android · all three · web first then mobile. Recommend based on audience (e.g. Indian mass market → Android first).
 - (C·D) The 3–5 things a user must be able to do in version 1 (MVP). What's the ONE core action?
 - (C·D) Nice-to-haves for later?
@@ -35,6 +51,7 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (O·D) Integrations (payments, calendars, WhatsApp, maps, AI)?
 
 ## D. Experience & design
+
 - (C·D) What should the product feel like? Pick 3 adjectives (e.g. calm, playful, premium, trustworthy, fast).
 - (C·D) Design framework preference: platform-native (Apple HIG + Material 3) · custom brand design system on a component library (shadcn/ui, Tamagui, NativeWind) · existing brand/design system · no preference (recommend).
 - (O·F·open) Reference products you love (and what specifically)?
@@ -42,6 +59,7 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (O·D) Light/dark mode, themes for kids, cultural motifs?
 
 ## E. Technology
+
 - (C·D) Any technology preferences or constraints? Options: no preference — recommend · must use X · avoid X.
 - (C·D) Who will build it? Only AI tools + me · me + a freelance developer · a dev team later.
 - (O·F) Existing accounts/tools: GitHub, Vercel, Supabase, Firebase, Apple/Google developer accounts, Figma?
@@ -49,6 +67,7 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (O·F) Expected scale in year one (hundreds, thousands, lakhs of users)?
 
 ## F. Business & constraints
+
 - (C·D) Monetization: free · freemium · subscription · one-time purchase · ads · donations/sponsorship · B2B licensing · not decided.
 - (C·F) Budget for tools/hosting/stores per month, and one-off budget (e.g. ₹0, ₹2k, ₹10k+). Note: Apple developer account ≈ US$99/yr; Google Play one-time ≈ US$25.
 - (C·D) Timeline: target date for a first testable version; hours per week you can spend.
@@ -58,17 +77,21 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (O·F) Will businesses, schools or government bodies buy or mandate this? (They often require an accessibility conformance report.)
 
 ## G. Naming
+
 - (O·D) Do you have a name? Should names be English, Sanskrit/Telugu/Hindi-inspired, invented, descriptive?
 - (O·D) Must the .com / .in domain or matching app-store name be available?
 - (O·D·open) Words or tones to avoid?
 
 ## Follow-up patterns
-- Vague audience ("everyone") → "Who are the first 100 people you'd hand this to? Where would you find them?"
-- Big scope → "If you could only ship one feature in 4 weeks, which one?"
-- Unclear value → "What would make someone stop using their current workaround?"
-- Unclear success → "What number, in 6 months, would make you happy to continue?"
-- "No competitors" → "What do people do today instead, even if it's clumsy? That's the competitor."
-- Feature-list differentiator ("more features", "AI-powered") → "Which one thing would a user notice in the first minute, and why can't the leader copy it in a month?"
-- Pays question → also ask what they pay for today (tools, commissions, ads) — the best willingness-to-pay signal before any test.
-- End users vs customers → if the user serves their own customers (bakers → buyers), ask whether those customers touch the product (link, web page, nothing).
-- Owner unsure → log it in CLARITY.md as an open question with how to find out; don't push for an answer they don't have.
+
+| When the owner says… | Ask |
+|---|---|
+| Vague audience ("everyone") | "Who are the first 100 people you'd hand this to? Where would you find them?" |
+| Big scope | "If you could only ship one feature in 4 weeks, which one?" |
+| Unclear value | "What would make someone stop using their current workaround?" |
+| Unclear success | "What number, in 6 months, would make you happy to continue?" |
+| "No competitors" | "What do people do today instead, even if it's clumsy? That's the competitor." |
+| Feature-list differentiator ("more features", "AI-powered") | "Which one thing would a user notice in the first minute, and why can't the leader copy it in a month?" |
+| Pays question | also ask what they pay for today (tools, commissions, ads) — the best willingness-to-pay signal before any test. |
+| End users vs customers | if the user serves their own customers (bakers → buyers), ask whether those customers touch the product (link, web page, nothing). |
+| Owner unsure | log it in CLARITY.md as an open question with how to find out; don't push for an answer they don't have. |

@@ -1,6 +1,6 @@
 ---
 name: idea-pack
-description: Run the whole Idea Pack from one command — turn a product idea into an Idea Pack before any code — discovery questions, an honest and constructive evaluation (strongest version, reality check, competitors and differentiator test, path to Go, tools and cost, accessibility and compliance), design direction with clickable wireframes, a draft PRD and a one-pager. Trigger with "I have an idea", "run the idea pack", "give me everything for this idea", "evaluate my idea", or "who are my competitors?".
+description: Run the whole Idea Pack from one command, before any code — discovery questions, an honest and constructive evaluation (strongest version, reality check, competitors and differentiator test, path to Go, tools and cost, accessibility and compliance), design direction with clickable wireframes, a draft PRD and a one-pager. Trigger with "I have an idea", "run the idea pack", "give me everything for this idea", "evaluate my idea", or "who are my competitors?".
 argument-hint: "<idea, 'give me everything for this idea', or nothing to resume>"
 ---
 

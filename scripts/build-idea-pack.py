@@ -67,6 +67,8 @@ def build(out: pathlib.Path) -> None:
     shutil.copy2(SRC / "skills" / "test-plan" / "references" / "accessibility-user-testing.md",
                  orch / "references" / "accessibility-user-testing.md")
     shutil.copy2(STANDALONE / "README.md", out / "README.md")
+    shutil.copy2(SRC / "CONNECTORS.md", out / "CONNECTORS.md")
+    shutil.copy2(SRC / ".mcp.json", out / ".mcp.json")
 
     for f in out.rglob("*.md"):
         text = f.read_text(encoding="utf-8")

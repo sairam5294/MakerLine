@@ -1,8 +1,27 @@
 ---
 name: start
-description: One command to run the whole Idea Pack — discovery, evaluation, competitors, design direction with wireframes, draft PRD and one-pager in one go. Use for "/idea-pack:start", "start", "run everything", "give me everything for this idea", "continue".
+description: Start or resume the Idea Pack — discovery, evaluation, competitors, design direction with wireframes, draft PRD and one-pager in one go, or the next phase. Trigger with "/idea-pack:start", "start", "run everything", "give me everything for this idea", or "continue".
+argument-hint: "<idea + 'everything' (add 'quick' or 'deep'), or nothing to resume>"
 ---
 
-# Start
+# /start
 
-Short entry point. Read `../idea-pack/SKILL.md` and follow it. With an idea and "everything" (add "quick" or "deep" for depth), run all phases in one go; with nothing specific, read STATUS.md, say where the project is in one line and offer the next step.
+Short entry point: read `../idea-pack/SKILL.md` and follow it, choosing the mode from what the owner said.
+
+## Usage
+
+```
+/start                                  # resume: read STATUS.md, say where the project is, offer the next step
+/start <idea> — give me everything      # all phases in one go (add "quick" or "deep" for depth)
+```
+
+## Modes
+
+| Owner says | Mode |
+|---|---|
+| an idea and "everything" (add "quick" or "deep" for depth) | run all phases in one go |
+| nothing specific | read STATUS.md, say where the project is in one line and offer the next step |
+
+## Related
+
+- Runs: `idea-pack` (the orchestrator) and, through it, every phase skill
