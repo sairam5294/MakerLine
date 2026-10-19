@@ -1,6 +1,6 @@
 ---
 name: product-kickoff
-description: Orchestrates idea-to-launch with approval gates and tracks progress. Use for "I have a new idea", "start a project", "kickoff", or "where are we / what's next?".
+description: Runs the whole Product Kit from one command — idea to launch, phase by phase with approval gates, or everything in one go ("give me everything for this idea" runs the full Idea Pack; "set it all up" after approval runs naming/brand, stack, design system, full PRD, engineering docs and project setup). Use for "I have a new idea", "run the whole kit", "give me everything", "set it all up", "start a project", "kickoff", or "where are we / what's next?".
 ---
 
 # Product Kickoff
@@ -39,6 +39,8 @@ Anytime: `tool-plan` (which AI tool does which job — offer it at kickoff), `ha
    - **Depth:** Quick, Standard (default) or Deep — see `../product-standards/references/context-budget.md` (outputs, research budget, token rules). Suggest Quick for early ideas; say which mode you're using in one line. **Quick runs 1 → 2 → one-pager only**: mark 2a and 2b `Skipped (Quick mode)` in STATUS, leave the wireframe/PRD lines out of the one-pager and README, and offer Standard when the owner wants to go further.
    - **Before presenting any Idea Pack:** run `python3 scripts/check_idea_pack.py <project> --mode <mode>` (this skill's folder) and fix every FAIL; a WARN (length) is acceptable if the README says why. No shell → walk its checks by hand.
    - The owner can ask for the whole Idea Pack in one go ("give me everything for this idea"): run 1 → 2 → 2a → 2b → one-pager (skip 1 if a brief already exists), pausing only for questions that block the next phase (CLARITY.md). Skip the per-phase presentations; present the one-pager at the end with one line per phase.
+   - **"Set it all up" (after approval):** run tool-plan → 4 name-product (names + brand) → 5 tech-stack → 6 design-system → 7 write-prd (full) → 7a engineering-docs → 7b project-setup in one go. Ask the owner's picks in one round up front (name from the top 3, stack A/B, visual direction if not chosen); anything unanswered takes the recommended option as `[Default]`. Present one summary at the end; then plan-build. Stop before any app code.
+   - **"Build it" (after setup):** plan-build, then build-feature task by task — one task per session and branch, quality-review before each merge. Never all tasks in one session.
    - **Owner unavailable** overrides "pause for blocking questions": don't wait — log them in CLARITY and continue on defaults.
    - **Owner unavailable** (scheduled run, "just do it", no reply): take the recommended default for every decision, mark each one `[Default]` in the documents and "default (unconfirmed)" in DECISIONS.md, set those phases to `Waiting for owner` in STATUS, and list the defaults to confirm at the top of the one-pager (≤ 3 there; the rest in DECISIONS.md). Facts stay unknown with a Q-id — never guess them. Presenting with no owner present: point to the one-pager, list the defaults and the next test, stop.
 3. Gate: phases 4+ need `Evaluation: APPROVED`, set **only by the owner** (`scripts/approve.sh`, or their explicit words quoted in DECISIONS.md where there's no shell). Re-check STATUS before every build phase. If owner wants to skip: state top 2 risks, obey, log in DECISIONS.md.

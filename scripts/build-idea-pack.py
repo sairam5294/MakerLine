@@ -57,6 +57,8 @@ def build(out: pathlib.Path) -> None:
     (orch / "scripts").mkdir()
     (orch / "references").mkdir()
     shutil.copy2(STANDALONE / "SKILL.md", orch / "SKILL.md")
+    (out / "skills" / "start").mkdir()
+    shutil.copy2(STANDALONE / "start" / "SKILL.md", out / "skills" / "start" / "SKILL.md")
     tpl = SRC / "skills" / "product-kickoff" / "templates"
     for name in ["ONE_PAGER.md", "IDEA_PACK_README.md", "DECISIONS.md", "COSTS.md"]:
         shutil.copy2(tpl / name, orch / "templates" / name)

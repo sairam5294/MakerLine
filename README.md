@@ -2,14 +2,14 @@
 
 **The open-source designer's AI toolkit.** One setup that takes an idea from "I have a new idea" to a shipped web / iOS / Android product, and works the same way in **Claude**, **Cursor** and **Codex**. Built by a designer with light coding skills, for designers and solo makers who build with AI. The rules are enforced by checks, not just written down.
 
-> **Website: https://sairam5294.github.io/product-kit/** · **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
+> **One command:** `/product-kit:start` + your idea + "give me everything". **Website: https://sairam5294.github.io/product-kit/** · **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
 
 **Why it exists.** AI tools write working code fast, but they forget accessibility, UX heuristics, security, tests and honest evaluation unless you remind them every session, in every tool. Product Kit packages that know-how as skills, agents, standards, hooks and CI so every tool you use starts thinking like a senior product designer.
 
 **What you get**
 - A 13-phase workflow from discovery interview to post-launch retro, with an approval gate AI tools cannot bypass
 - An **Idea Pack** for every idea before any code: honest, constructive evaluation, competitors and a differentiator test, a strengthening plan, draft design direction with clickable wireframes, a draft PRD and a one-pager, with an accessibility, inclusion and compliance lens (who it excludes, AODA / ADA / EAA / RPwD obligations by launch market). Three depths — Quick (~50–70k tokens), Standard, Deep — and `check_idea_pack.py` to verify the pack before you see it
-- 24 skills and 14 specialist agents (strategist, UX reviewer, accessibility auditor and accessibility strategist, security reviewer, QA, devil's advocate and idea champion…)
+- 25 skills and 14 specialist agents (strategist, UX reviewer, accessibility auditor and accessibility strategist, security reviewer, QA, devil's advocate and idea champion…)
 - Standards for accessibility (WCAG 2.2 AA), UX, security, testing, backend and AI features — split into small files so only the relevant ones load
 - Two tested starters: Expo + Supabase (iOS / Android / web) and Next.js (landing page + waitlist), both with axe, Lighthouse and contrast tests
 - Safety hooks, git hooks and GitHub Actions that block dangerous commands, leaked secrets and code before approval
@@ -21,7 +21,7 @@ Licensed under [MIT](LICENSE). Contributions welcome — see [CONTRIBUTING.md](C
 
 ```
 product-kit/
-├── plugin/        THE SOURCE — edit only here (24 skills, 14 agents, standards). Installs into Claude.
+├── plugin/        THE SOURCE — edit only here (25 skills, 14 agents, standards). Installs into Claude.
 ├── template/      Copied into every project: AGENTS.md, safety settings, CI, git hooks, MCP, Cursor/Codex adapters
 ├── starter/       Tested Expo (iOS/Android/Web) + Supabase app: i18n (en/te/hi), Sentry, PostHog
 ├── starter-web/   Tested Next.js site: landing page + waitlist (nonce CSP, rate limit, optional Turnstile), AI harness with evals; Lighthouse 1.0/1.0/1.0

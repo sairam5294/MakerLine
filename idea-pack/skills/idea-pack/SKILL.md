@@ -1,6 +1,6 @@
 ---
 name: idea-pack
-description: Turn a product idea into an Idea Pack before any code — discovery questions, an honest and constructive evaluation (strongest version, reality check, competitors and differentiator test, path to Go, tools and cost, accessibility and compliance), design direction with clickable wireframes, a draft PRD and a one-pager. Use for "I have an idea", "evaluate my idea", "who are my competitors?", "give me everything for this idea".
+description: Runs the whole Idea Pack from one command — turn a product idea into an Idea Pack before any code — discovery questions, an honest and constructive evaluation (strongest version, reality check, competitors and differentiator test, path to Go, tools and cost, accessibility and compliance), design direction with clickable wireframes, a draft PRD and a one-pager. Use for "I have an idea", "run the idea pack", "give me everything for this idea", "evaluate my idea", "who are my competitors?".
 ---
 
 # Idea Pack

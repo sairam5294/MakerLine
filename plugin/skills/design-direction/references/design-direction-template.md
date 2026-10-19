@@ -1,3 +1,4 @@
+<!-- Size: Standard ≤ 1,500 words incl. tables; flows as Mermaid, not prose. -->
 # Design Direction — {{working name}}
 
 _Draft v{{n}} · {{date}} · Based on PROJECT_BRIEF v{{n}}, EVALUATION v{{n}} · Wireframes: `design/wireframes/index.html`{{ · Figma: link}}_

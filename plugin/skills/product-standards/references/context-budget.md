@@ -26,6 +26,23 @@ Tokens = cost + quality. A bloated context makes AI tools slower, pricier and sl
 
 Baseline before these rules: a blind Standard run (v0.7.0) used ~224k tokens and 72 tool calls.
 
+### Size caps per document (all words, tables included)
+Long documents cost twice: once to write, and again every time a later phase or tool reads them. Caps are WARNs in `check_idea_pack.py`.
+| Document | Quick | Standard | Deep |
+|---|---|---|---|
+| EVALUATION.md | 1,500 | 3,000 | 4,500 |
+| COMPETITORS.md | 600 (Lite) | 1,200 | 2,000 |
+| DESIGN_DIRECTION.md | — | 1,500 | 2,500 |
+| PRD.md (draft) | — | 2,000 — full stories for Musts, one line per Should/Could | 3,000 |
+| CLARITY.md | 800 | 1,000 | 1,500 |
+| ONE_PAGER.md | 550 | 550 | 550 |
+
+### How tokens are really spent (measured on blind runs)
+Most tokens are not the documents — they are the conversation re-read on every tool call. A 50-call run re-reads its whole history 50 times. So:
+7. **Few, large tool calls.** Write each document in one call from notes; run all searches for a ring in one turn; run every check (checker, grep for placeholders, link check) in one shell call. Target: ≤ 25 tool calls for Quick, ≤ 45 for Standard.
+8. **Keep raw research out of the conversation.** Write findings straight to `docs/product/research/<topic>.md` and carry forward only R-ids and one-line facts.
+9. **Read once.** Never re-read a file you wrote or a template you already read; use grep for one line.
+
 ### Research budget after approval (per phase)
 | Phase | Searches | Page reads | How to stay inside it |
 |---|---|---|---|
