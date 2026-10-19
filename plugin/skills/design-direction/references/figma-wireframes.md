@@ -43,9 +43,9 @@ Sources: [Figma MCP server overview](https://developers.figma.com/docs/figma-mcp
 
 | Page | Frame size | Matches HTML `data-device` |
 |---|---|---|
-| Phone | 390 × 844 | `phone` (HTML frame 360 wide) |
-| Tablet | 834 × 1194 | `tablet` (HTML frame 768 wide) |
-| Desktop | 1440 × 1024 | `desktop` (HTML frame 1024 wide) |
+| Phone | 360 × 800 | `phone` (same width as the HTML frame) |
+| Tablet | 768 × 1024 | `tablet` (same width as the HTML frame) |
+| Desktop | 1024 × 768 | `desktop` (same width as the HTML frame; widen later for real designs) |
 
 The HTML frames are narrower so they fit a browser; Figma uses standard device sizes. Same content and order — only the width changes.
 
