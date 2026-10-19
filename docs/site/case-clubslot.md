@@ -32,7 +32,7 @@ Confidence was rated **Medium-Low**, because the evidence was mostly vendor clai
 
 - **A one-pager** with the verdict, the six defaults to confirm, the reality check and the next test
 - **An evaluation** with a scorecard, every score's evidence and a "raise it by…" step for each weak dimension
-- **A competitor analysis** with a differentiator test, including the leaders' most common complaints from app-store reviews
+- **A competitor analysis** with a differentiator test, including review complaints about the leaders where they could be found, and "Unknown" where they couldn't
 - **A design direction** with eight clickable, contrast-checked wireframe screens for phone, tablet and desktop
 - **A draft PRD** for the pivot, with 9 must-have stories and an estimate of about 8 weeks at 10 hours a week
 - **A clarity log**: 11 open questions, 6 of them blocking, each with the decision it blocks
@@ -46,7 +46,7 @@ The evaluation asked who the idea could leave out, before any design. Its answer
 - Screen-reader users: every slot is a real button with its name, time and state; availability is never shown by colour alone
 - People without a smartphone: the desk can book on a resident's behalf
 
-It also listed obligations by launch market (India's RPwD Act, the DPDP Act for personal data, and payment rules) and noted that none of the three leaders had a published accessibility statement, as a gap ClubSlot could fill. The section is labelled "Not legal advice".
+It also listed obligations by launch market (India's RPwD Act, the DPDP Act for personal data, and payment rules) and found no published accessibility statement for any of the three leaders: a gap ClubSlot could fill. The section is labelled "Not legal advice".
 
 ## The next step it recommended
 
