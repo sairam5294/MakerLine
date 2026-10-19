@@ -21,3 +21,4 @@ portfolio/PORTFOLIO.md
 # Personal owner profile (copy owner/OWNER.example.md to owner/OWNER.md)
 owner/OWNER.md
 _site/
+__pycache__/

@@ -15,12 +15,14 @@ Not legal advice — a builder's checklist. For launches that handle children's 
 
 | Audience | Law / rule | Key implications |
 |---|---|---|
-| India | Digital Personal Data Protection Act 2023 + DPDP Rules 2025 (notified Nov 2025, phased rollout) | Notice + consent, purpose limitation, erasure, breach notification to the Data Protection Board and users, **verifiable parental consent for anyone under 18**, no tracking/behavioural monitoring or targeted ads directed at children |
+| India | Digital Personal Data Protection Act 2023 + DPDP Rules 2025 (notified Nov 2025, phased: Data Protection Board rules in force now; consent managers 13 Nov 2026; notice, consent, parental consent, security, breach, rights and retention duties **13 May 2027** — build to them now) | Notice + consent, purpose limitation, erasure, breach notification to the Data Protection Board and users, **verifiable parental consent for anyone under 18**, no tracking/behavioural monitoring or targeted ads directed at children |
 | EU/UK | GDPR / UK GDPR | Lawful basis, DPA with processors, data residency awareness, cookie consent, children's consent age 13–16 |
 | Canada | PIPEDA (federal private sector); provincial laws incl. Ontario **PHIPA** for personal health information (custodians + their vendors), Quebec Law 25 | Consent, breach reporting, health data rules flow to vendors by agreement; residency expectations for health data |
 | Australia / Japan | Privacy Act 1988 (APPs) / APPI | Notice, purpose, cross-border transfer rules |
-| USA | COPPA (under 13), HIPAA (health data via covered entities and business associates), state privacy laws (CCPA/CPRA etc.) | Verifiable parental consent for under-13s; no behavioural ads to children |
-| App stores | Apple App Store Review Guidelines, Google Play Families Policy | Privacy nutrition labels / Data safety form must match reality; Kids category: no third-party analytics/ads without strict compliance, parental gates for links and purchases |
+| USA | COPPA (under 13; amended rule effective 23 Jun 2025, compliance required since **22 Apr 2026** — biometric identifiers and government IDs now count as personal information), HIPAA (health data via covered entities and business associates), state privacy laws (CCPA/CPRA etc.) | Verifiable parental consent for under-13s; no behavioural ads to children |
+| App stores | Apple App Store Review Guidelines, Google Play Families Policy | Privacy nutrition labels / Data safety form must match reality; Kids category: no third-party analytics/ads without strict compliance, parental gates for links and purchases; age signals (Apple Declared Age Range, Google Play Age Signals) may be used only for age compliance — never ads, profiling or analytics |
+
+*Dates last verified 2026-10-20.*
 
 ## 3. Children's products (extra MUST)
 

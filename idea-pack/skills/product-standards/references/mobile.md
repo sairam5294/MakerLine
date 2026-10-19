@@ -23,8 +23,9 @@ What a mobile app must do to feel native, survive the platform's lifecycle and p
 - Over-the-air updates (EAS Update) only for JS/asset fixes; native changes go through store review.
 - Staged rollout: 1% → 10% → 50% → 100% on Play; phased release on App Store; watch crash-free rate before each step.
 - Store listing: screenshots for required device sizes, privacy labels / Data safety form accurate, age rating correct, support URL and privacy policy URL live.
-- Apple: in-app account deletion; Sign in with Apple if you offer other third-party social sign-ins; in-app purchase for digital goods (check current regional rules).
-- Google: target the latest required API level; Families Policy if children are an audience.
+- Apple: in-app account deletion; Sign in with Apple if you offer other third-party social sign-ins (accept relay emails from both `privaterelay.appleid.com` and `private.icloud.com`); in-app purchase for digital goods (check current regional rules). Build with the iOS 26 SDK / Xcode 26 (required since 28 Apr 2026; iOS 27 SDK from April 2027). Answer the age-rating questionnaire incl. the social-media questions (required since Sep 2026); use the Declared Age Range API where age laws apply (e.g. Brazil, Australia, Singapore, Utah, Louisiana). Apps with user-generated content must filter objectionable content, offer reporting and blocking (Guideline 1.2, updated 16 Oct 2026).
+- Google: new apps and updates target Android 16 / API 36 (required since 31 Aug 2026; extension to 1 Nov 2026 on request); register every app in Play Console for Android developer verification; use the Play Age Signals API where age laws apply; Families Policy if children are an audience.
+- Store rules last verified 2026-10-20.
 - Keep a "force update" mechanism (minimum supported version check) for breaking API changes.
 
 ## 4. Media-heavy apps (audio/video)

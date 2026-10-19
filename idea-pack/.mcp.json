@@ -1,28 +1,16 @@
 {
   "mcpServers": {
-    "github": {
+    "notion": {
       "type": "http",
-      "url": "https://api.githubcopilot.com/mcp/"
+      "url": "https://mcp.notion.com/mcp"
     },
     "figma": {
       "type": "http",
       "url": "https://mcp.figma.com/mcp"
     },
-    "vercel": {
+    "github": {
       "type": "http",
-      "url": "https://mcp.vercel.com"
-    },
-    "supabase": {
-      "type": "http",
-      "url": "https://mcp.supabase.com/mcp"
-    },
-    "notion": {
-      "type": "http",
-      "url": "https://mcp.notion.com/mcp"
-    },
-    "linear": {
-      "type": "http",
-      "url": "https://mcp.linear.app/mcp"
+      "url": "https://api.githubcopilot.com/mcp/"
     }
   }
 }

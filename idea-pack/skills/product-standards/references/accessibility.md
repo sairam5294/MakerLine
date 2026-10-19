@@ -2,6 +2,8 @@
 
 Target: **WCAG 2.2 Level AA** on web, plus platform guidance for iOS (VoiceOver, Dynamic Type) and Android (TalkBack, font scaling). Accessibility is a MUST, not a later phase.
 
+WCAG 2.2 is the latest W3C Recommendation (also ISO/IEC 40500:2025). WCAG 3.0 is still a W3C Working Draft (10 Sep 2026) — don't target or claim it; watch only. *(Last verified 2026-10-20.)*
+
 ## 1. Perceivable
 
 **MUST**
