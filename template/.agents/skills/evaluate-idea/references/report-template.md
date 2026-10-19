@@ -27,6 +27,8 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 | Risk | /10 | | |
 | **Weighted total** | **/10** | calculation | **target after changes: /10** |
 
+Calibration: {{which OUTCOMES.md notes changed a score, or "No calibration data yet"}}
+
 ## 2. The strongest version of this idea
 {{Steelman, before the critique. If everything went right and the owner made smart choices, what is this product? Which audience, which wedge, which form, why it would win. 1–2 paragraphs. This is the version the rest of the report measures and tries to reach.}}
 - Honest ceiling (idea-champion): {{how big this can realistically get}}

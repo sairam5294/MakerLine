@@ -1,19 +1,20 @@
-# Status — ClubSlot  ·  updated 2026-10-16  ·  kit v0.6.1
+# Status — ClubSlot  ·  updated 2026-10-19  ·  kit v0.7.0
 
 Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approves; the gate hook reads this line -->
 
 | # | Phase | Status | Date | Notes |
 |---|---|---|---|---|
-| 1 | Discovery | Skipped | 2026-10-16 | PROJECT_BRIEF.md existed; owner asked for the whole Idea Pack; CLARITY.md created in phase 2 (reason in DECISIONS.md) |
-| 2 | Evaluation | Waiting for owner | 2026-10-16 | Verdict **Pivot** (3.95 → target 5.8); incl. COMPETITORS.md, research/competitors.md |
-| 2a | Design direction | Waiting for owner | 2026-10-16 | Draft v0.1; wireframes in design/wireframes (12 screens); owner picks direction (Q-09) |
-| 2b | PRD draft | Waiting for owner | 2026-10-16 | Draft v0.1, 12 stories (9 Must), scoped to the pivot |
-| ✦ | Idea Pack | Done | 2026-10-16 | ONE_PAGER.md + README.md |
+| 1 | Discovery | Skipped | 2026-10-19 | Brief already existed (v1); CLARITY.md created from its gaps by evaluate-idea |
+| 2 | Evaluation | Waiting for owner | 2026-10-19 | Standard mode · verdict **Pivot** (4.95 → target 6.40) · incl. COMPETITORS.md · research/market.md |
+| 2a | Design direction | Waiting for owner | 2026-10-19 | 8 wireframe screens in design/wireframes · direction A recommended [Default] |
+| 2b | PRD draft | Waiting for owner | 2026-10-19 | v0.1, specs the pivot · 9 Must stories |
 | 3 | Validation | Not started | | recommended — tests T1–T5 in EVALUATION §12 |
+| ✦ | Idea Pack | Waiting for owner | 2026-10-19 | ONE_PAGER.md + README.md index · check_idea_pack.py run (see DECISIONS) |
 | 4 | Naming | Not started | | |
 | 5 | Tech stack | Not started | | |
 | 6 | Design system | Not started | | |
 | 7 | PRD | Not started | | |
+| 7a | Engineering docs | Not started | | ARCHITECTURE · DATABASE · SECURITY · CODE_STYLE · TESTING · RULES · MEMORY |
 | 8 | Plan | Not started | | |
 | 9 | Build | Not started | | current task: – |
 | 10 | Review | Not started | | |
@@ -23,5 +24,5 @@ Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approv
 
 Status: Not started · In progress · Waiting for owner · Done · Skipped (reason in DECISIONS.md)
 
-Next step: owner reads ONE_PAGER.md, answers the 3 decisions there (pivot? goal? run T1–T3?), then run `validate-idea` (T1 own-community audit first).
-Blockers: CLARITY F-01, Q-05, A-03, Q-03, Q-04 block approval.
+Next step: owner reads ONE_PAGER.md, confirms defaults D1–D6, answers Q-04 and Q-10; then run `validate-idea` (T1 price-card interviews + T2 prototype test with the wireframes) before approval.
+Blockers: owner unavailable during this run — all decisions taken as [Default]; OWNER.md is still the blank template.

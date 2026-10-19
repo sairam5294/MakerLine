@@ -1,228 +1,223 @@
 # PRD — ClubSlot
 
-_Draft v0.1 (idea stage) · 2026-10-16 · Owner: ClubSlot owner (senior UX designer) · Status: Draft_
-_Inputs: PROJECT_BRIEF v1 · EVALUATION v1 · COMPETITORS v1 · DESIGN_DIRECTION v0.1 · CLARITY (2026-10-16)_
+_Draft v0.1 (idea stage) · 2026-10-19 · Owner: (see OWNER.md — blank; brief's owner section used) · Status: Draft_
+_Inputs: PROJECT_BRIEF v1 · EVALUATION v1 · COMPETITORS v1 · DESIGN_DIRECTION v1 · CLARITY · Research `research/market.md`_
 
-Sections marked **(full)** are filled after approval; in a draft write "after approval" under the heading.
+**Pivot: booking-only wedge** (EVALUATION §8, pivot A). This draft specs the pivot. If the owner keeps the brief as written, add epics for visitor passes, complaints, notices and maintenance dues; the Must count roughly triples and the build estimate exceeds 20 weeks at 10 h/week.
 
-> Scope follows the **pivot** recommended in EVALUATION (fair booking for contested amenities, web-first, no payments in v1). These are defaults taken while the owner was unavailable — see CLARITY Q-03, Q-04, Q-07, Q-10. If the owner keeps the original all-in-one brief, this PRD must be re-scoped.
+Sections marked **(full)** are filled after approval; in a draft write "after approval" under the heading. Decisions marked **[Default]** were taken because the owner was unavailable.
 
 ## 1. Summary
-ClubSlot is a web app, opened from a WhatsApp link, that lets residents of large gated communities book shared amenities — courts, pool lanes, party hall — and gives every flat a fair shot at peak slots. Today bookings run on WhatsApp "first message wins" and a paper register at the security desk, causing double bookings and weekly disputes (owner's 900-flat community). All-in-one society apps (MyGate, NoBrokerHood, ADDA) include booking modules, but bundle it with gates, ads and accounting. ClubSlot wins on one job: **fair booking** — a weekly ballot for committee-marked peak slots, automatic release of no-shows, and a public rules log — with no ads and no phone numbers shown. Version 1 is a resident booking app plus a committee rules screen, piloted in the owner's own community.
+ClubSlot is a shared-amenity booking service for gated communities in Hyderabad: residents book courts, pool slots, the lounge and the party hall from a link in their community WhatsApp group; the committee's rules (turns per flat, advance windows, fees, deposits) are applied automatically and explained in plain words; the desk verifies any booking in five seconds. The problem is weekly: bookings today happen in WhatsApp threads and a paper register, so double bookings and disputes land on volunteer committee members. Now is the moment because the incumbents have bundled booking into ad-funded super-apps that residents complain about (R9) while most mid-size communities still run on WhatsApp (R13, weak). ClubSlot wins by doing one job with visible fairness, no install and no ads. Version 1 is a PWA for residents and the desk plus a desktop console for the committee, piloted in one community.
 
 ## 2. Problem
-- Problem statement: residents of large gated communities struggle to get fair access to contested amenities because bookings run on WhatsApp messages and a paper register, which leads to double bookings, the same few people getting peak slots, no-shows blocking others, and committee volunteers refereeing disputes.
-- Evidence (sourced, from EVALUATION / VALIDATION): owner observes weekly disputes in a 900-flat community (brief; n=1). Incumbents built per-flat caps, prime slots, cancellation windows and no-show blacklists (EVALUATION §4, [C2][C11]) — signal that contention is common. No interviews or VALIDATION yet (T1–T5 pending).
-- Current alternatives and why they fall short (from COMPETITORS): WhatsApp + register (no record, first-message-wins favours the always-online); MyGate (booking rules exist but app is ad-heavy — "3-4 HOAX / distracting notifications … ADS" [C3]); NoBrokerHood (simple FCFS booking, reschedule = cancel + rebook [C7]); ADDA (prime-slot rules in a paid package [C11]). None offers a ballot for peak slots (as far as public material shows — verify in F-03).
+- Problem statement: residents and committees of gated communities struggle to share amenities fairly because bookings live in chat threads and paper registers with no confirmation or rules, which leads to double bookings, hoarding and weekly disputes that volunteers must settle.
+- Evidence (sourced, from EVALUATION / VALIDATION): owner's first-hand weekly observation (brief); vendor cohort figures of 18% double bookings and 71% of societies on WhatsApp (R13, weak); all incumbents ship a booking module (R2–R7). Validation pending (T1–T4 in EVALUATION §12).
+- Current alternatives and why they fall short (from COMPETITORS): WhatsApp + register (reach, but no confirmation or fairness); MyGate / NoBrokerHood / ADDA (booking exists but requires a platform migration, an install and tolerating ads and notification noise, R9; rules support unknown, Q-06).
 
 ## 3. Goals, non-goals and success metrics
 | Goal | Primary metric | Target (6 months) | Input metrics | How measured |
 |---|---|---|---|---|
-| Residents book fairly without WhatsApp | % of court/hall bookings in pilot community made in ClubSlot | ≥ 80 % by week 8 of pilot | Weekly active bookers; bookings/week | `booking_confirmed` events vs committee's register count |
-| Peak slots feel fair | Ballot participation among regular court users | ≥ 40 % | Ballot entries/week; distinct winning flats/month | `ballot_entered`, `ballot_drawn` |
-| No-shows stop blocking others | Released slots re-used by waitlist | ≥ 50 % of released slots | No-show rate | `slot_released`, `waitlist_booked` |
-| Committee stops refereeing | Disputes reported by committee | −75 % vs T1 baseline | — | Monthly committee check-in (manual) |
-| Business signal | Paying communities | 1 own pilot + 2 paying pilots (reset from brief's 20, Q-05) | LOIs | CRM sheet |
-- Non-goals (explicitly not doing in v1): gate/visitor passes, notices, complaints/helpdesk, maintenance billing, in-app payments, native iOS/Android apps, multi-language UI (Telugu in v1.1), classes/coach scheduling.
-- Guardrail metrics (must not get worse): booking error rate (double bookings = 0), page load on 4G (LCP < 2.5 s), accessibility (axe: 0 serious violations), support messages to the owner per week.
+| Stop booking disputes in pilot communities | Disputes escalated to the committee per month | ≤ 1 (from ≥ 2/week baseline, T3) | Share of bookings via ClubSlot ≥ 80%; paper register retired | Committee monthly check-in form; `booking_created` events |
+| Residents book without help | Link → confirmed booking conversion | ≥ 30% of link opens convert in the first month | OTP completion ≥ 80%; median time to confirm < 90 s | Events `link_opened`, `otp_verified`, `booking_confirmed` |
+| Paying communities **[Default target, reset from brief]** | Communities paying | 5–8 paying, ₹10k–16k MRR | 3 pilots → 2 referrals each | Billing records |
+| Fairness is understood | Residents who can state the rule after first booking | ≥ 4 of 5 in prototype test; ≥ 70% in in-app one-question survey | — | T2; `survey_rule_understood` |
+- Non-goals (explicitly not doing in v1): visitor passes, complaints/helpdesk, notices feed, maintenance dues and accounting, native app-store apps, multi-city, AI features, ads.
+- Guardrail metrics (must not get worse): booking-related messages sent per resident per week ≤ 3; accessibility audit score (axe + manual) with 0 critical issues; support requests per community per month ≤ 5; no personal data beyond name, phone, flat.
 
 ## 4. Users
 ### Personas
 | Persona | Context | Goal | Frustration today | Accessibility needs |
 |---|---|---|---|---|
-| Lakshmi, 34, resident, IT professional | iPhone, plays badminton twice a week | Get the Saturday 7 pm court sometimes | The same early-messaging group always wins | One-handed use, quick |
-| Mr. Rao, 67, retired resident | Budget Android, WhatsApp-only user | Book the party hall for family events | Has to go to the security desk and ask; unsure it's really his | Large text (200 %), plain language, no install; Telugu later |
-| Ravi, 41, sports secretary (committee volunteer) | Laptop + Android | Stop refereeing; rules enforce themselves | Friday-night WhatsApp arguments | — |
+| P-01 Srinivas, committee amenities secretary (EVALUATION §5) | Volunteer, mid-range Android | Fewer arguments, an AGM record | WhatsApp fights, no-shows | Large text, Telugu for notices |
+| P-02 Priyanka, resident | iPhone, books courts twice a week | See what's free, book in seconds | Scrolling threads, slot already gone | Situational one-handed use |
+| P-03 Ramesh, facility manager / desk | Low-end Android, basement office | Settle disputes fast, no blame | "I messaged the group" | Telugu, large text, slow data |
 ### Jobs to be done
-- When I want to play this week, I want to see what's free and book it in seconds, so I can plan my evening.
-- When a slot is popular, I want a fair chance at it, so I don't lose to whoever messages fastest.
-- When someone doesn't show up, I want the slot to go to the next person, so the court isn't wasted.
-- When residents argue about a booking, I (committee) want a clear record and rules everyone can see, so I don't have to arbitrate.
+- When I want the court tonight, I want to see what's free and book it in a tap, so I can stop scrolling the group.
+- When two families claim the hall, I want a record everyone trusts, so I'm not the referee.
+- When a resident arrives at the desk, I want to confirm their slot in seconds, so there's no argument at the counter.
+- When heavy users hoard slots, I want rules applied automatically, so the committee doesn't have to police them.
 
 ## 5. Positioning and differentiation
-- Positioning statement: For clubhouse committees in large gated communities who are tired of WhatsApp booking fights, ClubSlot is a fair-booking tool that gives every flat a fair shot at peak slots. Unlike the booking module in all-in-one society apps, it is built only for contested amenities — ballots, no-show release and a public rules log — with no ads.
-- Differentiators this release must make visible (and where in the product): **peak-slot ballot** (S-04 "Peak · ballot" chip, S-06, S-07 — US-06, US-07); **no-show release** (S-05 check-in rule, S-07 released variant — US-08); **public rules log** (S-09 — US-10); **no ads, no numbers shown** (every screen; S-02 privacy line — US-02). A first-session user sees the ballot chip and the check-in rule on their first booking.
-- What we deliberately don't compete on: gate security, accounting, payments, notices, breadth of modules.
+- Positioning statement: For committees of gated communities in Hyderabad who are tired of amenity-booking disputes, ClubSlot is a shared-amenity booking service that gives every flat a fair, confirmed slot from a WhatsApp link. Unlike MyGate or NoBrokerHood, it does one job, with no ads and no app to install.
+- Differentiators this release must make visible (and where in the product): fair rules shown before and at booking — US-03, US-05 on S-01, S-03, S-04; book from a link without install — US-01, US-02 on S-01, S-02; quiet — US-09 (only booking messages); desk-proof — US-08 on S-08.
+- What we deliberately don't compete on: gate security, dues, accounting, community feed, breadth of modules.
 
 ## 6. Scope
 | Capability | MoSCoW | Release | Why |
 |---|---|---|---|
-| Join via invite link + phone OTP + roster match | Must | v1 | Entry from WhatsApp, verified flat |
-| Amenity list with "what's free today" | Must | v1 | Core action |
-| Book / cancel a free slot with rules (length, hours, advance window, weekly cap, closed dates) | Must | v1 | Core action; no double booking |
-| Peak-slot ballot with fair-share weighting | Must | v1 | Differentiator |
-| Check-in + no-show auto-release to waitlist | Must | v1 | Differentiator |
-| Committee: amenity rules editor | Must | v1 | Committee control |
-| Committee: roster import + approve join requests | Must | v1 | Trust; abuse prevention |
-| Public rules log | Should | v1 | Transparency differentiator |
-| My bookings (upcoming/past) | Should | v1 | Basic expectation |
-| Reminders (SMS/WhatsApp) before slot and ballot draw | Could | v1.1 | Retention; message cost |
-| Booking fee shown (billed with maintenance) | Could | v1 | Party hall fees without payments |
-| Telugu UI | Could | v1.1 | Older residents |
-| UPI payments via Razorpay (Route to RWA account) | Won't (v1) | Later | Aggregator, refunds, GST unknowns |
-| Notices, visitor passes, helpdesk | Won't | — | Incumbents' core; not the differentiator |
-- MVP definition: the smallest product that tests **A-02/A-05 — that residents will use a fair ballot for contested slots instead of WhatsApp** and delivers **conflict-free booking of 2–3 contested amenities**.
-- Later releases (themes only): payments; reminders; coach/class recurring slots; multi-community committee dashboard; integration with existing society apps.
-
-**Scope check (write-prd step 4):** Musts estimated at ~70–90 h with AI tools (EVALUATION §10) ≈ 7–9 weeks at 10 h/week — at the top of the 6–8-week guide. If the plan exceeds it, cut in this order: rules log → Should; roster CSV import → manual add; fair-share weighting → plain random ballot. Keep booking, ballot and no-show release.
+| Community set-up: amenities, hours, rules, fees (console) | Must | Pilot | Without it nothing works |
+| Week view per amenity from a public link | Must | Pilot | The first-session value |
+| Phone OTP + flat sign-in | Must | Pilot | Fairness needs the flat |
+| Book / cancel with rule enforcement and plain-language reasons | Must | Pilot | The core action + differentiator |
+| Waitlist with auto-promotion | Must | Pilot | Stops "first message wins" fights |
+| Confirmation with desk code; booking-only messages (SMS/WhatsApp link) | Must | Pilot | Desk-proof; quiet |
+| Desk view (today, search, mark arrived, book on behalf) | Must | Pilot | Retires the paper register (A-03) |
+| English + Telugu UI **[Default]** | Must | Pilot | Inclusion baseline; staff |
+| Accessibility statement + barrier feedback route; DPDP consent and deletion | Must | Pilot | Law and kit floor |
+| Fees and deposits via Razorpay payment links | Should | Beta | Party hall needs it; courts don't |
+| Committee reports (utilisation, no-shows) | Should | Beta | Renewal reason |
+| Home-screen install prompt | Could | Beta | Convenience |
+| Hindi / Kannada | Could | Later | Bengaluru |
+| Native apps, visitor passes, complaints, notices, dues | Won't (v1) | — | Pivot scope |
+- MVP definition: the smallest product that tests *committees will pay for fair, confirmed booking alone* (A-01) and delivers *a confirmed slot in a tap with rules everyone can see*.
+- Later releases (themes only): payments depth, reports, multi-community for facility-management firms, Bengaluru.
 
 ## 7. User journeys
-Flows: DESIGN_DIRECTION §5.1 (first run → first value), §5.2 (peak-slot ballot), §5.3 (recovery).
-- **Book a free slot** — happy: link → amenity → slot → confirm → booked (4 taps returning). Edge: slot taken meanwhile → error with 2 nearest free slots; weekly cap reached → error with reset time; offline → cached view, booking disabled with message; slow network → button shows progress, no double submit.
-- **Enter ballot** — happy: slot → enter ballot → result notification/next visit → check in. Edge: ballot closed → show result or next ballot; not drawn → waitlist offer; did not check in → release + no-show count.
-- **Join** — happy: link → OTP → roster match → home. Edge: wrong OTP; number not on roster → join request; link expired → ask committee for a new link; permission denied (location for check-in, if used) → QR or manual check-in fallback.
-- **Committee edits rules** — happy: edit → validate → publish → rules log entry. Edge: invalid combination (peak > 50 % of slots) → inline error; conflicting existing bookings when closing dates → list affected bookings and notify flats.
+Flows are in DESIGN_DIRECTION §5 (first run → first value; core action; recovery). For each core journey:
+- **Book from link** — happy: link → week view → OTP + flat → slot → confirm → confirmed (S-01 → S-02 → S-04 → S-05). Edge: wrong OTP (S-02 error); unknown flat (S-02 error, committee approval queue); slot taken while confirming (S-04 error, next options); quota reached (S-04 rule copy, waitlist); offline (cached bookings, banner, retry); slow network (skeletons, no timeouts under 30 s); permission denied (resident not approved for this community → "Ask the committee to approve your flat" with a one-tap request).
+- **Cancel / undo** — happy: My bookings → Cancel → 10-minute undo bar. Edge: cancel after the free window → counts as a used turn, stated before confirming; offline → queued with a notice.
+- **Desk verification** — happy: search flat or code → booking shown → mark arrived. Edge: no booking found → "No booking for B-1204 today — book on their behalf?"; offline → last synced list with timestamp.
+- **Committee set-up** — happy: create community → add amenity → set hours, turns, advance window, fee → preview rule in plain words → share link. Edge: conflicting rules (validation message); empty community (no amenities yet → guided first amenity).
 
 ## 8. Requirements and user stories
-### Epic E1 — Join and sign in
-**US-01** · As a resident, I want to open the community link and sign in with my phone number so that I can book without installing an app · Must
-- Given a valid invite link, when I open it on a phone browser, then I see the community name and "Continue with phone number" (S-01).
-- Given my number is on the committee roster, when I enter the correct OTP, then I land on Book with my flat shown (S-02 → S-03b).
-- Given I enter a wrong OTP, when I submit, then I see "That code didn't match…" and can resend after 30 s; my number stays filled in.
-- Given an expired or invalid link, when I open it, then I see "This invite link has expired. Ask your committee for a new one." and no sign-in form.
-- Given I'm offline, when I tap Send code, then I see "You're offline. Connect and try again." and nothing is sent.
-- Design: S-01, S-02 · Personal data used: phone number (sign-in, roster match), flat number (eligibility, caps).
+### Epic E1 — See and book a slot
+**US-01** · As a resident (P-02), I want to open the amenity's week view from the WhatsApp link without installing anything so that I can see what's free in seconds · **Must**
+- Given a valid community link, when I open it on a phone browser, then I see the amenity, the current week, each slot's state (free / booked / waitlist) and the rule in one line within 2 s on a 3G connection.
+- Given the community has no amenities set up yet, when I open the link, then I see "Nothing to book yet — the committee is setting up" and a way to notify the committee.
+- Given I am offline, when I open the link, then I see an offline banner and any cached bookings instead of a blank page.
+- Design: S-01 · Personal data used: none until sign-in.
 
-**US-02** · As a resident, I want my phone number never shown to other residents so that joining doesn't expose me · Must
-- Given any resident-facing screen, when bookings by others are shown, then only "Booked" appears — no name, flat or phone.
-- Given a committee member, when they view a booking, then they see flat number only (no phone) unless they open the roster.
-- Design: S-04, S-09 · Personal data used: none shown.
+**US-02** · As a resident, I want to sign in with my phone number and flat so that the community's rules apply to my flat · **Must**
+- Given I enter my number, when I request a code, then an SMS arrives within 30 s and the code field is focused and labelled.
+- Given a wrong or expired code, when I submit, then the field is marked invalid with a message that says how to get a new code, and no booking proceeds.
+- Given a flat number not in the community, when I continue, then I see "We don't have B-1240 in Lakeview Heights…" with a one-tap request to the committee, and I cannot book until approved (permission denied).
+- Given a flat already linked to another phone, when I sign in, then I am added as a second member of that flat and the first member is notified (no silent takeover).
+- Design: S-02 · Personal data used: phone (identity, OTP, booking messages), flat (rules); both shown in the consent notice.
 
-**US-03** · As a resident not on the roster, I want to request to join so that the committee can approve me · Must
-- Given my number isn't on the roster, when OTP succeeds, then a join request with my flat is created and I see "Request sent to the committee — we'll SMS you when approved."
-- Given the committee rejects it, when I open the link, then I see "Your request wasn't approved. Contact the clubhouse committee." 
-- Design: S-02 note, S-11 · Personal data used: phone, claimed flat number.
+**US-03** · As a resident, I want to book a free slot and see how it counts against my flat's turns so that I know the booking is fair · **Must**
+- Given a free slot within my flat's turns, when I confirm, then the booking is created atomically (no two flats can hold the same slot), and I see the confirmation with a desk code.
+- Given the slot was taken between viewing and confirming, when I confirm, then I see an error naming the next two free slots and a waitlist option, and nothing is booked.
+- Given my flat has used its turns, when I tap a slot, then I see the rule, when my next turn opens, and the waitlist option; the confirm button is not shown.
+- Given a screen-reader user, when they book a slot, then every slot button announces time and state, and the confirmation is announced via a live region.
+- Design: S-01, S-04, S-05 · Personal data used: flat and phone (booking record).
 
-### Epic E2 — Book a slot
-**US-04** · As a resident, I want to see what's free today across amenities so that I can choose quickly · Must
-- Given amenities exist, when I open Book, then I see each amenity with free-slot count and closed/peak notes (S-03).
-- Given no amenities are set up, when I open Book, then I see "Your committee hasn't added amenities yet." (empty).
-- Given I'm offline with cached data, when I open Book, then I see cached slots with "Showing slots from 9:32 am. Booking needs a connection."
-- Given the server errors, when loading, then I see "Couldn't load slots. Try again." with a retry button.
-- Design: S-03, S-03b · Personal data used: flat (to show my next booking).
+**US-04** · As a resident, I want to join a waitlist and be promoted automatically so that "first message wins" fights end · **Must**
+- Given a booked slot, when I join its waitlist, then I see my position (count only, no names).
+- Given the slot is cancelled, when I am first in line and still within my turns, then the slot is booked for me and I am messaged within 1 minute; otherwise the next eligible flat is promoted.
+- Given I leave the waitlist, when I confirm, then positions behind me move up.
+- Design: S-01, S-06 · Personal data used: flat.
 
-**US-05** · As a resident, I want to book a free slot within the rules so that it's mine without asking anyone · Must
-- Given a free, non-peak slot within my cap and the advance window, when I tap Book, then the slot is booked and S-05 shows time, check-in rule and free-cancellation deadline.
-- Given two residents tap Book on the same slot at the same moment, when both requests reach the server, then exactly one booking succeeds and the other sees the S-04b "just taken" error with 2 alternative slots.
-- Given I've used my weekly cap, when I tap Book, then I see "You've used 3 of 3 court slots this week. Your limit resets Monday at 6 am."
-- Given the slot is beyond the advance window or on a closed date, then it isn't bookable and shows why.
-- Given I'm offline, when I tap Book, then nothing is booked and I see the offline message; nothing shows as booked until the server confirms.
-- Design: S-04, S-04b, S-05 · Personal data used: flat.
+### Epic E2 — Manage my bookings
+**US-05** · As a resident, I want to see and cancel my bookings with an undo so that mistakes aren't costly · **Must**
+- Given upcoming bookings, when I open My bookings, then I see each with its desk code, cancellation terms and my remaining turns.
+- Given I cancel, when the undo bar is visible (10 min), then tapping Undo restores the booking if the slot is still free, else explains it was taken.
+- Given no bookings, when I open the tab, then I see the empty state with a concrete free slot to book.
+- Given I am offline, when I cancel, then the cancellation is queued, labelled "pending", and sent when back online.
+- Design: S-06, S-07 · Personal data used: flat.
 
-**US-09** · As a resident, I want to see and cancel my bookings so that others can use slots I don't need · Should
-- Given upcoming bookings, when I open My bookings, then I see them with status (Booked, In ballot, Won, Released).
-- Given I cancel before the free-cancellation deadline, then the slot frees immediately, the first waitlisted flat is offered it, and I see "Cancelled. Undo" for 5 s.
-- Given I cancel after the deadline, then I'm told it counts as a no-show before confirming.
-- Given no bookings, then I see "Nothing booked. Your past bookings will show here too."
-- Design: S-08 · Personal data used: flat.
+### Epic E3 — Desk
+**US-08** · As desk staff (P-03), I want today's bookings in large text in Telugu and to find a flat in one search so that I can settle a dispute in 5 seconds · **Must**
+- Given the desk view, when I type a flat or code, then matching bookings for today appear as I type, at ≥ 19 px text, in the selected language.
+- Given no booking matches, when I search, then I see "No booking for B-1204 today" and a button to book on their behalf, which logs my name and a reason.
+- Given the desk device is offline, when I open the view, then I see the last synced list with its time.
+- Given a desk login, when I try to open the committee console, then I am told I don't have access (permission denied) and nothing is shown.
+- Design: S-08 · Personal data used: flat, resident name (shown to staff only).
 
-### Epic E3 — Fair access (differentiator)
-**US-06** · As a resident, I want to enter a ballot for a peak slot so that I have a fair chance instead of racing on WhatsApp · Must
-- Given a slot the committee marked peak, when I open it before the ballot closes, then I see close time, entrants count and my fair-share count, and can enter in one tap (S-06).
-- Given I've already entered, then the button reads "Leave ballot".
-- Given the ballot has closed, then I see the result or "Ballot closed — result at 9:05 pm".
-- Given I've reached my monthly peak-slot cap, then I can't enter and see why.
-- Design: S-04, S-06 · Personal data used: flat.
+### Epic E4 — Committee console
+**US-06** · As a committee member (P-01), I want to set up amenities and rules in one evening and see the rule in plain words so that residents understand it the same way I do · **Must**
+- Given a new community, when I add an amenity with hours, turns per flat per week, advance window and fee, then a plain-language preview appears ("2 court hours per flat per week, book up to 7 days ahead, no fee") and is what residents see.
+- Given conflicting settings (e.g. slot length longer than opening hours), when I save, then I see which field conflicts and nothing is saved.
+- Given a resident requests approval of an unknown flat, when I open Members, then I can approve or reject with one tap and the resident is messaged.
+- Given the console on a phone, when I open it, then all actions remain usable (responsive), though desktop is recommended.
+- Design: S-09 (described in DESIGN_DIRECTION §6; not wireframed) · Personal data used: member names, phones, flats (committee role only).
 
-**US-07** · As a committee, I want ballots drawn automatically and fairly so that results can't be disputed · Must
-- Given a ballot closes, when the draw runs, then winners are chosen at random with one extra entry for flats with 0 peak slots in the last 4 weeks, and a draw record (time, entrant count, seed hash) is written to the rules log.
-- Given zero entrants, then the slot becomes a normal free slot.
-- Given the draw job fails, then it retries and the committee is alerted; residents see "Result delayed" rather than a wrong result.
-- Design: S-07, S-09 · Personal data used: flat (in draw; not published).
+**US-07** · As a committee member, I want a monthly summary of bookings, no-shows and disputes so that I can justify the fee at the AGM · **Should**
+- Given a month of data, when I open Reports, then I see utilisation per amenity and no-show counts with export to CSV.
+- Design: S-11 (later) · Personal data used: aggregated only.
 
-**US-08** · As a resident on the waitlist, I want no-show slots released to me so that the amenity isn't wasted · Must
-- Given a booked or won slot, when no check-in happens by start + 15 min (committee-set), then the slot is released, the first waitlisted flat is notified in-app, and the no-show is counted.
-- Given I check in within the window (QR at the court or in-app tap), then the booking shows "Checked in".
-- Given location permission is denied (if location check-in is used), then QR/manual check-in is offered.
-- Design: S-05, S-07 · Personal data used: flat; check-in time.
+### Epic E5 — Trust, privacy and accessibility
+**US-09** · As a resident, I want to receive only messages about my own bookings so that the app stays quiet · **Must**
+- Given a booking, when it is confirmed, promoted, cancelled by the desk, or 1 hour away, then I receive one message each; no other messages are sent.
+- Given I turn off reminders, when a booking approaches, then no reminder is sent but confirmations still are.
+- Design: S-10 settings · Personal data used: phone.
 
-**US-10** · As a resident, I want to see the rules and recent draws/releases so that I can trust the system · Should
-- Given rules exist, when I open Rules, then I see current rules, last change date and recent draws/releases with no names or flat numbers.
-- Given no activity yet, then I see the rules and "No draws yet."
-- Design: S-09 · Personal data used: none shown.
+**US-10** · As any user, I want a consent notice, data deletion and an accessibility statement with a way to report a barrier so that I can trust the service · **Must**
+- Given first sign-in, when the consent notice is shown, then it lists each data item and purpose in plain English or Telugu, and I can withdraw later from Community › Privacy (DPDP Rules, R12).
+- Given I request deletion, when 48 hours pass without me cancelling the request, then my personal data is erased and bookings are anonymised to the flat.
+- Given the Community tab, when I open Accessibility, then I see the conformance level (WCAG 2.2 AA target), known gaps, and a form plus WhatsApp number to report a barrier, answered within 5 working days.
+- Given a data breach, when it is confirmed, then affected users are notified without delay and the Board report is filed within 72 h (operational runbook, full PRD).
+- Design: S-10 · Personal data used: as inventoried in §10 (full).
 
-### Epic E4 — Committee tools
-**US-11** · As a committee member, I want to set rules per amenity so that the app enforces what we agreed · Must
-- Given I'm a committee member, when I edit slot length, hours, advance window, weekly cap, peak slots, check-in window and closed dates and save, then the rules apply to new bookings and a rules-log entry is created.
-- Given peak slots exceed 50 % of open slots, then I see an inline error and can't publish.
-- Given closing dates conflict with existing bookings, then I see affected bookings and can notify those flats before saving.
-- Given I'm not a committee member, when I open the committee URL, then I see "Only committee members can change rules." (permission denied).
-- Design: S-10 · Personal data used: none.
-
-**US-12** · As a committee member, I want to import the flat roster and approve join requests so that only residents can book · Must
-- Given a CSV of flat + phone, when I import, then valid rows are added and invalid rows are listed with the reason.
-- Given a pending request, when I approve or reject, then the resident is informed.
-- Design: S-11 (not wireframed yet) · Personal data used: flat, phone (roster) — stored only for sign-in matching; deletable by committee and on resident request.
-
-Acceptance-criteria → test mapping: each Given/When/Then above becomes at least one automated test (unit for rules/ballot logic, integration with a test database for booking concurrency and permissions, Playwright E2E for US-01, US-05, US-06/07, US-08). Concurrency (US-05 #2) needs a database-level uniqueness constraint test.
+Must stories: 9 (US-01–06, 08–10) · Should: 1 · Build estimate: ~8 weeks of Musts at 10 h/week with AI tools (EVALUATION §10), confirmed by the week-2 spike (A-05).
 
 ## 9. Experience and design
-- Experience principles (from DESIGN_DIRECTION): fair and visible · one job, done fast · no app, no ads · committee in control · everyone can use it.
-- Screen inventory with states: DESIGN_DIRECTION §6 and `design/wireframes/index.html` (S-01–S-10; S-11 to be wireframed).
-- Visual direction chosen: **pending owner (Q-09)** — recommended A, Courtside calm.
-- Content and voice: calm, fair, plain. Key terms: amenity, slot, ballot, flat, committee, no-show. Microcopy in DESIGN_DIRECTION §7.
-- Accessibility requirements: WCAG 2.2 AA; 48 px targets; text to 200 %; slot status as text not colour; screen-reader labels for each slot ("6 pm to 7 pm, free"); reduced motion.
-- Localisation: English at launch with externalised strings; Telugu in v1.1 (Q-06); ₹ and Indian date formats.
+- Experience principles (from DESIGN_DIRECTION §2): fair and seen to be fair · one tap from WhatsApp · quiet · desk-proof · calm under conflict.
+- Screen inventory with states: DESIGN_DIRECTION §6 and `../../design/wireframes/index.html` (S-01 to S-08).
+- Visual direction chosen: A "Notice board" **[Default]**, pending owner choice.
+- Content and voice: DESIGN_DIRECTION §7 — "amenity", "slot", "rules", "desk", "your turns this week".
+- Accessibility requirements: WCAG 2.2 AA + persona needs (large text, Telugu, screen-reader slot names, one-handed, low-end phone, offline) + India RPwD/GIGW alignment and DPDP (EVALUATION §11)
+  - Accessibility statement (conformance level, known gaps, how to report a barrier) and a feedback route answered within 5 working days — US-10
+  - Alternate formats / communication support on request: rules and confirmations available as plain text by SMS or from the desk
+  - Accessibility Conformance Report (VPAT): keep test evidence from the pilot so an ACR can be produced if an RWA federation or facility-management firm asks — by public launch
+  - Assistive-tech users in the prototype test (1 large-text or screen-reader user of 5) and the beta
+  - Example criterion: Given a screen-reader user, when they book a slot, then every control is announced with name, role and state and the confirmation is announced
+- Localisation: English + Telugu at launch **[Default]** (Q-11); Hindi, Kannada later; dates and times in IST with 12-hour clock.
 
 ## 10. Data and permissions **(full)**
-After approval. (Draft note: entities will include community, flat, resident, amenity, rule set, slot, booking, ballot, ballot entry, check-in, rules-log entry; per-community row-level security; personal data limited to phone + flat.)
+after approval — draft note: entities will be Community, Amenity, Rule, Member (phone, name, flat, role), Booking, WaitlistEntry, DeskLog, Consent; RLS by community and role; personal data limited to name, phone, flat.
 
 ## 11. Analytics **(full in detail; draft lists the funnel)**
 | Event | When | Properties (no personal data) | Funnel step |
 |---|---|---|---|
-| `invite_opened` | S-01 loads | community_id | 1 |
-| `signin_completed` | OTP verified | roster_match: bool | 2 |
-| `amenity_opened` | S-04 loads | amenity_type | 3 |
-| `booking_confirmed` | Server confirms | amenity_type, is_peak: false, lead_time_h | 4 |
-| `booking_conflict` | Slot taken / cap error | reason | 4 (error) |
-| `ballot_entered` | Entry saved | amenity_type | 4 (peak) |
-| `ballot_drawn` | Draw completes | entrants, winners | — |
-| `checked_in` / `slot_released` / `waitlist_booked` | As named | amenity_type | 5 |
+| link_opened | S-01 loads | community_id, amenity_id, referrer=whatsapp/other | 1 |
+| otp_requested / otp_verified | S-02 | community_id | 2 |
+| slot_viewed | slot list rendered | amenity_id, free_count | 3 |
+| booking_attempted | confirm tapped | amenity_id, rule_state | 4 |
+| booking_confirmed / booking_failed | result | amenity_id, reason (taken / quota / network) | 5 |
+| waitlist_joined / waitlist_promoted | — | amenity_id, position | — |
+| booking_cancelled / undo_used | — | hours_before | — |
+| desk_search / desk_mark_arrived / desk_booked_on_behalf | S-08 | community_id | — |
+| survey_rule_understood | after first booking | yes/no | goal 4 |
+| a11y_barrier_reported | S-10 | category | guardrail |
 
 ## 12. Non-functional requirements
-- Performance: LCP < 2.5 s on mid-range Android over 4G; booking confirmation < 1 s p95.
-- Reliability: zero double bookings (database constraint); ballot draw idempotent with retries.
-- Security (OWASP): server-side authorization on every request; per-community RLS; schema-validated input; rate-limited OTP; no secrets in client.
-- Privacy (DPDP Act 2023 + Rules 2025): plain-language notice at sign-in; phone + flat only; residents can delete their account; committee can delete roster rows; no under-18 accounts; no third-party ads or ad trackers.
-- Accessibility: WCAG 2.2 AA (see §9).
-- Offline behaviour: cached read-only "what's free" with "last updated"; no offline writes.
-- Supported devices: last 2 versions of Chrome (Android), Safari (iOS 16+), desktop Chrome/Edge/Safari for committee; 360 px minimum width.
-- AI features: none.
+- Performance budgets: first load < 200 KB, S-01 interactive < 2 s on 3G, slot list render < 500 ms; works on Android 9+ / iOS 15+ Safari **[Default]**.
+- Reliability: bookings are atomic (unique constraint on amenity + slot); 99.5% monthly availability target for pilot.
+- Security (OWASP): OTP rate-limited; server-side authorization for every community/role; parameterized queries; no secrets in client; hosted checkout for payments.
+- Privacy (DPDP): minimum data, consent notice, 48-h erasure notice, breach process, logs retained ≥ 1 year (R12); no children's data collected.
+- Accessibility: WCAG 2.2 AA; axe clean + manual screen-reader pass on the core flow before pilot.
+- Offline behaviour: cached My bookings and desk list; queued cancellations; clear banners.
+- AI features: none in v1.
 
 ## 13. Technology **(full)**
-After approval. Provisional (EVALUATION §10): responsive web app (Next.js PWA) + Supabase + Indian SMS OTP provider; payments later via Razorpay Route.
+after approval — provisional: PWA (Next.js or SvelteKit) on Vercel, Supabase (Postgres + RLS + phone OTP), Razorpay payment links, PostHog, SMS via MSG91 (EVALUATION §10).
 
 ## 14. Dependencies and risks
 | Risk / dependency | Impact | Likelihood | Mitigation | Owner |
 |---|---|---|---|---|
-| Owner's community already uses a society app's booking module (F-01) | High | High | T1 audit before build | Owner |
-| Committees won't pay a single-job tool (A-03) | High | High | T5 LOI; per-community pricing | Owner |
-| Residents keep using WhatsApp | High | Medium | Committee declares ClubSlot the only valid record; T3 concierge ballot | Owner + committee |
-| Ballot perceived as unfair or rigged | Medium | Medium | Public draw record, simple rules, committee-owned | Owner |
-| Booking concurrency bugs (double booking) | High | Low | DB constraint + tests | Builder |
-| SMS OTP deliverability/cost (DLT registration in India) | Medium | Medium | Verify provider + DLT template before build | Owner |
-| Incumbent copies ballot | Medium | Medium | Local trust, speed, integration rather than replacement | Owner |
+| Committees won't pay for booking alone (A-01) | Fatal to business | High | T1 price-card interviews before building | Owner |
+| Paper register survives (A-03) | Adoption collapse | High | Desk view first; pilot rule "app bookings only" | Owner + committee |
+| Incumbent copies fair rules | Differentiator erodes | Medium | Focus, speed, trust; rule-set stickiness | Owner |
+| SMS OTP delivery cost and DLT registration in India | Sign-in friction, cost | Medium | Register sender ID early; WhatsApp link fallback | Owner |
+| Razorpay onboarding / KYC for a new entity | Fees blocked | Medium | Start KYC in week 1; courts need no fees | Owner |
+| DPDP obligations during year 1 (R12) | Compliance effort | Medium | Design in consent, erasure, logs now | Owner |
+| Owner capacity (10 h/week) | Slip past 10 weeks | Medium | One pilot; Musts only; AI tools for mechanical work | Owner |
 
 ## 15. Release plan
 | Milestone | Scope | Exit criteria | Target date |
 |---|---|---|---|
-| Validation (T1–T5) | Audit, interviews, concierge ballot, LOI | T1 shows the need; ≥ 40 % ballot participation; ≥ 1 LOI | ~5 weeks (Nov 2026) |
-| Prototype test | wireframes | ≥ 4/5 complete the core task | Week 2 of validation |
-| Private beta | MVP Musts in owner's community, 2 amenities | 4 weeks, zero double bookings, ≥ 80 % of bookings in-app | ~9 weeks after approval |
-| Public launch | 2 more communities | ≥ 1 paying community | ~4 months after approval |
-- Launch channels for the first 100 users (from EVALUATION §5): owner's community WhatsApp groups via the sports secretary; 3 committee contacts; committee-to-committee referrals.
-- Kill or pivot criteria after launch: < 30 % of court bookings in-app after 6 weeks of pilot; no paying community after 3 pilots → stop, or switch to Pivot B (setup service for existing apps).
+| Price-card interviews (T1) + prototype test (T2) | wireframes | ≥ 3/5 committees would pilot; ≥ 4/5 residents complete the core task | Week 2 |
+| Build spike (T5) | calendar + one rule | Working end to end in ≤ 20 h | Week 2 |
+| Pilot (private beta) | MVP Musts, one amenity, one community | ≥ 80% of bookings via ClubSlot in 4 weeks; paper register retired; 0 critical a11y issues | Week 10 |
+| Paid pilots | + payments, 3 communities | 2 of 3 convert to paid after free period | Month 4 |
+| Public launch (Hyderabad) | + reports | 5–8 paying communities | Month 6 |
+- Launch channels for the first 100 users (from EVALUATION §5): owner's community, 3 committee contacts, WhatsApp share link, RWA federation case study.
+- Kill or pivot criteria after launch: < 2 paying communities by month 4 → pivot B (free residents, paid reports) or park; pilot conversion < 30% after fixes → re-examine the link-first assumption.
 
 ## 16. Open questions and decisions
-- Open (blocking): F-01, Q-05, A-03 (approval); Q-03, Q-04, Q-07 (scope defaults taken); Q-10 ballot rules; Q-11 flat verification — see CLARITY.md.
+- Open (blocking): Q-01 pivot acceptance, Q-02 platform, Q-03 price, Q-08 willingness to pay, Q-09 pilot bylaws, Q-10 existing super-app at the pilot (CLARITY.md).
 | Date | Decision | Options considered | Why |
 |---|---|---|---|
-| 2026-10-16 | Draft scoped to the pivot (fair booking, web-first, no payments) — default, owner to confirm | Brief's all-in-one scope · pivot | Evaluation: brief scope 4–6× owner capacity and fully served by incumbents |
+| 2026-10-19 | Spec the booking-only pivot **[Default, unconfirmed]** | As briefed; pivot A; pivot B; pivot C | Feasibility and differentiation (EVALUATION §1, §8) |
+| 2026-10-19 | PWA + WhatsApp links for v1 **[Default]** | Native Android + iOS; PWA | One codebase, no store review, matches the link habit |
+| 2026-10-19 | English + Telugu **[Default]** | English only | Staff and older residents; inclusion baseline |
 
 ## Appendix
-- Glossary: **amenity** — a bookable shared space · **slot** — a bookable time block · **peak slot** — committee-marked high-demand slot allocated by ballot · **ballot** — random draw among entrants with fair-share weighting · **no-show** — booked but not checked in within the window · **committee** — the RWA's clubhouse/sports committee.
-- Research links: COMPETITORS.md, research/competitors.md.
+- Glossary: amenity, slot, rules, turns, desk code, waitlist, console.
+- Research links: `research/market.md`.
+- Change log
 
 | Version | Date | Change |
 |---|---|---|
-| 0.1 | 2026-10-16 | First draft from EVALUATION v1 + DESIGN_DIRECTION v0.1 (owner unavailable; defaults per CLARITY) |
+| 0.1 | 2026-10-19 | First draft from the Standard Idea Pack; owner unavailable, defaults marked |

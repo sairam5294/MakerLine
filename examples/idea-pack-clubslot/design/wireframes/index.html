@@ -4,17 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ClubSlot — Wireframes</title>
-<!--
-  Product Kit wireframe template (design-direction skill).
-  HOW TO FILL:
-  - Replace every {{…}}. Use real content from the brief and personas — never lorem ipsum.
-  - One <section class="screen"> per MVP screen. id="s-<slug>", data-title, data-note (designer note).
-  - Link screens with <a href="#s-<slug>"> so Prototype mode clicks through the core flow.
-  - Show at least one empty state and one error state as their own screens (e.g. s-home-empty).
-  - Mobile product: keep <body data-device="phone">. Web tool: data-device="desktop".
-  - Grey boxes only: .box (placeholder), .img (image), .btn / .btn.primary, .field, .list, .tabbar, .chip.
-  - Keep it accessible: real <button>/<a>, labels on fields, headings in order.
--->
 <style>
   :root{--ink:#1d1d1f;--muted:#5f6368;--line:#c7c9cc;--fill:#eceef0;--fill2:#dfe2e5;--paper:#fff;--canvas:#f4f5f6;--accent:#1d1d1f;--focus:#0b57d0;--danger:#a50e0e}
   *{box-sizing:border-box}
@@ -69,6 +58,9 @@
   .avatar{width:36px;height:36px;border-radius:50%;background:var(--fill2);flex:none}
   .grow{flex:1}.meta{font-size:12px;color:var(--muted)}
   .chip{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--fill);font-size:12px}
+  button.chip{font:inherit;font-size:13px;min-height:44px;padding:0 14px;border:1.5px solid var(--line);color:var(--ink);cursor:pointer}
+  button.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .offline{background:var(--fill2);border-radius:10px;padding:8px 12px;font-size:13px}
   .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px}
   .alert{border:1.5px solid var(--danger);color:var(--danger);border-radius:10px;padding:10px 12px;font-size:13px}
   .tabbar{display:flex;border-top:1px solid var(--fill2);margin-top:auto}
@@ -77,6 +69,8 @@
   .tabbar a::before{content:"";display:block;width:22px;height:22px;margin:0 auto 4px;border-radius:6px;background:var(--fill2)}
   .row{display:flex;gap:10px;align-items:center}
   footer.legend{margin-top:32px;font-size:12px;color:var(--muted)}
+  /* a desktop section inside a phone body wins because this rule comes after the phone rule */
+  section[data-device="desktop"] .frame{width:1024px;min-height:640px;border-radius:10px}
   @media (max-width:420px){[data-device="phone"] .frame{width:calc(100vw - 40px)}}
 </style>
 </head>
@@ -84,8 +78,8 @@
 <a class="skip" href="#canvas">Skip to wireframes</a>
 <header class="bar">
   <div>
-    <h1>ClubSlot — wireframes (draft)</h1>
-    <p>Grey-box fidelity · core flow: Join → Sign in → Book → Court slots → Booked · peak: Slots → Ballot → Result · 2026-10-16</p>
+    <h1>ClubSlot — wireframes (draft, pivot: booking-only)</h1>
+    <p>Grey-box fidelity · core flow: Link → Week view → Sign in → Confirm → Confirmed · 2026-10-19</p>
   </div>
   <div class="modes" role="group" aria-label="View mode">
     <button type="button" id="m-canvas" aria-pressed="true">Canvas</button>
@@ -98,229 +92,151 @@
 
   <div class="canvas" id="canvas">
 
-    <!-- S-01 Join: opened from the WhatsApp invite link -->
-    <section class="screen" id="s-join" data-title="S-01 Join" aria-labelledby="t-join">
-      <h2 id="t-join">S-01 Join community</h2>
+    <!-- S-01 Week view, signed out: opened from the WhatsApp link -->
+    <section class="screen" id="s-week" data-title="S-01 Week view (from link)" aria-labelledby="t-week">
+      <h2 id="t-week">S-01 Badminton court — week view (signed out)</h2>
       <div class="frame">
         <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><h3>Badminton court · Lakeview Heights</h3><button type="button" class="chip" aria-pressed="false" aria-label="Switch language to Telugu">తెలుగు</button></div>
         <div class="body">
-          <div class="img" role="img" aria-label="Illustration placeholder: badminton court, pool and party hall icons" style="min-height:220px"></div>
-          <p class="sub">Green Meadows · 900 flats</p>
-          <p class="h">Book the court, pool or hall in seconds — and get a fair shot at peak times.</p>
-          <p class="sub">Set up by your clubhouse committee. No app to install, no ads.</p>
-          <a class="btn primary block" href="#s-signin">Continue with phone number</a>
-          <a class="btn block" href="#s-rules">How booking works here</a>
+          <p class="h" style="font-size:18px">See what's free. Book in a tap. Everyone gets a fair turn.</p>
+          <p class="sub">Rule: 2 court hours per flat per week. Sign in to see your turns.</p>
+          <div class="row" role="group" aria-label="Pick a day"><button type="button" class="chip" aria-pressed="true">Thu 22</button><button type="button" class="chip" aria-pressed="false">Fri 23</button><button type="button" class="chip" aria-pressed="false">Sat 24</button></div>
+          <ul class="list" aria-label="Slots on Thursday 22 October">
+            <li><span class="grow">6–7 pm<br><span class="meta">Booked by another flat</span></span><span class="chip">Booked</span></li>
+            <li><span class="grow">7–8 pm<br><span class="meta">Free</span></span><a class="btn" href="#s-signin" aria-label="Book 7 to 8 pm, free">Book</a></li>
+            <li><span class="grow">8–9 pm<br><span class="meta">Free</span></span><a class="btn" href="#s-signin" aria-label="Book 8 to 9 pm, free">Book</a></li>
+            <li><span class="grow">9–10 pm<br><span class="meta">Waitlist · 1 flat ahead</span></span><a class="btn" href="#s-signin" aria-label="Join waitlist for 9 to 10 pm">Waitlist</a></li>
+          </ul>
+          <p class="meta">No ads, no spam — only messages about your bookings.</p>
         </div>
       </div>
-      <p class="note">Purpose: answer "what is this and is it legit?" in 5 seconds — community name + "set up by your committee". Open question: show committee member names for trust?</p>
+      <p class="note">Designer note: the first screen shows value (what's free) before asking for anything. Must be understood in 5 seconds: which amenity, which day, what's free, the rule. Open question Q-12: desk code vs QR vs flat number on the confirmation.</p>
     </section>
 
-    <!-- S-02 Sign in with OTP; roster match -->
-    <section class="screen" id="s-signin" data-title="S-02 Sign in" aria-labelledby="t-signin">
-      <h2 id="t-signin">S-02 Sign in</h2>
+    <!-- S-02 Sign in with an inline error (unknown flat) -->
+    <section class="screen" id="s-signin" data-title="S-02 Sign in — error" aria-labelledby="t-signin">
+      <h2 id="t-signin">S-02 Sign in (phone + flat, with error state)</h2>
       <div class="frame">
         <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-        <div class="appbar"><a href="#s-join" aria-label="Back">←</a><h3>Sign in</h3></div>
+        <div class="appbar"><a href="#s-week" aria-label="Back to week view">←</a><h3>Sign in to book</h3></div>
         <div class="body">
-          <div class="field"><label for="f-phone">Mobile number</label><input id="f-phone" inputmode="tel" autocomplete="tel" value="98480 12345"></div>
-          <div class="field"><label for="f-otp">6-digit code sent by SMS</label><input id="f-otp" inputmode="numeric" autocomplete="one-time-code" value="4 8 2 9 1 _"></div>
-          <a class="btn primary block" href="#s-home-empty">Verify and continue</a>
-          <p class="meta">We use your number only to sign you in and match you to your flat. Neighbours never see it.</p>
+          <div class="field"><label for="f-phone">Mobile number</label><input id="f-phone" inputmode="tel" value="+91 98xxxxxx10"></div>
+          <div class="field"><label for="f-otp">6-digit code we sent by SMS</label><input id="f-otp" inputmode="numeric" value="482 910"></div>
+          <div class="field error"><label for="f-flat">Flat number</label><input id="f-flat" aria-invalid="true" aria-describedby="e-flat" value="B-1240"><span class="msg" id="e-flat">We don't have B-1240 in Lakeview Heights. Check the number, or ask the committee to add your flat.</span></div>
+          <a class="btn primary block" href="#s-confirm">Continue</a>
+          <p class="meta">We use your number and flat only to apply the community's booking rules and send booking messages. You can delete your data any time from Community › Privacy.</p>
         </div>
       </div>
-      <p class="note">Number on the committee roster → straight in (flat B-1204 shown on next screen). Not on roster → "Request sent to the committee — we'll SMS you when approved." Error: "That code didn't match. Check the SMS or send a new code (in 30 s)."</p>
+      <p class="note">Designer note: OTP replaces passwords and CAPTCHAs. The flat error names the fix. Phone field has a country picker in the real build (inclusion §4). Loading state: button shows "Checking…".</p>
     </section>
 
-    <!-- S-03b First run, empty -->
-    <section class="screen" id="s-home-empty" data-title="S-03b Book — first run" aria-labelledby="t-home-empty">
-      <h2 id="t-home-empty">S-03b Book — first run (empty state)</h2>
-      <div class="frame">
-        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-        <div class="appbar"><h3>Book</h3><span class="chip">Flat B-1204</span></div>
-        <div class="empty">
-          <div class="img" role="img" aria-label="Empty-state illustration placeholder: calendar with one free slot" style="width:140px;min-height:110px"></div>
-          <p class="h" style="font-size:18px">No bookings yet</p>
-          <p class="sub">Pick an amenity to see what's free today. Peak times use a weekly ballot, so every flat gets a fair shot.</p>
-          <a class="btn primary" href="#s-home">See what's free today</a>
-        </div>
-        <nav class="tabbar" aria-label="Main navigation 1"><a href="#s-home" aria-current="page">Book</a><a href="#s-mine">My bookings</a><a href="#s-rules">Rules</a></nav>
-      </div>
-      <p class="note">First-run empty, not "no results". One sentence introduces the ballot so S-04's "Peak · ballot" chip isn't a surprise.</p>
-    </section>
-
-    <!-- S-03 Book (home) with offline banner variant noted -->
-    <section class="screen" id="s-home" data-title="S-03 Book" aria-labelledby="t-home">
-      <h2 id="t-home">S-03 Book (home)</h2>
+    <!-- S-03 Book tab: amenity list with your turns -->
+    <section class="screen" id="s-book" data-title="S-03 Book tab" aria-labelledby="t-book">
+      <h2 id="t-book">S-03 Book — amenity list</h2>
       <div class="frame">
         <div class="status"><span>9:41</span><span>●●● ▮</span></div>
         <div class="appbar"><h3>Book</h3><span class="chip">Flat B-1204</span></div>
         <div class="body">
-          <div class="box">Next: Badminton Court 1 · Today 6:00–7:00 pm · check in by 6:15 pm</div>
-          <p class="sub" style="font-weight:600;color:var(--ink)">What's free today</p>
+          <div class="offline" role="status">You're offline. Showing what we saved; we'll retry when you're back.</div>
           <ul class="list" aria-label="Amenities">
-            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Badminton Court 1<br><span class="meta">4 slots free · 7–9 pm peak</span></span><a href="#s-slots" aria-label="Open Badminton Court 1">›</a></li>
-            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Swimming pool — lane 2<br><span class="meta">6 slots free</span></span><a href="#s-slots" aria-label="Open Swimming pool lane 2">›</a></li>
-            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Party hall<br><span class="meta">Free today · Sat 1 Nov in ballot</span></span><a href="#s-slots" aria-label="Open Party hall">›</a></li>
-            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Tennis court<br><span class="meta">Closed for resurfacing till 20 Oct</span></span><a href="#s-slots" aria-label="Open Tennis court">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Badminton court<br><span class="meta">Next free: today 7–8 pm · your turns this week: 1 of 2 left</span></span><a href="#s-week" aria-label="Open badminton court">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Swimming pool<br><span class="meta">Next free: tomorrow 6–7 am · no limit</span></span><a href="#s-week" aria-label="Open swimming pool">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Party hall<br><span class="meta">Next free: Sat 8 Nov · ₹2,000 + ₹5,000 refundable deposit</span></span><a href="#s-week" aria-label="Open party hall">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">Clubhouse lounge<br><span class="meta">Next free: today 5–6 pm · 1 slot per flat per day</span></span><a href="#s-week" aria-label="Open clubhouse lounge">›</a></li>
           </ul>
-          <a class="btn primary block" href="#s-slots">Book Badminton Court 1</a>
         </div>
-        <nav class="tabbar" aria-label="Main navigation 2"><a href="#s-home" aria-current="page">Book</a><a href="#s-mine">My bookings</a><a href="#s-rules">Rules</a></nav>
+        <nav class="tabbar" aria-label="Main (book tab)"><a href="#s-book" aria-current="page">Book</a><a href="#s-mine">My bookings</a><a href="#s-week">Community</a></nav>
       </div>
-      <p class="note">Offline variant: banner "You're offline — showing slots from 9:32 am. Booking needs a connection." Loading: skeleton rows. Committee members also see a "Committee" link in the app bar → S-10.</p>
+      <p class="note">Designer note: each amenity shows the rule and your remaining turns before you tap — fairness is visible in session one. Offline banner shown here as the offline state. Community tab (S-10) is not wireframed in Standard mode; it links to the week view as a stand-in.</p>
     </section>
 
-    <!-- S-04 Amenity slots: the core action -->
-    <section class="screen" id="s-slots" data-title="S-04 Court slots" aria-labelledby="t-slots">
-      <h2 id="t-slots">S-04 Badminton Court 1 — slots</h2>
+    <!-- S-04 Confirm with the slot-taken error -->
+    <section class="screen" id="s-confirm" data-title="S-04 Confirm — slot taken error" aria-labelledby="t-confirm">
+      <h2 id="t-confirm">S-04 Confirm booking (slot-taken error)</h2>
       <div class="frame">
         <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-        <div class="appbar"><a href="#s-home" aria-label="Back">←</a><h3>Badminton Court 1</h3></div>
+        <div class="appbar"><a href="#s-week" aria-label="Back to week view">←</a><h3>Confirm</h3></div>
         <div class="body">
-          <div class="row" role="group" aria-label="Day"><span class="chip">Today</span><span class="chip">Fri 17</span><span class="chip">Sat 18</span><span class="chip">Sun 19</span></div>
-          <ul class="list" aria-label="Slots today">
-            <li><span class="grow">5:00–6:00 pm<br><span class="meta">Booked</span></span></li>
-            <li><span class="grow">6:00–7:00 pm<br><span class="meta">Free</span></span><a class="btn primary" href="#s-booked">Book</a></li>
-            <li><span class="grow">7:00–8:00 pm<br><span class="meta">Peak · ballot closes Thu 9 pm</span></span><a class="btn" href="#s-ballot">Enter ballot</a></li>
-            <li><span class="grow">8:00–9:00 pm<br><span class="meta">Free</span></span><a class="btn" href="#s-error" aria-label="Book 8 to 9 pm (shows error example)">Book</a></li>
-          </ul>
-          <p class="meta">Rules: 1 hour per slot · up to 3 court slots a week per flat · book up to 7 days ahead · <a href="#s-rules">all rules</a></p>
+          <div class="alert" role="alert">Someone booked 7–8 pm just now. Pick another slot below, or join the waitlist for 7–8 pm.</div>
+          <div class="box">Badminton court · Thu 22 Oct · <strong>8–9 pm</strong><br>Your turns this week after this booking: 0 of 2 left. Next turn opens Monday.</div>
+          <div class="row" role="group" aria-label="Choose a slot"><button type="button" class="chip" aria-pressed="true">8–9 pm</button><button type="button" class="chip" aria-pressed="false">Tomorrow 7–8 pm</button><button type="button" class="chip" aria-pressed="false">Waitlist 7–8 pm</button></div>
+          <div class="box">Fee: none for the court. Cancel free up to 2 hours before; later cancellations count as a used turn.</div>
+          <a class="btn primary block" href="#s-done">Confirm 8–9 pm</a>
+          <a class="btn block" href="#s-week">Choose a different day</a>
         </div>
       </div>
-      <p class="note">Steps to here: returning 2 (link → amenity). Status is text, never colour alone. Open question: show remaining weekly cap ("2 of 3 left") here or only on error?</p>
+      <p class="note">Designer note: steps to here = 3 from the link (leaders: ≈ 6–7 incl. install, estimate). The error offers the next options instead of a dead end. Loading: button shows "Confirming…". For the party hall this screen adds the fee line and a "Pay ₹7,000 by UPI" button that opens a Razorpay payment link.</p>
     </section>
 
-    <!-- S-04b Error: slot just taken -->
-    <section class="screen" id="s-error" data-title="S-04b Slot taken (error)" aria-labelledby="t-error">
-      <h2 id="t-error">S-04b Booking error — slot just taken</h2>
-      <div class="frame">
-        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-        <div class="appbar"><a href="#s-slots" aria-label="Back">←</a><h3>Badminton Court 1</h3></div>
-        <div class="body">
-          <div class="alert" role="alert">Someone booked 8:00–9:00 pm a moment ago. Nothing was booked for you.</div>
-          <p class="sub" style="color:var(--ink);font-weight:600">Still free today</p>
-          <ul class="list" aria-label="Suggested slots">
-            <li><span class="grow">6:00–7:00 pm</span><a class="btn primary" href="#s-booked">Book 6:00 pm</a></li>
-            <li><span class="grow">9:00–10:00 pm</span><a class="btn" href="#s-booked">Book 9:00 pm</a></li>
-          </ul>
-          <p class="meta">Cap variant: "You've used 3 of 3 court slots this week. Your limit resets Monday at 6 am."</p>
-        </div>
-      </div>
-      <p class="note">Recovery path from DESIGN_DIRECTION §5.3. Never show "Booked" until the server confirms; keep the user's day selection.</p>
-    </section>
-
-    <!-- S-05 Success -->
-    <section class="screen" id="s-booked" data-title="S-05 Booked" aria-labelledby="t-booked">
-      <h2 id="t-booked">S-05 Booked (success)</h2>
+    <!-- S-05 Confirmed: the aha -->
+    <section class="screen" id="s-done" data-title="S-05 Confirmed" aria-labelledby="t-done">
+      <h2 id="t-done">S-05 Confirmed</h2>
       <div class="frame">
         <div class="status"><span>9:41</span><span>●●● ▮</span></div>
         <div class="empty">
-          <div class="img" role="img" aria-label="Success illustration placeholder: tick" style="width:120px;min-height:120px;border-radius:50%"></div>
-          <p class="h" style="font-size:20px">Booked: Badminton Court 1, today 6:00–7:00 pm</p>
-          <p class="sub">Check in at the court by 6:15 pm or it goes to the next person. Free cancellation until 5:00 pm.</p>
-          <a class="btn primary" href="#s-mine">Done</a>
-          <a class="btn" href="#s-booked">Add to calendar</a>
+          <div class="img" role="img" aria-label="Success illustration placeholder: a tick on a notice board" style="width:120px;min-height:120px;border-radius:50%"></div>
+          <p class="h" style="font-size:20px">Booked. Badminton court, Thu 8–9 pm.</p>
+          <p class="sub">Show code <strong>4KQ2</strong> at the desk — or just say flat B-1204. We'll message you 1 hour before.</p>
+          <a class="btn primary" href="#s-mine">Share to the group</a>
+          <a class="btn" href="#s-book">Done</a>
         </div>
       </div>
-      <p class="note">The "aha": booked in 4 taps from the WhatsApp link, with the no-show rule stated up front so release never feels unfair.</p>
+      <p class="note">Designer note: the confirmation is announced to screen readers via a live region. "Share to the group" posts a plain text line to WhatsApp, which is also how other residents discover the link. Open question Q-12: code vs QR.</p>
     </section>
 
-    <!-- S-06 Ballot entry: the differentiator -->
-    <section class="screen" id="s-ballot" data-title="S-06 Enter ballot" aria-labelledby="t-ballot">
-      <h2 id="t-ballot">S-06 Enter ballot — peak slot</h2>
+    <!-- S-06 My bookings -->
+    <section class="screen" id="s-mine" data-title="S-06 My bookings" aria-labelledby="t-mine">
+      <h2 id="t-mine">S-06 My bookings</h2>
       <div class="frame">
         <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-        <div class="appbar"><a href="#s-slots" aria-label="Back">←</a><h3>Saturday 7:00–8:00 pm</h3></div>
+        <div class="appbar"><h3>My bookings</h3><span class="chip">Flat B-1204</span></div>
         <div class="body">
-          <div class="box">Badminton Court 1 · Sat 18 Oct · Peak slot</div>
-          <p>The ballot closes <strong>Thursday 9:00 pm</strong>. The draw is random, but flats that missed out recently get an extra entry.</p>
-          <ul class="list" aria-label="Ballot details">
-            <li><span class="grow">Flats entered so far<br><span class="meta">14</span></span></li>
-            <li><span class="grow">Your peak slots this month<br><span class="meta">0 of 2 — you get a bonus entry</span></span></li>
+          <ul class="list" aria-label="Upcoming bookings">
+            <li><span class="grow">Badminton court · Thu 22 Oct, 8–9 pm<br><span class="meta">Code 4KQ2 · cancel free until 6 pm</span></span><a class="btn" href="#s-mine-empty" aria-label="Cancel badminton court Thursday 8 to 9 pm">Cancel</a></li>
+            <li><span class="grow">Badminton court · Thu 22 Oct, 7–8 pm<br><span class="meta">Waitlist · you are 2nd in line</span></span><a class="btn" href="#s-mine-empty" aria-label="Leave waitlist for Thursday 7 to 8 pm">Leave</a></li>
           </ul>
-          <a class="btn primary block" href="#s-result">Enter ballot</a>
-          <a class="btn block" href="#s-rules">How the ballot works</a>
+          <div class="box">Your turns this week: badminton 0 of 2 left (resets Monday) · lounge 1 of 1 left today.</div>
+          <p class="meta">Past bookings (3) · Cancelled (1)</p>
         </div>
+        <nav class="tabbar" aria-label="Main (my bookings tab)"><a href="#s-book">Book</a><a href="#s-mine" aria-current="page">My bookings</a><a href="#s-week">Community</a></nav>
       </div>
-      <p class="note">Differentiator screen (PRD US-06/07). Test question: do residents believe it's fair? Open question Q-10: should the committee choose weighting, or keep it simple random?</p>
+      <p class="note">Designer note: cancelling shows a 10-minute undo bar rather than a confirm dialog (calm under conflict). Error state: "We couldn't cancel — try again or ask the desk." Loading: skeleton rows.</p>
     </section>
 
-    <!-- S-07 Ballot result + check-in -->
-    <section class="screen" id="s-result" data-title="S-07 Ballot result" aria-labelledby="t-result">
-      <h2 id="t-result">S-07 Ballot result + check-in</h2>
-      <div class="frame">
-        <div class="status"><span>7:02 pm</span><span>●●● ▮</span></div>
-        <div class="appbar"><a href="#s-mine" aria-label="Back">←</a><h3>Saturday 7:00 pm</h3></div>
-        <div class="body">
-          <p class="h" style="font-size:20px">You got Saturday 7:00 pm</p>
-          <div class="box">Check in at Badminton Court 1 by 7:15 pm. Scan the QR code at the court or tap below when you're there.</div>
-          <a class="btn primary block" href="#s-mine">I'm at the court — check in</a>
-          <p class="meta">Not drawn variant: "Not drawn this week. You're first in line for next Saturday's ballot. Join the waitlist for today?"</p>
-          <p class="meta">Released variant (7:16 pm): "Not checked in by 7:15 pm, so the slot went to the waitlist. This counts as 1 no-show."</p>
-        </div>
-      </div>
-      <p class="note">Check-in method is open: QR at the court vs tap + location vs guard confirms. Location permission must be optional with a fallback.</p>
-    </section>
-
-    <!-- S-08 My bookings -->
-    <section class="screen" id="s-mine" data-title="S-08 My bookings" aria-labelledby="t-mine">
-      <h2 id="t-mine">S-08 My bookings</h2>
+    <!-- S-07 My bookings, empty state -->
+    <section class="screen" id="s-mine-empty" data-title="S-07 My bookings — empty" aria-labelledby="t-mine-empty">
+      <h2 id="t-mine-empty">S-07 My bookings — empty state</h2>
       <div class="frame">
         <div class="status"><span>9:41</span><span>●●● ▮</span></div>
         <div class="appbar"><h3>My bookings</h3></div>
-        <div class="body">
-          <ul class="list" aria-label="Upcoming bookings">
-            <li><span class="grow">Badminton Court 1<br><span class="meta">Today 6:00–7:00 pm · Booked</span></span><a class="btn" href="#s-mine">Cancel</a></li>
-            <li><span class="grow">Badminton Court 1<br><span class="meta">Sat 18 Oct 7:00 pm · In ballot</span></span><a class="btn" href="#s-mine">Leave ballot</a></li>
-            <li><span class="grow">Party hall<br><span class="meta">Sat 1 Nov · In ballot · fee ₹2,000 billed with maintenance</span></span><a class="btn" href="#s-mine">Leave ballot</a></li>
-          </ul>
-          <p class="meta">Empty state: "Nothing booked. Your past bookings will show here too."</p>
+        <div class="empty">
+          <div class="img" role="img" aria-label="Empty-state illustration placeholder: an empty court" style="width:140px;min-height:110px"></div>
+          <p class="h" style="font-size:18px">No bookings yet.</p>
+          <p class="sub">The badminton court has slots free tonight — want one?</p>
+          <a class="btn primary" href="#s-week">See tonight's slots</a>
         </div>
-        <nav class="tabbar" aria-label="Main navigation 3"><a href="#s-home">Book</a><a href="#s-mine" aria-current="page">My bookings</a><a href="#s-rules">Rules</a></nav>
+        <nav class="tabbar" aria-label="Main (empty bookings)"><a href="#s-book">Book</a><a href="#s-mine-empty" aria-current="page">My bookings</a><a href="#s-week">Community</a></nav>
       </div>
-      <p class="note">Cancel uses undo ("Cancelled. Undo") rather than a confirm dialog, except inside the late-cancel window where it counts as a no-show.</p>
+      <p class="note">Designer note: the empty state points at a concrete free slot, not a generic "start booking". Same copy as DESIGN_DIRECTION §7.</p>
     </section>
 
-    <!-- S-09 Rules log -->
-    <section class="screen" id="s-rules" data-title="S-09 Rules log" aria-labelledby="t-rules">
-      <h2 id="t-rules">S-09 Rules log</h2>
+    <!-- S-08 Desk view: desktop width, large text, Telugu toggle -->
+    <section class="screen" id="s-desk" data-title="S-08 Desk view (today)" aria-labelledby="t-desk" data-device="desktop">
+      <h2 id="t-desk">S-08 Desk view — today's bookings (guard's phone or desk tablet; shown at tablet width)</h2>
       <div class="frame">
-        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-        <div class="appbar"><h3>Rules</h3></div>
-        <div class="body">
-          <div class="box">Set by the Green Meadows clubhouse committee. Last changed 2 Oct.</div>
-          <ul class="list" aria-label="Recent activity">
-            <li><span class="grow">Ballot drawn: Sat 11 Oct, Court 1, 7 pm<br><span class="meta">22 flats entered · 1 winner · draw record kept</span></span></li>
-            <li><span class="grow">Released: Sun 12 Oct, pool lane 2, 6 am<br><span class="meta">No check-in by 6:15 · went to waitlist</span></span></li>
-            <li><span class="grow">Rule changed: court cap 4 → 3 a week<br><span class="meta">Committee meeting, 2 Oct</span></span></li>
+        <div class="appbar"><h3 style="font-size:22px">Lakeview Heights · Desk · Thu 22 Oct</h3><button type="button" class="chip" aria-pressed="true" aria-label="Telugu on">తెలుగు</button><button type="button" class="chip" aria-pressed="false" aria-label="English">English</button></div>
+        <div class="body" style="font-size:19px">
+          <div class="field"><label for="f-desk-search">Find a flat or code</label><input id="f-desk-search" value="B-1204"></div>
+          <ul class="list" aria-label="Today's bookings">
+            <li><span class="grow"><strong>Badminton court · 8–9 pm</strong><br><span class="meta" style="font-size:16px">Flat B-1204 · code 4KQ2 · confirmed</span></span><button type="button" class="btn">Mark arrived</button></li>
+            <li><span class="grow"><strong>Badminton court · 7–8 pm</strong><br><span class="meta" style="font-size:16px">Flat A-304 · code 9HT1 · confirmed</span></span><button type="button" class="btn">Mark arrived</button></li>
+            <li><span class="grow"><strong>Clubhouse lounge · 5–6 pm</strong><br><span class="meta" style="font-size:16px">Flat C-1102 · code 2PLM · arrived 5:02 pm</span></span><span class="chip">Arrived</span></li>
           </ul>
-        </div>
-        <nav class="tabbar" aria-label="Main navigation 4"><a href="#s-home">Book</a><a href="#s-mine">My bookings</a><a href="#s-rules" aria-current="page">Rules</a></nav>
-      </div>
-      <p class="note">Transparency without exposing people: no names or flat numbers in the public log. Open question: do committees want this public?</p>
-    </section>
-
-    <!-- S-10 Committee: amenity rules (desktop frame) -->
-    <section class="screen" id="s-admin" data-device="desktop" data-title="S-10 Committee rules" aria-labelledby="t-admin">
-      <h2 id="t-admin">S-10 Committee — amenity rules (desktop)</h2>
-      <div class="frame">
-        <div class="appbar"><a href="#s-home" aria-label="Back to resident view">←</a><h3>Committee · Badminton Court 1</h3><span class="chip">Draft — not saved</span></div>
-        <div class="body">
-          <div class="row">
-            <div class="field grow"><label for="a-len">Slot length</label><input id="a-len" value="60 minutes"></div>
-            <div class="field grow"><label for="a-hours">Open hours</label><input id="a-hours" value="5:00 am – 10:00 pm"></div>
-            <div class="field grow"><label for="a-adv">Book up to</label><input id="a-adv" value="7 days ahead"></div>
-          </div>
-          <div class="row">
-            <div class="field grow"><label for="a-cap">Slots per flat per week</label><input id="a-cap" value="3"></div>
-            <div class="field grow error"><label for="a-peak">Peak slots (ballot)</label><input id="a-peak" aria-invalid="true" aria-describedby="e-peak" value="Sat–Sun 7:00–10:00 pm, Mon–Fri 6:00–9:00 pm"><span class="msg" id="e-peak">Peak hours cover 85% of evening slots. Keep it under 50% so free booking still works.</span></div>
-            <div class="field grow"><label for="a-checkin">Check-in window</label><input id="a-checkin" value="15 minutes"></div>
-          </div>
-          <div class="field"><label for="a-black">Closed dates</label><input id="a-black" value="15–20 Oct (resurfacing)"></div>
-          <div class="row"><a class="btn primary" href="#s-rules">Save and publish to rules log</a><a class="btn" href="#s-admin">Preview as resident</a></div>
+          <div class="box">Resident without a phone? <a href="#s-week">Book on their behalf</a> — the reason is logged for the committee.</div>
         </div>
       </div>
-      <p class="note">Desktop width because committees configure on laptops. Every save is written to the public rules log (S-09). Roster screen S-11 (CSV import, approve join requests) is in the inventory but not wireframed in this draft.</p>
+      <p class="note">Designer note: the desk must settle a dispute in 5 seconds: big text, flat number first, Telugu by default for staff. Empty state: "No bookings today." Error/offline: shows the last synced list with a timestamp. Committee console (S-09) is described in DESIGN_DIRECTION §6 and the PRD, not wireframed in Standard mode.</p>
     </section>
 
   </div>

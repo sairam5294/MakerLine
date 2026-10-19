@@ -26,6 +26,8 @@ Every open question about the idea lives here until it is answered. Each one nam
 |---|---|---|---|---|---|---|---|
 | Q-01 | | | Evaluation / Design direction / PRD draft / Validation / Approval / Naming / Tech stack / PRD full | Decision / Fact / Assumption | Ask owner · desk research · 5 interviews · landing-page test · prototype test | Owner / Claude | |
 
+**No interview happened** (brief supplied, owner unavailable): every brief claim that is a Fact becomes an open question; Owner = Claude for anything desk research can answer, Owner = owner for the rest.
+
 **Type.** *Decision* — the owner chooses (goal, platform, scope, price). *Fact* — knowable about users or the market; never assume, find out. *Assumption* — a belief the idea depends on; it becomes a validation test.
 
 **Default if unanswered.** For a Decision, the recommended option and why. For a Fact or Assumption, write "none — must be found out", never a guess.

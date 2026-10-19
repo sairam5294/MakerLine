@@ -35,6 +35,7 @@ Sections marked **(full)** are filled after approval; in a draft write "after ap
 | Capability | MoSCoW | Release | Why |
 |---|---|---|---|
 - MVP definition: the smallest product that tests {{riskiest assumption}} and delivers {{core value}}.
+- Scope summary: {{n}} Must · {{n}} Should · {{n}} Could stories · estimate {{n}} weeks at {{h}} h/week (owner's hours from OWNER.md)
 - Later releases (themes only):
 
 ## 7. User journeys

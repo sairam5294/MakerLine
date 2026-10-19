@@ -9,7 +9,7 @@ Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approv
 | 2a | Design direction | Not started | | wireframes in design/wireframes |
 | 2b | PRD draft | Not started | | |
 | 3 | Validation | Not started | | recommended |
-| ✦ | Idea Pack | Not started | | ONE_PAGER.md + README.md index |
+| ✦ | Idea Pack | Not started | | ONE_PAGER.md + README.md index · Waiting for owner once written, Done once they decide |
 | 4 | Naming | Not started | | |
 | 5 | Tech stack | Not started | | |
 | 6 | Design system | Not started | | |

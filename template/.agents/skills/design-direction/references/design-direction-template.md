@@ -54,6 +54,8 @@ Steps to the core action: {{n}} (leaders: {{n}})
   | Role | Colour | On | Contrast |
   |---|---|---|---|
 
+  (one hex per Colour and On cell, ratio as n:1, nothing else in the row — the checker recomputes it)
+
 - Type: {{display}} / {{text}}; base size {{n}}
 - Shape and spacing: {{radius, density}}
 - Imagery and icons:
