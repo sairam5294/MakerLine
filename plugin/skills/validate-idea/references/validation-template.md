@@ -3,6 +3,8 @@
 
 ## Assumptions and tests
 
+<!-- Thresholds and kill criteria are fixed here before testing. Evidence goes to VALIDATION_RESULTS.md (V-ids); the Result column links to it. -->
+
 | # | Riskiest assumption | Test | Kill criterion (set before) | Result | Verdict |
 |---|---|---|---|---|---|
 | A1 | | | | | validated / invalidated / unclear |
