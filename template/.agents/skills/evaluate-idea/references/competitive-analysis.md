@@ -41,6 +41,9 @@ _Version {{n}} · {{date}} · Sources at the end; Evidence / Estimate / Opinion 
 | Substitute | | | | | | |
 | Doing nothing | Tolerating the problem | | | Free | | |
 
+## Lite (Quick mode)
+Required: the landscape table with the top 3 direct competitors + "doing nothing" (name, link, price, one-line positioning, one sourced complaint each) · the differentiator test · the wedge and positioning statement · sources. Skip: indirect and substitute rings beyond one line each, full leader profiles, job matrix, positioning map, head-to-head, "why hasn't anyone done this". Say "Lite — run Standard for the full analysis" at the top.
+
 ## Leader profiles
 ### {{Leader}}
 - Positioning (their words):

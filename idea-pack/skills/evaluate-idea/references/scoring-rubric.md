@@ -15,6 +15,8 @@ Score each dimension 1–10. Anchor to the descriptions; justify each score with
 
 **Weighted score** = Σ(score × weight). Show the calculation.
 
+**Unknown deciding fact** (owner unavailable or research budget spent): score the dimension ≤ 5, write "Estimate — Q-xx" in its evidence cell, and lower the verdict's confidence one step. Never score high on a guess.
+
 ## Strengthening rule
 
 Every dimension scored ≤ 6 gets a "Raise it by…" entry: the specific change (to audience, wedge, scope, model, channel or form), the evidence that would confirm it, and the realistic score after. Sum these into a **target weighted score**. The gap between today's score and the target is the strengthening plan; a Pivot or Drop must still show the best version worth testing, or say plainly that none was found and why.

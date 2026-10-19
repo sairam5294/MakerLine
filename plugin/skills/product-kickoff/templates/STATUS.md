@@ -1,4 +1,4 @@
-# Status — <product>  ·  updated <YYYY-MM-DD>  ·  kit v<version from the plugin's .claude-plugin/plugin.json>
+# Status — <product>  ·  updated <YYYY-MM-DD>  ·  kit v<version if known, else omit>
 
 Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approves; the gate hook reads this line -->
 
@@ -22,7 +22,7 @@ Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approv
 | 12 | Ship | Not started | | |
 | 13 | Post-launch | Not started | | |
 
-Status: Not started · In progress · Waiting for owner · Done · Skipped (reason in DECISIONS.md)
+Status: Not started · In progress · Draft — awaiting owner · Waiting for owner · Done · Skipped (reason in DECISIONS.md)
 
 Next step: run `new-idea`.
 Blockers:

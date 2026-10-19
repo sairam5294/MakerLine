@@ -58,3 +58,4 @@ Pass bar for the Idea Pack: ≥ 80% of items 11–28, plus the universal 1–10 
 |---|---|---|---|---|---|---|---|
 | 2026-10-16 | community-amenities | Standard (v0.7.0) | ~224k | 72 | 18 | 6/6 must-catch | baseline before budgets |
 | 2026-10-16 | new-idea-pitch | discovery (v0.7.0) | ~115k | 14 | 3 | ≈ 10/11 | |
+| 2026-10-19 | ontario-clinic-booking | Quick (v0.8 pre-release) | ~190k (incl. a rate-limit restart) | 56 | 9 | 6.5/7 must-catch (PIPEDA missed); checker 0 fail | 8 searches + 4 reads exactly; 5 trim passes to fit the 1,200-word cap → cap raised to 1,500, Quick-optional sections marked |

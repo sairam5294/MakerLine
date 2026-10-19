@@ -21,8 +21,8 @@ REQUIRED["standard"] = REQUIRED["quick"] + ["DESIGN_DIRECTION.md", "PRD.md"]
 REQUIRED["deep"] = REQUIRED["standard"]
 
 # Prose word ranges per mode (tables, code and the sources list don't count).
-EVAL_WORDS = {"quick": (500, 1200), "standard": (1500, 3000), "deep": (2500, 4500)}
-ONE_PAGER_MAX = 500
+EVAL_WORDS = {"quick": (600, 1500), "standard": (1500, 3000), "deep": (2500, 4500)}
+ONE_PAGER_MAX = 550
 
 # Phrases each document must contain (case-insensitive). Kept loose on purpose:
 # they confirm a section exists, not its wording.

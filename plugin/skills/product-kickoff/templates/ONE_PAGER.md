@@ -1,6 +1,6 @@
 # {{Working name}} — one-pager
 
-<!-- ≤ 500 words; one line per label. Owner unavailable → put "Defaults to confirm: …" above the idea line. -->
+<!-- ≤ 500 words (550 with a "Defaults to confirm" line); one line per label. Quick mode: omit the Look-and-feel line and say "Version 1" is provisional. -->
 
 _{{date}} · Verdict: **{{Go / Go with changes / Pivot / Drop}}** ({{confidence}}) · Idea Pack index: `docs/product/README.md`_
 

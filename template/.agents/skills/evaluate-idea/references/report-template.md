@@ -45,7 +45,7 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 | Assumption (quoted) | Why it's shaky | How to verify | CLARITY id |
 |---|---|---|---|
 
-## 4. Problem validation
+## 4. Problem validation *(Quick: optional)*
 - Evidence the problem is real (sourced):
 - Evidence against / unknowns:
 - Current workarounds and why people tolerate them:
@@ -54,9 +54,9 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 ### Segments
 | Segment | Size estimate | Pain level | Willingness to pay | Reachability | Priority |
 |---|---|---|---|---|---|
-### Personas (2–3)
+### Personas (2–3) *(Quick: one persona)*
 **{{Name, age, role}}** — context, goals, frustrations, devices/connectivity, a day-in-the-life moment, what would make them switch, accessibility needs.
-### Market size
+### Market size *(Quick: one bottom-up line)*
 | Level | Definition | Estimate | Math & sources |
 |---|---|---|---|
 | TAM | | | |
@@ -65,7 +65,7 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 ### Reaching the first 100 → 1,000 users
 | Channel | Why this audience is there | Cost | Owner's access | First experiment |
 |---|---|---|---|---|
-### Retention
+### Retention *(Quick: optional)*
 - Trigger → action → reward → investment loop; why they'd come back weekly; what breaks the loop.
 
 ## 6. Competitive landscape (summary — evidence in COMPETITORS.md)
@@ -90,7 +90,7 @@ How to make this idea stronger — the core of the report, for every verdict.
 | Weak dimension (score) | Change | Evidence that would confirm it | Effort | Expected score after |
 |---|---|---|---|---|
 
-### Improvements ranked by impact ÷ effort
+### Improvements ranked by impact ÷ effort *(Quick: optional)*
 | # | Suggestion | Why it helps | Effort | Impact |
 |---|---|---|---|---|
 
@@ -101,7 +101,7 @@ How to make this idea stronger — the core of the report, for every verdict.
 | Pivot | What changes | Why it might be stronger | What it gives up |
 |---|---|---|---|
 
-## 9. Business model
+## 9. Business model *(Quick: price + payer in 3 lines)*
 - Pricing benchmarks (sourced):
 - Unit economics sketch (price, conversion, costs per user: hosting, media, AI, store fees ~15–30%):
 - Path to the 6-month success metric:
