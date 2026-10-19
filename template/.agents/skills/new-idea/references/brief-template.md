@@ -1,7 +1,8 @@
 # Project Brief — {{working name}}
 
-_Version {{n}} · {{date}} · Owner: {{name}}_
-_Status: Draft / Confirmed_
+_Version {{0 = from the pitch only · 1+ = after owner answers}} · {{date}} · Owner: {{name or "—"}}_
+_Status: Draft — awaiting owner / Draft / Confirmed_
+_Source tags on unconfirmed lines: [Pitch] · [Owner] · [Default] (recommended option for a decision) · [Assumption] · [Research]_
 
 ## 1. One-liner
 {{For [audience] who [problem], {{name}} is a [category] that [key benefit]. Unlike [alternative], it [differentiator].}}
@@ -11,6 +12,15 @@ _Status: Draft / Confirmed_
 - A real moment it happens:
 - Current workarounds:
 - Why now / why the owner:
+- Unfair advantages (access to users, skills, content, community, lived experience):
+
+## 2b. Alternatives & differentiator (owner's hypothesis — verified in EVALUATION / COMPETITORS)
+- Who/what they're up against (incl. "doing nothing"):
+- Known complaints about those:
+- Differentiator hypothesis ("Unlike ___, we ___"):
+- Switching cost for users:
+- Why a bigger player hasn't done it:
+- Quick research (optional, [Research], no judgement — evaluate-idea does that):
 
 ## 3. Goal & success
 - Project goal: {{learning · side income · business · impact}}
@@ -47,6 +57,7 @@ Languages:
 - Who builds:
 - Existing accounts/tools:
 - Expected scale (year 1):
+- Provisional suggestion (with a one-line reason; final choice in tech-stack):
 
 ## 8. Business & constraints
 - Monetization:
@@ -62,4 +73,4 @@ Languages:
 -
 
 ## 11. Open questions
--
+See `CLARITY.md` — every open question with the phase it blocks and how to find out.

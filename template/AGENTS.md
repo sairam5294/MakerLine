@@ -8,7 +8,7 @@ Rules for every AI agent in this repo (Claude via CLAUDE.md, Cursor, Codex). Kee
 3. End every session with the `handoff` skill.
 
 ## Workflow
-new-idea → evaluate-idea → validate-idea → **owner approval** → name-product → tech-stack → design-system → write-prd → plan-build → build-feature (+ design-qa) → quality-review → test-plan → ship-checklist → post-launch.
+new-idea → evaluate-idea → design-direction → write-prd (draft) → validate-idea → **owner approval** → name-product → tech-stack → design-system → write-prd (full) → plan-build → build-feature (+ design-qa) → quality-review → test-plan → ship-checklist → post-launch.
 Anytime: `handoff`, `portfolio`, `ai-feature` (any AI feature), `standards-refresh`.
 Skills live in `.agents/skills/<name>/SKILL.md`. Outputs live in `docs/product/`. Design tokens: `design/tokens.json` → `npm run tokens`.
 

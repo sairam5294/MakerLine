@@ -1,4 +1,4 @@
-# Product Kit v0.6
+# Product Kit v0.7
 
 **The open-source designer's AI toolkit.** One setup that takes an idea from "I have a new idea" to a shipped web / iOS / Android product, and works the same way in **Claude**, **Cursor** and **Codex**. Built by a designer with light coding skills, for designers and solo makers who build with AI. The rules are enforced by checks, not just written down.
 
@@ -8,7 +8,8 @@
 
 **What you get**
 - A 13-phase workflow from discovery interview to post-launch retro, with an approval gate AI tools cannot bypass
-- 20 skills and 12 specialist agents (strategist, UX reviewer, accessibility auditor, security reviewer, QA, devil's advocate…)
+- An **Idea Pack** for every idea before any code: honest, constructive evaluation, competitors and a differentiator test, a strengthening plan, draft design direction with clickable wireframes, a draft PRD and a one-pager
+- 21 skills and 13 specialist agents (strategist, UX reviewer, accessibility auditor, security reviewer, QA, devil's advocate and idea champion…)
 - Standards for accessibility (WCAG 2.2 AA), UX, security, testing, backend and AI features — split into small files so only the relevant ones load
 - Two tested starters: Expo + Supabase (iOS / Android / web) and Next.js (landing page + waitlist), both with axe, Lighthouse and contrast tests
 - Safety hooks, git hooks and GitHub Actions that block dangerous commands, leaked secrets and code before approval
@@ -20,7 +21,7 @@ Licensed under [MIT](LICENSE). Contributions welcome — see [CONTRIBUTING.md](C
 
 ```
 product-kit/
-├── plugin/        THE SOURCE — edit only here (20 skills, 12 agents, standards). Installs into Claude.
+├── plugin/        THE SOURCE — edit only here (21 skills, 13 agents, standards). Installs into Claude.
 ├── template/      Copied into every project: AGENTS.md, safety settings, CI, git hooks, MCP, Cursor/Codex adapters
 ├── starter/       Tested Expo (iOS/Android/Web) + Supabase app: i18n (en/te/hi), Sentry, PostHog
 ├── starter-web/   Tested Next.js site: landing page + waitlist (nonce CSP, rate limit, optional Turnstile), AI harness with evals; Lighthouse 1.0/1.0/1.0
@@ -39,9 +40,12 @@ product-kit/
 | # | Skill | Output (`docs/product/`) |
 |---|---|---|
 | 0 | **product-kickoff**: say "I have a new idea" | runs everything below, tracks `STATUS.md` |
-| 1 | new-idea: discovery interview | PROJECT_BRIEF.md |
-| 2 | evaluate-idea: researched, honest report; refine until you say "approved" | EVALUATION.md |
-| 3 | validate-idea: kill criteria, interviews, landing page, prototype test | VALIDATION.md |
+| 1 | new-idea: discovery interview; every unknown logged with what it blocks | PROJECT_BRIEF.md · CLARITY.md |
+| 2 | evaluate-idea: researched and constructive — strongest version, reality check, competitors and differentiator test, strengthening plan with a path to Go, tools and cost | EVALUATION.md · COMPETITORS.md |
+| 2a | design-direction: principles, flows, screen inventory, 2–3 visual directions, clickable low-fi wireframes (optionally in Figma) | DESIGN_DIRECTION.md · design/wireframes/ |
+| 2b | write-prd (draft): problem, metrics, personas, scope, stories, risks, release plan | PRD.md v0 |
+| 3 | validate-idea: kill criteria, interviews, landing page, prototype test with the wireframes | VALIDATION.md |
+| ✦ | **Idea Pack**: one-pager + index of everything above — say "give me everything for this idea" to run 1 → 2b in one go | ONE_PAGER.md · README.md |
 | ★ | **Approval gate**: no app code before `Evaluation: APPROVED` (enforced) | STATUS.md |
 | 4–8 | name-product · tech-stack · design-system · write-prd · plan-build | NAMING · TECH_STACK · DESIGN_SYSTEM · PRD · PLAN |
 | 9 | build-feature (+ design-qa against Figma) | code + tests |

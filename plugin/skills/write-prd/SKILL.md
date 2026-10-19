@@ -1,22 +1,23 @@
 ---
 name: write-prd
-description: Product Kit PRD: writes PRD.md for the MVP — goals, personas, journeys, numbered user stories with Given/When/Then criteria, screens with states, data + access rules, analytics, non-functional requirements. Use for "PRD", "spec", "requirements", "user stories".
+description: Product Kit PRD — a draft PRD at the idea stage (problem, goals and metrics, personas, positioning, scope, journeys, user stories, design links, risks, release plan) and the full PRD after approval (adds data and permissions, analytics, stack, non-functional detail) → PRD.md. Use for "PRD", "spec", "requirements", "user stories".
 ---
 
 # Write PRD
 
-1. Gate check. Read brief, evaluation (MVP cut), validation, naming, stack, design system.
-2. Write `docs/product/PRD.md`:
-   1. Summary, goals (→ success metric), non-goals
-   2. Personas + top 3 jobs-to-be-done
-   3. Journeys: happy + key edge paths per core flow
-   4. Stories `US-01…` by epic: As a / I want / so that · MoSCoW · Given/When/Then incl. error, empty, offline, permission-denied
-   5. Screens: purpose · primary action · states · components
-   6. Data: entities, fields, relations, who can read/write (→ RLS)
-   7. Analytics events (no personal data) + funnel for the success metric
-   8. Non-functional: relevant MUSTs from `../product-standards/` (AI features → run the ai-feature skill and link its doc)
-   9. Copy, notifications · 10. Release criteria, open questions
-3. If must-haves exceed ~6–8 weeks for the owner, propose cuts.
-4. Iterate → Approved → STATUS.
+Template: `references/prd-template.md`. Read CLARITY.md first; move answered questions down with the source.
 
-Every criterion must be automatable; every personal-data story states what and why.
+**Two modes**
+- If EVALUATION's verdict is Pivot, spec the recommended pivot (see evaluate-idea) and label it at the top.
+- **Draft (v0.x) — before approval.** Docs only, so the gate allows it. Inputs: PROJECT_BRIEF, EVALUATION (personas, positioning, MVP cut, risks), COMPETITORS, DESIGN_DIRECTION (flows, screens, wireframes), VALIDATION if done. Fill every section except those marked **(full)** — write "after approval" under those headings. The draft makes the idea concrete enough to test, estimate and approve.
+- **Full (v1.x) — after `Evaluation: APPROVED`.** Adds NAMING, TECH_STACK, DESIGN_SYSTEM: data and permissions (→ RLS), analytics events, technology, non-functional detail. Promote the draft; don't start over.
+
+Steps
+1. Write `docs/product/PRD.md` from the template.
+2. User stories `US-01…` by epic: As a / I want / so that · MoSCoW · Given/When/Then including error, empty, offline and permission-denied cases · the screen (S-xx) it lives on · personal data used and why.
+3. Make the differentiator visible: name the stories and screens where a user will notice it in the first session. If none, flag it — the MVP isn't testing the idea.
+4. Scope check: if Musts exceed ~8 weeks for this owner (OWNER.md hours), propose cuts that keep the core action and the differentiator.
+5. Every acceptance criterion must be automatable; every metric needs an event that measures it.
+6. Present in ≤ 12 lines: the MVP in one sentence, number of Must stories, estimated build time, top 3 risks, open questions that block approval. Iterate → owner reviews (draft) or approves (full) → STATUS: PRD draft `Done` after review.
+
+Non-functional MUSTs come from `../product-standards/`; AI features → run ai-feature and link its document.

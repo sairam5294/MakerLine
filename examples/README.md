@@ -5,6 +5,7 @@ Each folder is one project taken through the kit, with the documents the skills 
 | Project | Path | Kit path exercised | Status |
 | --- | --- | --- | --- |
 | RhythmBuddy — macOS wellness-reminder menu-bar app (Python / PyObjC) | `rhythmbuddy/` | Existing codebase adopted with `upgrade-project`, then quality-review, test-plan and ship-checklist | In progress (Oct 2026) |
+| ClubSlot — society amenity booking (idea stage, blind eval) | `idea-pack-clubslot/` | Full Idea Pack: evaluate-idea (Pivot), COMPETITORS, design-direction + wireframes, draft PRD, one-pager | Idea stage (Oct 2026) |
 
 ## What each example contains
 

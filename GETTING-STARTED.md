@@ -55,15 +55,18 @@ Then re-run step 2's install (Claude Code: `claude plugin marketplace update pro
 
 You can start in two ways. **Start with A** — no terminal needed.
 
-### A. Thinking phases in the Claude app (discovery → evaluation → approval)
-1. In Claude (Cowork), connect an empty folder for the idea (e.g. `~/Projects/bakery-orders`).
-2. Say: **"I have a new idea: …"** (2–5 sentences).
-3. Claude interviews you in short rounds → writes `docs/product/PROJECT_BRIEF.md`.
-4. It researches and writes an honest **Evaluation report** (`EVALUATION.md`) with a verdict, risks, user base, competitors, improvements.
-5. You push back, refine, repeat. Optionally run a cheap **validation test** (interviews, landing page).
-6. When you're convinced: **you approve**. In Cowork, say "I approve the evaluation" — Claude records your exact words. (From a terminal it's `scripts/approve.sh`.)
+### A. Thinking phases in the Claude app — the Idea Pack (no code yet)
+1. In the Claude app, connect an empty folder for the idea (e.g. `~/Projects/bakery-orders`).
+2. Say: **"I have a new idea: …"** (2–5 sentences). Or, to get everything in one go: **"Give me the full Idea Pack for this idea: …"**
+3. Claude interviews you in short rounds → `PROJECT_BRIEF.md`, plus `CLARITY.md`: every open question with the decision it blocks.
+4. It researches and writes an honest, constructive **evaluation** (`EVALUATION.md`): the strongest version of your idea, a reality check, the scorecard, users and market, a strengthening plan with a path to "Go", and the tools and monthly cost. Competitors get their own file (`COMPETITORS.md`): who leads, where they win, where you'd win, and whether your differentiator holds up.
+5. **Design direction** (`DESIGN_DIRECTION.md`): experience principles, flows, a screen list, 2–3 visual directions, and clickable grey-box **wireframes** in `design/wireframes/index.html` (open it in a browser; "Prototype" clicks through). With the Figma connector, it can build them in Figma too.
+6. **Draft PRD** (`PRD.md` v0): goals and metrics, personas, scope, user stories, risks and a release plan.
+7. A **one-pager** (`ONE_PAGER.md`) and an index (`docs/product/README.md`) tie it together.
+8. You push back, refine, repeat. Optionally run a cheap **validation test** — the wireframes are the prototype.
+9. When you're convinced: **you approve**. In the Claude app, say "I approve the evaluation" — Claude records your exact words. (From a terminal it's `scripts/approve.sh`.)
 
-Then naming, tech stack, design system, PRD and plan also work in the Claude app — they're documents.
+Then naming, tech stack, design system, the full PRD and the plan also work in the Claude app — they're documents.
 
 ### B. Building phases (code) — use Claude Code, Cursor or Codex
 Create the project folder with the kit's starter (in Terminal):
