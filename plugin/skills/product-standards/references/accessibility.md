@@ -48,9 +48,11 @@ Target: **WCAG 2.2 Level AA** on web, plus platform guidance for iOS (VoiceOver,
 
 ## 5. Platform specifics
 
-**iOS**: every tappable view has `accessibilityLabel` and appropriate traits; use Dynamic Type text styles; group related elements; test with VoiceOver rotor.
-**Android**: `contentDescription` on icons; `minTouchTargetSize`; test with TalkBack and at 200% font scale; use `semantics { heading() }` in Compose.
-**React Native / Expo**: `accessible`, `accessibilityRole`, `accessibilityLabel`, `accessibilityHint`, `accessibilityState`; don't disable `allowFontScaling`.
+| Platform | Requirements |
+|---|---|
+| **iOS** | every tappable view has `accessibilityLabel` and appropriate traits; use Dynamic Type text styles; group related elements; test with VoiceOver rotor |
+| **Android** | `contentDescription` on icons; `minTouchTargetSize`; test with TalkBack and at 200% font scale; use `semantics { heading() }` in Compose |
+| **React Native / Expo** | `accessible`, `accessibilityRole`, `accessibilityLabel`, `accessibilityHint`, `accessibilityState`; don't disable `allowFontScaling` |
 
 ## 5b. Custom widgets, ARIA and single-page apps (IAAP WAS Body of Knowledge, Domain 1)
 

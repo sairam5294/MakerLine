@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## 0.11.0 — 2026-10-20
+Skills restructured to a consistent, scannable shape (style guide in docs/kit/SKILL-STYLE.md); plugin README with Try-it prompts, command tables and example workflows; CONNECTORS.md and .mcp.json (GitHub, Figma, Vercel, Supabase, Notion, Linear) for both plugins; standalone Idea Pack README
+
 ## 0.10.0 — 2026-10-20
 One command runs the whole kit: /product-kit:start and /idea-pack:start; 'give me everything' (full Idea Pack), 'set it all up' after approval (tool plan, names + brand, stack, design system, full PRD, engineering docs, project setup in one go), 'build it' (one task per session); token rules from measured runs (few large tool calls, document size caps with checker warnings, exact Quick reading list); portfolio/learning and personal-tool verdicts; tested on Trust Kit and the task tracker
 

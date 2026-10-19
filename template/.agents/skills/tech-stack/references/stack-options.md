@@ -1,6 +1,6 @@
 # Stack Options Catalogue
 
-Starting points — always verify current versions and pricing before recommending.
+Starting points for the 2–3 candidates in `tech-stack` — always verify current versions and pricing before recommending.
 
 ## Recommended default for a solo, AI-assisted builder (web + iOS + Android)
 
@@ -22,18 +22,25 @@ Starting points — always verify current versions and pricing before recommendi
 
 ## Simpler options
 
-- **Web only, content-first**: Next.js (or Astro) + Supabase + Vercel. Add a PWA for "installable" feel before committing to stores.
-- **No-code/low-code prototype for validation**: Figma prototype, Framer site, or a Softr/Glide app on top of Airtable/Google Sheets — to test demand before coding.
+| Option | Stack | Notes |
+|---|---|---|
+| Web only, content-first | Next.js (or Astro) + Supabase + Vercel | Add a PWA for "installable" feel before committing to stores |
+| No-code/low-code prototype for validation | Figma prototype, Framer site, or a Softr/Glide app on top of Airtable/Google Sheets | To test demand before coding |
 
 ## Native options (when justified)
 
-- **iOS**: Swift + SwiftUI, SwiftData/Core Data, StoreKit 2.
-- **Android**: Kotlin + Jetpack Compose, Room, Play Billing.
-- Choose native when: heavy real-time audio/video processing, AR, widgets/watch-first experiences, platform-specific integrations, or a performance bar Expo can't meet. Cost: two codebases.
+| Platform | Stack |
+|---|---|
+| iOS | Swift + SwiftUI, SwiftData/Core Data, StoreKit 2 |
+| Android | Kotlin + Jetpack Compose, Room, Play Billing |
+
+Choose native when: heavy real-time audio/video processing, AR, widgets/watch-first experiences, platform-specific integrations, or a performance bar Expo can't meet. Cost: two codebases.
 
 ## Other cross-platform
 
-- **Flutter** (Dart): excellent performance and consistent UI; smaller web SEO story; different language from web stack.
+| Option | Strengths | Trade-offs |
+|---|---|---|
+| **Flutter** (Dart) | Excellent performance and consistent UI | Smaller web SEO story; different language from web stack |
 
 ## Decision factors to show the owner
 

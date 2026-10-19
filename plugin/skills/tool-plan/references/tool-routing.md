@@ -1,8 +1,9 @@
 # Tool routing — default job split
 
-Start here, then adjust to what the owner has. "Primary" does the job; "fallback" takes over when the primary is unavailable or out of limit. Re-check vendors' current capabilities before relying on any line (`standards-refresh`).
+The starting split `tool-plan` adjusts to what the owner has: "Primary" does the job; "fallback" takes over when the primary is unavailable or out of limit. Re-check vendors' current capabilities before relying on any line (`standards-refresh`).
 
 ## By phase
+
 | Job | Primary | Fallback | Why |
 |---|---|---|---|
 | Brainstorming, angles, "what else could this be?" | ChatGPT | Claude (chat) | fast, cheap, divergent; nothing is decided here |
@@ -20,12 +21,16 @@ Start here, then adjust to what the owner has. "Primary" does the job; "fallback
 | Marketing posts, social copy variants | ChatGPT | Claude | volume and tone variants |
 
 ## Typical splits
-- **Claude + ChatGPT** (common): ChatGPT for brainstorming, naming long-lists, quick research and first drafts; Claude for evaluation, specs and docs, then building with Claude Code.
-- **Claude + ChatGPT + Cursor/Codex:** as above, plus Cursor or Codex for small in-code edits and parallel well-specified tasks; Claude Code for multi-file features, reviews and anything touching auth, data or payments.
-- **Claude only:** Claude chat for thinking, Claude Code for building; use the faster model for mechanical work (`context-budget.md`, model routing).
-- **ChatGPT only:** possible for thinking phases with the Idea Pack's CONTEXT_PACK pasted in; switch to an agent that reads the repo before building.
+
+| Owner has | Split |
+|---|---|
+| **Claude + ChatGPT** (common) | ChatGPT for brainstorming, naming long-lists, quick research and first drafts; Claude for evaluation, specs and docs, then building with Claude Code. |
+| **Claude + ChatGPT + Cursor/Codex** | as above, plus Cursor or Codex for small in-code edits and parallel well-specified tasks; Claude Code for multi-file features, reviews and anything touching auth, data or payments. |
+| **Claude only** | Claude chat for thinking, Claude Code for building; use the faster model for mechanical work (`context-budget.md`, model routing). |
+| **ChatGPT only** | possible for thinking phases with the Idea Pack's CONTEXT_PACK pasted in; switch to an agent that reads the repo before building. |
 
 ## Rules that keep the split working
+
 1. **The repo is the memory.** AGENTS.md, `docs/RULES.md`, `docs/MEMORY.md` and `docs/product/` are what every tool reads. Chat history is not.
 2. **One owner per document.** The tool that owns a file writes it; others propose changes the owner reviews.
 3. **Context out, result back.** A tool that can't read the repo gets `docs/CONTEXT_PACK.md`; its output lands in a named file (`docs/product/research/<topic>.md`, `drafts/<name>.md`) and the owning tool reviews it.

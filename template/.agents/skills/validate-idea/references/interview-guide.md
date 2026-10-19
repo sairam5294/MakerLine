@@ -1,6 +1,15 @@
-# Problem Interview Guide (20–30 min)
+# Problem interview guide (20–30 min)
 
-Rules: ask about the past, not the future; listen 80%; never pitch until the end; record exact quotes.
+The script `validate-idea` uses for 5–10 problem interviews — past behaviour, not opinions.
+
+## Rules
+
+- Ask about the past, not the future.
+- Listen 80%.
+- Never pitch until the end.
+- Record exact quotes.
+
+## Questions, in order
 
 1. Context: "Tell me about your role / family / routine around <topic>."
 2. Last time: "Tell me about the last time you <had the problem>. What happened?"
@@ -12,5 +21,15 @@ Rules: ask about the past, not the future; listen 80%; never pitch until the end
 8. (End) Show concept/prototype: "What's unclear? What would stop you using it?"
 9. Commitment ask: join waitlist / beta / pay a deposit / refer 2 people.
 
-Signals: strong = already hacking a workaround or paying; weak = "nice idea", "I would use it".
-Synthesis: tag quotes by theme; count how many of N showed the pain; note surprises.
+## Signals
+
+| Strength | What you hear |
+|---|---|
+| Strong | already hacking a workaround or paying |
+| Weak | "nice idea", "I would use it" |
+
+## Synthesis
+
+- Tag quotes by theme.
+- Count how many of N showed the pain.
+- Note surprises.

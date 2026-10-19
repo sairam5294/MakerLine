@@ -34,10 +34,12 @@ Grounded in Nielsen's 10 heuristics, Apple Human Interface Guidelines, Material 
 
 ## 4. Platform conventions
 
-- **iOS (HIG)**: tab bar for top-level sections (2–5), large titles, SF Symbols, sheets for focused tasks, swipe-back must work, respect safe areas and Dynamic Island.
-- **Android (Material 3)**: navigation bar (3–5) or rail on tablets, top app bar, FAB only for the single primary action, predictive back, Material You dynamic colour optional.
-- **Web**: responsive breakpoints (≈ 360 / 768 / 1024 / 1440), URLs for every meaningful state (shareable, back button works), hover is an enhancement never a requirement.
-- Cross-platform apps: share brand and layout, but respect each platform's navigation and controls.
+| Platform | Conventions |
+|---|---|
+| **iOS (HIG)** | tab bar for top-level sections (2–5), large titles, SF Symbols, sheets for focused tasks, swipe-back must work, respect safe areas and Dynamic Island |
+| **Android (Material 3)** | navigation bar (3–5) or rail on tablets, top app bar, FAB only for the single primary action, predictive back, Material You dynamic colour optional |
+| **Web** | responsive breakpoints (≈ 360 / 768 / 1024 / 1440), URLs for every meaningful state (shareable, back button works), hover is an enhancement never a requirement |
+| **Cross-platform apps** | share brand and layout, but respect each platform's navigation and controls |
 
 ## 5. Forms
 

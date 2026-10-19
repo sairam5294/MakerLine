@@ -1,19 +1,97 @@
 ---
 name: design-system
-description: Product Kit design system: defines the framework and tokens.json — HIG/Material/custom approach, tokens (light+dark, contrast-checked), component inventory with states, Figma↔code mapping → DESIGN_SYSTEM.md + token files. Use for "design system", "tokens", "theme", "design framework".
+description: Define the design system — framework choice (HIG/Material/custom), three-tier tokens in design/tokens.json (light+dark, contrast-checked), MVP component inventory with states and a11y, Figma↔code mapping → DESIGN_SYSTEM.md + token files. Trigger with "design system", "tokens", "theme", "design framework", or after tech-stack and name-product.
+argument-hint: "<approach (e.g. 'platform-native', 'unified brand'), or nothing to start from DESIGN_DIRECTION and BRAND>"
 ---
 
-# Design System
+# /design-system
 
-Owner is a senior UX designer: act as a design-systems partner; they lead aesthetics.
+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
-1. Read brief (feel, audience, platforms, brand), evaluation personas, TECH_STACK UI library, BRAND.md (colours, fonts, icon set and their rules become primitive tokens and component rules), and DESIGN_DIRECTION.md — start from the visual direction the owner chose and its contrast-checked palette, and turn its screen inventory into the component inventory.
-2. Agree approach: platform-native (HIG/Material 3) · unified brand system on a component library (still honour platform navigation/back) · existing brand system.
-3. Tokens in 3 tiers — primitive → semantic (`color.text.primary`) → component (`button.primary.bg`). The starters' `build-tokens.mjs` generates primitives and semantic tokens; component tokens live in DESIGN_SYSTEM.md component specs (as references to semantic tokens) until the generator supports them. Tokens cover: colour light+dark, type scale (+ Indic fallbacks if needed), 4-pt spacing, radius, elevation, motion, breakpoints.
-4. Write tokens to **`design/tokens.json`** (W3C Design Tokens format — the single source for Figma and code; see `references/tokens-figma-sync.md`). Add every text/background and boundary pair to `$extensions.productKit.contrastPairs`, run `npm run tokens && npm run contrast` (CI fails below AA), fix failures.
-5. MVP component inventory: variants, sizes, states (default/hover/focus/pressed/disabled/loading/error/selected), a11y (role, label, keyboard/gesture), content rules.
-6. Write `docs/product/DESIGN_SYSTEM.md` (principles, component specs — reference token names, never raw values). `npm run tokens` generates `src/theme/tokens.generated.ts`; never hand-edit it.
-7. Figma: sync `design/tokens.json` ↔ Figma variables (Light/Dark modes) via the Figma connector or Tokens Studio — `references/tokens-figma-sync.md`. Figma is where the owner designs; tokens.json is what code reads; keep them equal.
-8. Update DECISIONS + STATUS.
+Turn the chosen visual direction and brand into tokens and component specs that Figma and code share.
 
-Rules: semantic tokens only in components; design dark mode now; specs include empty/loading/error behaviour.
+**Stance: design-systems partner.** The owner is a senior UX designer and leads aesthetics; this skill supplies the structure, the token plumbing and the contrast checks.
+
+## Usage
+
+```
+/design-system                        # from DESIGN_DIRECTION.md, BRAND.md and TECH_STACK.md
+/design-system platform-native        # HIG / Material 3 approach
+/design-system tokens                 # regenerate and contrast-check design/tokens.json
+```
+
+## How it works
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                     DESIGN SYSTEM                            │
+├──────────────────────────────────────────────────────────────┤
+│  STANDALONE (always works)                                   │
+│  ✓ Approach: platform-native · unified brand · existing      │
+│  ✓ Tokens: primitive → semantic → component, light + dark    │
+│  ✓ design/tokens.json (W3C) → npm run tokens && contrast     │
+│  ✓ MVP component inventory: variants, states, a11y, content  │
+│  ✓ DESIGN_SYSTEM.md referencing token names only             │
+├──────────────────────────────────────────────────────────────┤
+│  SUPERCHARGED (when you connect your tools)                  │
+│  + Design (Figma): tokens.json ⇄ Figma variables, L/D modes  │
+└──────────────────────────────────────────────────────────────┘
+```
+
+## Inputs
+
+- The brief (feel, audience, platforms, brand), evaluation personas, `TECH_STACK.md` (UI library).
+- `BRAND.md` — colours, fonts, icon set and their rules become primitive tokens and component rules.
+- `DESIGN_DIRECTION.md` — start from the visual direction the owner chose and its contrast-checked palette; its screen inventory becomes the component inventory.
+- Gate: after approval; `TECH_STACK.md` and `BRAND.md` exist.
+- Ask the owner to agree the approach (step 2).
+
+## Workflow
+
+1. **Read** the inputs above.
+2. **Agree the approach** with the owner:
+   - platform-native (HIG / Material 3)
+   - unified brand system on a component library (still honour platform navigation/back)
+   - existing brand system
+3. **Define tokens in 3 tiers** — primitive → semantic (`color.text.primary`) → component (`button.primary.bg`). The starters' `build-tokens.mjs` generates primitives and semantic tokens; component tokens live in DESIGN_SYSTEM.md component specs (as references to semantic tokens) until the generator supports them. Tokens cover: colour light+dark, type scale (+ Indic fallbacks if needed), 4-pt spacing, radius, elevation, motion, breakpoints.
+4. **Write `design/tokens.json`** (W3C Design Tokens format — the single source for Figma and code; see `references/tokens-figma-sync.md`). Add every text/background and boundary pair to `$extensions.productKit.contrastPairs`, run `npm run tokens && npm run contrast` (CI fails below AA), fix failures.
+5. **MVP component inventory:** variants, sizes, states (default/hover/focus/pressed/disabled/loading/error/selected), a11y (role, label, keyboard/gesture), content rules.
+6. **Write `docs/product/DESIGN_SYSTEM.md`** (principles, component specs — reference token names, never raw values). `npm run tokens` generates `src/theme/tokens.generated.ts`; never hand-edit it.
+7. **Figma:** sync `design/tokens.json` ↔ Figma variables (Light/Dark modes) via the Figma connector or Tokens Studio — `references/tokens-figma-sync.md`. Figma is where the owner designs; tokens.json is what code reads; keep them equal.
+8. **Update** DECISIONS + STATUS.
+
+## Output
+
+| File | What | Size |
+|---|---|---|
+| `design/tokens.json` | W3C tokens: primitives, semantic light/dark, dimensions, contrast pairs | — |
+| `src/theme/tokens.generated.ts` | generated by `npm run tokens`; never hand-edited | — |
+| `docs/product/DESIGN_SYSTEM.md` | principles + component specs referencing token names | one spec per MVP component |
+| `docs/product/DECISIONS.md`, `STATUS.md` | approach logged; phase updated | — |
+
+Present ≤ 10 lines: the approach, the token tiers and any contrast fixes, the component list, the Figma sync state, open questions.
+
+## If connectors available
+
+If **~~design** (Figma) is connected:
+- Sync `design/tokens.json` to Figma variables (Light/Dark modes) and back — Option A in `references/tokens-figma-sync.md`; show the diff before committing a reverse sync.
+- Start from the kit's Community library ("Product Kit — Design System") when the owner wants a ready file.
+
+## Rules
+
+- Semantic tokens only in components; never raw values in specs or code.
+- Design dark mode now, not later.
+- Specs include empty/loading/error behaviour.
+- Every token change runs `npm run contrast`; CI fails below AA.
+- `tokens.generated.ts` is never hand-edited; tokens change in Figma or `tokens.json`.
+
+## Tips
+
+1. Decide the approach (native vs unified brand) first — it changes every component spec.
+2. Put every text/background pair into `contrastPairs` as you go; fixing contrast later costs a palette rework.
+3. Keep Figma and `tokens.json` equal — one sync per token change, not a quarterly catch-up.
+
+## Related
+
+- Before: `tech-stack`, `name-product` (BRAND.md), `design-direction` · After: `write-prd` (full), `engineering-docs`, `build-feature`, `design-qa`
+- Reads: `references/tokens-figma-sync.md`; `BRAND.md`, `DESIGN_DIRECTION.md`, `TECH_STACK.md`; the starters' `build-tokens.mjs`

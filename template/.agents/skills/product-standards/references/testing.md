@@ -43,10 +43,12 @@ Exit criteria: all MUST tests green, no open P0/P1 bugs
 
 ## 4. Bug severity
 
-- **P0** data loss, security hole, crash on launch, payments wrong → stop the release.
-- **P1** core journey blocked for some users, a11y blocker → fix before release.
-- **P2** workaround exists → schedule.
-- **P3** cosmetic → backlog.
+| Severity | Examples | Action |
+|---|---|---|
+| **P0** | data loss, security hole, crash on launch, payments wrong | stop the release |
+| **P1** | core journey blocked for some users, a11y blocker | fix before release |
+| **P2** | workaround exists | schedule |
+| **P3** | cosmetic | backlog |
 
 ## 5. Before every release
 

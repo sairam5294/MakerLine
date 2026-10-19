@@ -1,11 +1,23 @@
 ---
 name: start
-description: One command to run the whole Product Kit — starts or resumes the project and runs the next phases (all of the Idea Pack in one go, all of the setup after approval in one go, or one phase at a time). Use for "/product-kit:start", "start", "run everything", "run the whole kit", "continue", "what's next".
+description: Start or resume a Product Kit project and run the next phases — all of the Idea Pack in one go, all of the setup after approval in one go, or one phase at a time. Trigger with "/product-kit:start", "start", "run everything", "run the whole kit", "continue", or "what's next".
+argument-hint: "<idea + 'everything' | 'set it all up' | 'build it' | nothing to resume>"
 ---
 
-# Start
+# /start
 
-Short entry point to the kit's orchestrator. Read `../product-kickoff/SKILL.md` and follow it exactly, choosing the mode from what the owner said:
+Short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` and follow it exactly, choosing the mode from what the owner said.
+
+## Usage
+
+```
+/start                                   # resume: read STATUS.md, say the phase, offer the next step
+/start <idea> — give me everything       # full Idea Pack in one go (add "quick" or "deep")
+/start set it all up                     # everything after approval, in one go
+/start build it                          # plan-build, then one build-feature task per session
+```
+
+## Modes
 
 | Owner says | Mode |
 |---|---|
@@ -14,4 +26,11 @@ Short entry point to the kit's orchestrator. Read `../product-kickoff/SKILL.md` 
 | "build it" / "next task" | plan-build, then one build-feature task per session |
 | nothing specific | read STATUS.md, say the current phase in one line, and offer the next step with the one-go option |
 
-Never write `Evaluation: APPROVED` yourself; the owner approves between the Idea Pack and setup.
+## Rules
+
+- Never write `Evaluation: APPROVED` yourself; the owner approves between the Idea Pack and setup.
+- Everything else (depth, gate, owner-unavailable path, checks) lives in `../product-kickoff/SKILL.md` — don't improvise.
+
+## Related
+
+- Runs: `product-kickoff` (the orchestrator) and, through it, every phase skill
