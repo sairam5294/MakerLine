@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: Define the design system — framework choice (HIG/Material/custom), three-tier tokens in design/tokens.json (light+dark, contrast-checked), MVP component inventory with states and a11y, Figma↔code mapping → DESIGN_SYSTEM.md + token files. Trigger with "design system", "tokens", "theme", "design framework", or after tech-stack and name-product.
+description: Set up design tokens and a component list. Covers framework choice (HIG/Material/custom), three-tier tokens in design/tokens.json (light+dark, contrast-checked), MVP component inventory with states and a11y, Figma↔code mapping → DESIGN_SYSTEM.md + token files. Trigger with "design system", "tokens", "theme", "design framework", or after tech-stack and name-product.
 argument-hint: "<approach (e.g. 'platform-native', 'unified brand'), or nothing to start from DESIGN_DIRECTION and BRAND>"
 ---
 

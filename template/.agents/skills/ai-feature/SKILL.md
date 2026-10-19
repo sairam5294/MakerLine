@@ -1,6 +1,6 @@
 ---
 name: ai-feature
-description: Design an AI feature end-to-end — is AI right, model choice, prompt versioning, structured output, AI UX (streaming, labels, control, errors), eval set, safety, privacy, content rights, cost per user → AI_FEATURE_<name>.md. Trigger with "add AI", "chatbot", "AI generate", "use an LLM", or when a PRD story needs a model.
+description: Design an AI feature you can trust. Covers whether AI is right, model choice, prompt versioning, structured output, AI UX (streaming, labels, control, errors), eval set, safety, privacy, content rights, cost per user → AI_FEATURE_<name>.md. Trigger with "add AI", "chatbot", "AI generate", "use an LLM", or when a PRD story needs a model.
 argument-hint: "<feature name or what the AI should do>"
 ---
 

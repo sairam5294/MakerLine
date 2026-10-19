@@ -21,6 +21,7 @@ Coverage is a signal, not a goal: aim ≥ 80% on business logic, don't chase 100
 
 - Every user story's acceptance criteria map to at least one automated test (write the mapping in the PRD or PR).
 - Every bug fix starts with a failing test that reproduces it.
+- Never weaken a test to make it pass: no `skip`/`only`/`xit`, deleted assertions or loosened matchers without a linked issue and owner approval.
 - Tests are deterministic: no real network, no real time (fake timers), seeded data, no order dependence.
 - Query elements the way users find them: by role and label (`getByRole('button', { name: 'Save' })`), not by CSS class or test-id unless unavoidable.
 - Test the unhappy paths: validation errors, network failure, empty data, permission denied, slow responses, session expiry.

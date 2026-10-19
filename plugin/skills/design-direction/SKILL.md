@@ -1,6 +1,6 @@
 ---
 name: design-direction
-description: Draft the design direction for an idea — experience principles, competitor UX teardown, information architecture, core flows, screen inventory with states, content and voice, 2–3 visual directions, accessibility plan and clickable low-fi wireframes (HTML, optionally Figma) → DESIGN_DIRECTION.md + design/wireframes/. Trigger with "design direction", "wireframes", "what would it look like?", "user flows", or after evaluate-idea.
+description: Sketch the design direction and wireframes for an idea. Covers experience principles, competitor UX teardown, information architecture, core flows, screen inventory with states, content and voice, 2–3 visual directions, accessibility plan and clickable low-fi wireframes (HTML, optionally Figma) → DESIGN_DIRECTION.md + design/wireframes/. Trigger with "design direction", "wireframes", "what would it look like?", "user flows", or after evaluate-idea.
 argument-hint: "<focus (e.g. 'phone-first'), or nothing to use docs/product/EVALUATION.md>"
 ---
 

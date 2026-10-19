@@ -1,6 +1,6 @@
 ---
 name: portfolio
-description: Show all Product Kit projects at a glance — phase, approval gate, next step, blockers, staleness — plus idea outcomes → portfolio/PORTFOLIO.md + index.html. Trigger with "my projects", "portfolio", "what am I working on", "which project next?", or when choosing what to work on.
+description: Show all my projects and what to do next. Covers phase, approval gate, next step, blockers, staleness — plus idea outcomes → portfolio/PORTFOLIO.md + index.html. Trigger with "my projects", "portfolio", "what am I working on", "which project next?", or when choosing what to work on.
 argument-hint: "<folders to scan, or nothing for ~/Projects and ~/Documents>"
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: evaluate-idea
-description: Evaluate a product idea honestly and constructively — strongest version, reality check, scorecard, users and market, competitors with a differentiator test, strengthening plan with a path to Go, tools and cost, accessibility and compliance, validation tests → EVALUATION.md + COMPETITORS.md. Trigger with "evaluate my idea", "critique this", "who are my competitors?", "is this worth building?", or after new-idea.
+description: Evaluate my product idea honestly. Covers strongest version, reality check, scorecard, users and market, competitors with a differentiator test, strengthening plan with a path to Go, tools and cost, accessibility and compliance, validation tests → EVALUATION.md + COMPETITORS.md. Trigger with "evaluate my idea", "critique this", "who are my competitors?", "is this worth building?", or after new-idea.
 argument-hint: "<idea, or nothing to use docs/product/PROJECT_BRIEF.md>"
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: build-feature
-description: Implement one PLAN.md task end-to-end — scope, branch, failing tests, code, checks, self-review, evidence, commit and STATUS update. Trigger with "build", "implement", "next task", "start T-xx", or after plan-build.
+description: Build the next task with tests first. Covers scope, branch, failing tests, code, checks, self-review, evidence, commit and STATUS update. Trigger with "build", "implement", "next task", "start T-xx", or after plan-build.
 argument-hint: "<T-xx, or nothing for the current task in STATUS.md>"
 ---
 

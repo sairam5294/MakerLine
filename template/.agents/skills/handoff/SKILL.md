@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Write a short session handoff (done, in progress, next, decisions, gotchas) so any AI tool can continue → HANDOFF.md, plus MEMORY, COSTS, STATUS and DECISIONS updates. Trigger with "handoff", "wrap up", "save progress", "switching tools", or at the end of every session.
+description: Save a handoff so any AI tool can continue. A short note of done, in progress, next, decisions and gotchas → HANDOFF.md, plus MEMORY, COSTS, STATUS and DECISIONS updates. Trigger with "handoff", "wrap up", "save progress", "switching tools", or at the end of every session.
 argument-hint: "<tool used, or nothing>"
 ---
 

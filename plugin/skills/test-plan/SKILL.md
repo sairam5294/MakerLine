@@ -1,6 +1,6 @@
 ---
 name: test-plan
-description: Plan and run the tests for a feature or release — map acceptance criteria to tests, edge cases, a11y checks, device matrix, write the missing tests, a manual assistive-tech script, and report against exit criteria → TEST_PLAN.md. Trigger with "test plan", "write tests", "QA this", or after quality-review and before ship-checklist.
+description: Plan and write the tests for a feature. Maps acceptance criteria to tests, with edge cases, a11y checks, device matrix, write the missing tests, a manual assistive-tech script, and report against exit criteria → TEST_PLAN.md. Trigger with "test plan", "write tests", "QA this", or after quality-review and before ship-checklist.
 argument-hint: "<feature, task id or release to test; nothing = the current milestone>"
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: tool-plan
-description: Split the project's jobs across the AI subscriptions and free tiers the owner has (Claude, ChatGPT, Cursor, Codex, Gemini, Copilot, GitHub/Vercel/Supabase…) so each tool does what it's best at and limits aren't hit → TOOL_PLAN.md. Trigger with "which tool should I use for…", "I have ChatGPT and Claude, how do I split the work?", "I keep hitting limits", at kickoff, or after approval.
+description: Split the work across my AI subscriptions. Assigns each job to the AI subscriptions and free tiers the owner has (Claude, ChatGPT, Cursor, Codex, Gemini, Copilot, GitHub/Vercel/Supabase…) so each tool does what it's best at and limits aren't hit → TOOL_PLAN.md. Trigger with "which tool should I use for…", "I have ChatGPT and Claude, how do I split the work?", "I keep hitting limits", at kickoff, or after approval.
 argument-hint: "<your tools and plans, or nothing to be asked once>"
 ---
 

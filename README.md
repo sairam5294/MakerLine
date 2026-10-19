@@ -127,3 +127,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for ground rules, [SECURITY.md](SECURITY.
 
 ## Other plugins
 You also have design / engineering / product-management plugins. The kit's versions win for kit phases (see `template/docs/kit/PLUGIN-OVERLAP.md`); complementary skills like ux-copy and research-synthesis are used inside phases.
+
+---
+
+Created by **[Sairam Mogullapalli](https://github.com/sairam5294)** — UX designer, building products with AI. MIT licence.

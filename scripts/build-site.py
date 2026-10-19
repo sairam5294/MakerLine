@@ -104,7 +104,7 @@ PAGE = """<!doctype html>
 {crumbs}{subnav}{body}
 </main>
 <footer><div class="wrap">
-Open source under the MIT licence · <a href="{repo}">Source on GitHub</a> · Built from the repository's own files; edit them there.
+Created by <a href="https://github.com/sairam5294">Sairam Mogullapalli</a> · Open source under the MIT licence · <a href="{repo}">Source on GitHub</a> · Built from the repository's own files; edit them there.
 Found an accessibility barrier? <a href="{repo}/issues/new?title=Accessibility%20barrier">Tell us</a>.
 </div></footer>
 </body>

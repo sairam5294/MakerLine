@@ -1,6 +1,6 @@
 ---
 name: product-kickoff
-description: Run the whole Product Kit from one command — idea to launch, phase by phase with approval gates, or in one go ("give me everything for this idea" runs the full Idea Pack; "set it all up" after approval runs naming/brand, stack, design system, full PRD, engineering docs and project setup). Trigger with "I have a new idea", "run the whole kit", "give me everything", "set it all up", "start a project", "kickoff", or "where are we / what's next?".
+description: Run the whole Product Kit from one command. Covers idea to launch, phase by phase with approval gates, or in one go ("give me everything for this idea" runs the full Idea Pack; "set it all up" after approval runs naming/brand, stack, design system, full PRD, engineering docs and project setup). Trigger with "I have a new idea", "run the whole kit", "give me everything", "set it all up", "start a project", "kickoff", or "where are we / what's next?".
 argument-hint: "<idea, 'give me everything', 'set it all up', 'build it', or nothing to resume>"
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: ship-checklist
-description: Run the pre-launch checklist for web and App Store / Play — quality, security and privacy, expert review, operations, stores, launch, rollout and rollback — with evidence per item → RELEASE.md. Trigger with "ship", "launch", "release", "submit to app store", "ready to launch?", or after test-plan.
+description: Run the launch checklist before shipping. Covers quality, security and privacy, expert review, operations, stores, launch, rollout and rollback — with evidence per item → RELEASE.md. Trigger with "ship", "launch", "release", "submit to app store", "ready to launch?", or after test-plan.
 argument-hint: "<version or release name, e.g. 1.0; nothing = the release in STATUS.md>"
 ---
 

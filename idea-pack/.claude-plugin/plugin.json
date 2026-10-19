@@ -3,8 +3,12 @@
   "version": "0.11.0",
   "description": "Turn a product idea into an Idea Pack before any code: discovery, honest constructive evaluation with competitors, differentiator test and path to Go, accessibility and compliance lens, design direction with clickable wireframes, draft PRD and one-pager.",
   "author": {
-    "name": "Sai"
+    "name": "Sairam Mogullapalli",
+    "url": "https://github.com/sairam5294"
   },
+  "homepage": "https://github.com/sairam5294/product-kit",
+  "repository": "https://github.com/sairam5294/product-kit",
+  "license": "MIT",
   "keywords": [
     "idea",
     "discovery",

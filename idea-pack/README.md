@@ -50,3 +50,7 @@ Four agents run inside the evaluation: `market-researcher`, `devils-advocate`, `
 Everything works standalone. Connect a knowledge base (prior research), Figma (wireframes there) or GitHub (an existing repo) for more.
 
 Generated from Product Kit's `plugin/` by `scripts/build-idea-pack.py` — edit the kit, not this copy.
+
+---
+
+Created by **[Sairam Mogullapalli](https://github.com/sairam5294)** — UX designer, building products with AI. MIT licence.

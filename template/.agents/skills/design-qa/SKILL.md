@@ -1,6 +1,6 @@
 ---
 name: design-qa
-description: Compare a built screen with its Figma design (or DESIGN_SYSTEM.md) — layout, spacing, tokens, typography, colour, components, states, responsive, dark mode, a11y — and list fixes by severity. Trigger with "design QA", "does it match Figma?", "pixel check", or from build-feature for a UI task with a Figma frame.
+description: Check a built screen against its design. Covers layout, spacing, tokens, typography, colour, components, states, responsive, dark mode, a11y — and list fixes by severity. Trigger with "design QA", "does it match Figma?", "pixel check", or from build-feature for a UI task with a Figma frame.
 argument-hint: "<screen or component name, Figma frame link, or nothing for the current task's screen>"
 ---
 

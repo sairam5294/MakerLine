@@ -1,6 +1,6 @@
 ---
 name: start
-description: Start or resume a Product Kit project and run the next phases — all of the Idea Pack in one go, all of the setup after approval in one go, or one phase at a time. Trigger with "/product-kit:start", "start", "run everything", "run the whole kit", "continue", or "what's next".
+description: Give me everything for my product idea. Covers all of the Idea Pack in one go, all of the setup after approval in one go, or one phase at a time. Trigger with "/product-kit:start", "start", "run everything", "run the whole kit", "continue", or "what's next".
 argument-hint: "<idea + 'everything' | 'set it all up' | 'build it' | nothing to resume>"
 ---
 

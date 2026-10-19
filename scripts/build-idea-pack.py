@@ -84,7 +84,10 @@ def build(out: pathlib.Path) -> None:
         "name": "idea-pack",
         "version": kit["version"],
         "description": "Turn a product idea into an Idea Pack before any code: discovery, honest constructive evaluation with competitors, differentiator test and path to Go, accessibility and compliance lens, design direction with clickable wireframes, draft PRD and one-pager.",
-        "author": kit.get("author", {"name": "Sai"}),
+        "author": kit.get("author", {"name": "Sairam Mogullapalli", "url": "https://github.com/sairam5294"}),
+        "homepage": kit.get("homepage", ""),
+        "repository": kit.get("repository", ""),
+        "license": "MIT",
         "keywords": ["idea", "discovery", "evaluation", "competitors", "prd", "wireframes", "accessibility"],
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 

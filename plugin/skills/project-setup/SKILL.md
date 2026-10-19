@@ -1,6 +1,6 @@
 ---
 name: project-setup
-description: Set up the repo after the engineering docs — a proper README, SETUP (clone or download → install → env → run locally → deploy), STRUCTURE (folder tree, where every file goes, rules), a fully commented .env.example, GITHUB (PRs, merge strategy, branch cleanup, experiment branches, previews, deployment retention, storage monitoring), CONTEXT_PACK for tools that can't read the repo, and project-specific rules for every AI tool — .cursor/rules/*.mdc scoped by folder, .claude (CLAUDE.md, project skills), .github (copilot instructions, CODEOWNERS, workflows). Trigger with "set up the repo", "write the README", "cursor rules", "folder structure", "env file", "GitHub rules", or after engineering-docs.
+description: Set up the repo, README and AI tool rules. Covers a proper README, SETUP (clone or download → install → env → run locally → deploy), STRUCTURE (folder tree, where every file goes, rules), a fully commented .env.example, GITHUB (PRs, merge strategy, branch cleanup, experiment branches, previews, deployment retention, storage monitoring), CONTEXT_PACK for tools that can't read the repo, and project-specific rules for every AI tool — .cursor/rules/*.mdc scoped by folder, .claude (CLAUDE.md, project skills), .github (copilot instructions, CODEOWNERS, workflows). Trigger with "set up the repo", "write the README", "cursor rules", "folder structure", "env file", "GitHub rules", or after engineering-docs.
 argument-hint: "<one part, e.g. 'cursor rules' or 'README', or nothing for the full setup>"
 ---
 
