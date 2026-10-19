@@ -8,7 +8,7 @@ argument-hint: "<idea, 'give me everything', 'set it all up', 'build it', or not
 
 > If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
-Run the kit's phases in order, one at a time. Each phase is a skill in the sibling folder `../<skill>/SKILL.md`; outputs go in `docs/product/`.
+Run the kit's phases in order. Each phase is a skill in `../<skill>/SKILL.md`; outputs go in `docs/product/`.
 
 ## Usage
 
@@ -42,97 +42,79 @@ Run the kit's phases in order, one at a time. Each phase is a skill in the sibli
 
 | # | Skill | Output | Gate |
 |---|---|---|---|
-| 1 | new-idea | PROJECT_BRIEF.md + CLARITY.md | owner confirms |
-| 2 | evaluate-idea | EVALUATION.md + COMPETITORS.md | — |
-| 2a | design-direction | DESIGN_DIRECTION.md + design/wireframes/ | owner picks a direction |
-| 2b | write-prd (draft) | PRD.md v0.x | owner reviews |
-| 3 | validate-idea (recommended) | VALIDATION.md (prototype test uses the wireframes) | results fed into evaluation |
-| ✦ | **Idea Pack** | ONE_PAGER.md + README.md index | written after 2b, refreshed each phase |
-| ★ | **Approval** | STATUS.md `Evaluation: APPROVED` | **hard gate for 4+** |
-| 4 | name-product | NAMING.md + BRAND.md (logo, guidelines, colour, fonts, icons, rules) | owner picks |
-| 5 | tech-stack | TECH_STACK.md | owner approves |
-| 6 | design-system | DESIGN_SYSTEM.md + tokens (from the chosen direction) | owner approves |
-| 7 | write-prd (full) | PRD.md v1.x | owner approves |
-| 7a | engineering-docs | docs/ARCHITECTURE · DATABASE · SECURITY · CODE_STYLE · TESTING · RULES · MEMORY + docs/README index | owner confirms |
-| 7b | project-setup | README · docs/SETUP · STRUCTURE · GITHUB · CONTEXT_PACK · .env.example · .cursor/rules · .claude/skills · .github | owner confirms |
-| 8 | plan-build | PLAN.md | owner approves |
-| 9 | build-feature (+ design-qa) | code + tests | checks pass |
+| 1 | new-idea | PROJECT_BRIEF + CLARITY | owner confirms |
+| 2 | evaluate-idea | EVALUATION + COMPETITORS | — |
+| 2a | design-direction | DESIGN_DIRECTION + design/wireframes/ | owner picks a direction |
+| 2b | write-prd (draft) | PRD v0.x | owner reviews |
+| 3 | validate-idea (recommended) | VALIDATION (+ VALIDATION_RESULTS) | results feed the evaluation |
+| ✦ | **Idea Pack** | ONE_PAGER + README index | after 2b, refreshed each phase |
+| ★ | **Approval** | STATUS `Evaluation: APPROVED` | **hard gate for 4+** |
+| 4 | name-product | NAMING + BRAND | owner picks |
+| 5 | tech-stack | TECH_STACK | owner approves |
+| 6 | design-system | DESIGN_SYSTEM + tokens | owner approves |
+| 7 | write-prd (full) | PRD v1.x | owner approves |
+| 7a | engineering-docs | docs/ARCHITECTURE, DATABASE, SECURITY, CODE_STYLE, TESTING, RULES, MEMORY, LIFECYCLE | owner confirms |
+| 7b | project-setup | README, SETUP, STRUCTURE, GITHUB, CONTEXT_PACK, .env.example, AI-tool rules | owner confirms |
+| 8 | plan-build | PLAN | owner approves |
+| 9 | build-feature (+ design-qa) | code + tests + PR evidence | checks pass |
 | 10 | quality-review | reviews/*.md | no MUST violations |
-| 11 | test-plan | TEST_PLAN.md | exit criteria met |
-| 12 | ship-checklist | RELEASE.md | checklist done |
-| 13 | post-launch | METRICS.md, LESSONS.md | loop weekly |
+| 11 | test-plan | TEST_PLAN | exit criteria met |
+| 12 | ship-checklist | RELEASE | checklist done |
+| 13 | post-launch | METRICS, LESSONS | weekly |
 
-**Idea Pack** = phases 1–2b plus the one-pager (validation, phase 3, then tests it with real people). It is everything an owner needs to decide — honest verdict, competitors and differentiator, strengthening plan, tools and cost, draft design, draft PRD, open questions — before any code. All of it lives in `docs/` and `design/`, which the approval gate allows.
-
-**Anytime skills:** `tool-plan` (which AI tool does which job — offer it at kickoff) · `handoff` (end of session) · `standards-refresh` (quarterly) · `portfolio` (all projects) · `ai-feature` (whenever a feature uses AI).
+The **Idea Pack** (1–2b + one-pager) is everything the owner needs to decide before any code; it lives in `docs/` and `design/`, which the gate allows. **Anytime:** `tool-plan` (offer at kickoff) · `handoff` · `standards-refresh` · `portfolio` · `ai-feature`.
 
 ## Inputs
 
-- `docs/product/STATUS.md` (and `HANDOFF.md` if present) — the current phase.
-- `templates/*.md` in this skill's folder; `docs/product/OWNER.md` (a kit-repo clone may also have `owner/OWNER.md`; the plugin alone doesn't — then ask once). `portfolio/OUTCOMES.md` exists only in a kit-repo clone; missing → "No calibration data yet".
-- Depth from the owner: Quick, Standard (default) or Deep.
+- `docs/product/STATUS.md` (+ `HANDOFF.md`) — the current phase. Never scan other docs to find it.
+- `templates/*.md` here; `docs/product/OWNER.md` (a kit-repo clone may also have `owner/OWNER.md` and `portfolio/OUTCOMES.md`; the plugin alone has neither).
+- Depth: Quick, Standard (default) or Deep.
 
 ## Workflow
 
-1. **Locate the project.** Find `docs/product/STATUS.md` (read `HANDOFF.md` too if present).
-   - Found → state the current phase in one line, continue.
-   - Not found → create `docs/product/`, copy `templates/STATUS.md`, `templates/DECISIONS.md` and `templates/COSTS.md` (and `owner/OWNER.md` if you're in a kit-repo clone, else ask the owner's profile questions once; owner unavailable → build OWNER.md from the brief, fields marked *unconfirmed*), start phase 1.
-2. **Run one phase at a time.** Finish the phase, write its file, get owner confirmation, update STATUS.md, then offer the next. After 2b (and after every later phase), write or refresh `docs/product/ONE_PAGER.md` and `docs/product/README.md` from `templates/ONE_PAGER.md` and `templates/IDEA_PACK_README.md`.
-3. **Pick the depth.** Quick, Standard (default) or Deep — see `../product-standards/references/context-budget.md` (outputs, research budget, token rules). Suggest Quick for early ideas; say which mode you're using in one line.
-   - **Quick runs 1 → 2 → one-pager only — this wins over "give me everything" (step 5).** The complete Quick reading list, each read once: this file and `templates/*.md`; `../new-idea/SKILL.md` (+ its owner-unavailable path), `references/question-bank.md`, `brief-template.md`, `clarity-template.md`; `../evaluate-idea/SKILL.md`, `references/scoring-rubric.md`, `report-template-quick.md`, `competitors-lite.md`, `research-cache.md`; `../product-standards/references/context-budget.md`, `inclusion.md`, `accessibility-law-summary.md`. Nothing else.
-   - In Quick, mark 2a and 2b `Skipped (Quick mode)` in STATUS, write "not yet — run Standard" on the wireframe/PRD rows of the README, leave them out of the one-pager, and offer Standard when the owner wants to go further.
-4. **Check before presenting any Idea Pack.** Run `python3 scripts/check_idea_pack.py <project> --mode <mode>` (this skill's folder) and fix every FAIL; a WARN (length) is acceptable if the README says why. No shell → walk its checks by hand.
-5. **"Give me everything for this idea" (whole Idea Pack in one go).** Standard/Deep: run 1 → 2 → 2a → 2b → one-pager (Quick: step 3) (skip 1 if a brief already exists), pausing only for questions that block the next phase (CLARITY.md). Skip the per-phase presentations; present the one-pager at the end with one line per phase.
-6. **"Set it all up" (after approval).** Run tool-plan → 4 name-product (names + brand) → 5 tech-stack → 6 design-system → 7 write-prd (full) → 7a engineering-docs → 7b project-setup in one go.
-   - Ask the owner's picks in one round up front (name from the top 3, stack A/B, visual direction if not chosen); anything unanswered takes the recommended option as `[Default]`.
-   - Present one summary at the end; then plan-build. Stop before any app code.
-7. **"Build it" (after setup).** plan-build, then build-feature task by task — one task per session and branch, quality-review before each merge. Never all tasks in one session.
-8. **Owner unavailable** (scheduled run, "just do it", no reply). Don't pause for blocking questions; log them in CLARITY and continue.
-   - Take the recommended default for every decision; mark each one `[Default]` in the documents and "default (unconfirmed)" in DECISIONS.md; set those phases to `Waiting for owner` in STATUS.
-   - List the defaults to confirm at the top of the one-pager (≤ 3 there; the rest in DECISIONS.md). Facts stay unknown with a Q-id — never guess them.
-   - Presenting with no owner present: point to the one-pager, list the defaults and the next test, stop.
-9. **Gate.** Phases 4+ need `Evaluation: APPROVED`, set **only by the owner** (`scripts/approve.sh`, or their explicit words quoted in DECISIONS.md where there's no shell). Re-check STATUS before every build phase. If the owner wants to skip: state the top 2 risks, obey, log in DECISIONS.md.
-10. **Changes later.** If goal/audience/scope changes: update the brief (new version), log it, offer to re-evaluate the changed parts.
-   - Every doc-writing skill re-run on a new brief or evidence updates only affected sections, adds a *What changed in v{n}* block under the title (≤ 5 bullets, each citing its trigger: brief version, Q-id, V-id) and a revision-log row — never a full regenerate, so the owner can see what moved.
-11. **End each turn** with: produced · one decision needed · next phase.
+1. **Locate the project.** STATUS.md found → say the phase in one line, continue. Not found → create `docs/product/`, copy `templates/STATUS.md`, `DECISIONS.md`, `COSTS.md`; OWNER.md from the kit clone, else ask the profile questions once (owner unavailable → build it from the brief, fields *unconfirmed*); start phase 1.
+2. **One phase at a time.** Finish it, write its file, get confirmation, update STATUS, offer the next. After 2b and every later phase, refresh `ONE_PAGER.md` and `README.md` from `templates/ONE_PAGER.md` and `IDEA_PACK_README.md`.
+3. **Pick the depth** (`../product-standards/references/context-budget.md`); suggest Quick for early ideas; say the mode in one line.
+   - **Quick = 1 → 2 → one-pager, and wins over "give me everything".** Read each once, nothing else: this file and `templates/*.md`; `../new-idea/SKILL.md`, `references/question-bank.md`, `brief-template.md`, `clarity-template.md`; `../evaluate-idea/SKILL.md`, `references/scoring-rubric.md`, `report-template-quick.md`, `competitors-lite.md`, `research-cache.md`; `../product-standards/references/context-budget.md`, `inclusion.md`, `accessibility-law-summary.md`.
+   - Quick: STATUS 2a/2b `Skipped (Quick mode)`; README rows say "not yet — run Standard"; offer Standard.
+   - **Quick → Standard:** keep the Quick EVALUATION and Lite COMPETITORS (say so in the README); expand only if the owner asks.
+4. **Check before presenting.** `python3 scripts/check_idea_pack.py <project> --mode <mode>` (this folder); fix every FAIL; a length WARN is fine if the README says why. No shell → walk its checks by hand.
+5. **"Give me everything."** Standard/Deep: 1 → 2 → 2a → 2b → one-pager (skip 1 if a brief exists), pausing only for questions that block the next phase. Present the one-pager with one line per phase.
+6. **"Set it all up"** (after approval): tool-plan → 4 → 5 → 6 → 7 (full PRD) → 7a → 7b in one go. Ask the picks in one round up front (name from the top 3, stack A/B, visual direction); unanswered → recommended option as `[Default]`. One summary at the end; stop before app code.
+7. **"Build it"** (after setup): plan-build, then build-feature — one task per session and branch, quality-review before each merge.
+8. **Owner unavailable** (scheduled run, "just do it", no reply): don't pause. Recommended default for every decision, marked `[Default]` and "default (unconfirmed)" in DECISIONS; those phases `Waiting for owner`; ≤ 3 defaults in the one-pager's *Defaults to confirm* line. Facts stay unknown with a Q-id — never guess. Details: `../new-idea/SKILL.md` → Owner unavailable.
+9. **Gate.** Phases 4+ need `Evaluation: APPROVED`, set **only by the owner** (`scripts/approve.sh`, or their explicit words quoted in DECISIONS where there's no shell). Re-check before every build phase. Owner insists on skipping → state the top 2 risks, obey, log it.
+10. **Changes later.** Goal/audience/scope changes → new brief version, log it, offer to re-evaluate. Any doc re-run updates only affected sections, adds a *What changed in v{n}* block (≤ 5 bullets citing brief version, Q-id or V-id) and a revision-log row. The one-pager just gets a new date.
+11. **End each turn:** `Produced: <files> · Decision needed: <one> · Next: <phase>`.
 
 ## Output
 
 | File | What | When |
 |---|---|---|
-| `docs/product/STATUS.md`, `DECISIONS.md`, `COSTS.md` | project state, decisions, costs | first run; updated every phase |
-| `docs/product/ONE_PAGER.md` + `README.md` | Idea Pack summary and index | after 2b; refreshed every later phase |
-| each phase's file (table above) | by that phase's skill | per phase |
-
-End-of-turn line, always:
-
-```
-Produced: <files> · Decision needed: <one> · Next: <phase>
-```
+| `docs/product/STATUS.md`, `DECISIONS.md`, `COSTS.md` | state, decisions, costs | first run; every phase |
+| `docs/product/ONE_PAGER.md` + `README.md` | Idea Pack summary and index | after 2b; every later phase |
+| each phase's file | by that phase's skill | per phase |
 
 ## If connectors available
 
-If **~~source control** is connected (adopted or existing project):
-- Read STATUS.md and HANDOFF.md from the repo to resume at the right phase.
+If **~~source control** is connected: read STATUS.md and HANDOFF.md from the repo to resume.
 
-If **~~knowledge base** is connected:
-- Pull the owner profile and prior decisions instead of re-asking the profile questions.
+If **~~knowledge base** is connected: pull the owner profile and prior decisions instead of re-asking.
 
 ## Rules
 
-- **Gate:** never write `Evaluation: APPROVED` yourself; only the owner sets it. Re-check STATUS before every build phase.
-- **Which tool for which phase:** phases 1–8 (docs only) work anywhere, incl. Claude Cowork/desktop. Phases 9–12 need a shell and the repo: Claude Code, Cursor or Codex (hooks, `npm run check`, starters). Cowork has no hooks — follow the gate rules yourself.
-- **Other plugins:** if other installed plugins offer similar skills (accessibility review, code review, specs, test strategy, deploy checklists), use the Product Kit skill for kit phases; use complementary ones (ux-copy, research-synthesis, debug, metrics-review) inside phases.
-- **Style:** owner = senior UX designer, light coding. Plain language, 3–5 questions per round with a recommended option. Honest coach, not judge: candid about weaknesses, and every weakness comes with how to make the idea stronger.
-- **Context:** keep it lean — load only the files a phase needs.
+- Never write `Evaluation: APPROVED` yourself.
+- Phases 1–8 (docs) work anywhere, incl. the Claude app. Phases 9–12 need a shell and the repo (Claude Code, Cursor, Codex); without hooks, follow the gate yourself.
+- Overlapping plugins: the Product Kit skill wins for kit phases; complementary skills (ux-copy, research-synthesis, debug, metrics-review) are welcome inside phases.
+- Owner = senior UX designer, light coding: plain language, 3–5 questions per round with a recommended option. Honest coach, not judge — every weakness comes with how to make the idea stronger.
 
 ## Tips
 
-1. Say *"quick"* for a first look at an idea; go Standard once it survives.
+1. Say *"quick"* for a first look; go Standard once the idea survives.
 2. *"Give me everything for this idea"* gets the whole Idea Pack with one pause for blocking questions.
-3. After approval, *"set it all up"* does the whole setup in one go — have your name, stack and visual picks ready.
+3. Have your name, stack and visual picks ready before *"set it all up"*.
 
 ## Related
 
-- Entry point: `start` · Phases: the skills in the table above, in order · Anytime: `tool-plan`, `handoff`, `standards-refresh`, `portfolio`, `ai-feature`
-- Reads: `templates/*.md`, `scripts/check_idea_pack.py`, `../product-standards/references/context-budget.md`, `accessibility-law-summary.md` (Deep, ship: `accessibility-law.md`)
+- Entry point: `start` · Phases: the table above · Anytime: `tool-plan`, `handoff`, `standards-refresh`, `portfolio`, `ai-feature`
+- Reads: `templates/*.md`, `scripts/check_idea_pack.py`, `../product-standards/references/context-budget.md`, `accessibility-law-summary.md` (Deep and ship: `accessibility-law.md`)
