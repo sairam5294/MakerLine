@@ -1,5 +1,7 @@
 # Competitive Analysis — method and template
 
+_Standard and Deep. Quick uses `competitors-lite.md`._
+
 Output: `docs/product/COMPETITORS.md`. The evaluation summarises it in one section; this file holds the evidence. Re-use `docs/product/research/` (research-cache format) and cite every fact.
 
 ## Method
@@ -40,9 +42,6 @@ _Version {{n}} · {{date}} · Sources at the end; Evidence / Estimate / Opinion 
 | Indirect | | | | | | |
 | Substitute | | | | | | |
 | Doing nothing | Tolerating the problem | | | Free | | |
-
-## Lite (Quick mode)
-Required: the landscape table with the top 3 direct competitors + "doing nothing" (name, link, price, one-line positioning, one sourced complaint each) · the differentiator test · the wedge and positioning statement · sources. Skip: indirect and substitute rings beyond one line each, full leader profiles, job matrix, positioning map, head-to-head, "why hasn't anyone done this". Say "Lite — run Standard for the full analysis" at the top.
 
 ## Leader profiles
 ### {{Leader}}

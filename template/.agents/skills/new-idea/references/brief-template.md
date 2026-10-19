@@ -4,6 +4,14 @@ _Version {{0 = from the pitch only · 1+ = after owner answers}} · {{date}} · 
 _Status: Waiting for owner / Draft / Confirmed_
 _Source tags on unconfirmed lines: [Pitch] · [Owner] · [Default] (recommended option for a decision) · [Assumption] · [Research]_
 
+## 0. Idea card (≤ 120 words — the only part subagents receive)
+- Idea in one sentence:
+- Audience and launch markets:
+- Platforms:
+- Owner: hours/week, budget, skills
+- Differentiator hypothesis:
+- Must-not (constraints, data to avoid):
+
 ## 1. One-liner
 {{For [audience] who [problem], {{name}} is a [category] that [key benefit]. Unlike [alternative], it [differentiator].}}
 
