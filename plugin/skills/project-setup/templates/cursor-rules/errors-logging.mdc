@@ -1,0 +1,16 @@
+---
+description: {{Name}} — error handling and logging
+globs: {{lib/**, hooks/**, app/api/**}}
+alwaysApply: false
+---
+
+# Errors Logging
+
+- Expected failures → typed result or typed error; mapped to plain-language messages in `{{lib/errors.ts}}` with a next step.
+- Unexpected → `{{Sentry.captureException}}` with ids, never personal data; user sees a calm message and a retry.
+- Server: fail closed — an error never grants access.
+
+## Never
+- `console.log` in app code
+- stack traces to users
+- empty catch blocks

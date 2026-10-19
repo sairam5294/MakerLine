@@ -1,0 +1,15 @@
+---
+description: {{Name}} — dates, times and time zones
+globs: {{**/*date*, **/*time*, lib/format/**}}
+alwaysApply: false
+---
+
+# Dates Time
+
+- Store UTC (`timestamptz`); display in the user's time zone via `{{lib/format/date.ts}}`.
+- Current time from `{{now()}}` helper (testable), never scattered `new Date()`.
+- Format with `Intl.DateTimeFormat` for the user's locale; show the time zone when it matters (bookings, deadlines).
+
+## Never
+- Local time in the database
+- hand-rolled date maths across DST

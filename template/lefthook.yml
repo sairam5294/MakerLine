@@ -36,6 +36,6 @@ pre-push:
       # Order: the project's own scripts/check.sh → npm run check → pytest (Python projects).
       run: |
         if [ -x scripts/check.sh ]; then scripts/check.sh
-        elif [ -f package.json ]; then npm run check
+        elif [ -f package.json ]; then npm run check && npm run build --if-present   # build catches errors the typecheck misses (routes, env, bundling)
         elif command -v pytest >/dev/null && { [ -d tests ] || ls test_*.py >/dev/null 2>&1; }; then pytest -q
         fi

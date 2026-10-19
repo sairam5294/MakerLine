@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Rules for every AI agent in this repo (Claude via CLAUDE.md, Cursor, Codex). Keep this file short; details live in linked files.
+Rules for every AI agent in this repo — Claude (via CLAUDE.md), Cursor (`.cursor/rules/`, index in `project.mdc`), Codex (reads this file), GitHub Copilot (`.github/copilot-instructions.md`), and tools that can't read the repo such as ChatGPT (paste `docs/CONTEXT_PACK.md`). One rulebook; each tool's folder only points here. Keep this file short; details live in linked files.
 
 ## Start every session
 1. Read `docs/product/HANDOFF.md` (if present), `docs/product/STATUS.md` and `docs/product/OWNER.md` (who you're building with: skills, time, budget, tools).
@@ -8,15 +8,15 @@ Rules for every AI agent in this repo (Claude via CLAUDE.md, Cursor, Codex). Kee
 3. End every session with the `handoff` skill (it also updates `docs/MEMORY.md`, the project's long-lived memory).
 
 ## Workflow
-new-idea → evaluate-idea → design-direction → write-prd (draft) → validate-idea → **owner approval** → name-product → tech-stack → design-system → write-prd (full) → engineering-docs → plan-build → build-feature (+ design-qa) → quality-review → test-plan → ship-checklist → post-launch.
-Anytime: `handoff`, `portfolio`, `ai-feature` (any AI feature), `standards-refresh`.
+new-idea → evaluate-idea → design-direction → write-prd (draft) → validate-idea → **owner approval** → name-product → tech-stack → design-system → write-prd (full) → engineering-docs → project-setup → plan-build → build-feature (+ design-qa) → quality-review → test-plan → ship-checklist → post-launch.
+Anytime: `tool-plan` (which AI tool does which job), `handoff`, `portfolio`, `ai-feature` (any AI feature), `standards-refresh`.
 Skills live in `.agents/skills/<name>/SKILL.md`. Outputs live in `docs/product/`; engineering docs (architecture, database, security, code style, testing, rules, memory) in `docs/` — index: `docs/README.md`. Design tokens: `design/tokens.json` → `npm run tokens`.
 
 - No stack choice, scaffolding or app code until STATUS.md says `Evaluation: APPROVED`. Only the owner approves (`scripts/approve.sh`) — never write that line yourself. (Enforced by a Claude Code hook, git hooks and CI.)
 - Log decisions in `docs/product/DECISIONS.md`. Update STATUS.md after each phase/task.
 
 ## Definition of done (details: `.agents/skills/product-standards/references/`)
-- WCAG 2.2 AA: accessible names, keyboard/screen-reader operable, contrast ≥ 4.5:1, targets ≥ 44pt/48dp, text scales to 200%. Accessibility statement + barrier-feedback route from first release; accessible worldwide and non-discriminatory by default (`inclusion.md`), plus the accessibility law of each launch market (`accessibility-law.md`: AODA, ADA, EAA, RPwD…).
+- WCAG 2.2 AA: accessible names, keyboard/screen-reader operable, contrast ≥ 4.5:1, targets ≥ 44 CSS px (web) / 44 pt (iOS) / 48 dp (Android) — the starters use 48 as one safe value, text scales to 200%. Accessibility statement + barrier-feedback route from first release; accessible worldwide and non-discriminatory by default (`inclusion.md`), plus the accessibility law of each launch market (`accessibility-law.md`: AODA, ADA, EAA, RPwD…).
 - Every screen: loading, empty, error, offline, success states. Design tokens only — no raw colours.
 - Server-side authorization + RLS on every user-data table; schema-validated input; parameterized queries.
 - No secrets in code, logs or client bundles; only `.env.example` is committed.
@@ -36,7 +36,7 @@ Skills live in `.agents/skills/<name>/SKILL.md`. Outputs live in `docs/product/`
 
 ## Branches
 Name every branch `<type>/<Mon>-<DD>-<summary>` — e.g. `fix/Oct-19-login-focus-ring` — made with `scripts/branch.sh fix "login focus ring"`; the pre-push hook and CI reject other names. Type = the main purpose of the change:
-`feat` new page/section/feature · `fix` something broken · `content` copy, recommendations, case-study text · `design` visual or layout polish · `security` headers, privacy, removing personal data · `a11y` accessibility · `docs` README/AGENTS.md/guides only · `test` tests only · `ci` workflows, hooks, checks · `deps` dependency updates · `refactor` same behaviour, cleaner code · `perf` speed or size · `chore` housekeeping · `skill` a kit skill, agent or standard · `release` version bump · `eval` eval cases and blind runs.
+`feat` new page/section/feature · `fix` something broken · `content` copy, recommendations, case-study text · `design` visual or layout polish · `security` headers, privacy, removing personal data · `a11y` accessibility · `docs` README/AGENTS.md/guides only · `test` tests only · `ci` workflows, hooks, checks · `deps` dependency updates · `refactor` same behaviour, cleaner code · `perf` speed or size · `chore` housekeeping · `skill` a kit skill, agent or standard · `release` version bump · `eval` eval cases and blind runs · `exp` experiments/spikes (never merged directly; expire after 14 days).
 Every pull request says what changed and why; bots (Dependabot) keep their own names.
 
 ## Commands (same names in both kit starters — update if your stack differs)

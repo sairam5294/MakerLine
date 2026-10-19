@@ -11,7 +11,7 @@
 #   deps      dependency updates                     refactor  same behaviour, cleaner code
 #   perf      speed or size                          chore     housekeeping
 #   skill     a kit skill, agent or standard          release   version bump
-#   eval      eval cases and blind runs
+#   eval      eval cases and blind runs        exp       experiment/spike — never merged, expires in 14 days
 set -euo pipefail
 TYPE="${1:?Usage: scripts/branch.sh <type> \"<summary>\"   e.g. scripts/branch.sh fix \"login focus ring\"}"
 SUMMARY="${2:?Give a short summary in plain words, e.g. \"login focus ring\"}"

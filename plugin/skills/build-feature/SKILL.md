@@ -13,4 +13,4 @@ description: Implements one PLAN.md task end-to-end — plan, tests, code, check
 6. Run `npm run check` (or typecheck + lint + test + build). Fix; never weaken tests.
 7. Self-review: ACs tested · a11y (names, focus, contrast via tokens, targets, text scaling) · all states · authz/validation/no secrets · no unrecorded deps · no debug leftovers · copy clear and localisable.
 8. UI task with a Figma frame → run design-qa.
-9. Evidence: what changed, how to see it, test results. Commit `feat(scope): … (T-xx, US-xx)`; tick PLAN; update STATUS. A new table or migration → update `docs/DATABASE.md`; a new container, service or cross-cutting rule → `docs/ARCHITECTURE.md`.
+9. Evidence: what changed, how to see it, test results. Commit `feat(scope): … (T-xx, US-xx)`; tick PLAN; update STATUS. A new table or migration → update `docs/DATABASE.md`; a new folder → `docs/STRUCTURE.md`; a new env variable → `.env.example` (with its comment) and `docs/SETUP.md`; a new container, service or cross-cutting rule → `docs/ARCHITECTURE.md`.

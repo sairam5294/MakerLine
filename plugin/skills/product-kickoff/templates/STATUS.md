@@ -14,7 +14,9 @@ Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approv
 | 5 | Tech stack | Not started | | |
 | 6 | Design system | Not started | | |
 | 7 | PRD | Not started | | |
-| 7a | Engineering docs | Not started | | ARCHITECTURE · DATABASE · SECURITY · CODE_STYLE · TESTING · RULES · MEMORY |
+| 7a | Engineering docs | Not started | | ARCHITECTURE · DATABASE · SECURITY · CODE_STYLE · TESTING · RULES · MEMORY · LIFECYCLE |
+| — | Tool plan | Not started | | which AI tool does which job (anytime) |
+| 7b | Project setup | Not started | | README · SETUP · STRUCTURE · GITHUB · .env.example · AI-tool folders |
 | 8 | Plan | Not started | | |
 | 9 | Build | Not started | | current task: – |
 | 10 | Review | Not started | | |
@@ -22,7 +24,7 @@ Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approv
 | 12 | Ship | Not started | | |
 | 13 | Post-launch | Not started | | |
 
-Status: Not started · In progress · Draft — awaiting owner · Waiting for owner · Done · Skipped (reason in DECISIONS.md)
+Status: Not started · In progress · Waiting for owner · Done · Skipped (reason in DECISIONS.md)
 
 Next step: run `new-idea`.
 Blockers:

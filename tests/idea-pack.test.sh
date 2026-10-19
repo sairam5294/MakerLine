@@ -50,6 +50,8 @@ mk_pack; sed -i 's/None, must be found out/12 orders a week/' "$T/p/docs/product
 python3 "$CHECK" "$T/p" > "$T/out"; grep -q "is a fact but has a default" "$T/out" && ok || bad "fact with a default should warn"
 mk_pack; sed -i 's#<label for="f1">Name</label><input id="f1">#<label for="f1">Gender</label><input id="f1">#' "$T/p/design/wireframes/index.html"
 python3 "$CHECK" "$T/p" > "$T/out"; grep -q "looks required" "$T/out" && ok || bad "required gender field should warn"
+mk_pack; printf 'run: echo ${{ github.token }}\n<div style={{ a: 1 }}>\n' >> "$T/p/docs/product/PRD.md"
+python3 "$CHECK" "$T/p" > "$T/out"; grep -q "unfilled" "$T/out" && { bad "GitHub ${{ }} / JSX style={{ }} must not count as placeholders"; cat "$T/out"; } || ok
 mk_pack; rm -r "$T/p/design" "$T/p/docs/product/PRD.md" "$T/p/docs/product/DESIGN_DIRECTION.md"
 python3 "$CHECK" "$T/p" --mode quick > "$T/out" && ok || { bad "quick mode needs no PRD/wireframes"; cat "$T/out"; }
 

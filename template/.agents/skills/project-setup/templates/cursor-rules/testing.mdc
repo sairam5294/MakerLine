@@ -1,0 +1,16 @@
+---
+description: {{Name}} — tests
+globs: {{**/*.test.*, **/*.spec.*, tests/**}}
+alwaysApply: false
+---
+
+# Testing
+
+- Follow `docs/TESTING.md`. One test per acceptance criterion incl. error/empty/offline/permission-denied.
+- Test users A and B in every suite; RLS tests in `tests/rls/`.
+- Queries by role and name (Testing Library / Playwright `getByRole`) — doubles as an accessibility check.
+
+## Never
+- Snapshot-only tests
+- weakening a test to pass
+- real personal data in fixtures

@@ -1,0 +1,16 @@
+---
+description: {{Name}} — roles, permissions and row-level security
+globs: {{components/**, app/(main)/**, supabase/**}}
+alwaysApply: false
+---
+
+# Permissions
+
+- Roles: {{owner · editor · viewer · admin}} (`docs/DATABASE.md` §3 access matrix is the source).
+- Server/RLS decides; UI hides what a role can't do with `{{<Can permission=…>}}` / `{{usePermissions()}}` only as a convenience.
+- Every new table: RLS on in the same migration + a test that user A can't read user B's rows.
+
+## Never
+- Permission checks only in the UI
+- service-role key in client code
+- tables without RLS

@@ -107,8 +107,9 @@ def check_wireframes(path):
     if "HOW TO FILL" in raw:
         report("WARN", "wireframes: template instructions comment still present — delete it")
     body = re.sub(r"<!--.*?-->", " ", raw, flags=re.S)
-    if "{{" in body:
-        report("FAIL", f"wireframes: {body.count('{{')} unfilled {{{{placeholders}}}}")
+    n_ph = len(re.findall(r"(?<![$=])\{\{", body))
+    if n_ph:
+        report("FAIL", f"wireframes: {n_ph} unfilled {{{{placeholders}}}}")
     if re.search(r"lorem ipsum", body, re.I):
         report("FAIL", "wireframes: lorem ipsum found — use real content")
     if not re.search(r"<html[^>]*\blang=", body):
@@ -169,7 +170,7 @@ def main():
     for f in sorted(docs.glob("*.md")):
         text = f.read_text(encoding="utf-8", errors="replace")
         body = re.sub(r"<!--.*?-->", " ", text, flags=re.S)
-        n = body.count("{{")
+        n = len(re.findall(r"(?<![$=])\{\{", body))  # ignore GitHub Actions ${{ }} and JSX style={{ }}
         if n:
             report("FAIL", f"{f.name}: {n} unfilled {{{{placeholders}}}}")
         if re.search(r"lorem ipsum", body, re.I):

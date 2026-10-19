@@ -1,0 +1,43 @@
+---
+description: {{Name}} — quick reference and rule index (always loaded)
+alwaysApply: true
+---
+
+# {{Name}}
+
+{{One line: what it is.}} Rules for every tool live in `AGENTS.md`; standing project rules in `docs/RULES.md`; long-lived memory in `docs/MEMORY.md`. Scoped rules below attach by file path.
+
+## Stack
+{{Framework · UI library · state · data · auth · hosting}}. Versions live in `package.json` / lockfile — never copy them into rules.
+
+## Import aliases
+`{{@/}}` → `{{src/}}` · {{…}}
+
+## Hard rules
+| Rule | Enforced by |
+|---|---|
+| No `any`, no `@ts-ignore` | ESLint error + pre-commit |
+| No `console.*` in app code | ESLint + pre-commit |
+| No raw colours / sizes — tokens only | review (`design.mdc`) |
+| No user-facing strings in components | review (`i18n.mdc`) |
+| No secrets in code; client gets publishable keys only | gitleaks + CI |
+| Branch name `<type>/<Mon>-<DD>-<summary>` | pre-push + CI |
+Be honest in this table: if something is review-only, say so.
+
+## Rule index (auto-attach by glob)
+| File | Attaches when editing |
+|---|---|
+| `architecture.mdc` | {{layouts, providers, config}} |
+| `components.mdc` | {{components/**}} |
+| `design.mdc` | {{components/**, app/**/*.tsx}} |
+| `data-api.mdc` | {{lib/api/**, hooks/**}} |
+| `forms-validation.mdc` | {{**/*Form*.tsx, lib/validation/**}} |
+| `errors-logging.mdc` | {{lib/**, hooks/**, app/api/**}} |
+| `permissions.mdc` | {{components/**, app/(main)/**, supabase/**}} |
+| `i18n.mdc` | {{i18n/**}} |
+| `dates-time.mdc` | {{**/*date*, **/*time*}} |
+| `accessibility.mdc` | {{components/**, app/**}} |
+| `security.mdc` | {{app/api/**, supabase/**, middleware.*}} |
+| `testing.mdc` | {{**/*.test.*, tests/**}} |
+| `ai-features.mdc` | {{lib/ai/**, app/api/ai/**}} |
+Kit-wide rules (`product-workflow`, `security-backend`, `testing`, `ui-accessibility-ux`) also apply.

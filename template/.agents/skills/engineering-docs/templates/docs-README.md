@@ -13,7 +13,13 @@ _Updated {{date}} · Read `../AGENTS.md` first, then `RULES.md` and `MEMORY.md`,
 | **TESTING** | Test mix, what every story needs, commands, CI, manual and AT testing | `TESTING.md` | test-plan |
 | **RULES** | Standing rules: tokens, security, AI, accessibility, branches, never-do | `RULES.md` | standards-refresh |
 | **TASKS** | Milestones and tasks, who/what builds each, status | `product/PLAN.md` · `product/STATUS.md` | plan-build, build-feature |
+| **LIFECYCLE** | Stages, exit criteria, growth plan, upgrade triggers | `LIFECYCLE.md` | post-launch |
+| **SETUP** | Clone or download → install → env → run → deploy | `SETUP.md` · `../.env.example` | project-setup |
+| **STRUCTURE** | Folder tree, where every file goes, naming | `STRUCTURE.md` | project-setup, build-feature |
+| **GITHUB** | PRs, merge strategy, branches, previews, retention, storage | `GITHUB.md` | project-setup |
+| **BRAND** | Name, logo and guidelines, colours, fonts, icons, rules | `product/BRAND.md` · `../design/brand/` | name-product |
+| **TOOLS** | Which AI tool does which job, handoffs, limits | `product/TOOL_PLAN.md` · `CONTEXT_PACK.md` | tool-plan |
 | **MEMORY** | Long-lived facts: environment, conventions, what broke before, do-not-touch | `MEMORY.md` | handoff |
-| **AGENTS** | Rules for every AI tool in this repo | `../AGENTS.md` (`../CLAUDE.md` points here) | kit upgrades |
+| **AGENTS** | Rules for every AI tool in this repo | `../AGENTS.md` (root `../CLAUDE.md` imports it; Cursor `../.cursor/rules/project.mdc`, Copilot `../.github/copilot-instructions.md`) | kit upgrades |
 
 Also here: `product/` (brief, clarity log, evaluation, competitors, design direction, validation, naming, tech stack ADR, test plan, release, reviews, handoff, decisions, costs) · `kit/` (starter rules) · `../design/wireframes/` (clickable low-fi screens).
