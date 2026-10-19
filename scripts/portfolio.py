@@ -51,8 +51,8 @@ def parse_status(path: pathlib.Path) -> dict:
     product = head.group(1).strip() if head else project_dir.name
     if product.startswith("<"):
         product = project_dir.name  # template placeholder not filled in yet
-    rows = re.findall(r"^\|\s*(\d+)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|", text, re.M)
-    phases = [(int(n), name, status) for n, name, status in rows]
+    rows = re.findall(r"^\|\s*(\d+[a-z]?|✦|★)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|", text, re.M)
+    phases = [(n, name, status) for n, name, status in rows]  # ids like 2a, 7b, ✦ stay strings
     done = sum(1 for _, _, s in phases if s.lower().startswith(("done", "skipped")))
     current = next(((n, name, s) for n, name, s in phases if not s.lower().startswith(("done", "skipped"))), None)
     gate = re.search(r"^Evaluation:\s*(.+?)\s*(<!--|$)", text, re.M)
