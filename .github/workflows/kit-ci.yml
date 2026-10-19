@@ -23,7 +23,9 @@ jobs:
       - run: for f in scripts/*.sh template/scripts/*.sh template/.claude/hooks/*.sh; do bash -n "$f" || exit 1; done
       # Pull-request branches follow <type>/<Mon>-<DD>-<summary> (bots exempt).
       - if: github.event_name == 'pull_request'
-        run: scripts/check-branch.sh "${{ github.head_ref }}"
+        env:
+          BRANCH: ${{ github.head_ref }}  # via env, never inline: branch names are attacker-controlled
+        run: scripts/check-branch.sh "$BRANCH"
       - run: bash tests/hooks.test.sh
       - run: bash tests/upgrade.test.sh
       - run: bash tests/idea-pack.test.sh

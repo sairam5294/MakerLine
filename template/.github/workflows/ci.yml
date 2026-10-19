@@ -32,7 +32,9 @@ jobs:
           git diff --name-only -z "$base" HEAD | xargs -0 -r scripts/check-gate.sh
       - name: Branch name follows <type>/<Mon>-<DD>-<summary>
         if: github.event_name == 'pull_request'
-        run: scripts/check-branch.sh "${{ github.head_ref }}"
+        env:
+          BRANCH: ${{ github.head_ref }}  # via env, never inline: branch names are attacker-controlled
+        run: scripts/check-branch.sh "$BRANCH"
 
   secrets:
     name: Secret scan
