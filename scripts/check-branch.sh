@@ -14,7 +14,7 @@ BRANCH="${1:-$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo HEAD)}"
 
 # Branch types, by the main purpose of the change. Keep this list short and in
 # the same order as AGENTS.md "Branches" so the two never drift.
-TYPES="feat|fix|content|design|security|a11y|docs|test|ci|deps|refactor|perf|chore|skill|release|eval"
+TYPES="feat|fix|content|design|security|a11y|docs|test|ci|deps|refactor|perf|chore|skill|release|eval|exp"
 MONTHS="Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 
 case "$BRANCH" in

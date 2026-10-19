@@ -1,0 +1,28 @@
+---
+description: {{Name}} — component structure and patterns
+globs: {{components/**/*.tsx}}
+alwaysApply: false
+---
+
+# Components
+
+## Template
+```tsx
+// 1 react · 2 third-party · 3 internal api/hooks · 4 internal components · 5 types · 6 constants
+interface I{{Thing}}Props { … }
+export const {{Thing}} = ({ … }: I{{Thing}}Props) => {
+  // hooks first, then derived values, then handlers (handle*), then early returns for states
+  if (isLoading) return <Skeleton … />;
+  if (error) return <ErrorState onRetry={refetch} />;
+  if (!items.length) return <EmptyState … />;
+  return …;
+};
+```
+- Every data component renders loading, empty, error, offline and success states.
+- Props interfaces `I<Component>Props`; booleans `is/has/can/should`; handlers `handle*`.
+- One component per file, ≤ ~300 lines; extract sub-components before that.
+
+## Never
+- Fetch inside presentational ui/ components
+- inline styles or raw hex
+- anonymous default exports

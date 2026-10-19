@@ -1,0 +1,19 @@
+---
+description: {{Name}} — architecture, folders, providers and module boundaries
+globs: {{app/layout.*, app/providers.*, constants/**, lib/config.*}}
+alwaysApply: false
+---
+
+# Architecture
+
+## Shape
+See `docs/ARCHITECTURE.md` (containers, core request path) and `docs/STRUCTURE.md` (where files go).
+## Patterns
+- Server components / server code fetch data; client components only for interaction ({{framework rule}}).
+- Config read once from `{{lib/config.ts}}`; never `process.env` elsewhere.
+- Feature code depends on `ui/`, `lib/`, `hooks/`; `ui/` never imports feature code.
+
+## Never
+- Create a second utils/helpers folder
+- read env outside config
+- add a provider without a reason in DECISIONS.md

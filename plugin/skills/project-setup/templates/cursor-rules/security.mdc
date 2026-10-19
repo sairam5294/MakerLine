@@ -1,0 +1,16 @@
+---
+description: {{Name}} — security for server code, data and auth
+globs: {{app/api/**, supabase/**, middleware.*, lib/server/**}}
+alwaysApply: false
+---
+
+# Security
+
+- Follow `docs/SECURITY.md` (threat model + OWASP 2025 controls). Validate every input with the shared schema; parameterized queries only.
+- Rate-limit {{auth, OTP, search, AI, uploads}}; verify webhooks by signature; secrets only from server env.
+- Log security events without personal data.
+
+## Never
+- Trust client input
+- service keys in client bundles
+- eval or dangerouslySetInnerHTML with user data

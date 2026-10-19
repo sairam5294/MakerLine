@@ -1,0 +1,23 @@
+---
+description: {{Name}} — brand and design-system rules for UI code
+globs: {{components/**/*.tsx, app/**/*.tsx}}
+alwaysApply: false
+---
+
+# Design
+
+## Source of truth
+`design/tokens.json` → `{{tokens.generated.ts / tailwind theme}}`; BRAND.md §8 rules; DESIGN_SYSTEM.md components.
+- Colours, spacing, radius, type only via tokens/semantic classes. Dark mode via semantic tokens, never `dark:` + raw colour pairs.
+- Fonts: {{display}} / {{text}} with fallback `{{stack}}`; body ≥ 16 px; text scales to 200%.
+- Icons only from {{icon set}}, sizes 16/20/24; icon-only buttons need an accessible name.
+- Logo only from `design/brand/`; never redrawn in code.
+| Enforced by | |
+|---|---|
+| `npm run contrast` (CI) | every contrast pair ≥ AA |
+| review | tokens-only, icon set, logo use |
+
+## Never
+- Raw hex/rgb
+- new font without updating BRAND.md
+- colour as the only signal

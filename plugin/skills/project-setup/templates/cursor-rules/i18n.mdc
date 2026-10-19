@@ -1,0 +1,16 @@
+---
+description: {{Name}} — strings, translation and language
+globs: {{i18n/**, **/*.tsx}}
+alwaysApply: false
+---
+
+# I18N
+
+- Every user-facing string comes from `i18n/<lang>.json` via `{{t('feature.key')}}`; keys are `feature.element.state`.
+- Launch languages: {{en, te, hi}}; translations reviewed by a native speaker; mark language changes in content (`lang`).
+- Plurals and numbers/dates via `Intl`; no string concatenation for sentences.
+
+## Never
+- Hard-coded copy
+- machine-only translation for critical text
+- images containing text

@@ -34,13 +34,24 @@ Later, `claude plugin marketplace update product-kit-marketplace` picks up new v
 
 Only want the idea stage (no building)? Install `idea-pack@product-kit-marketplace` instead — the same Idea Pack skills without the build phases. Don't install both; the full kit already includes it.
 
-**Claude app (Cowork / desktop):** build the plugin file, then open it in a chat and press **Install**:
-```bash
-./scripts/build-plugin.sh      # writes ~/Documents/product-kit.plugin
-```
-Either way, Claude now knows the kit's skills (you'll see them as `/product-kit:…`).
+**Claude app (desktop / web) — easiest: add the repo as a marketplace** (once; updates come from GitHub):
+1. Open **Customize** in the left sidebar → **Plugins**.
+2. Choose **Add marketplace** and enter `sairam5294/product-kit`.
+3. Find **product-kit** (or **idea-pack**) in the list → **Install**.
+4. Later: **Check for updates** on that marketplace, or turn on **Sync automatically**.
+The marketplace installs whatever is on the `main` branch, so merge a release's pull request first.
 
-**Cursor and Codex** need nothing here: every project you create in Part 2 carries their rules and agents.
+**Claude app — from a file instead** (for a build that isn't on `main` yet):
+```bash
+./scripts/build-plugin.sh      # writes ../product-kit.plugin (a zip file)
+```
+Then **Customize → Plugins → upload** and pick the file. Double-clicking the file or opening it in Finder does nothing — it has to be uploaded there. If the upload dialog greys it out, rename the copy to `product-kit.zip` (it is a zip) and upload that. To replace an older version: open the installed plugin → **Remove**, then upload the new one.
+
+Either way, Claude now knows the kit's skills (you'll see them as `/product-kit:…`). Plugins installed in the Claude app are saved to your account, so the same skills are available in Claude Code too.
+
+**Check it worked:** start a new chat and type `/product-kit:` — the skill list should appear. In Claude Code: `claude plugin list` shows `product-kit` with the version from the release.
+
+**Cursor, Codex and Copilot** need nothing here: every project you create in Part 2 carries their rules (`.cursor/rules/`, `AGENTS.md`, `.github/copilot-instructions.md`). **ChatGPT** can't read your repo: paste the project's `docs/CONTEXT_PACK.md` into a ChatGPT project. Which tool to use for what: say *"make my tool plan"* (the `tool-plan` skill).
 
 ### 3. Fill in your profile (once)
 Copy `owner/OWNER.example.md` to `owner/OWNER.md` (it is git-ignored, so your details stay private), then fill in hours per week, budget and which accounts you have (GitHub, Apple, Google Play, Supabase, Vercel…). Every new project copies it, so you're never asked twice.

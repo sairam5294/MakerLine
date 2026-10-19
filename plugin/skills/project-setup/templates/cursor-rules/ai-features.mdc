@@ -1,0 +1,17 @@
+---
+description: {{Name}} — AI features (server-side calls, evals, labelling, cost caps)
+globs: {{lib/ai/**, app/api/ai/**}}
+alwaysApply: false
+---
+
+# Ai Features
+
+- Follow `ai.md` and `docs/product/AI_FEATURE_*.md`. Calls only from the server; prompt and model versions pinned in `{{lib/ai/config.ts}}`.
+- User content is data, never instructions; tool permissions minimal; output labelled as AI and editable/undoable.
+- Spend cap `{{AI_MONTHLY_BUDGET_USD}}` enforced in code; eval set runs in CI on prompt changes.
+- Check the provider's current models and pricing in official docs; never hard-code a remembered model name without checking.
+
+## Never
+- Client-side API keys
+- unbounded loops or retries
+- AI as the only path to the core task

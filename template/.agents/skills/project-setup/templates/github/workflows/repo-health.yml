@@ -1,0 +1,48 @@
+# Monthly repo health report (read-only): repo size, Actions artifact storage, stale branches,
+# experiment branches past 14 days, and long-open pull requests. It never deletes anything —
+# the owner decides what to clean up (see docs/GITHUB.md §1 and §5).
+name: Repo health
+
+on:
+  schedule:
+    - cron: "17 3 1 * *"   # 03:17 UTC on the 1st of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { fetch-depth: 0 }
+      - name: Build the report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          {
+            echo "## Repo health — $(date -u +%Y-%m-%d)"
+            echo
+            echo "**Repo size:** $(gh api "repos/$REPO" --jq '.size') KB"
+            echo
+            echo "**Actions artifacts:** $(gh api "repos/$REPO/actions/artifacts?per_page=100" --jq '[.artifacts[].size_in_bytes] | add // 0 | . / 1048576 | floor') MB in the latest 100"
+            echo
+            echo "### Branches with no commits for 30+ days"
+            cutoff=$(date -u -d '30 days ago' +%s)
+            git for-each-ref --format='%(refname:short) %(committerdate:unix)' refs/remotes/origin \
+              | grep -v -E 'origin/(main|HEAD)$' \
+              | while read -r ref ts; do [ "$ts" -lt "$cutoff" ] && echo "- ${ref#origin/}"; done || true
+            echo
+            echo "### Experiment branches older than 14 days"
+            exp_cutoff=$(date -u -d '14 days ago' +%s)
+            git for-each-ref --format='%(refname:short) %(committerdate:unix)' 'refs/remotes/origin/exp/*' \
+              | while read -r ref ts; do [ "$ts" -lt "$exp_cutoff" ] && echo "- ${ref#origin/}"; done || true
+            echo
+            echo "### Pull requests open for 14+ days"
+            gh pr list --repo "$REPO" --state open --json number,title,createdAt \
+              --jq ".[] | select((now - (.createdAt | fromdateiso8601)) > 1209600) | \"- #\(.number) \(.title)\"" || true
+          } >> "$GITHUB_STEP_SUMMARY"

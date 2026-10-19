@@ -1,0 +1,17 @@
+---
+description: {{Name}} — forms, validation and input handling
+globs: {{**/*Form*.tsx, lib/validation/**}}
+alwaysApply: false
+---
+
+# Forms Validation
+
+- One schema ({{zod}}) per form in `lib/validation/`, used on client **and** server.
+- Visible labels (placeholder is not a label), `autocomplete` attributes, required marked in text.
+- Errors: field-level text linked with `aria-describedby`, summary at the top on submit, focus moves to the first error; keep what the user typed.
+- No redundant entry (WCAG 3.3.7); paste allowed everywhere; no CAPTCHA puzzles without an alternative.
+
+## Never
+- Validate only on the client
+- clear the form on error
+- disable submit without saying why

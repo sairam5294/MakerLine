@@ -16,11 +16,12 @@ Run phases in order, one at a time. Each phase = a skill in the sibling folder `
 | 3 | validate-idea (recommended) | VALIDATION.md (prototype test uses the wireframes) | results fed into evaluation |
 | ✦ | **Idea Pack** | ONE_PAGER.md + README.md index | written after 2b, refreshed each phase |
 | ★ | **Approval** | STATUS.md `Evaluation: APPROVED` | **hard gate for 4+** |
-| 4 | name-product | NAMING.md | owner picks |
+| 4 | name-product | NAMING.md + BRAND.md (logo, guidelines, colour, fonts, icons, rules) | owner picks |
 | 5 | tech-stack | TECH_STACK.md | owner approves |
 | 6 | design-system | DESIGN_SYSTEM.md + tokens (from the chosen direction) | owner approves |
 | 7 | write-prd (full) | PRD.md v1.x | owner approves |
 | 7a | engineering-docs | docs/ARCHITECTURE · DATABASE · SECURITY · CODE_STYLE · TESTING · RULES · MEMORY + docs/README index | owner confirms |
+| 7b | project-setup | README · docs/SETUP · STRUCTURE · GITHUB · CONTEXT_PACK · .env.example · .cursor/rules · .claude/skills · .github | owner confirms |
 | 8 | plan-build | PLAN.md | owner approves |
 | 9 | build-feature (+ design-qa) | code + tests | checks pass |
 | 10 | quality-review | reviews/*.md | no MUST violations |
@@ -30,7 +31,7 @@ Run phases in order, one at a time. Each phase = a skill in the sibling folder `
 
 Phases 1–2b plus the one-pager make the **Idea Pack** (validation, phase 3, then tests it with real people): everything an owner needs to decide — honest verdict, competitors and differentiator, strengthening plan, tools and cost, draft design, draft PRD, open questions — before any code. All of it lives in `docs/` and `design/`, which the approval gate allows.
 
-Anytime: `handoff` (end of session), `standards-refresh` (quarterly), `portfolio` (all projects), `ai-feature` (whenever a feature uses AI).
+Anytime: `tool-plan` (which AI tool does which job — offer it at kickoff), `handoff` (end of session), `standards-refresh` (quarterly), `portfolio` (all projects), `ai-feature` (whenever a feature uses AI).
 
 ## Procedure
 1. Find `docs/product/STATUS.md` (read `HANDOFF.md` too if present). Found → state current phase in one line, continue. Not found → create `docs/product/`, copy `templates/STATUS.md`, `templates/DECISIONS.md` and `templates/COSTS.md` (and the kit's `owner/OWNER.md` if reachable, else ask the owner's profile questions once), start phase 1.

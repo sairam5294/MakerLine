@@ -28,7 +28,7 @@ SRC = ROOT / "plugin"
 STANDALONE = ROOT / "standalone" / "idea-pack"
 OUT = ROOT / "idea-pack"
 
-SKILLS = ["new-idea", "evaluate-idea", "design-direction", "write-prd", "validate-idea", "product-standards"]
+SKILLS = ["new-idea", "evaluate-idea", "design-direction", "write-prd", "validate-idea", "tool-plan", "product-standards"]
 AGENTS = ["market-researcher", "devils-advocate", "idea-champion", "accessibility-strategist"]
 
 # Path rewrites: the orchestrator replaces product-kickoff, and the one test-plan

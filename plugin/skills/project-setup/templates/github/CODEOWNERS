@@ -1,0 +1,7 @@
+# Who must review changes to which paths. GitHub requests their review automatically.
+# Replace {{owner}} with GitHub usernames or teams.
+*                       @{{owner}}
+/supabase/              @{{owner}}    # schema, RLS, migrations — security-sensitive
+/.github/               @{{owner}}    # CI and automation
+/docs/SECURITY.md       @{{owner}}
+/AGENTS.md              @{{owner}}    # rules for every AI tool

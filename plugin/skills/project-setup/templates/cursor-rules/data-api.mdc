@@ -1,0 +1,17 @@
+---
+description: {{Name}} — API layer, data hooks and caching
+globs: {{lib/api/**, hooks/**}}
+alwaysApply: false
+---
+
+# Data Api
+
+## Pattern
+- One file per resource in `lib/api/` (`get…`, `create…`, `update…`, `delete…`), typed inputs/outputs, no UI.
+- Hooks in `hooks/` wrap them with {{TanStack Query}}: query keys from `{{lib/query-keys.ts}}`, `staleTime` set deliberately, mutations invalidate the keys they change.
+- Authorization happens on the server / via RLS — never trust a client check alone.
+
+## Never
+- Call fetch/supabase directly in components
+- build query keys inline
+- swallow errors
