@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## 0.10.0 — 2026-10-20
+One command runs the whole kit: /product-kit:start and /idea-pack:start; 'give me everything' (full Idea Pack), 'set it all up' after approval (tool plan, names + brand, stack, design system, full PRD, engineering docs, project setup in one go), 'build it' (one task per session); token rules from measured runs (few large tool calls, document size caps with checker warnings, exact Quick reading list); portfolio/learning and personal-tool verdicts; tested on Trust Kit and the task tracker
+
 ## 0.9.0 — 2026-10-20
 After approval, the full project set: brand kit in name-product (logo concept + easy path + guidelines, colours, fonts, icons, rules); tool-plan skill (split jobs across Claude, ChatGPT, Cursor, Codex by what the owner has); engineering docs gain LIFECYCLE; new project-setup skill (README, SETUP from clone/ZIP to deploy, STRUCTURE, fully commented .env.example, GITHUB rules for PRs/merge/branches/previews/retention/storage, CONTEXT_PACK, scoped .cursor rules, .claude project skills, .github copilot/CODEOWNERS/repo-health); exp/ branches; build-before-push; per-phase research budgets; plugin install steps; fixes from two more runs
 
