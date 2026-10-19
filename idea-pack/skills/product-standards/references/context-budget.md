@@ -30,7 +30,7 @@ Baseline before these rules: a blind Standard run (v0.7.0) used ~224k tokens and
 Long documents cost twice: once to write, and again every time a later phase or tool reads them. Caps are WARNs in `check_idea_pack.py`.
 | Document | Quick | Standard | Deep |
 |---|---|---|---|
-| EVALUATION.md | 1,500 | 3,000 | 4,500 |
+| EVALUATION.md | 2,000 | 3,000 | 4,500 |
 | COMPETITORS.md | 600 (Lite) | 1,200 | 2,000 |
 | DESIGN_DIRECTION.md | — | 1,500 | 2,500 |
 | PRD.md (draft) | — | 2,000 — full stories for Musts, one line per Should/Could | 3,000 |
@@ -56,7 +56,7 @@ Unverified facts become CLARITY questions; never quote a limit or price from mem
 ### Token rules for the Idea Pack (MUST)
 1. **Research once, cite everywhere.** Facts go to `docs/product/research/<topic>.md` with IDs (R1, R2…); other documents cite the ID instead of repeating the fact.
 2. **One home per fact.** Competitor detail lives in COMPETITORS; EVALUATION §6 summarises it in ≤ 150 words of prose (tables excluded; §7 differentiation is separate). The PRD links personas, flows and screens by ID instead of copying them. ONE_PAGER ≤ 500 words.
-3. **Search before you read.** A search snippet with the figure and date is enough to cite. Open a page only for numbers or quotes you need; prefer round-up and comparison pages that cover several competitors in one read. If search returns bare links (no snippets), trade two unused searches for one extra page read. Stop a competitor ring when two sources agree. A fact the budget can't reach becomes a CLARITY question, not a guess.
+3. **Search before you read.** A search snippet with the figure and date is enough to cite. Open a page only for numbers or quotes you need; prefer round-up and comparison pages that cover several competitors in one read. If search returns bare links (no snippets), trade two unused searches for one extra page read — so run searches in two batches (half, then decide), not all at once. Stop a competitor ring when two sources agree. A fact the budget can't reach becomes a CLARITY question, not a guess.
 4. **Copy templates, don't read them.** `cp` the template into place, read only its HOW TO FILL notes and one example block, then fill it section by section with targeted edits. Exception: the wireframe template is read once in full (its CSS kit and script contract are needed to fill it) — never twice.
 5. **Write once, check with a script.** Write each document in one pass from your notes. Don't re-read your own output — run `check_idea_pack.py` (idea-pack/scripts) and fix only what it flags.
 6. **Small subagent briefs.** Give each perspective agent the brief plus the one reference it needs and the research file; replies ≤ 300 words. Agents read the research cache before searching, and their own search caps count **inside** the mode's budget. No subagents available → play the perspectives inline: ≤ 5 lines each in Quick, ≤ 10 in Standard, full in Deep.

@@ -35,7 +35,16 @@ Score the idea **as briefed**; the strongest version's score is the target. Appl
 - **Pivot** — weighted < 5.5 (or a dimension ≤ 3 without a clear fix) but the problem or audience is real and a specific pivot's target score reaches ≥ 5.5; propose 1–3 pivots and recommend one.
 - Also state **confidence** (Low / Medium / High) based on evidence quality.
 
-For learning/portfolio projects, say so and weight feasibility and learning value higher — a "Drop" as a business can still be a "Go" as a learning project. Make the distinction explicit.
+For learning/portfolio projects, say so and score a second lens — a "Drop" as a business can still be a "Go" as a portfolio project. Show both verdicts.
+
+| Portfolio / learning lens | Weight |
+|---|---|
+| Shows the skill the owner wants to be known for (originality, depth, craft) | 30% |
+| Feasibility for this owner in the stated time | 25% |
+| Reach — will the right people see it (channels, community, launch plan) | 20% |
+| Learning value (new skills the owner wants) | 15% |
+| Differentiation from existing work in the space (credit prior art openly) | 10% |
+Same verdict thresholds as the product lens.
 
 ## Market sizing method
 

@@ -186,7 +186,7 @@ def main():
                 report("FAIL", f"{f.name}: broken link → {target}")
 
     caps = {
-        "EVALUATION.md": {"quick": 1500, "standard": 3000, "deep": 4500},
+        "EVALUATION.md": {"quick": 2000, "standard": 3000, "deep": 4500},
         "COMPETITORS.md": {"quick": 600, "standard": 1200, "deep": 2000},
         "DESIGN_DIRECTION.md": {"quick": 10**9, "standard": 1500, "deep": 2500},
         "PRD.md": {"quick": 10**9, "standard": 2000, "deep": 3000},

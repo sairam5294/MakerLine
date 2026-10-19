@@ -1,4 +1,4 @@
-<!-- Size: Quick ≤ 1,500 · Standard ≤ 3,000 · Deep ≤ 4,500 words incl. tables. Each section = its table + ≤ 3 bullets; link COMPETITORS and research files instead of repeating them. -->
+<!-- Size: Quick ≤ 2,000 · Standard ≤ 3,000 · Deep ≤ 4,500 words incl. tables. Each section = its table + ≤ 3 bullets; link COMPETITORS and research files instead of repeating them. -->
 # Idea Evaluation Report — {{working name}}
 
 _Version {{n}} · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.md · Open questions: CLARITY.md_
