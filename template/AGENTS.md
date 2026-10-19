@@ -16,7 +16,7 @@ Skills live in `.agents/skills/<name>/SKILL.md`. Outputs live in `docs/product/`
 - Log decisions in `docs/product/DECISIONS.md`. Update STATUS.md after each phase/task.
 
 ## Definition of done (details: `.agents/skills/product-standards/references/`)
-- WCAG 2.2 AA: accessible names, keyboard/screen-reader operable, contrast ≥ 4.5:1, targets ≥ 44pt/48dp, text scales to 200%. Accessibility statement + barrier-feedback route from first release; accessible worldwide and non-discriminatory by default (`inclusion.md`), plus the accessibility law of each launch market (`accessibility-law.md`: AODA, ADA, EAA, RPwD…).
+- WCAG 2.2 AA: accessible names, keyboard/screen-reader operable, contrast ≥ 4.5:1, targets ≥ 44 CSS px (web) / 44 pt (iOS) / 48 dp (Android) — the starters use 48 as one safe value, text scales to 200%. Accessibility statement + barrier-feedback route from first release; accessible worldwide and non-discriminatory by default (`inclusion.md`), plus the accessibility law of each launch market (`accessibility-law.md`: AODA, ADA, EAA, RPwD…).
 - Every screen: loading, empty, error, offline, success states. Design tokens only — no raw colours.
 - Server-side authorization + RLS on every user-data table; schema-validated input; parameterized queries.
 - No secrets in code, logs or client bundles; only `.env.example` is committed.

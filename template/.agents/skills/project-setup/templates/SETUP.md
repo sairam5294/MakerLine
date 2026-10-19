@@ -2,6 +2,9 @@
 
 _Updated {{date}}. Every step shows the command and what you should see. Stuck? See "Common problems" at the end._
 
+## 0. First time only — the repo has docs but no code yet
+Create the app from the kit starter into this folder (existing docs are kept): `{{~/Documents/product-kit/scripts/new-project.sh . --web}}` (or `--starter` for the Expo app). Then continue from step 3.
+
 ## 1. Prerequisites
 | Tool | Version | Check | Install |
 |---|---|---|---|

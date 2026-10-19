@@ -7,7 +7,7 @@ description: Product Kit engineering doc set, written once the idea is approved 
 
 Gate: STATUS `Evaluation: APPROVED`, and TECH_STACK.md, DESIGN_SYSTEM.md and PRD.md (full) exist. Run **once** here (phase 7a); later skills keep the files current.
 
-Why: AI coding tools work from what they can read. One short doc per concern (how the system fits together, the data model, the security model, how code is written, how it's tested, the rules, what to remember) stops every session re-deriving — or re-inventing — those decisions. Short beats complete: each file ≤ ~80 lines; detail links out.
+Why: AI coding tools work from what they can read. One short doc per concern (how the system fits together, the data model, the security model, how code is written, how it's tested, the rules, what to remember) stops every session re-deriving — or re-inventing — those decisions. Short beats complete: each file ≤ ~80 lines (DATABASE.md: one row per table in a summary table, plus a full block only for tables holding personal data or non-trivial RLS); detail links out.
 
 ## Steps
 1. **Read** TECH_STACK.md (ADR), PRD.md (stories, data & permissions, analytics, non-functional), DESIGN_SYSTEM.md, EVALUATION §11 (accessibility and compliance), DECISIONS.md, OWNER.md. Load the standards the project touches: `../product-standards/references/` `backend.md`, `security.md`, `development.md`, `testing.md`, `context-budget.md`, `ai.md` if any AI feature, `mobile.md` if native apps. Ask ≤ 3 questions only if something blocks (e.g. multi-tenant or not).

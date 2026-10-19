@@ -15,6 +15,7 @@ Evaluation: PENDING   <!-- set to "APPROVED (<date>)" only when the owner approv
 | 6 | Design system | Not started | | |
 | 7 | PRD | Not started | | |
 | 7a | Engineering docs | Not started | | ARCHITECTURE · DATABASE · SECURITY · CODE_STYLE · TESTING · RULES · MEMORY · LIFECYCLE |
+| — | Tool plan | Not started | | which AI tool does which job (anytime) |
 | 7b | Project setup | Not started | | README · SETUP · STRUCTURE · GITHUB · .env.example · AI-tool folders |
 | 8 | Plan | Not started | | |
 | 9 | Build | Not started | | current task: – |

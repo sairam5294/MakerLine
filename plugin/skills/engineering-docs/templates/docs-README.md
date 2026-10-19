@@ -20,6 +20,6 @@ _Updated {{date}} · Read `../AGENTS.md` first, then `RULES.md` and `MEMORY.md`,
 | **BRAND** | Name, logo and guidelines, colours, fonts, icons, rules | `product/BRAND.md` · `../design/brand/` | name-product |
 | **TOOLS** | Which AI tool does which job, handoffs, limits | `product/TOOL_PLAN.md` · `CONTEXT_PACK.md` | tool-plan |
 | **MEMORY** | Long-lived facts: environment, conventions, what broke before, do-not-touch | `MEMORY.md` | handoff |
-| **AGENTS** | Rules for every AI tool in this repo | `../AGENTS.md` (`../CLAUDE.md` points here) | kit upgrades |
+| **AGENTS** | Rules for every AI tool in this repo | `../AGENTS.md` (root `../CLAUDE.md` imports it; Cursor `../.cursor/rules/project.mdc`, Copilot `../.github/copilot-instructions.md`) | kit upgrades |
 
 Also here: `product/` (brief, clarity log, evaluation, competitors, design direction, validation, naming, tech stack ADR, test plan, release, reviews, handoff, decisions, costs) · `kit/` (starter rules) · `../design/wireframes/` (clickable low-fi screens).

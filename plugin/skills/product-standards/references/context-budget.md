@@ -26,6 +26,16 @@ Tokens = cost + quality. A bloated context makes AI tools slower, pricier and sl
 
 Baseline before these rules: a blind Standard run (v0.7.0) used ~224k tokens and 72 tool calls.
 
+### Research budget after approval (per phase)
+| Phase | Searches | Page reads | How to stay inside it |
+|---|---|---|---|
+| tool-plan | ≤ 3 | ≤ 3 | one official pricing/limits page per tool the owner has; anything else "unverified" |
+| name-product | ≤ 8 | ≤ 4 | one search per name for the top 6; deep checks (store, domain, trademark) only for the top 3 |
+| tech-stack | ≤ 4 | ≤ 4 | versions from the package registry (`npm view <pkg> version`, `pip index versions`) — registry lookups don't count as page reads |
+| project-setup | ≤ 2 | ≤ 2 | free-tier limits from the vendors' limits pages; a number not on the page → "unverified" |
+| design-system, write-prd (full), engineering-docs | 0 | 0 | work from the Idea Pack, research cache and standards |
+Unverified facts become CLARITY questions; never quote a limit or price from memory.
+
 ### Token rules for the Idea Pack (MUST)
 1. **Research once, cite everywhere.** Facts go to `docs/product/research/<topic>.md` with IDs (R1, R2…); other documents cite the ID instead of repeating the fact.
 2. **One home per fact.** Competitor detail lives in COMPETITORS; EVALUATION §6 summarises it in ≤ 150 words of prose (tables excluded; §7 differentiation is separate). The PRD links personas, flows and screens by ID instead of copying them. ONE_PAGER ≤ 500 words.

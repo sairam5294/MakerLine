@@ -21,12 +21,13 @@ _Updated {{date}} · From NAMING.md (chosen name) and DESIGN_DIRECTION.md (chose
 | Don't | stretch, rotate, recolour outside the palette, add shadows/gradients, place on busy photos, rebuild in another font |
 
 ## 4. Colour
-| Role | Light | Dark | Text on it | Contrast |
+| Role | Theme | Colour | On | Contrast |
 |---|---|---|---|---|
-| Brand primary | #{{hex}} | #{{hex}} | #{{hex}} | {{n}}:1 |
-| Accent | | | | |
-| Neutral 900 / 50 | | | | |
-| Success · Warning · Danger · Info | | | | |
+| Brand primary (button) | light | #{{hex}} | #{{hex}} | {{n}}:1 |
+| Brand primary (button) | dark | #{{hex}} | #{{hex}} | {{n}}:1 |
+| Body text | light | #{{hex}} | #{{hex}} | {{n}}:1 |
+| Accent · Success · Warning · Danger · Info | … | | | |
+One colour pair per row (the checker recomputes every ratio).
 Never use colour alone to carry meaning (pair with text or an icon).
 
 ## 5. Typography

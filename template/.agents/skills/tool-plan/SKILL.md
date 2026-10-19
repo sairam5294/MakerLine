@@ -13,7 +13,7 @@ Why: most solo builders pay for two or three AI tools and use them interchangeab
    - Build and hosting accounts and their tier: GitHub · Vercel · Supabase · Figma · Expo/EAS · Apple / Google developer accounts.
    - Where they work: Claude app/desktop · Claude Code (terminal) · Cursor · VS Code · browser only.
    - Which limits they hit today, and roughly when (e.g. "Claude by mid-afternoon").
-   Save the answers to OWNER.md ("Accounts & tools").
+   Save the answers to OWNER.md ("Accounts & tools"). Owner unavailable: assume the free tier of any tool whose plan isn't known, mark it `[Default]`, and add a CLARITY question — the split is provisional until confirmed.
 2. **Check current plans and limits** in the vendors' official pages before recommending (they change often; never quote a limit from memory). Note anything you couldn't verify.
 3. **Split the jobs** with `references/tool-routing.md`: map every phase and recurring task of this project to a primary tool and a fallback, based on what the owner actually has. Keep the core rule: one tool owns a document at a time; the repo (`AGENTS.md`, `docs/`) is the shared memory every tool reads.
 4. **Handoffs:** for each tool that can't read the repo (e.g. ChatGPT in the browser), define the context it gets — `docs/CONTEXT_PACK.md` (made by project-setup) or the one-pager — and how its output comes back (paste into a named file, then the owning tool reviews it).

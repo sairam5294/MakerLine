@@ -7,7 +7,7 @@ Starting points — always verify current versions and pricing before recommendi
 | Layer | Choice | Why |
 |---|---|---|
 | App (iOS/Android/web) | **Expo (React Native) + Expo Router**, TypeScript | One codebase for 3 platforms; file-based routing; EAS build/submit/updates; AI tools know it well |
-| Marketing site / web app with SEO | **Next.js** (App Router) on **Vercel** | SEO, fast pages; share TS types and logic with the app |
+| Marketing site / web app with SEO | **Next.js** (App Router) on **Vercel** | SEO, fast pages; share TS types and logic with the app. Vercel's free Hobby plan is for personal, non-commercial use — a product that charges (or a business site) needs Pro or another host; check current terms and price before launch |
 | UI | NativeWind (Tailwind for RN) or Tamagui; shadcn/ui on web | Token-based styling that maps to a design system |
 | Backend / DB / auth / storage | **Supabase** (Postgres, Auth, Storage, Edge Functions, RLS) | Managed, SQL, row-level security, generous free tier |
 | Alternative BaaS | Firebase | Strong mobile SDKs, offline sync; NoSQL modelling is harder to keep consistent |
