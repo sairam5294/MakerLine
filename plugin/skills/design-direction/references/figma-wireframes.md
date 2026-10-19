@@ -47,7 +47,7 @@ Sources: [Figma MCP server overview](https://developers.figma.com/docs/figma-mcp
 | Tablet | 768 × 1024 | `tablet` (same width as the HTML frame) |
 | Desktop | 1024 × 768 | `desktop` (same width as the HTML frame; widen later for real designs) |
 
-The HTML frames are narrower so they fit a browser; Figma uses standard device sizes. Same content and order — only the width changes.
+Figma frames use the same widths as the HTML frames, so a screen reads the same in both. Same content and order.
 
 ## Foundations (one `use_figma` call)
 
