@@ -101,6 +101,16 @@ See everything at once: `python3 scripts/portfolio.py` → open `portfolio/index
 
 GitHub Free can't protect `main` on private repos. setup-github.sh tells you if so, and the `no-push-to-main` git hook covers it locally. The kit repo itself uses the same idea: run `git config core.hooksPath .githooks` once per clone, and pushes to `main` are refused — work on `<type>/<Mon>-<DD>-<summary>` branches (`scripts/branch.sh fix "what changed"`) and merge through pull requests.
 
+## The cockpit (optional web UI)
+A local page that shows every project, its phase, whether it's approved, and the exact prompt to paste next — the chat still does the work.
+```bash
+python3 scripts/kit-ui.py --projects ~/Desktop/Code_Projects/"Product Kit"/projects   # then open http://127.0.0.1:8765
+```
+Runs only on your computer, reads your files, writes nothing unless you tick "save" on the New idea form. Details: [kit-ui/README.md](kit-ui/README.md).
+
+## Works with your AI tools
+One rulebook (`AGENTS.md`) for Claude, Cursor, Codex, Copilot, Gemini CLI, Windsurf, Cline, Roo Code, Zed, JetBrains Junie, Kiro, Antigravity, OpenCode, Amp, Aider and Continue — see `template/docs/kit/AGENT-ADAPTERS.md`.
+
 ## Using the three tools together
 
 - **Claude**: discovery, evaluation, planning, multi-file features, parallel reviews.
