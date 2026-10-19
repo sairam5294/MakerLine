@@ -66,6 +66,7 @@ Give the owner an honest, researched verdict on their idea — and the best vers
 6. **Update `CLARITY.md`.** Answered questions move down with their source; new unknowns get "how to find out"; assumptions get their test.
 7. **Present** (≤ 15 lines): verdict · what's promising · top 3 risks · top 3 strengthening moves · the cheapest test that could change the verdict · 3–6 questions.
 8. **Refine** each round: bump the brief version, update only affected sections, add a revision-log row. Re-score only on new facts — never because the owner pushed back; a good argument without evidence becomes a test.
+   - Never regenerate the whole report: add a *What changed in v{n}* block under the title line (≤ 5 bullets, each citing its trigger — brief version, Q-id, V-id). Results from validate-idea arrive here.
 9. **Gate.** Only the owner approves: `scripts/approve.sh` (types YES; writes STATUS + DECISIONS + commit). Never write `Evaluation: APPROVED` yourself; with no shell, write it only after the owner's explicit words in this conversation, quoted in DECISIONS.md. Then offer `design-direction`, `validate-idea` or `name-product`.
 
 ## Output

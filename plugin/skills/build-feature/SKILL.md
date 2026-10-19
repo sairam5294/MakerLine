@@ -47,6 +47,7 @@ Load only these (use search / grep instead of reading whole large files):
 - The task in `PLAN.md` and its stories in `PRD.md`.
 - The engineering doc the task touches: `docs/ARCHITECTURE.md` for a new container or flow, `docs/DATABASE.md` for any table, `docs/CODE_STYLE.md` on your first task.
 - The standards files the task touches (`../product-standards/references/`).
+- `references/pr-evidence-template.md` — for any UI task (step 9).
 - Gate: STATUS.md says `Evaluation: APPROVED` and the task is in PLAN.md.
 - Ask the owner only if blocked.
 
@@ -63,6 +64,8 @@ Load only these (use search / grep instead of reading whole large files):
 8. **Design QA:** a UI task with a Figma frame → run `design-qa`.
 9. **Evidence and commit:** what changed, how to see it, test results. Commit `feat(scope): … (T-xx, US-xx)`; tick PLAN; update STATUS.
    - Keep the docs in step (table below).
+   - **UI task → fill `references/pr-evidence-template.md`** as the PR body: before/after screenshots in `docs/product/evidence/<task-id>/` (Playwright for web; simulator or the web export for Expo), axe result by impact from `npm run test:e2e` (zero serious/critical), keyboard path, test summary, and each acceptance criterion → its test.
+   - No shell or no browser → write what wasn't captured under "Not captured"; never leave a section blank.
 
 ### Self-review checklist
 
@@ -93,13 +96,15 @@ Load only these (use search / grep instead of reading whole large files):
 | `docs/product/PLAN.md` | task ticked |
 | `docs/product/STATUS.md` | current task advanced |
 | `docs/*.md`, `.env.example` | kept in step per the table above |
+| `docs/product/evidence/<task-id>/*.png` | UI task: before/after screenshots, ≤ 300 KB each, seed data only |
+| PR description (or commit body without a PR) | evidence per `references/pr-evidence-template.md` |
 
-Present to the owner (≤ 8 lines): what changed · how to see it (command or screen) · test results · anything deferred.
+Present to the owner (≤ 8 lines): what changed · how to see it (command or screen) · test results · axe (critical/serious count) · anything deferred or not captured.
 
 ## If connectors available
 
 If **~~source control** is connected:
-- Push the branch and open a PR with the evidence (what changed, how to see it, test results) as the description.
+- Push the branch and open a PR with the evidence (what changed, how to see it, test results) as the description — for a UI task, the filled `references/pr-evidence-template.md`.
 - Push or open a PR only when the owner asks in chat.
 
 If **~~project tracker** is connected:
@@ -113,6 +118,8 @@ If **~~project tracker** is connected:
 - Server-side validation + authorization on every write; no secrets in code, logs or client bundles.
 - Ask before adding a dependency and record why in `docs/product/DECISIONS.md`; verify APIs against real docs, never invent package names.
 - Ask before anything irreversible.
+- A UI task isn't done without evidence: screenshots, axe summary with zero serious/critical violations, keyboard path, AC → test map. Missing pieces are stated, not skipped.
+- Never commit screenshots containing real user data; keep each ≤ 300 KB.
 
 ## Tips
 
@@ -123,4 +130,4 @@ If **~~project tracker** is connected:
 ## Related
 
 - Before: `plan-build` · Alongside: `design-qa` · After: `quality-review`, `test-plan`, `handoff`
-- Reads: `AGENTS.md`, `docs/RULES.md`, `docs/MEMORY.md`, `docs/ARCHITECTURE.md`, `docs/DATABASE.md`, `docs/CODE_STYLE.md`, `../product-standards/references/*`; `scripts/branch.sh`
+- Reads: `references/pr-evidence-template.md`, `AGENTS.md`, `docs/RULES.md`, `docs/MEMORY.md`, `docs/ARCHITECTURE.md`, `docs/DATABASE.md`, `docs/CODE_STYLE.md`, `../product-standards/references/*`; `scripts/branch.sh`

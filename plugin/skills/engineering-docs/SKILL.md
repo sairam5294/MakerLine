@@ -65,7 +65,8 @@ Write one short doc per engineering concern so every AI session builds from the 
    - every table in `DATABASE.md` has an RLS policy or an explicit "no user data"
    - `SECURITY.md` covers every OWASP row with a control or "not applicable because…"
    - no secrets or personal data in any file
-5. **Present** (see Output). Owner confirms → STATUS `7a Engineering docs: Done`; offer **project-setup** (README, SETUP, STRUCTURE, `.env.example`, GitHub rules, AI-tool folders), then `plan-build`.
+5. **Re-runs** (one doc, or the set after a stack/PRD change): edit only the affected sections — never regenerate a doc. Add a *What changed* block under its title (≤ 5 bullets, each citing the trigger: PRD version, Q-id, DECISIONS entry) and a revision-log row at the end.
+6. **Present** (see Output). Owner confirms → STATUS `7a Engineering docs: Done`; offer **project-setup** (README, SETUP, STRUCTURE, `.env.example`, GitHub rules, AI-tool folders), then `plan-build`.
 
 **Adopted projects** (phases marked "Done (before kit)"): write the set from the code that exists — read the project's README, schema, config and tests; mark anything inferred rather than decided as "observed", and list gaps as tasks for PLAN.md.
 

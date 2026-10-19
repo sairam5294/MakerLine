@@ -68,6 +68,7 @@ Turn the brief, evaluation and design direction into one PRD that is concrete en
 5. **Testable and measurable.** Every acceptance criterion must be automatable; every metric needs an event that measures it.
 6. **Present** in ≤ 12 lines: the MVP in one sentence, number of Must stories, estimated build time, top 3 risks, open questions that block approval.
 7. **Iterate.** Owner reviews (draft) or approves (full) → STATUS: PRD draft `Done` after review.
+8. **Re-run on a new brief or evidence** (new brief version, answered Q-id, VALIDATION_RESULTS V-id): update only the affected sections and stories — don't regenerate the PRD (stable story IDs keep tests and PLAN links valid). Bump the version, add a *What changed in v{n}* block under the title line (≤ 5 bullets, each citing its trigger) and a row in the PRD's version table.
 
 ## Output
 
@@ -101,6 +102,7 @@ If **~~knowledge base** is connected:
 - Full mode promotes the draft; never start over.
 - Every acceptance criterion automatable; every metric has an event.
 - A Pivot verdict is specced as the pivot, labelled at the top.
+- Re-runs edit in place: affected sections only, a *What changed in v{n}* block (≤ 5 bullets) and a version-table row; never renumber existing US-ids.
 
 ## Tips
 

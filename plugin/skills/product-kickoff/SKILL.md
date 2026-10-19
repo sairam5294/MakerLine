@@ -93,6 +93,7 @@ Run the kit's phases in order, one at a time. Each phase is a skill in the sibli
    - Presenting with no owner present: point to the one-pager, list the defaults and the next test, stop.
 9. **Gate.** Phases 4+ need `Evaluation: APPROVED`, set **only by the owner** (`scripts/approve.sh`, or their explicit words quoted in DECISIONS.md where there's no shell). Re-check STATUS before every build phase. If the owner wants to skip: state the top 2 risks, obey, log in DECISIONS.md.
 10. **Changes later.** If goal/audience/scope changes: update the brief (new version), log it, offer to re-evaluate the changed parts.
+   - Every doc-writing skill re-run on a new brief or evidence updates only affected sections, adds a *What changed in v{n}* block under the title (≤ 5 bullets, each citing its trigger: brief version, Q-id, V-id) and a revision-log row — never a full regenerate, so the owner can see what moved.
 11. **End each turn** with: produced · one decision needed · next phase.
 
 ## Output

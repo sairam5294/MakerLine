@@ -34,7 +34,7 @@ Give the owner a draft design direction and clickable wireframes before any code
 │  ✓ Clickable HTML wireframes (design/wireframes/index.html)  │
 ├──────────────────────────────────────────────────────────────┤
 │  SUPERCHARGED (when you connect your tools)                  │
-│  + Design (Figma): wireframes as a Figma file, linked in doc │
+│  + Design (Figma): wireframes mirrored into a Figma file     │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -68,7 +68,7 @@ Give the owner a draft design direction and clickable wireframes before any code
    - at least one empty and one error state
    - links that click through the core flow
    - a designer note per screen (what it's for, open questions)
-11. **Figma (optional)** — if the Figma connector is available and the owner wants it, build the wireframes in a new Figma file (load the figma-use and figma-generate-design skills first; grey boxes, auto-layout, one frame per screen, flow arrows); link it in the doc.
+11. **Figma** — if ~~design (Figma) is connected and the owner says yes, mirror the wireframes into `<Product> — Wireframes v<n>` (new file, or a URL they give), following `references/figma-wireframes.md`. The HTML stays the source of truth for the checker. Without the connector, mention the html.to.design import once and move on.
 12. **Write** `docs/product/DESIGN_DIRECTION.md` from `references/design-direction-template.md`, then present (see Output).
 13. **Update** `CLARITY.md` (new questions, especially ones a prototype test could answer) and STATUS (`Design direction: Waiting for owner` → `Done` once they pick a direction). Offer `validate-idea` (prototype test with these wireframes) or the approval gate.
 
@@ -91,8 +91,12 @@ The wireframes double as the prototype for `validate-idea`.
 
 ## If connectors available
 
-If **~~design** (Figma) is connected:
-- With the owner's say-so, build the wireframes in a new Figma file (step 11) and link it in `DESIGN_DIRECTION.md`.
+If **~~design** (Figma) is connected (remote server; `references/figma-wireframes.md` has the confirmed tools, seat and rate limits):
+- Load the Figma skills first (`figma-create-new-file`, `figma-use`, `figma-generate-design`, `figma-generate-diagram`).
+- One page per platform — Phone 390×844, Tablet 834×1194, Desktop 1440×1024 — and one auto-layout frame per inventory screen, named with its screen ID, real content.
+- Greyscale `wf/` colour and text styles from the HTML template (text ≥ 4.5:1), targets ≥ 44pt/48dp; states as sibling frames, or listed in the screen's note.
+- Build a screen at a time and screenshot-check each; flows as prototype links or a FigJam diagram.
+- Frames: Standard ≤ 8, Deep 12+ (Figma calls are large). Write the file link into `DESIGN_DIRECTION.md`.
 
 ## Rules
 
@@ -111,4 +115,4 @@ If **~~design** (Figma) is connected:
 ## Related
 
 - Before: `evaluate-idea` · After: `validate-idea`, approval, `design-system` (turns the chosen visual direction into tokens and components), `write-prd` (links screens to stories)
-- Reads: `references/design-direction-template.md`, `references/wireframe-template.html`; `../product-standards/references/inclusion.md`; `check_idea_pack.py` in `../product-kickoff/scripts/`
+- Reads: `references/design-direction-template.md`, `references/wireframe-template.html`, `references/figma-wireframes.md` (only when Figma is connected or asked for); `../product-standards/references/inclusion.md`; `check_idea_pack.py` in `../product-kickoff/scripts/`
