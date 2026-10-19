@@ -46,6 +46,8 @@ For learning/portfolio projects, say so and score a second lens — a "Drop" as 
 | Differentiation from existing work in the space (credit prior art openly) | 10% |
 Same verdict thresholds as the product lens.
 
+**Personal tool** (built for the owner first): score the portfolio/learning lens, and name the verdict "Go as a personal tool" when it clears 5.5 — say what would have to be true to open it to others later.
+
 ## Market sizing method
 
 - **TAM** (everyone who could conceivably have the problem) → **SAM** (reachable with your platform, language and geography) → **SOM** (realistic users in year 1–2 given your channels and budget).
