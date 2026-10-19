@@ -1,36 +1,29 @@
 # ClubSlot — one-pager
 
-_2026-10-16 · Verdict: **Pivot** (Medium confidence the brief as written won't work; Low for the pivot until tested) · Idea Pack index: `docs/product/README.md`_
+**Defaults to confirm (owner unavailable):** D1 booking-only pivot (Q-01) · D2 PWA + WhatsApp links (Q-02) · D3 ₹8/flat/month, ₹1,500 minimum, 3 pilots free for 3 months (Q-03) · D4 direction A "Notice board" · D5 English + Telugu (Q-11) · D6 target reset to 5–8 paying communities.
 
-**The idea in one line.** For residents of large gated communities who keep losing peak court and hall slots to WhatsApp races, ClubSlot is a fair-booking web app that gives every flat a fair shot at peak times. Unlike the booking module in all-in-one society apps, it uses ballots for peak slots, releases no-shows automatically and shows no ads.
+_2026-10-19 · Verdict: **Pivot** (Medium-Low confidence) · Idea Pack index: `docs/product/README.md`_
 
-**The problem.** Bookings run on WhatsApp groups and a paper register at the security desk; the owner sees double bookings and disputes weekly in a 900-flat community. Incumbents built caps, prime slots and no-show blacklists, so contention is common, but there's no resident evidence beyond the owner's own community yet.
+**The idea in one line.** For committees of gated communities in Hyderabad who are tired of amenity-booking disputes, ClubSlot is a shared-amenity booking service that gives every flat a fair, confirmed slot from a WhatsApp link. Unlike MyGate or NoBrokerHood, it does one job, with no ads and no app to install.
 
-**Who it's for first (the wedge).** Clubhouse and sports committees of 600+ flat communities in Hyderabad, starting with the owner's own community. The first 100 users are the regular court users there, reached through the sports secretary's WhatsApp group.
+**The problem.** Court, pool and hall bookings happen in WhatsApp threads and a paper register, so double bookings and disputes land on volunteer committee members weekly (owner's own 900-flat community). A vendor study claims 18% of facility bookings double-book and 71% of societies run on WhatsApp (R13, weak).
 
-**Up against.** MyGate (27,000+ communities, ad-funded), NoBrokerHood (free with add-ons), ADDA (prime-slot rules) and WhatsApp plus doing nothing. The brief's "no competitors" is false. We win on fairness for contested slots, focus and no ads. They win on being installed already, on gate integration and on price (free).
+**Who it's for first (the wedge).** Committees of 100–500-flat Hyderabad communities still on WhatsApp/paper (or whose gate app's booking module sits unused). First 100 users: the owner's community plus the three committee contacts.
 
-**Strongest version.** A no-install fair-booking layer for the 2–3 most contested amenities. It sits beside the gate app rather than replacing it and is run hands-on by a trusted resident-designer.
+**Up against.** MyGate, NoBrokerHood, ADDA (each ~25k communities, booking bundled free or cheap) and WhatsApp + register — we win on fairness, quiet and no-install booking; they win on gate security, bundles and price (free with ads). "No competitors" in the brief is wrong.
 
-**Reality check.**
-- The briefed scope (2 native apps, web admin, UPI, visitor passes, helpdesk) is 4–6× what 10 h/week × 10 weeks allows.
-- Committees may just switch on MyGate's booking caps, or pay nothing for a single-job tool.
-- The 6-month goal (20 communities, ₹1.5 lakh MRR) needs about 10,000 flats from 3 warm contacts.
+**Strongest version.** The quiet, fair booking desk pinned to the top of the community WhatsApp group: three taps to a confirmed slot, rules enforced visibly, a desk view the guard reads in five seconds. Ceiling: a Hyderabad–Bengaluru niche of 50–100 communities, not a venture outcome.
 
-**How to make it stronger.**
-1. Audit the owner's own community first.
-2. Run a concierge ballot with Google Forms before writing code.
-3. Cut to a web-only booking MVP without payments, priced per community (around ₹2,500/month) rather than ₹15/flat.
+**Reality check.** 1) Committees may not pay for one job when super-apps bundle it free (A-01). 2) The paper register may survive, making the app "one more place to check" (A-03). 3) As briefed (two native apps plus five modules in 10 weeks at 10 h/week) it is not buildable, and incumbents can copy any booking feature in a quarter.
 
-**Version 1.** Book a free slot within the committee's rules, with no double bookings. Musts: OTP join with roster match, rules-based booking and cancellation, peak-slot ballot, check-in with no-show release, and a committee rules editor. 12 screens · about 8–9 weeks at 10 h/week.
+**How to make it stronger.** Cut v1 to booking + rules + desk view as a web link; run five price-card interviews before writing code; make fairness visible in session one ("your turns this week") and the desk view Telugu-first at large text.
 
-**Look and feel.** "Courtside calm": green-teal on warm white, large type, no ads, built for a 67-year-old on a budget Android. Wireframes are in `design/wireframes/index.html`.
+**Version 1.** Book a slot from a link · set-up with rules · OTP + flat sign-in · waitlist · confirmation with desk code · desk view · English + Telugu · 9 Must stories · 8 wireframed screens · ~8 weeks at 10 h/week, pilot by week 10.
 
-**Tools and cost.** Next.js PWA + Supabase + an Indian SMS OTP provider, with payments later via Razorpay Route. About ₹4,500–5,500/month at 1,000 users (estimate), inside the ₹8,000 budget.
+**Look and feel.** A "Notice board": warm paper tones, one deep green, 17 px base type, slots as big buttons · wireframes: `design/wireframes/index.html`
 
-**Next test.** T1 is a 1-week audit of the owner's community: which app is installed, whether booking is switched on, and how many disputes there were in 8 weeks. Go if there's no working module and ≥ 4 disputes/month. Rethink if the existing booking module already works. After that, run the T3 concierge ballot: go at ≥ 40 % participation, stop below 15 %.
+**Tools and cost.** PWA (Next.js/SvelteKit) on Vercel + Supabase + Razorpay payment links + PostHog + SMS OTP · ~₹2,000–4,000 per month at 1,000 users; within the ₹8,000 budget.
 
-**Decisions needed from the owner.**
-1. Accept the pivot (fair booking, web-first, no payments in v1) or keep the all-in-one brief.
-2. Is this a business or learning with upside? If business, reset the 6-month target to 1 own pilot + 2 paying pilots.
-3. Run T1–T3 before approval?
+**Next test.** Five committee conversations with a price card and the clickable wireframes — go if ≥ 3 would pilot and ≥ 2 accept ₹8/flat or ₹1,500/month; rethink if 0 of 5 would pay anything.
+
+**Decisions needed from the owner.** Confirm D1–D3; name the pilot community and sponsor (Q-04); does the pilot already run a gate super-app (Q-10)?

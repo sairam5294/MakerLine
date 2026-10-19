@@ -5,7 +5,7 @@ description: Breaks the PRD into small sequenced tasks with milestones, tests, p
 
 # Plan Build
 
-1. Read PRD, stack, design system, STATUS.
+1. Read PRD, stack, design system, STATUS, and `docs/ARCHITECTURE.md` + `docs/DATABASE.md` (engineering-docs; if missing, run it first). M1 tasks come from DATABASE.md tables and ARCHITECTURE.md containers.
 2. Milestones in `docs/product/PLAN.md`:
    - **M0 Setup** — start from a kit starter (`--starter` Expo / `--web` Next.js) if the stack matches (else: TS strict, lint, tests, CI, env, secrets scan, error tracking); fill AGENTS.md commands.
    - **M1 Foundations** — tokens/base components, navigation, auth, schema + RLS + migrations, analytics.

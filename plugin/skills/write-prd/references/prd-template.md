@@ -35,6 +35,7 @@ Sections marked **(full)** are filled after approval; in a draft write "after ap
 | Capability | MoSCoW | Release | Why |
 |---|---|---|---|
 - MVP definition: the smallest product that tests {{riskiest assumption}} and delivers {{core value}}.
+- Scope summary: {{n}} Must · {{n}} Should · {{n}} Could stories · estimate {{n}} weeks at {{h}} h/week (owner's hours from OWNER.md)
 - Later releases (themes only):
 
 ## 7. User journeys
@@ -53,7 +54,12 @@ Link the flows in DESIGN_DIRECTION §5. For each core journey: happy path, then 
 - Screen inventory with states: link DESIGN_DIRECTION §6 and `design/wireframes/index.html`
 - Visual direction chosen:
 - Content and voice: key microcopy, terminology
-- Accessibility requirements: WCAG 2.2 AA + the persona-specific needs
+- Accessibility requirements: WCAG 2.2 AA + the persona-specific needs + what the launch markets require (EVALUATION §11)
+  - Accessibility statement (conformance level, known gaps, how to report a barrier) and a feedback route answered within {{n}} days
+  - Alternate formats / communication support on request (required by e.g. AODA)
+  - Accessibility Conformance Report (VPAT) if businesses, schools or government will buy — by {{milestone}}
+  - Assistive-tech users in the prototype test and the beta
+  - Example criterion: Given a screen-reader user, when they book a slot, then every control is announced with name, role and state and the confirmation is announced
 - Localisation: languages and scripts at launch / later
 
 ## 10. Data and permissions **(full)**

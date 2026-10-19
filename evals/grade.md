@@ -43,3 +43,20 @@ PRD (draft) and one-pager
 28. ONE_PAGER.md fits one page and matches the evaluation; README index links every document
 
 Pass bar for the Idea Pack: ≥ 80% of items 11–28, plus the universal 1–10 and the case's expected list.
+
+## Accessibility, inclusion and compliance (v0.8+, 1 point each)
+29. EVALUATION §11 names who could be excluded (permanent / temporary / situational) with a source or labelled estimate
+30. Obligations-by-launch-market table uses `accessibility-law.md`, says *why* each law applies or not, flags uncertain + high-stakes items for a lawyer and CLARITY; includes the privacy row
+31. COMPETITORS records leaders' accessibility signals (statement, ACR/VPAT, store label, review mentions)
+32. DESIGN_DIRECTION §9 states the conformance target, cognitive and language needs, and locked-in "cheap now" choices; wireframes carry accessibility notes
+33. PRD includes accessibility statement + feedback route, alternate formats when required, ACR when selling to organisations, assistive-tech users in tests
+34. `check_idea_pack.py --mode <mode>` passes with 0 FAIL
+35. Global baseline applied whatever the launch market (inclusion.md): no forced gender/name splits, languages and low-end devices considered, no decision based on protected characteristics
+
+## Token efficiency (record every blind run)
+| Date | Case | Mode | Tokens | Tool calls | Minutes | Score | Notes |
+|---|---|---|---|---|---|---|---|
+| 2026-10-16 | community-amenities | Standard (v0.7.0) | ~224k | 72 | 18 | 6/6 must-catch | baseline before budgets |
+| 2026-10-16 | new-idea-pitch | discovery (v0.7.0) | ~115k | 14 | 3 | ≈ 10/11 | |
+| 2026-10-19 | ontario-clinic-booking | Quick (v0.8 pre-release) | ~190k (incl. a rate-limit restart) | 56 | 9 | 6.5/7 must-catch (PIPEDA missed); checker 0 fail | 8 searches + 4 reads exactly; 5 trim passes to fit the 1,200-word cap → cap raised to 1,500, Quick-optional sections marked |
+| 2026-10-19 | community-amenities | Standard (v0.8 pre-release) | ~214k (incl. a rate-limit restart) | 22 | 15 | 6/6 must-catch; checker 0 fail 0 warn; wireframes axe 0 | 12 searches + 8 reads inside budget; tool calls 72 → 22; tokens only ~5% below the 224k baseline — the restart re-read context, and the full report/PRD templates dominate |

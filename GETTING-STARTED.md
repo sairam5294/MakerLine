@@ -32,6 +32,8 @@ claude plugin install product-kit@product-kit-marketplace
 ```
 Later, `claude plugin marketplace update product-kit-marketplace` picks up new versions.
 
+Only want the idea stage (no building)? Install `idea-pack@product-kit-marketplace` instead — the same Idea Pack skills without the build phases. Don't install both; the full kit already includes it.
+
 **Claude app (Cowork / desktop):** build the plugin file, then open it in a chat and press **Install**:
 ```bash
 ./scripts/build-plugin.sh      # writes ~/Documents/product-kit.plugin
@@ -59,7 +61,8 @@ You can start in two ways. **Start with A** — no terminal needed.
 1. In the Claude app, connect an empty folder for the idea (e.g. `~/Projects/bakery-orders`).
 2. Say: **"I have a new idea: …"** (2–5 sentences). Or, to get everything in one go: **"Give me the full Idea Pack for this idea: …"**
 3. Claude interviews you in short rounds → `PROJECT_BRIEF.md`, plus `CLARITY.md`: every open question with the decision it blocks.
-4. It researches and writes an honest, constructive **evaluation** (`EVALUATION.md`): the strongest version of your idea, a reality check, the scorecard, users and market, a strengthening plan with a path to "Go", and the tools and monthly cost. Competitors get their own file (`COMPETITORS.md`): who leads, where they win, where you'd win, and whether your differentiator holds up.
+   Add **"quick"** for a fast first look (~50–70k tokens: brief, short evaluation, top competitors, one-pager), or **"deep"** before you spend money.
+4. It researches and writes an honest, constructive **evaluation** (`EVALUATION.md`): the strongest version of your idea, a reality check, the scorecard, users and market, a strengthening plan with a path to "Go", the tools and monthly cost, and **accessibility, inclusion and compliance** — who could be left out and what the law requires where you launch (AODA, ADA, the EU Accessibility Act, India's RPwD and more; the kit's baseline is accessible worldwide). Competitors get their own file (`COMPETITORS.md`): who leads, where they win, where you'd win, and whether your differentiator holds up.
 5. **Design direction** (`DESIGN_DIRECTION.md`): experience principles, flows, a screen list, 2–3 visual directions, and clickable grey-box **wireframes** in `design/wireframes/index.html` (open it in a browser; "Prototype" clicks through). With the Figma connector, it can build them in Figma too.
 6. **Draft PRD** (`PRD.md` v0): goals and metrics, personas, scope, user stories, risks and a release plan.
 7. A **one-pager** (`ONE_PAGER.md`) and an index (`docs/product/README.md`) tie it together.

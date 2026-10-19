@@ -3,6 +3,8 @@
 | Standard | Pinned to | Last checked |
 |---|---|---|
 | WCAG | 2.2 AA (W3C Rec, Oct 2023) | 2026-09-27 |
+| IAAP WAS Body of Knowledge | 2.3 (Oct 2024) — WCAG 2.0–2.2, WAI-ARIA 1.2, APG, ATAG 2.0, EN 301 549, WCAG-EM, ACT Rules | 2026-10-16 |
+| Accessibility law by market (AODA, ACA, ADA II/III, 508, EAA, WAD, UK, India RPwD, AU DDA, Japan) | see references/accessibility-law.md "last verified" | 2026-10-19 |
 | OWASP Top 10 | 2025 | 2026-09-27 |
 | OWASP ASVS | 5.0 | 2026-09-27 |
 | OWASP MASVS | v2 | 2026-09-27 |

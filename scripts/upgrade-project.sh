@@ -28,7 +28,7 @@ ADOPT=0
 python3 "$KIT/scripts/sync.py" >/dev/null   # make sure template/ is current
 
 KIT_OWNED=(.agents/skills .cursor/agents .cursor/rules .codex/agents .claude/hooks docs/kit
-           scripts/check-gate.sh scripts/approve.sh scripts/worktree.sh scripts/setup-github.sh scripts/local-ai.sh
+           scripts/check-gate.sh scripts/approve.sh scripts/worktree.sh scripts/setup-github.sh scripts/local-ai.sh scripts/check-branch.sh scripts/branch.sh
            .github/workflows/ci.yml .github/workflows/ai-review.yml .github/pull_request_template.md .github/dependabot.yml)
 YOURS=(AGENTS.md CLAUDE.md .claude/settings.json .codex/config.toml .cursor/permissions.json .cursor/mcp.json
        .mcp.json lefthook.yml .gitignore .cursorignore)

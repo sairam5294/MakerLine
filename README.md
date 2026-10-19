@@ -1,15 +1,15 @@
-# Product Kit v0.7
+# Product Kit v0.8
 
 **The open-source designer's AI toolkit.** One setup that takes an idea from "I have a new idea" to a shipped web / iOS / Android product, and works the same way in **Claude**, **Cursor** and **Codex**. Built by a designer with light coding skills, for designers and solo makers who build with AI. The rules are enforced by checks, not just written down.
 
-> **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
+> **Website: https://sairam5294.github.io/product-kit/** · **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
 
 **Why it exists.** AI tools write working code fast, but they forget accessibility, UX heuristics, security, tests and honest evaluation unless you remind them every session, in every tool. Product Kit packages that know-how as skills, agents, standards, hooks and CI so every tool you use starts thinking like a senior product designer.
 
 **What you get**
 - A 13-phase workflow from discovery interview to post-launch retro, with an approval gate AI tools cannot bypass
-- An **Idea Pack** for every idea before any code: honest, constructive evaluation, competitors and a differentiator test, a strengthening plan, draft design direction with clickable wireframes, a draft PRD and a one-pager
-- 21 skills and 13 specialist agents (strategist, UX reviewer, accessibility auditor, security reviewer, QA, devil's advocate and idea champion…)
+- An **Idea Pack** for every idea before any code: honest, constructive evaluation, competitors and a differentiator test, a strengthening plan, draft design direction with clickable wireframes, a draft PRD and a one-pager, with an accessibility, inclusion and compliance lens (who it excludes, AODA / ADA / EAA / RPwD obligations by launch market). Three depths — Quick (~50–70k tokens), Standard, Deep — and `check_idea_pack.py` to verify the pack before you see it
+- 22 skills and 14 specialist agents (strategist, UX reviewer, accessibility auditor and accessibility strategist, security reviewer, QA, devil's advocate and idea champion…)
 - Standards for accessibility (WCAG 2.2 AA), UX, security, testing, backend and AI features — split into small files so only the relevant ones load
 - Two tested starters: Expo + Supabase (iOS / Android / web) and Next.js (landing page + waitlist), both with axe, Lighthouse and contrast tests
 - Safety hooks, git hooks and GitHub Actions that block dangerous commands, leaked secrets and code before approval
@@ -21,7 +21,7 @@ Licensed under [MIT](LICENSE). Contributions welcome — see [CONTRIBUTING.md](C
 
 ```
 product-kit/
-├── plugin/        THE SOURCE — edit only here (21 skills, 13 agents, standards). Installs into Claude.
+├── plugin/        THE SOURCE — edit only here (22 skills, 14 agents, standards). Installs into Claude.
 ├── template/      Copied into every project: AGENTS.md, safety settings, CI, git hooks, MCP, Cursor/Codex adapters
 ├── starter/       Tested Expo (iOS/Android/Web) + Supabase app: i18n (en/te/hi), Sentry, PostHog
 ├── starter-web/   Tested Next.js site: landing page + waitlist (nonce CSP, rate limit, optional Turnstile), AI harness with evals; Lighthouse 1.0/1.0/1.0
@@ -47,7 +47,7 @@ product-kit/
 | 3 | validate-idea: kill criteria, interviews, landing page, prototype test with the wireframes | VALIDATION.md |
 | ✦ | **Idea Pack**: one-pager + index of everything above — say "give me everything for this idea" to run 1 → 2b in one go | ONE_PAGER.md · README.md |
 | ★ | **Approval gate**: no app code before `Evaluation: APPROVED` (enforced) | STATUS.md |
-| 4–8 | name-product · tech-stack · design-system · write-prd · plan-build | NAMING · TECH_STACK · DESIGN_SYSTEM · PRD · PLAN |
+| 4–8 | name-product · tech-stack · design-system · write-prd · **engineering-docs** (architecture, database, security, code style, testing, rules, memory) · plan-build | NAMING · TECH_STACK · DESIGN_SYSTEM · PRD · `docs/*.md` · PLAN |
 | 9 | build-feature (+ design-qa against Figma) | code + tests |
 | 10–12 | quality-review · test-plan · ship-checklist (incl. expert review) | reviews/ · TEST_PLAN · RELEASE |
 | 13 | post-launch: weekly metrics, feedback, retros → LESSONS | METRICS · LESSONS |
@@ -79,6 +79,8 @@ cp owner/OWNER.example.md owner/OWNER.md                   # your profile (git-i
 ```
 Full walkthrough, including Cursor and Codex: [GETTING-STARTED.md](GETTING-STARTED.md).
 
+**Only want the idea stage?** Install the standalone **Idea Pack** plugin instead (discovery → evaluation → design direction → draft PRD → one-pager, no build phases): `claude plugin install idea-pack@product-kit-marketplace`, or open `idea-pack.plugin` in the Claude app (built by `python3 scripts/build-idea-pack.py --zip ..`). See [idea-pack/README.md](idea-pack/README.md).
+
 Where the rules are enforced: Claude Code, Cursor and Codex get hooks, git hooks and CI. **Claude Cowork/desktop has no hooks**, so there the skills follow the gate rules themselves. Use Cowork for phases 1–8 (docs) and Claude Code, Cursor or Codex for building.
 Scheduled in Claude: a quarterly standards check (1 Jan, 1 Apr, 1 Jul, 1 Oct) and monthly evals on your Mac (3rd of each month).
 
@@ -97,7 +99,7 @@ Then say **"I have a new idea"** in Claude, Cursor or Codex. After the evaluatio
 Keep projects current when the kit improves: `./scripts/upgrade-project.sh ~/Projects/my-app` (preview) → add `--apply`. The same command adopts a project built before the kit, in any stack, without overwriting anything it already has.
 See everything at once: `python3 scripts/portfolio.py` → open `portfolio/index.html`.
 
-GitHub Free can't protect `main` on private repos. setup-github.sh tells you if so, and the `no-push-to-main` git hook covers it locally. The kit repo itself uses the same idea: run `git config core.hooksPath .githooks` once per clone, and pushes to `main` are refused — work on `update/<date>-<topic>` branches and merge through pull requests.
+GitHub Free can't protect `main` on private repos. setup-github.sh tells you if so, and the `no-push-to-main` git hook covers it locally. The kit repo itself uses the same idea: run `git config core.hooksPath .githooks` once per clone, and pushes to `main` are refused — work on `<type>/<Mon>-<DD>-<summary>` branches (`scripts/branch.sh fix "what changed"`) and merge through pull requests.
 
 ## Using the three tools together
 

@@ -17,7 +17,7 @@ Thanks for helping make AI tools think like senior product designers. Contributi
 Open an issue using the matching template. For a rule, include the failure it prevents and, if you can, the check that would catch it.
 
 ### Change a skill, agent or standard
-1. Fork and branch from `main`.
+1. Fork and branch from `main`, named `<type>/<Mon>-<DD>-<summary>` (e.g. `skill/Oct-19-engineering-docs`; `scripts/branch.sh skill "engineering docs"` makes one). Types: feat · fix · content · design · security · a11y · docs · test · ci · deps · refactor · perf · chore · skill · release · eval. CI rejects other names.
 2. Edit files under `plugin/`.
 3. Run the kit checks locally:
    ```bash

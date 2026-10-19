@@ -10,6 +10,8 @@ Definition of done. Load **only** the reference files the task touches:
 | Area | File |
 |---|---|
 | Accessibility | references/accessibility.md |
+| Accessibility law by market (AODA, ADA, 508, EAA, UK, India…) | references/accessibility-law.md |
+| Inclusion, non-discrimination, global accessibility baseline | references/inclusion.md |
 | UX, states, copy | references/ux.md |
 | Code, git, deps | references/development.md |
 | Tests | references/testing.md |

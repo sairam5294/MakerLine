@@ -27,6 +27,8 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 | Risk | /10 | | |
 | **Weighted total** | **/10** | calculation | **target after changes: /10** |
 
+Calibration: {{which OUTCOMES.md notes changed a score, or "No calibration data yet"}}
+
 ## 2. The strongest version of this idea
 {{Steelman, before the critique. If everything went right and the owner made smart choices, what is this product? Which audience, which wedge, which form, why it would win. 1–2 paragraphs. This is the version the rest of the report measures and tries to reach.}}
 - Honest ceiling (idea-champion): {{how big this can realistically get}}
@@ -45,7 +47,7 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 | Assumption (quoted) | Why it's shaky | How to verify | CLARITY id |
 |---|---|---|---|
 
-## 4. Problem validation
+## 4. Problem validation *(Quick: optional)*
 - Evidence the problem is real (sourced):
 - Evidence against / unknowns:
 - Current workarounds and why people tolerate them:
@@ -54,9 +56,9 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 ### Segments
 | Segment | Size estimate | Pain level | Willingness to pay | Reachability | Priority |
 |---|---|---|---|---|---|
-### Personas (2–3)
+### Personas (2–3) *(Quick: one persona)*
 **{{Name, age, role}}** — context, goals, frustrations, devices/connectivity, a day-in-the-life moment, what would make them switch, accessibility needs.
-### Market size
+### Market size *(Quick: one bottom-up line)*
 | Level | Definition | Estimate | Math & sources |
 |---|---|---|---|
 | TAM | | | |
@@ -65,7 +67,7 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 ### Reaching the first 100 → 1,000 users
 | Channel | Why this audience is there | Cost | Owner's access | First experiment |
 |---|---|---|---|---|
-### Retention
+### Retention *(Quick: optional)*
 - Trigger → action → reward → investment loop; why they'd come back weekly; what breaks the loop.
 
 ## 6. Competitive landscape (summary — evidence in COMPETITORS.md)
@@ -90,7 +92,7 @@ How to make this idea stronger — the core of the report, for every verdict.
 | Weak dimension (score) | Change | Evidence that would confirm it | Effort | Expected score after |
 |---|---|---|---|---|
 
-### Improvements ranked by impact ÷ effort
+### Improvements ranked by impact ÷ effort *(Quick: optional)*
 | # | Suggestion | Why it helps | Effort | Impact |
 |---|---|---|---|---|
 
@@ -101,7 +103,7 @@ How to make this idea stronger — the core of the report, for every verdict.
 | Pivot | What changes | Why it might be stronger | What it gives up |
 |---|---|---|---|
 
-## 9. Business model
+## 9. Business model *(Quick: price + payer in 3 lines)*
 - Pricing benchmarks (sourced):
 - Unit economics sketch (price, conversion, costs per user: hosting, media, AI, store fees ~15–30%):
 - Path to the 6-month success metric:
@@ -122,8 +124,23 @@ How to make this idea stronger — the core of the report, for every verdict.
 - Monthly running cost at 100 / 1,000 / 10,000 users (rough):
 - Skills gaps & how to cover them:
 
-## 11. Legal, platform & ethical considerations
--
+## 11. Accessibility, inclusion and compliance
+_Not legal advice; sources: `accessibility-law.md` (last verified date) and research files._
+### Who could be excluded
+| Group (permanent / temporary / situational) | Share of audience (source or estimate) | What would stop them | Design response |
+|---|---|---|---|
+### Obligations by launch market
+| Market | Law / rule | Applies? (why) | Standard | Must do (statement, feedback route, alternate formats, ACR) | From |
+|---|---|---|---|---|---|
+Include data-protection (DPDP / GDPR…) and platform rules (app stores, payments) as rows. Uncertain + high stakes → "confirm with a lawyer" + CLARITY id.
+### Competitors' accessibility
+| Leader | Statement | ACR / VPAT | Store label / reviews | Gap we could use |
+|---|---|---|---|---|
+### Accessibility as a strength (or "none found")
+### Cheap now, expensive later
+- {{design choices to lock in now}}
+### Ethics
+- {{dark patterns to avoid, trust, misuse}}
 
 ## 12. Cheapest validation tests (before building)
 | Test | Assumption it tests (CLARITY id) | Success threshold | Kill criterion | Cost/time |

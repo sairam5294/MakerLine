@@ -1,0 +1,31 @@
+# Research cache — ClubSlot (competitors, pricing, market, regulation)
+
+_Standard mode budget used: 12 searches · 8 page reads (one failed). Re-check facts older than 30 days before relying on them. Vendor pages are marked as such._
+
+| ID | Date checked | Fact | Source URL | Type |
+|---|---|---|---|---|
+| R1 | 2026-10-19 | MyGate does not publish prices; Techjockey lists "Price Available on Request"; NoBroker's blog cites a premium tier "from ₹500/month" (unit unstated) | https://codingclave.com/blog/best-society-management-app-india-2026 | evidence (aggregator, prices checked 2026-10-19) |
+| R2 | 2026-10-19 | MyGate claims 27K+ communities, 5M+ homes, 50+ cities, 100K+ RWAs; features include facility booking, in-app dues payment, visitor approval, complaints | https://codingclave.com/blog/best-society-management-app-india-2026 (quoting mygate.com) | evidence (vendor claim) |
+| R3 | 2026-10-19 | NoBrokerHood: pricing not published, "Free with add-ons"; claims 25,000+ communities; facility booking, billing, visitor management, polls | https://codingclave.com/blog/best-society-management-app-india-2026 | evidence (vendor claim) |
+| R4 | 2026-10-19 | ADDA: Lite "starts at ₹12 per unit" (period unstated); Gatekeeper ₹200/month, suite ₹500/month per NoBroker blog; 25,000+ communities, 7.5M+ users; UPI payments with zero convenience fee | https://codingclave.com/blog/best-society-management-app-india-2026 | evidence (aggregator) |
+| R5 | 2026-10-19 | ApnaComplex: annual per-unit plans ex-tax; forum answer (Jan 2025) says lowest plan "as low as Rs 499"; complaints: "slightly complex for first-time users", "basic visitor tracking", "slower response times" | https://www.nobroker.in/forum/which-society-management-app-is-better-nobrokerhood-vs-apnacomplex/ | evidence (competitor-hosted forum; bias) |
+| R6 | 2026-10-19 | Neighbium: free plan + premium from ₹10/flat/month; 1,200+ communities; English, Hindi, Marathi, Arabic with auto-translated notices | https://codingclave.com/blog/best-society-management-app-india-2026 | evidence |
+| R7 | 2026-10-19 | SocietynMore: ₹0 basic, ₹25/unit premium; amenity and clubhouse booking listed; SocietyManagementApp ₹10/flat/month; Society Mitra free billing / ₹4,999/yr ERP | https://codingclave.com/blog/best-society-management-app-india-2026 | evidence |
+| R8 | 2026-10-19 | Aggregator headline frames the per-flat market band at ₹3–15/flat/month | https://codingclave.com/blog/best-society-management-app-india-2026 | estimate (aggregator framing) |
+| R9 | 2026-10-19 | MyGate Play reviews (Jul 2024 sample, report Feb 2025): "Shameless Ad Machine", "endless, inescapable ads", wants to "mute all notifications apart from entry approval", good features "held back" for paying users, unresponsive support; NPS 74 in sample | https://kimola.com/reports/unlock-insights-with-our-mygate-app-feedback-report-google-play-en-us-152154 | evidence (30-review sample) |
+| R10 | 2026-10-19 | Hyderabad home registrations: 7,014 units in Jun 2024 (+26% YoY); 39,220 units in H1 2024 (₹24,287 cr); 68% of Jun 2024 registrations were 1,000–2,000 sq ft | https://therealtytoday.com/news/hyderabad-registers-7014-housing-units-worth-4288-crore-in-june-2024-up-26-yoy-knight-frank-report/ | evidence (Knight Frank via press) |
+| R11 | 2026-10-19 | Razorpay standard pricing: 2% + 18% GST on UPI, cards, netbanking, wallets; no setup/AMC; T+2 settlement; 0% offer for new merchants after 1 Jul 2026 up to ₹5 lakh GMV or 90 days | https://razorpay.com/blog/razorpay-payment-gateway-pricing-explained/ | evidence (vendor, updated 2026-10-11) |
+| R12 | 2026-10-19 | DPDP Rules 2025 notified 13 Nov 2025; phased: Rules 1, 2, 17–21 immediate; Rule 4 (consent managers) after 12 months; Rules 3, 5–16, 22–23 after 18 months. Obligations: plain-language itemised consent notice with withdrawal link; security safeguards incl. logs kept ≥ 1 year; breach notice to Board and users "without delay", full report within 72 h; erase when purpose ends with ≥ 48 h notice | https://www.mondaq.com/india/data-protection/1708164/digital-personal-data-protection-rules-2025-notified | evidence (law-firm summary) |
+| R13 | 2026-10-19 | Vendor article (RichAutomate, May 2026) claims "71% of societies still run on a WhatsApp group"; "facility-booking double-bookings 18%" before its product; "Society apps get 8-14% opens; WhatsApp gets 95%+" (unsourced) | https://richautomate.in/blog/whatsapp-rwa-society-management-india-2026 | estimate (vendor marketing, unlinked sources) |
+| R14 | 2026-10-19 | Telangana apartment associations are governed by the A.P. (Telangana) Apartments (Promotion of Construction and Ownership) Act 1987; RWAs register as societies | https://www.indiacode.nic.in/bitstream/123456789/8604/1/act_29_of_1987.pdf · https://blog.ind.adda.io/?p=21535 | evidence (statute; vendor guide) |
+| R15 | 2026-10-19 | No accessibility statement, ACR/VPAT or App Store accessibility label for MyGate, NoBrokerHood or ADDA surfaced in search | search "MyGate app accessibility screen reader TalkBack VoiceOver" (no relevant result) | unknown (absence of evidence) |
+| R16 | 2026-10-19 | India App Store rating/count for MyGate: page fetch failed; not verified | https://apps.apple.com/in/app/mygate/id1101762651 | unknown → CLARITY Q-07 |
+| R17 | 2026-10-19 | JioGate (Jio) offers guest passcodes, notices, dues via JioOnePay; Play listing shows ads | https://codingclave.com/blog/best-society-management-app-india-2026 | evidence |
+| R18 | 2026-10-19 | Press headline: "Mygate and Nobrokerhood have been in a dogfight to be the gatekeeper of residential complexes" (article paywalled, not read) | https://the-ken.com/story/nobroker-wanted-to-eat-mygates-lunch-but-housing-societies-had-other-ideas/ | evidence (headline only) |
+| R19 | 2026-10-19 | India accessibility obligations: RPwD Act 2016, GIGW 3.0 / IS 17802 (≈ WCAG 2.1 AA); CCPD fines ₹10k–₹50k on establishments in 2025, warned up to ₹5 lakh | kit `product-standards/references/accessibility-law.md` (verified 2026-10-19) | evidence |
+
+## Not found (budget exhausted) — see CLARITY.md
+- Count of registered RWAs / gated communities in Hyderabad (Q-05).
+- Independent review complaints for NoBrokerHood and ADDA (Q-06).
+- MyGate / NoBrokerHood India store ratings and counts (Q-07).
+- Resident-side willingness to pay for booking fairness (Q-08).

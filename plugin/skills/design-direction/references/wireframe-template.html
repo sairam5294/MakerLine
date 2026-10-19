@@ -12,7 +12,8 @@
   - Link screens with <a href="#s-<slug>"> so Prototype mode clicks through the core flow.
   - Show at least one empty state and one error state as their own screens (e.g. s-home-empty).
   - Mobile product: keep <body data-device="phone">. Web tool: data-device="desktop".
-    Mixed product (e.g. phone app + desktop admin): keep the body on "phone" and put data-device="desktop" on each desktop <section>.
+    Mixed product (e.g. phone app + desktop admin): keep the body on "phone" and put data-device="desktop" (1024px) or data-device="tablet" (768px) on individual <section>s.
+  - This is the one template meant to be read once in full; the CSS kit below and the script's contract (.screen, data-title, data-note, #index) are what you fill against.
   - Grey boxes only: .box (placeholder), .img (image), .btn / .btn.primary, .field, .list, .tabbar, .chip (status label),
     button.chip[aria-pressed] (selectable option), .offline (offline banner), .alert (error).
   - Keep it accessible: real <button>/<a>, labels on fields, headings in order, targets ≥ 44px, a unique aria-label on each repeated <nav>.
@@ -85,6 +86,7 @@
   footer.legend{margin-top:32px;font-size:12px;color:var(--muted)}
   /* a desktop section inside a phone body wins because this rule comes after the phone rule */
   section[data-device="desktop"] .frame{width:1024px;min-height:640px;border-radius:10px}
+  [data-device="tablet"] .frame, section[data-device="tablet"] .frame{width:768px;min-height:1024px;border-radius:12px}
   @media (max-width:420px){[data-device="phone"] .frame{width:calc(100vw - 40px)}}
 </style>
 </head>

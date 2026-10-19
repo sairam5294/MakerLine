@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## 0.8.0 — 2026-10-19
+Accessibility, inclusion and compliance lens (accessibility-strategist agent, accessibility-law reference for AODA/ADA/508/EAA/UK/India/AU/JP, global inclusion baseline, IAAP WAS alignment); Quick/Standard/Deep depth modes with token rules and check_idea_pack.py; engineering-docs skill (ARCHITECTURE, DATABASE, SECURITY, CODE_STYLE, TESTING, RULES, MEMORY); branch convention <type>/<Mon>-<DD>-<summary> enforced by hook + CI; standalone idea-pack plugin; GitHub Pages docs site; Ontario eval case; fixes from three blind runs
+
 ## 0.7.0 — 2026-10-16
 Idea Pack: clarity log, honest-coach evaluation with strongest version and path to Go, COMPETITORS with differentiator test, idea-champion agent, design direction + clickable wireframes, draft PRD, one-pager; owner-unavailable mode; tested blind on two eval cases
 

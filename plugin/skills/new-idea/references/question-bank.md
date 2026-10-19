@@ -15,7 +15,7 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (C·D) Who pays, if different from the user? (e.g. parents pay, kids use; company pays, employees use)
 - (C·F) Where do these people already spend time (communities, apps, events, influencers)? — needed for distribution.
 - (O·F) Secondary users (admins, content creators, teachers)?
-- (O·F) Accessibility needs likely in this audience (older adults, low literacy, low vision, children)?
+- (C·F) Who might struggle to use this? Older adults, low vision or blind, deaf or hard of hearing, motor or cognitive disabilities, low literacy, other languages, one-handed or on the move, low-end phones or poor connectivity. ("I don't know yet" is fine — evaluate-idea researches it.)
 - (O·D) Languages needed at launch vs later?
 
 ## B2. Alternatives & differentiator (hypotheses only — evaluate-idea researches the facts)
@@ -54,7 +54,8 @@ Pick adaptively; don't ask everything. **C** = Core, **O** = Optional (ask it, o
 - (C·D) Timeline: target date for a first testable version; hours per week you can spend.
 - (O·F) Personal data sensitivity: children, health, finance, location, photos?
 - (O·F) Legal/regulatory concerns (content rights, religious/cultural sensitivity, copyrighted music)?
-- (O·D) Launch market(s): India only · specific cities · global diaspora · worldwide.
+- (C·D) Launch market(s): India only · specific cities · global diaspora · worldwide — and where the paying customers are. This decides which accessibility and privacy laws apply (e.g. AODA in Ontario, ADA in the US, the European Accessibility Act in the EU, RPwD in India).
+- (O·F) Will businesses, schools or government bodies buy or mandate this? (They often require an accessibility conformance report.)
 
 ## G. Naming
 - (O·D) Do you have a name? Should names be English, Sanskrit/Telugu/Hindi-inspired, invented, descriptive?

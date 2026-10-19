@@ -10,8 +10,8 @@ Output: `docs/product/COMPETITORS.md`. The evaluation summarises it in one secti
    - **Substitutes** — how people actually cope today: WhatsApp groups, spreadsheets, paper, YouTube, a person they pay or ask.
    - **Doing nothing** — tolerating the problem. Always a competitor; often the strongest.
    Aim for 3–6 direct, 2–4 indirect, 2–3 substitutes. "No competitors" is never a finding — it means the research isn't done.
-2. **Profile the leaders** (top 3–5 by scale or mindshare): positioning in their own words, audience, price and model, scale signals (downloads, ratings count, funding, users claimed), strengths, and the **top 3 complaints mined from real reviews** (app stores, Reddit, G2, Play reviews — quote short phrases, link the source). Ratings: use the store for the launch market (e.g. the India App Store `apps.apple.com/in/…`) and state the country next to every rating. If a store page can't be fetched, search for it and open the result link, then try a public app tracker; otherwise write "Unknown" and add a CLARITY question. **B2B2C** (a payer different from the user, e.g. a committee pays, residents use): profile both — user complaints from app reviews, payer complaints from G2/Capterra, forums and sales conversations.
-3. **Job matrix.** Rows = the 5–8 jobs or capabilities users care about most (from the brief and the review complaints, not a feature checklist). Columns = leaders + this idea. Cells: ● strong · ◐ partial · ○ missing · ? unknown. A matrix where this idea wins every row is a red flag, not a result.
+2. **Profile the leaders** (top 3–5 by scale or mindshare): positioning in their own words, audience, price and model, scale signals (downloads, ratings count, funding, users claimed), strengths, and the **top 3 complaints mined from real reviews** (app stores, Reddit, G2, Play reviews — quote short phrases, link the source). Ratings: use the store for the launch market (e.g. the India App Store `apps.apple.com/in/…`) and state the country next to every rating. If a store page can't be fetched: Quick and Standard → one attempt per leader, then "Unknown" + a CLARITY question; Deep → search for it, open the result link, then try a public app tracker. **B2B2C** (a payer different from the user, e.g. a committee pays, residents use): profile both — user complaints from app reviews, payer complaints from G2/Capterra, forums and sales conversations.
+3. **Job matrix.** Rows = the 5–8 jobs or capabilities users care about most (from the brief and the review complaints, not a feature checklist). Columns = leaders + this idea. Cells: ● strong · ◐ partial · ○ missing · ? unknown. Add a row "Usable with a screen reader / large text / in {{language}}" when the audience needs it.. A matrix where this idea wins every row is a red flag, not a result.
 4. **Positioning map.** Pick the two axes that matter most to the target user and on which competitors actually spread out (e.g. *simple ↔ powerful*, *self-serve ↔ done-for-you*, *generic ↔ made for this audience*, *free ↔ premium*). Place each competitor and the idea. The empty quadrant is a candidate opening — say whether it's empty because nobody wants it.
 5. **Head-to-head for each leader.** Where they win · where we'd win · parity · why a user would switch · why they'd stay.
 6. **Differentiator test.** For each claimed differentiator, answer all five:
@@ -41,11 +41,15 @@ _Version {{n}} · {{date}} · Sources at the end; Evidence / Estimate / Opinion 
 | Substitute | | | | | | |
 | Doing nothing | Tolerating the problem | | | Free | | |
 
+## Lite (Quick mode)
+Required: the landscape table with the top 3 direct competitors + "doing nothing" (name, link, price, one-line positioning, one sourced complaint each) · the differentiator test · the wedge and positioning statement · sources. Skip: indirect and substitute rings beyond one line each, full leader profiles, job matrix, positioning map, head-to-head, "why hasn't anyone done this". Say "Lite — run Standard for the full analysis" at the top.
+
 ## Leader profiles
 ### {{Leader}}
 - Positioning (their words):
 - Strengths:
 - Top complaints from reviews: "…" ([source](url)) · "…" · "…"
+- Accessibility signals: statement · ACR/VPAT · app-store accessibility label · review mentions (screen reader, text size, older users):
 - Where they're heading (recent launches, pricing changes):
 
 ## Job matrix

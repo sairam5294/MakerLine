@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Free replacement for GitHub branch protection on this private repo (GitHub Free does not enforce
-# protection rules on private repositories). Blocks any push that would update main directly;
-# work on an update/<date>-<topic> branch and merge through a pull request.
-# Enable once per clone:  git config core.hooksPath .githooks
-# Override deliberately:  git push --no-verify
+# Git hooks for the kit repo itself. Enable once per clone:  git config core.hooksPath .githooks
+# 1. Branch names follow <type>/<Mon>-<DD>-<summary> (e.g. skill/Oct-19-engineering-docs); scripts/branch.sh makes one.
+# 2. No direct pushes to main — work on a branch and merge through a pull request.
+# Deliberate override:  git push --no-verify
+scripts/check-branch.sh || exit 1
 while read -r local_ref local_sha remote_ref remote_sha; do
   case "$remote_ref" in
     refs/heads/main)

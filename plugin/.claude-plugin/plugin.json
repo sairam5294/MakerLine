@@ -1,6 +1,6 @@
 {
   "name": "product-kit",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Idea-to-launch product workflow: discovery interview, honest idea evaluation with approval gate, naming, tech stack, design system, PRD, build plan, build, multi-angle quality review, testing and shipping — with accessibility, UX, security, testing and backend standards built in.",
   "author": { "name": "Sai" },
   "keywords": ["product", "discovery", "evaluation", "ux", "accessibility", "security", "mobile", "web"]

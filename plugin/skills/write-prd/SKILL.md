@@ -20,4 +20,6 @@ Steps
 5. Every acceptance criterion must be automatable; every metric needs an event that measures it.
 6. Present in ≤ 12 lines: the MVP in one sentence, number of Must stories, estimated build time, top 3 risks, open questions that block approval. Iterate → owner reviews (draft) or approves (full) → STATUS: PRD draft `Done` after review.
 
+Link, don't copy: refer to personas, flows, screens and competitors by their IDs in EVALUATION / DESIGN_DIRECTION / COMPETITORS.
+
 Non-functional MUSTs come from `../product-standards/`; AI features → run ai-feature and link its document.

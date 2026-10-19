@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{Product}} — Wireframes</title>
+<!--
+  Product Kit wireframe template (design-direction skill).
+  HOW TO FILL:
+  - Replace every {{…}}. Use real content from the brief and personas — never lorem ipsum.
+  - One <section class="screen"> per MVP screen. id="s-<slug>", data-title, data-note (designer note).
+  - Link screens with <a href="#s-<slug>"> so Prototype mode clicks through the core flow.
+  - Show at least one empty state and one error state as their own screens (e.g. s-home-empty).
+  - Mobile product: keep <body data-device="phone">. Web tool: data-device="desktop".
+    Mixed product (e.g. phone app + desktop admin): keep the body on "phone" and put data-device="desktop" (1024px) or data-device="tablet" (768px) on individual <section>s.
+  - This is the one template meant to be read once in full; the CSS kit below and the script's contract (.screen, data-title, data-note, #index) are what you fill against.
+  - Grey boxes only: .box (placeholder), .img (image), .btn / .btn.primary, .field, .list, .tabbar, .chip (status label),
+    button.chip[aria-pressed] (selectable option), .offline (offline banner), .alert (error).
+  - Keep it accessible: real <button>/<a>, labels on fields, headings in order, targets ≥ 44px, a unique aria-label on each repeated <nav>.
+  - Delete this comment when done.
+-->
+<style>
+  :root{--ink:#1d1d1f;--muted:#5f6368;--line:#c7c9cc;--fill:#eceef0;--fill2:#dfe2e5;--paper:#fff;--canvas:#f4f5f6;--accent:#1d1d1f;--focus:#0b57d0;--danger:#a50e0e}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans","Noto Sans Telugu","Noto Sans Devanagari",sans-serif;color:var(--ink);background:var(--canvas)}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+  .skip{position:absolute;left:-999px}.skip:focus{left:16px;top:8px;background:#fff;padding:8px 12px;z-index:10}
+  header.bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 20px;background:#fff;border-bottom:1px solid var(--line)}
+  header.bar h1{font-size:16px;margin:0}
+  header.bar p{margin:0;color:var(--muted);font-size:13px}
+  .modes{display:flex;gap:6px}
+  .modes button{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer}
+  .modes button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  main{padding:24px 20px 64px}
+  nav.index{margin:0 0 20px;font-size:13px;color:var(--muted)}
+  nav.index ol{display:flex;flex-wrap:wrap;gap:6px 14px;margin:6px 0 0;padding:0;list-style:none;counter-reset:s}
+  nav.index li{counter-increment:s}
+  nav.index li::before{content:counter(s) ". "}
+  /* Canvas mode: all screens side by side */
+  .canvas{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+  .screen{display:flex;flex-direction:column;gap:8px;scroll-margin-top:80px}
+  .screen > h2{font-size:13px;font-weight:600;margin:0;color:var(--muted)}
+  .frame{background:var(--paper);border:1px solid var(--line);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
+  [data-device="phone"] .frame{width:360px;min-height:740px}
+  [data-device="desktop"] .frame{width:1024px;min-height:640px;border-radius:10px}
+  .note{max-width:360px;font-size:12.5px;color:var(--muted);border-left:3px solid var(--fill2);padding:2px 0 2px 10px}
+  [data-device="desktop"] .note{max-width:1024px}
+  /* Prototype mode: one screen at a time */
+  body.proto .canvas{justify-content:center}
+  body.proto .screen{display:none}
+  body.proto .screen.current{display:flex}
+  body.proto nav.index{display:none}
+  /* Wireframe kit */
+  .status{display:flex;justify-content:space-between;padding:10px 22px 4px;font-size:12px;color:var(--muted)}
+  .appbar{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--fill2)}
+  .appbar h3{font-size:17px;margin:0;flex:1}
+  .body{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px}
+  .box{background:var(--fill);border:1px dashed var(--line);border-radius:10px;padding:12px;color:var(--muted);font-size:13px}
+  .img{background:repeating-linear-gradient(45deg,var(--fill),var(--fill) 8px,var(--fill2) 8px,var(--fill2) 16px);border-radius:10px;min-height:120px}
+  .h{font-size:22px;font-weight:700;margin:0}
+  .sub{color:var(--muted);margin:0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid var(--ink);background:#fff;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+  .btn.primary{background:var(--ink);color:#fff}
+  .btn.block{width:100%}
+  .field{display:flex;flex-direction:column;gap:4px;font-size:13px}
+  .field input{font:inherit;min-height:44px;border:1.5px solid var(--line);border-radius:10px;padding:0 12px;background:#fff}
+  .field.error input{border-color:var(--danger)}
+  .field .msg{color:var(--danger)}
+  .list{list-style:none;margin:0;padding:0;border:1px solid var(--fill2);border-radius:12px}
+  .list li{display:flex;align-items:center;gap:12px;padding:12px;border-top:1px solid var(--fill2);min-height:56px}
+  .list li:first-child{border-top:0}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--fill2);flex:none}
+  .grow{flex:1}.meta{font-size:12px;color:var(--muted)}
+  .chip{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--fill);font-size:12px}
+  button.chip{font:inherit;font-size:13px;min-height:44px;padding:0 14px;border:1.5px solid var(--line);color:var(--ink);cursor:pointer}
+  button.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .offline{background:var(--fill2);border-radius:10px;padding:8px 12px;font-size:13px}
+  .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:24px}
+  .alert{border:1.5px solid var(--danger);color:var(--danger);border-radius:10px;padding:10px 12px;font-size:13px}
+  .tabbar{display:flex;border-top:1px solid var(--fill2);margin-top:auto}
+  .tabbar a{flex:1;text-align:center;padding:10px 0 18px;font-size:11px;color:var(--muted);text-decoration:none}
+  .tabbar a[aria-current="page"]{color:var(--ink);font-weight:700}
+  .tabbar a::before{content:"";display:block;width:22px;height:22px;margin:0 auto 4px;border-radius:6px;background:var(--fill2)}
+  .row{display:flex;gap:10px;align-items:center}
+  footer.legend{margin-top:32px;font-size:12px;color:var(--muted)}
+  /* a desktop section inside a phone body wins because this rule comes after the phone rule */
+  section[data-device="desktop"] .frame{width:1024px;min-height:640px;border-radius:10px}
+  [data-device="tablet"] .frame, section[data-device="tablet"] .frame{width:768px;min-height:1024px;border-radius:12px}
+  @media (max-width:420px){[data-device="phone"] .frame{width:calc(100vw - 40px)}}
+</style>
+</head>
+<body data-device="phone">
+<a class="skip" href="#canvas">Skip to wireframes</a>
+<header class="bar">
+  <div>
+    <h1>{{Product}} — wireframes (draft)</h1>
+    <p>Grey-box fidelity · core flow: {{Welcome → Sign in → Home → Core action → Success}} · {{date}}</p>
+  </div>
+  <div class="modes" role="group" aria-label="View mode">
+    <button type="button" id="m-canvas" aria-pressed="true">Canvas</button>
+    <button type="button" id="m-proto" aria-pressed="false">Prototype</button>
+  </div>
+</header>
+
+<main>
+  <nav class="index" aria-label="Screens"><strong>Screens</strong><ol id="index"></ol></nav>
+
+  <div class="canvas" id="canvas">
+
+    <!-- S-01 Welcome: the onboarding promise from DESIGN_DIRECTION §7 -->
+    <section class="screen" id="s-welcome" data-title="S-01 Welcome" aria-labelledby="t-welcome">
+      <h2 id="t-welcome">S-01 Welcome</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="body">
+          <div class="img" role="img" aria-label="Illustration placeholder: {{what it shows}}" style="min-height:260px"></div>
+          <p class="h">{{Onboarding promise in the user's words}}</p>
+          <p class="sub">{{One line on how — the differentiator, plainly}}</p>
+          <a class="btn primary block" href="#s-signin">{{Get started}}</a>
+          <a class="btn block" href="#s-home">{{I already have an account}}</a>
+        </div>
+      </div>
+      <p class="note">{{Designer note: purpose, what must be understood in 5 seconds, open question.}}</p>
+    </section>
+
+    <!-- S-02 Sign in: show the error state as its own screen if it matters (see S-02b) -->
+    <section class="screen" id="s-signin" data-title="S-02 Sign in" aria-labelledby="t-signin">
+      <h2 id="t-signin">S-02 Sign in</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><a href="#s-welcome" aria-label="Back">←</a><h3>{{Sign in}}</h3></div>
+        <div class="body">
+          <div class="field"><label for="f-phone">{{Mobile number}}</label><input id="f-phone" inputmode="tel" placeholder="{{98xxxxxx10}}"></div>
+          <a class="btn primary block" href="#s-home">{{Send code}}</a>
+          <p class="meta">{{Privacy line: what we use the number for}}</p>
+        </div>
+      </div>
+      <p class="note">{{Note}}</p>
+    </section>
+
+    <!-- S-03 Home with content -->
+    <section class="screen" id="s-home" data-title="S-03 Home" aria-labelledby="t-home">
+      <h2 id="t-home">S-03 Home</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><h3>{{Home title}}</h3><span class="chip">{{status chip}}</span></div>
+        <div class="body">
+          <div class="box">{{Summary card: the one number or next step the user cares about}}</div>
+          <ul class="list" aria-label="{{List name}}">
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">{{Item title}}<br><span class="meta">{{Item meta}}</span></span><a href="#s-detail" aria-label="Open {{item}}">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">{{Item title}}<br><span class="meta">{{Item meta}}</span></span><a href="#s-detail" aria-label="Open {{item}}">›</a></li>
+            <li><span class="avatar" aria-hidden="true"></span><span class="grow">{{Item title}}<br><span class="meta">{{Item meta}}</span></span><a href="#s-detail" aria-label="Open {{item}}">›</a></li>
+          </ul>
+          <a class="btn primary block" href="#s-create">{{Primary action}}</a>
+        </div>
+        <nav class="tabbar" aria-label="Main (screen 1)"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
+      </div>
+      <p class="note">{{Note}}</p>
+    </section>
+
+    <!-- S-03b Home, empty state: copy from DESIGN_DIRECTION §7 -->
+    <section class="screen" id="s-home-empty" data-title="S-03b Home — empty" aria-labelledby="t-home-empty">
+      <h2 id="t-home-empty">S-03b Home — empty state</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><h3>{{Home title}}</h3></div>
+        <div class="empty">
+          <div class="img" role="img" aria-label="Empty-state illustration placeholder" style="width:140px;min-height:110px"></div>
+          <p class="h" style="font-size:18px">{{Empty-state headline}}</p>
+          <p class="sub">{{Why it's empty and what to do first}}</p>
+          <a class="btn primary" href="#s-create">{{First action}}</a>
+        </div>
+        <nav class="tabbar" aria-label="Main (screen 2)"><a href="#s-home" aria-current="page">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile">{{Profile}}</a></nav>
+      </div>
+      <p class="note">{{Note}}</p>
+    </section>
+
+    <!-- S-04 Core action (create / book / order …) with the error state inline -->
+    <section class="screen" id="s-create" data-title="S-04 Core action" aria-labelledby="t-create">
+      <h2 id="t-create">S-04 {{Core action}}</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><a href="#s-home" aria-label="Back">←</a><h3>{{Core action}}</h3></div>
+        <div class="body">
+          <div class="alert" role="alert">{{Main error copy: what happened + what to do}}</div>
+          <div class="field"><label for="f-a">{{Field}}</label><input id="f-a" value="{{example value}}"></div>
+          <div class="field error"><label for="f-b">{{Field with error}}</label><input id="f-b" aria-invalid="true" aria-describedby="e-b" value="{{bad value}}"><span class="msg" id="e-b">{{Field error: how to fix}}</span></div>
+          <div class="row" role="group" aria-label="{{Option group}}"><button type="button" class="chip" aria-pressed="true">{{Option}}</button><button type="button" class="chip" aria-pressed="false">{{Option}}</button><button type="button" class="chip" aria-pressed="false">{{Option}}</button></div>
+          <a class="btn primary block" href="#s-success">{{Confirm}}</a>
+        </div>
+      </div>
+      <p class="note">{{Note: steps to here = n (leaders: n)}}</p>
+    </section>
+
+    <!-- S-05 Success: the "aha" moment -->
+    <section class="screen" id="s-success" data-title="S-05 Success" aria-labelledby="t-success">
+      <h2 id="t-success">S-05 Success</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="empty">
+          <div class="img" role="img" aria-label="Success illustration placeholder" style="width:120px;min-height:120px;border-radius:50%"></div>
+          <p class="h" style="font-size:20px">{{Success copy}}</p>
+          <p class="sub">{{What happens next}}</p>
+          <a class="btn primary" href="#s-home">{{Done}}</a>
+        </div>
+      </div>
+      <p class="note">{{Note}}</p>
+    </section>
+
+    <!-- S-06 Detail and S-07 Profile: add or remove screens to match the screen inventory -->
+    <section class="screen" id="s-detail" data-title="S-06 Detail" aria-labelledby="t-detail">
+      <h2 id="t-detail">S-06 Detail</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><a href="#s-home" aria-label="Back">←</a><h3>{{Item}}</h3></div>
+        <div class="body"><div class="img"></div><div class="box">{{Key details}}</div><a class="btn block" href="#s-home">{{Secondary action}}</a></div>
+      </div>
+      <p class="note">{{Note}}</p>
+    </section>
+
+    <section class="screen" id="s-profile" data-title="S-07 Profile" aria-labelledby="t-profile">
+      <h2 id="t-profile">S-07 Profile &amp; settings</h2>
+      <div class="frame">
+        <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="appbar"><h3>{{Profile}}</h3></div>
+        <div class="body">
+          <ul class="list" aria-label="Settings"><li class="grow">{{Language}}</li><li class="grow">{{Notifications}}</li><li class="grow">{{Privacy &amp; data}}</li><li class="grow">{{Help}}</li></ul>
+        </div>
+        <nav class="tabbar" aria-label="Main (screen 3)"><a href="#s-home">{{Home}}</a><a href="#s-home-empty">{{Tab 2}}</a><a href="#s-profile" aria-current="page">{{Profile}}</a></nav>
+      </div>
+      <p class="note">{{Note}}</p>
+    </section>
+
+  </div>
+  <footer class="legend">Wireframe legend: dashed box = placeholder content · striped = image · dark button = primary action · red outline = error. Generated with the Product Kit design-direction skill.</footer>
+</main>
+
+<script>
+  // Index, Canvas / Prototype modes and hash navigation. No dependencies.
+  const screens = [...document.querySelectorAll('.screen')];
+  const index = document.getElementById('index');
+  screens.forEach(s => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = '#' + s.id; a.textContent = s.dataset.title; li.append(a); index.append(li); });
+  const proto = document.getElementById('m-proto'), canvas = document.getElementById('m-canvas');
+  function show() {
+    const id = location.hash.slice(1); const target = screens.find(s => s.id === id) || screens[0];
+    screens.forEach(s => s.classList.toggle('current', s === target));
+    if (document.body.classList.contains('proto')) { target.querySelector('h2').setAttribute('tabindex', '-1'); target.querySelector('h2').focus({ preventScroll: true }); window.scrollTo(0, 0); }
+  }
+  function setMode(p) { document.body.classList.toggle('proto', p); proto.setAttribute('aria-pressed', p); canvas.setAttribute('aria-pressed', !p); show(); }
+  proto.addEventListener('click', () => setMode(true)); canvas.addEventListener('click', () => setMode(false));
+  addEventListener('hashchange', show);
+  setMode(new URLSearchParams(location.search).get('mode') === 'prototype');
+</script>
+</body>
+</html>
