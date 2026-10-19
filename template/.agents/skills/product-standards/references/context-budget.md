@@ -13,7 +13,7 @@ Tokens = cost + quality. Most tokens are not the documents — they are the conv
 ## 2. Idea Pack depth (pick before starting; default Standard)
 | Mode | Use when | Produces | Research budget | Target |
 |---|---|---|---|---|
-| **Quick** | "Worth a weekend?" | brief, CLARITY, short EVALUATION (600–1,500 prose words; *Quick: optional* sections may go), COMPETITORS Lite (`../../evaluate-idea/references/competitors-lite.md`), ONE_PAGER | ≤ 8 searches, ≤ 4 page reads | ≤ 25 tool calls · ~70–100k tokens |
+| **Quick** | "Worth a weekend?" | brief, CLARITY, short EVALUATION (600–1,500 prose words; *Quick: optional* sections may go), COMPETITORS Lite (`../../evaluate-idea/references/competitors-lite.md`), ONE_PAGER | ≤ 8 searches, ≤ 4 page reads | ≤ 25 tool calls · ~70–100k target (measured 146k, Oct 2026) |
 | **Standard** | Deciding whether to build | + DESIGN_DIRECTION, wireframes (≤ 8 screens), PRD draft | ≤ 15 searches, ≤ 8 page reads | ≤ 45 tool calls · ~120–150k |
 | **Deep** | Before spending money or pitching | + all four competitor rings, 12+ screens, Figma, payer research | ≤ 30 searches | ~250k+ |
 
@@ -33,10 +33,10 @@ Searches that return bare links (no snippets): two unused searches buy one extra
 1. **Research once, cite everywhere.** Facts go to `docs/product/research/<topic>.md` with IDs (R1, R2…); other docs cite the ID. Facts from the kit's own references cite the file (e.g. `accessibility-law-summary.md`) instead of a URL.
 2. **One home per fact.** Competitor detail lives in COMPETITORS (EVALUATION §6 ≤ 150 prose words). The PRD links personas, flows and screens by ID.
 3. **Snippets first.** A snippet with figure and date is enough to cite. Open a page only for a number or quote you need; prefer round-up pages. Stop a ring when two sources agree. Out of budget → CLARITY question, not a guess.
-4. **Copy templates, don't read them.** `cp` the template, read its HOW TO FILL comment (top of file) and one example, then write the filled document. Short templates (brief, CLARITY, one-pager, index) and the wireframe template are read once in full — never twice.
+4. **Copy templates, don't read them.** `cp` the template, read its HOW TO FILL comment (top of file) and one example, then write the filled document. Short templates (brief, CLARITY, STATUS, DECISIONS, COSTS, one-pager, README index) and the wireframe template have no HOW TO FILL comment — read each once in full, never twice.
 5. **Write once, check with a script.** Write each document in one call from your notes (draft the section lengths against the cap first); don't re-read your output — run `check_idea_pack.py` (with `--only` for the files this phase wrote) and fix only what it flags.
 6. **Small subagent briefs.** Each perspective agent gets the brief's **Idea card** (§0, ≤ 120 words) + its one reference + the research file, not the whole brief. Their searches count inside the budget. No subagents → play them inline: ≤ 5 lines each (Quick), ≤ 10 (Standard).
-7. **Few, large tool calls.** One call per document; all searches for a ring in one turn; every check in one shell call.
+7. **Few, large tool calls.** One call per document — or several small documents (STATUS, DECISIONS, COSTS, README index) in one shell call; all searches for a ring in one turn; every check in one shell call.
 8. **Raw research stays out of the conversation.** Write findings to the research file; carry forward only R-ids and one-line facts.
 9. **Accessibility law:** read `accessibility-law-summary.md` at the idea stage; open the full `accessibility-law.md` only for Deep or `ship-checklist`, and then grep the launch market's rows.
 

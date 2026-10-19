@@ -4,6 +4,8 @@
 
 _{{date}} · Verdict: **{{Go / Go with changes / Pivot / Drop}}** ({{confidence}}) · Idea Pack index: `docs/product/README.md`_
 
+**Defaults to confirm.** {{Owner unavailable only — ≤ 3 defaults with their Q-ids; delete this line otherwise.}}
+
 **The idea in one line.** For {{audience}} who {{need}}, {{name}} is a {{category}} that {{benefit}}. Unlike {{alternative}}, it {{differentiator}}.
 
 **The problem.** {{2 sentences with the strongest evidence.}}

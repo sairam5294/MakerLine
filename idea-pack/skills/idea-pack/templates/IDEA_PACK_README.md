@@ -14,6 +14,7 @@ Start with the **one-pager**. Everything else is linked below in the order it wa
 | 6 | DESIGN_DIRECTION.md + wireframes (link once written; Quick mode: "not yet — run Standard") | How it could look and flow | | |
 | 7 | PRD.md (link once written) | What version 1 does, story by story | Draft / Full | |
 | 8 | VALIDATION.md (link once it exists) | What real people did when we tested it | | |
+| — | INTERVIEW_ROUND1.md (only when the owner was unavailable) | The questions waiting for the owner | | |
 | — | [STATUS.md](STATUS.md) · [DECISIONS.md](DECISIONS.md) · [COSTS.md](COSTS.md) | Where we are, what was decided, what it costs | | |
 
 After approval: NAMING · TECH_STACK · DESIGN_SYSTEM · PRD (full) · PLAN — added to this table as they're written.

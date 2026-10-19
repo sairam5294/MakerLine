@@ -76,11 +76,11 @@ Run the kit's phases in order, one at a time. Each phase is a skill in the sibli
 
 1. **Locate the project.** Find `docs/product/STATUS.md` (read `HANDOFF.md` too if present).
    - Found → state the current phase in one line, continue.
-   - Not found → create `docs/product/`, copy `templates/STATUS.md`, `templates/DECISIONS.md` and `templates/COSTS.md` (and `owner/OWNER.md` if you're in a kit-repo clone, else ask the owner's profile questions once), start phase 1.
+   - Not found → create `docs/product/`, copy `templates/STATUS.md`, `templates/DECISIONS.md` and `templates/COSTS.md` (and `owner/OWNER.md` if you're in a kit-repo clone, else ask the owner's profile questions once; owner unavailable → build OWNER.md from the brief, fields marked *unconfirmed*), start phase 1.
 2. **Run one phase at a time.** Finish the phase, write its file, get owner confirmation, update STATUS.md, then offer the next. After 2b (and after every later phase), write or refresh `docs/product/ONE_PAGER.md` and `docs/product/README.md` from `templates/ONE_PAGER.md` and `templates/IDEA_PACK_README.md`.
 3. **Pick the depth.** Quick, Standard (default) or Deep — see `../product-standards/references/context-budget.md` (outputs, research budget, token rules). Suggest Quick for early ideas; say which mode you're using in one line.
    - **Quick runs 1 → 2 → one-pager only — this wins over "give me everything" (step 5).** The complete Quick reading list, each read once: this file and `templates/*.md`; `../new-idea/SKILL.md` (+ its owner-unavailable path), `references/question-bank.md`, `brief-template.md`, `clarity-template.md`; `../evaluate-idea/SKILL.md`, `references/scoring-rubric.md`, `report-template-quick.md`, `competitors-lite.md`, `research-cache.md`; `../product-standards/references/context-budget.md`, `inclusion.md`, `accessibility-law-summary.md`. Nothing else.
-   - In Quick, mark 2a and 2b `Skipped (Quick mode)` in STATUS, leave the wireframe/PRD lines out of the one-pager and README, and offer Standard when the owner wants to go further.
+   - In Quick, mark 2a and 2b `Skipped (Quick mode)` in STATUS, write "not yet — run Standard" on the wireframe/PRD rows of the README, leave them out of the one-pager, and offer Standard when the owner wants to go further.
 4. **Check before presenting any Idea Pack.** Run `python3 scripts/check_idea_pack.py <project> --mode <mode>` (this skill's folder) and fix every FAIL; a WARN (length) is acceptable if the README says why. No shell → walk its checks by hand.
 5. **"Give me everything for this idea" (whole Idea Pack in one go).** Standard/Deep: run 1 → 2 → 2a → 2b → one-pager (Quick: step 3) (skip 1 if a brief already exists), pausing only for questions that block the next phase (CLARITY.md). Skip the per-phase presentations; present the one-pager at the end with one line per phase.
 6. **"Set it all up" (after approval).** Run tool-plan → 4 name-product (names + brand) → 5 tech-stack → 6 design-system → 7 write-prd (full) → 7a engineering-docs → 7b project-setup in one go.
@@ -135,4 +135,4 @@ If **~~knowledge base** is connected:
 ## Related
 
 - Entry point: `start` · Phases: the skills in the table above, in order · Anytime: `tool-plan`, `handoff`, `standards-refresh`, `portfolio`, `ai-feature`
-- Reads: `templates/*.md`, `scripts/check_idea_pack.py`, `../product-standards/references/context-budget.md`, `accessibility-law.md`
+- Reads: `templates/*.md`, `scripts/check_idea_pack.py`, `../product-standards/references/context-budget.md`, `accessibility-law-summary.md` (Deep, ship: `accessibility-law.md`)

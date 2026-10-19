@@ -29,7 +29,7 @@ Short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` 
 ## Rules
 
 - Never write `Evaluation: APPROVED` yourself; the owner approves between the Idea Pack and setup.
-- Everything else (depth, gate, owner-unavailable path, checks) lives in `../product-kickoff/SKILL.md` — don't improvise.
+- Everything else (depth, gate, checks) lives in `../product-kickoff/SKILL.md`; the owner-unavailable path is kickoff step 8 plus `../new-idea/SKILL.md` → Owner unavailable — don't improvise.
 
 ## Related
 
