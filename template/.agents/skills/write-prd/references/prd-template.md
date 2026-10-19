@@ -1,3 +1,4 @@
+<!-- Size: draft ≤ 2,000 words (Standard) — full Given/When/Then only for Must stories; Should/Could as one line each; link personas, flows and screens by ID. Full v1.x has no cap but stays link-not-copy. -->
 # PRD — {{working name}}
 
 _{{Draft v0.x (idea stage) · Full v1.x (after approval)}} · {{date}} · Owner: {{name}} · Status: Draft / In review / Approved_

@@ -32,7 +32,7 @@ claude plugin install product-kit@product-kit-marketplace
 ```
 Later, `claude plugin marketplace update product-kit-marketplace` picks up new versions.
 
-Only want the idea stage (no building)? Install `idea-pack@product-kit-marketplace` instead — the same Idea Pack skills without the build phases. Don't install both; the full kit already includes it.
+Only want the idea stage (no building)? Install `idea-pack@product-kit-marketplace` instead — the same Idea Pack skills without the build phases. **Don't install both**: you'd see every skill twice (`/product-kit:…` and `/idea-pack:…`). If you did, remove `idea-pack` under Customize → Plugins.
 
 **Claude app (desktop / web) — easiest: add the repo as a marketplace** (once; updates come from GitHub):
 1. Open **Customize** in the left sidebar → **Plugins**.
@@ -48,6 +48,13 @@ The marketplace installs whatever is on the `main` branch, so merge a release's 
 Then **Customize → Plugins → upload** and pick the file. Double-clicking the file or opening it in Finder does nothing — it has to be uploaded there. If the upload dialog greys it out, rename the copy to `product-kit.zip` (it is a zip) and upload that. To replace an older version: open the installed plugin → **Remove**, then upload the new one.
 
 Either way, Claude now knows the kit's skills (you'll see them as `/product-kit:…`). Plugins installed in the Claude app are saved to your account, so the same skills are available in Claude Code too.
+
+**Run everything with one command** (you don't need to call skills one by one):
+- `/product-kit:start` then your idea + *"give me everything"* → the whole Idea Pack in one go (add *"quick"* or *"deep"*).
+- After you approve: `/product-kit:start` *"set it all up"* → names + brand, stack, design system, full PRD, engineering docs and project setup in one go (it asks your picks once, up front).
+- Then `/product-kit:start` *"build it"* → one task at a time, each on its own branch.
+- Idea Pack only: `/idea-pack:start` + your idea.
+You can also just type the idea in plain words — the kit's skills trigger on "I have a new idea…".
 
 **Check it worked:** start a new chat and type `/product-kit:` — the skill list should appear. In Claude Code: `claude plugin list` shows `product-kit` with the version from the release.
 

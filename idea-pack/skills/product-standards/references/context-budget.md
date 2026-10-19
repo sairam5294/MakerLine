@@ -26,6 +26,23 @@ Tokens = cost + quality. A bloated context makes AI tools slower, pricier and sl
 
 Baseline before these rules: a blind Standard run (v0.7.0) used ~224k tokens and 72 tool calls.
 
+### Size caps per document (all words, tables included)
+Long documents cost twice: once to write, and again every time a later phase or tool reads them. Caps are WARNs in `check_idea_pack.py`.
+| Document | Quick | Standard | Deep |
+|---|---|---|---|
+| EVALUATION.md | 2,000 | 3,000 | 4,500 |
+| COMPETITORS.md | 600 (Lite) | 1,200 | 2,000 |
+| DESIGN_DIRECTION.md | — | 1,500 | 2,500 |
+| PRD.md (draft) | — | 2,000 — full stories for Musts, one line per Should/Could | 3,000 |
+| CLARITY.md | 800 | 1,000 | 1,500 |
+| ONE_PAGER.md | 550 | 550 | 550 |
+
+### How tokens are really spent (measured on blind runs)
+Most tokens are not the documents — they are the conversation re-read on every tool call. A 50-call run re-reads its whole history 50 times. So:
+7. **Few, large tool calls.** Write each document in one call from notes; run all searches for a ring in one turn; run every check (checker, grep for placeholders, link check) in one shell call. Target: ≤ 25 tool calls for Quick, ≤ 45 for Standard.
+8. **Keep raw research out of the conversation.** Write findings straight to `docs/product/research/<topic>.md` and carry forward only R-ids and one-line facts.
+9. **Read once.** Never re-read a file you wrote or a template you already read; use grep for one line.
+
 ### Research budget after approval (per phase)
 | Phase | Searches | Page reads | How to stay inside it |
 |---|---|---|---|
@@ -39,8 +56,8 @@ Unverified facts become CLARITY questions; never quote a limit or price from mem
 ### Token rules for the Idea Pack (MUST)
 1. **Research once, cite everywhere.** Facts go to `docs/product/research/<topic>.md` with IDs (R1, R2…); other documents cite the ID instead of repeating the fact.
 2. **One home per fact.** Competitor detail lives in COMPETITORS; EVALUATION §6 summarises it in ≤ 150 words of prose (tables excluded; §7 differentiation is separate). The PRD links personas, flows and screens by ID instead of copying them. ONE_PAGER ≤ 500 words.
-3. **Search before you read.** A search snippet with the figure and date is enough to cite. Open a page only for numbers or quotes you need; prefer round-up and comparison pages that cover several competitors in one read. If search returns bare links (no snippets), trade two unused searches for one extra page read. Stop a competitor ring when two sources agree. A fact the budget can't reach becomes a CLARITY question, not a guess.
-4. **Copy templates, don't read them.** `cp` the template into place, read only its HOW TO FILL notes and one example block, then fill it section by section with targeted edits. Exception: the wireframe template is read once in full (its CSS kit and script contract are needed to fill it) — never twice.
+3. **Search before you read.** A search snippet with the figure and date is enough to cite. Open a page only for numbers or quotes you need; prefer round-up and comparison pages that cover several competitors in one read. If search returns bare links (no snippets), trade two unused searches for one extra page read — so run searches in two batches (half, then decide), not all at once. Stop a competitor ring when two sources agree. A fact the budget can't reach becomes a CLARITY question, not a guess.
+4. **Copy templates, don't read them.** `cp` the template into place, read only its HOW TO FILL notes and one example block, then fill it section by section with targeted edits. Templates without HOW TO FILL notes (brief, CLARITY, one-pager, README index) are short — read each once in full. Exception: the wireframe template is also read once in full (its CSS kit and script contract are needed to fill it) — never twice.
 5. **Write once, check with a script.** Write each document in one pass from your notes. Don't re-read your own output — run `check_idea_pack.py` (idea-pack/scripts) and fix only what it flags.
 6. **Small subagent briefs.** Give each perspective agent the brief plus the one reference it needs and the research file; replies ≤ 300 words. Agents read the research cache before searching, and their own search caps count **inside** the mode's budget. No subagents available → play the perspectives inline: ≤ 5 lines each in Quick, ≤ 10 in Standard, full in Deep.
 

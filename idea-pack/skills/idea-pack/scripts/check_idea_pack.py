@@ -185,6 +185,20 @@ def main():
             if not (f.parent / target).exists():
                 report("FAIL", f"{f.name}: broken link → {target}")
 
+    caps = {
+        "EVALUATION.md": {"quick": 2000, "standard": 3000, "deep": 4500},
+        "COMPETITORS.md": {"quick": 600, "standard": 1200, "deep": 2000},
+        "DESIGN_DIRECTION.md": {"quick": 10**9, "standard": 1500, "deep": 2500},
+        "PRD.md": {"quick": 10**9, "standard": 2000, "deep": 3000},
+        "CLARITY.md": {"quick": 800, "standard": 1000, "deep": 1500},
+    }
+    for name, by_mode in caps.items():
+        f = docs / name
+        if f.exists():
+            total = len(re.findall(r"[\w₹$€£%'’-]+", re.sub(r"<!--.*?-->", " ", f.read_text(encoding="utf-8"), flags=re.S)))
+            cap = by_mode[a.mode]
+            if total > cap and not (name == "PRD.md" and "v1." in f.read_text(encoding="utf-8")[:400]):
+                report("WARN", f"{name}: {total} words incl. tables (cap {cap} for {a.mode}) — every later phase re-reads it")
     ev = docs / "EVALUATION.md"
     if ev.exists():
         w = prose_words(ev.read_text(encoding="utf-8"))
