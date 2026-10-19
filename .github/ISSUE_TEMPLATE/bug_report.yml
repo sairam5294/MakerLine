@@ -1,0 +1,76 @@
+name: Bug report
+description: Something in the kit, a plugin, a starter or a script does not work as documented
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Security problem? Please don't file it here; use **Report a vulnerability** under the Security tab (see SECURITY.md).
+        Never paste API keys, tokens, `.env` contents or other people's personal data.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The prompt or command you ran, in order.
+      placeholder: |
+        1. Installed idea-pack from the Claude app
+        2. Typed "/idea-pack:start — give me everything for this idea, quick: …"
+        3. …
+    validations:
+      required: true
+  - type: dropdown
+    id: part
+    attributes:
+      label: Which part
+      options:
+        - idea-pack plugin
+        - product-kit plugin
+        - Expo starter (starter/)
+        - Next.js starter (starter-web/)
+        - Scripts (new-project, upgrade-project, …)
+        - Hooks, CI or git hooks
+        - Docs site
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool
+      multiple: true
+      options:
+        - Claude app (desktop)
+        - Claude on the web
+        - Claude Code
+        - Cursor
+        - Codex
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Kit version
+      description: From `.claude-plugin/plugin.json`, or `claude plugin list` in Claude Code.
+      placeholder: "0.11.0"
+  - type: input
+    id: env
+    attributes:
+      label: OS and Node version (if you ran scripts or starters)
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Please describe screenshots in words too, so everyone can follow them.

@@ -1,6 +1,6 @@
 ---
 name: validate-idea
-description: Test demand before building anything. Covers kill criteria set up front, then the cheapest tests that fit (user interviews, landing page + waitlist, prototype usability test, concierge MVP, pre-sale) — and record results → VALIDATION.md. Trigger with "validate demand", "test before building", "interview users", or after evaluation.
+description: Test demand before building anything. Covers kill criteria set up front, then the cheapest tests that fit (user interviews, landing page + waitlist, prototype usability test, concierge MVP, pre-sale) — and record results → VALIDATION.md + VALIDATION_RESULTS.md. Trigger with "validate demand", "test before building", "interview users", "here are my interview notes", or after evaluation.
 argument-hint: "<assumption to test, or nothing to pick from EVALUATION.md>"
 ---
 
@@ -18,6 +18,7 @@ Get evidence that real people want this, for the least time and money.
 /validate-idea                              # picks the 1–3 riskiest assumptions from EVALUATION.md
 /validate-idea interview users
 /validate-idea landing page for the waitlist
+/validate-idea results                      # paste notes or numbers → results, re-score
 ```
 
 ## How it works
@@ -30,8 +31,8 @@ Get evidence that real people want this, for the least time and money.
 │  ✓ 1–3 riskiest assumptions, each with a kill criterion      │
 │  ✓ Cheapest test first: interviews · landing page · prototype│
 │    test · concierge MVP · pre-sale                           │
-│  ✓ Raw results vs kill criteria → validated / invalidated /  │
-│    unclear + what changes                                    │
+│  ✓ Results mode: notes/numbers → themes with counts, pass /  │
+│    fail / inconclusive vs kill criteria → re-score           │
 ├──────────────────────────────────────────────────────────────┤
 │  SUPERCHARGED (when you connect your tools)                  │
 │  + Hosting: deploy the landing page                          │
@@ -44,7 +45,8 @@ Get evidence that real people want this, for the least time and money.
 
 - `docs/product/EVALUATION.md` — the riskiest assumptions and the validation tests it proposed.
 - `design/wireframes/index.html` (design-direction) or a Figma prototype, for the prototype test.
-- `references/validation-template.md`, `references/interview-guide.md`.
+- `references/validation-template.md`, `references/interview-guide.md`; results mode: `references/validation-results-template.md`.
+- Results mode: the owner's pasted interview notes, test numbers or analytics export, plus VALIDATION.md (thresholds and kill criteria) and `CLARITY.md`.
 - No gate: validation happens before approval and only produces docs, static files or a separate landing project.
 
 ## Workflow
@@ -58,12 +60,20 @@ Get evidence that real people want this, for the least time and money.
    - **Pre-sale / deposit** when money is part of the model.
 3. **Run and record.** Record raw results, compare with kill criteria, and summarise: validated / invalidated / unclear + what changes.
 4. **Feed results back.** Into evaluate-idea (re-score with new evidence) before the approval gate.
+5. **Results mode** (`/validate-idea results`, or *"here are my interview notes"*, *"the landing page got X signups"*). Write `docs/product/VALIDATION_RESULTS.md` from `references/validation-results-template.md`, one V-id per test:
+   - **Anonymise first:** participants become P1, P2…; drop names, emails, phones, employers before anything is written.
+   - **Synthesise:** themes with counts across *all* participants ("5 of 8"), plus counter-evidence — never a handful of cherry-picked quotes.
+   - **Compare** raw numbers with the threshold and kill criterion copied unchanged from VALIDATION.md → pass / fail / inconclusive. Small n or a broken test → inconclusive, not pass.
+6. **Close the loop.** Answered CLARITY questions move down with their V-id. Then run evaluate-idea's **Refine** step: change only scores the evidence supports, update the verdict if the scores say so, add a revision-log row and a "What changed" block citing the V-ids; fill the results file's "Effect on the evaluation" table.
+   - **Kill criterion hit** → say it plainly in the first line (*"A1 failed its kill criterion: 2 of 8, needed 4"*) and recommend Pivot or Drop. Don't soften it or move the bar.
 
 ## Output
 
 | File | What | Size |
 |---|---|---|
 | `docs/product/VALIDATION.md` | assumptions, tests, kill criteria, results, verdicts, decision | per `validation-template.md` |
+| `docs/product/VALIDATION_RESULTS.md` | results mode: per-test evidence (V-ids), themes with counts, effect on the evaluation | ≤ ~1,000 words |
+| `docs/product/CLARITY.md`, `EVALUATION.md` | answered questions moved down; scores and verdict via evaluate-idea Refine | — |
 | `validation/` or `~/Projects/<name>-landing` | the landing page (static files, or a separate project) | — |
 
 Presentation to the owner (≤ 8 lines):
@@ -74,6 +84,8 @@ Assumption A1 · test · kill criterion · result · verdict
 What changes in the brief / scope / positioning
 Next: re-score in evaluate-idea
 ```
+
+Results mode (≤ 8 lines): kill criterion hit? first · each V-id: result vs threshold → verdict · score and verdict changes · next test or Pivot / Drop.
 
 ## If connectors available
 
@@ -93,14 +105,20 @@ If **~~design** is connected:
 - Cheapest test first; a concierge MVP beats code.
 - The landing page passes the approval gate only as a separate project (approved with `scripts/approve.sh "validation landing page"`) or as static files in `validation/` — never as app code in this repo.
 - Results change scores only through evaluate-idea; never edit EVALUATION.md scores here.
+- Thresholds and kill criteria are copied into VALIDATION_RESULTS.md unchanged; never move the bar after seeing the numbers.
+- Interview notes are anonymised (P1, P2…); no names, contacts or employers are stored in the repo — raw notes stay with the owner.
+- Themes are reported with counts across all participants, including counter-evidence.
+- A hit kill criterion is reported plainly with a Pivot or Drop recommendation.
 
 ## Tips
 
 1. Five honest interviews beat fifty "nice idea" replies — recruit where your users already spend time (brief §B).
 2. Write the kill criterion as a number and a date; "enough interest" isn't one.
 3. If the prototype test confuses users on the core action, fix the direction before the PRD.
+4. Paste raw notes, not your summary — the synthesis counts themes for you, so your hopes don't pick the quotes.
 
 ## Related
 
 - Before: `evaluate-idea`, `design-direction` · After: `evaluate-idea` (re-score), approval
-- Reads: `references/validation-template.md`, `interview-guide.md`; `../test-plan/references/accessibility-user-testing.md`
+- Reads: `references/validation-template.md`, `interview-guide.md`, `validation-results-template.md`; `../test-plan/references/accessibility-user-testing.md`
+- Complementary (if installed): `design:research-synthesis` or `product-management:synthesize-research` can help cluster interview notes in results mode; this skill still owns thresholds, verdicts and the re-score.

@@ -4,12 +4,12 @@ Two real runs of the kit: one on an app that already existed, one on an idea tha
 
 <div class="cards" markdown="1">
 <section markdown="1">
-### [RhythmBuddy](case-rhythmbuddy.md)
+## [RhythmBuddy](case-rhythmbuddy.md)
 
 A shipped macOS menu-bar wellness app (Python and PyObjC) adopted into the kit, then reviewed. **Phases:** adopt, quality review. **Result:** "Ready after fixes", with 8 must-fix findings, each with a file and line.
 </section>
 <section markdown="1">
-### [ClubSlot](case-clubslot.md)
+## [ClubSlot](case-clubslot.md)
 
 Amenity booking for gated communities in Hyderabad, run through the full Idea Pack. **Phases:** evaluation, competitors, design direction with wireframes, draft PRD, one-pager. **Result:** a researched Pivot to a booking-only, no-install web service.
 </section>

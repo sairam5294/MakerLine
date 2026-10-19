@@ -79,6 +79,8 @@ pre{background:var(--code);padding:1rem;border-radius:8px;overflow:auto}
 pre code{background:none;padding:0}
 .table{overflow-x:auto;margin:1rem 0}
 table{border-collapse:collapse;width:100%;font-size:.95rem}
+.table table{min-width:34rem}
+.table th:first-child,.table td:first-child{min-width:6.5rem}
 th,td{border:1px solid var(--border);padding:.5rem .6rem;text-align:left;vertical-align:top}
 th{background:var(--surface)}
 blockquote{margin:1rem 0;padding:.5rem 1rem;border-left:4px solid var(--border);color:var(--muted)}
@@ -91,7 +93,7 @@ img{max-width:100%;height:auto}
 .lead{font-size:1.25rem;line-height:1.5}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1rem;margin:1.5rem 0}
 .cards>section{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem}
-.cards h3{margin-top:0}
+.cards h2,.cards h3{margin-top:0}
 .cards p:last-child{margin-bottom:0}
 .note{background:var(--surface);border-left:4px solid var(--focus);padding:.75rem 1rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
 main p,main li,main td,main th,main h1,main h2,main h3,main a{overflow-wrap:anywhere}
@@ -192,7 +194,9 @@ def render(src: str, out: str, title: str, nav_items, root_out: pathlib.Path) ->
     if first == -1:
         body = f"<h1>{html.escape(title)}</h1>\n" + body
     else:
-        head, rest = body[:first + 3], body[first + 3:]
+        # Keep the first h1 whole (open and close tag); demote only the ones after it.
+        end = body.find("</h1>", first) + len("</h1>")
+        head, rest = body[:end], body[end:]
         body = head + re.sub(r"<(/?)h1\b", r"<\1h2", rest)
     body = rewrite_links(body, src, out)
 

@@ -266,6 +266,7 @@ INLINE_RE = re.compile(
     r"|\[([^\]]+)\]\(([^)\s]+)\)"             # 2,3 link
     r"|\*\*([^*]+)\*\*"                       # 4 bold
     r"|(?<![\w*])\*([^*\s][^*]*?)\*(?![\w*])"  # 5 italic
+    r"|(?<!\w)_([^_\s][^_]*?)_(?!\w)"            # 6 italic (underscores inside words, like ONE_PAGER, are left alone)
 )
 
 
@@ -287,7 +288,7 @@ def inline(text: str, link_fn) -> str:
         elif m.group(4) is not None:
             out.append(f"<strong>{inline(m.group(4), link_fn)}</strong>")
         else:
-            out.append(f"<em>{inline(m.group(5), link_fn)}</em>")
+            out.append(f"<em>{inline(m.group(5) or m.group(6), link_fn)}</em>")
         pos = m.end()
     out.append(esc(text[pos:]))
     return "".join(out)
@@ -472,7 +473,7 @@ or point this page at another folder: <code>python3 scripts/kit-ui.py --projects
   <dl>
     <div><dt>Current phase</dt><dd>{focus}</dd></div>
     <div><dt>Approval</dt><dd>{gate_badge(p)}</dd></div>
-    <div><dt>Next step</dt><dd>{esc(p["next"])}</dd></div>
+    <div><dt>Next step</dt><dd>{inline(p["next"], lambda u: None)}</dd></div>
     <div><dt>Last updated</dt><dd>{age_text(p)}</dd></div>
   </dl>
 </li>""")
@@ -516,13 +517,13 @@ def page_project(p: dict) -> str:
     <h2 id="run-h">Run next</h2>
     <p class="run-title">{esc(nxt["title"])}</p>
     <p>{esc(nxt["why"])}</p>
-    {copy_box("open-folder", "1. Open Claude (Code, Cursor or Codex) in this folder", str(p["dir"]), "path")}
+    {copy_box("open-folder", "1. Project folder — open Claude Code, Cursor or Codex here", str(p["dir"]), "path")}
     {copy_box("next-prompt", "2. " + nxt["primary"]["label"], nxt["primary"]["text"], nxt["primary"]["kind"])}
     {extras}
     {waiting}
     <dl class="facts">
-      <div><dt>Next step (from STATUS.md)</dt><dd>{esc(p["next"])}</dd></div>
-      <div><dt>Blockers</dt><dd>{esc(p["blockers"])}</dd></div>
+      <div><dt>Next step (from STATUS.md)</dt><dd>{inline(p["next"], lambda u: None)}</dd></div>
+      <div><dt>Blockers</dt><dd>{inline(p["blockers"], lambda u: None)}</dd></div>
       <div><dt>Cost to date</dt><dd>{esc(p["cost"])}</dd></div>
     </dl>
   </section>

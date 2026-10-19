@@ -62,7 +62,7 @@ Check it worked: start a new chat and type `/idea-pack:` or `/product-kit:`. The
 
 Install one, not both: the full kit already contains the Idea Pack, and every skill would appear twice.
 
-| | Idea Pack | Full Product Kit |
+| Question | Idea Pack | Full Product Kit |
 |---|---|---|
 | Best for | Deciding whether an idea is worth building | Building and shipping it once you've decided |
 | What it does | Discovery, evaluation, competitors, design direction with wireframes, draft PRD, one-pager, validation tests, tool plan | Everything in the Idea Pack, plus naming and brand, tech stack, design system, full PRD, engineering docs, repo setup, build, review, test, ship and post-launch |

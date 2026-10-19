@@ -16,7 +16,7 @@ This page covers the **product-kit** and **idea-pack** Claude plugins and this w
 
 - No analytics, telemetry or tracking
 - No server run by the author; nothing is sent to the author
-- No reading of Claude's memory or chat history
+- The skills keep project memory in your folder (`docs/`), not in Claude's memory or chat history, and never ask Claude to search past chats
 - No secrets: the rules forbid putting keys, passwords or users' personal data in prompts or documents
 - Connectors read first; they only write (create a ticket, push, deploy) when you ask in the chat
 

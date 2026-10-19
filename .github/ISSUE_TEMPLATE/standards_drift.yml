@@ -1,0 +1,59 @@
+name: Standards drift
+description: A rule in the kit is outdated (a law, WCAG, OWASP, store rule, framework version, AI model or price changed)
+labels: ["standards"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The kit's standards are checked quarterly (`standards-refresh`), but rules change in between. A source link is required so the fix can be verified.
+  - type: input
+    id: file
+    attributes:
+      label: Which rule
+      description: File and section, for example `product-standards/references/accessibility-law.md` → India.
+    validations:
+      required: true
+  - type: textarea
+    id: says
+    attributes:
+      label: What the kit says now
+    validations:
+      required: true
+  - type: textarea
+    id: should
+    attributes:
+      label: What it should say
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source link
+      description: An official or primary source (the law, the standard, the vendor's docs or changelog), not a blog post if you can avoid it.
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date the change takes effect (if known)
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Accessibility (WCAG, platform guidelines)
+        - Accessibility law
+        - Privacy or data protection law
+        - Security (OWASP, MASVS)
+        - App Store or Google Play rules
+        - Framework or library version
+        - AI models or prices
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Who is affected
+      description: Which skills, projects or launch markets would give wrong advice until this is fixed?

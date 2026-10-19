@@ -1,0 +1,47 @@
+name: Accessibility barrier
+description: Something in the kit, its output or this website is hard or impossible to use with your setup
+labels: ["accessibility"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Accessibility barriers are treated as bugs, and the kit's baseline is WCAG 2.2 AA.
+        You don't need to know WCAG to report one; describe what happened in your own words. If this form is hard to use, open a blank issue instead, or write in a discussion.
+  - type: textarea
+    id: barrier
+    attributes:
+      label: What stopped you or slowed you down
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where
+      options:
+        - Docs website
+        - Wireframes the kit generated
+        - Documents the kit generated (one-pager, PRD, …)
+        - A starter app (Expo or Next.js)
+        - The kit's advice or rules (it told me something inaccessible was fine)
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Page, file or screen
+      placeholder: https://sairam5294.github.io/product-kit/… or docs/product/…
+  - type: textarea
+    id: setup
+    attributes:
+      label: Your setup (optional)
+      description: Assistive technology, browser, zoom level, settings; for example "VoiceOver on iPhone, Safari" or "200% zoom, Windows high contrast". Share only what you're comfortable sharing.
+  - type: textarea
+    id: expected
+    attributes:
+      label: What would have worked for you (optional)
+  - type: input
+    id: wcag
+    attributes:
+      label: WCAG criterion, if you know it (optional)
+      placeholder: for example 1.4.3 Contrast (Minimum)

@@ -1,0 +1,51 @@
+name: New skill, agent, or tool adapter
+description: Suggest a new skill, agent, or support for another AI tool
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What it does
+      description: One or two sentences, and the file it would produce (for example `docs/product/PRICING.md`).
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: The job you were trying to do
+      description: What were you doing when you missed it? A real example helps most.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Skill
+        - Agent
+        - Adapter for another AI tool
+        - Connector support
+    validations:
+      required: true
+  - type: input
+    id: phase
+    attributes:
+      label: Where in the workflow it fits
+      description: Phase number or name from the README table, or "anytime".
+  - type: textarea
+    id: gap
+    attributes:
+      label: Why existing skills don't cover it
+  - type: dropdown
+    id: plugin
+    attributes:
+      label: Which plugin should have it
+      options:
+        - Both (idea stage)
+        - product-kit only (after approval)
+        - Not sure
+  - type: textarea
+    id: cost
+    attributes:
+      label: Always-loaded cost
+      description: Will it add to skill or agent descriptions, and by roughly how many words? Every skill description is loaded in every session.

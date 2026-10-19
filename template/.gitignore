@@ -20,6 +20,10 @@ ios/
 android/
 # OS / editor
 .DS_Store
+# Aider chat history and cache (its shared config, .aider.conf.yml, stays committed)
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache.v*/
 # Product Kit upgrade backups
 .product-kit-backup/
 # Web build output & caches
