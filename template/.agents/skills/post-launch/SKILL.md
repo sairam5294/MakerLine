@@ -1,6 +1,6 @@
 ---
 name: post-launch
-description: Run the post-launch learning loop — weekly metrics review, feedback synthesis, retros, next priorities and lessons fed back into the kit → METRICS.md, COSTS.md, LESSONS.md, OUTCOMES.md row. Trigger with "how is it doing", "metrics review", "user feedback", "retro", "what next after launch", or weekly after ship-checklist.
+description: Review how the launched product is doing. Covers weekly metrics review, feedback synthesis, retros, next priorities and lessons fed back into the kit → METRICS.md, COSTS.md, LESSONS.md, OUTCOMES.md row. Trigger with "how is it doing", "metrics review", "user feedback", "retro", "what next after launch", or weekly after ship-checklist.
 argument-hint: "<weekly | retro | outcome | end, or nothing for the weekly review>"
 ---
 

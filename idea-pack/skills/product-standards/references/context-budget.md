@@ -1,92 +1,53 @@
 # Context & Token Budget
 
-Tokens = cost + quality. A bloated context makes AI tools slower, pricier and sloppier at following rules.
+Tokens = cost + quality. Most tokens are not the documents — they are the conversation re-read on every tool call. A 50-call run re-reads its history 50 times.
 
-## 1. MUST
-- Read only what the task needs: AGENTS.md → HANDOFF.md/STATUS.md → the one task/story → the 1–2 standards files it touches.
-- Search before reading: `grep`/`rg` for symbols; read file ranges, not whole large files. Never read `node_modules`, lockfiles, build output, `.expo`, `ios/`/`android/` generated folders, or large media.
-- Delegate research and reviews to subagents; they return summaries (≤ 300 words) instead of raw pages/diffs.
-- Pass reviewers the diff + one standard file, not the whole repo.
-- Don't paste whole files back to the user; show the changed part or a summary.
-- Keep living docs short: HANDOFF ≤ 40 lines, STATUS ≤ 60 lines, AGENTS.md ≤ ~120 lines. Move detail into linked files.
-- One task per session/branch. When a session gets long or switches topic: run `handoff`, then start fresh (`/clear` in Claude Code, new chat in Cursor/Codex) — cheaper than compacting a long history.
+## 1. MUST (every phase)
+- Read only what the task needs: AGENTS.md → HANDOFF/STATUS → the one task or story → the 1–2 standards it touches. Resume from STATUS.md + HANDOFF.md only; never scan `docs/product/` to work out where you are.
+- Search before reading (`rg`, file ranges). Never read `node_modules`, lockfiles, build output, generated native folders or media.
+- Subagents return ≤ 300-word summaries; reviewers get the diff + their standard files only.
+- Living docs stay short: HANDOFF ≤ 40 lines, STATUS ≤ 60, AGENTS.md ≤ ~120.
+- One task per session. Long or off-topic session → `handoff`, then start fresh.
+- Show the changed part, not whole files. Prefer tables over prose in docs the AI rereads.
 
-## 2. SHOULD
-- Use the smaller/faster model for mechanical work (renames, formatting, simple tests) and the strongest model for planning, evaluation, security review.
-- Use ignore files so tools skip generated/heavy files (`.cursorignore`, `.claudeignore`-style deny rules, `.gitignore`).
-- Prefer structured outputs (tables, checklists) over prose in docs the AI rereads.
-- Cache research: save sources and findings in docs/product so they aren't re-fetched.
-
-## 3. Idea Pack depth (pick before starting; default Standard)
-| Mode | Use when | Produces | Research budget | Typical tokens |
+## 2. Idea Pack depth (pick before starting; default Standard)
+| Mode | Use when | Produces | Research budget | Target |
 |---|---|---|---|---|
-| **Quick** | "Is this worth a weekend?" — early or many ideas | v0 brief, CLARITY, short EVALUATION (600–1,500 prose words; sections marked *Quick: optional* in the template may be left out), COMPETITORS lite (`competitive-analysis.md` → Lite), ONE_PAGER. No design direction or PRD | ≤ 8 searches, ≤ 4 page reads (or 6 reads with 4 searches when results carry no snippets) | ~70–100k measured (first run 190k before these fixes) |
-| **Standard** | Deciding whether to build | Full pack: + DESIGN_DIRECTION, wireframes (≤ 8 screens), PRD draft | ≤ 15 searches, ≤ 8 page reads (two unused searches buy one extra read when results carry no snippets) | ~120–150k (measured ~214–219k before template trims) |
-| **Deep** | Before spending money, pitching or hiring | Standard + all four competitor rings in depth, 12+ screens, Figma, payer research | ≤ 30 searches | ~250k+ |
+| **Quick** | "Worth a weekend?" | brief, CLARITY, short EVALUATION (600–1,500 prose words; *Quick: optional* sections may go), COMPETITORS Lite (`../../evaluate-idea/references/competitors-lite.md`), ONE_PAGER | ≤ 8 searches, ≤ 4 page reads | ≤ 25 tool calls · ~70–100k target (measured 146k, Oct 2026) |
+| **Standard** | Deciding whether to build | + DESIGN_DIRECTION, wireframes (≤ 8 screens), PRD draft | ≤ 15 searches, ≤ 8 page reads | ≤ 45 tool calls · ~120–150k |
+| **Deep** | Before spending money or pitching | + all four competitor rings, 12+ screens, Figma, payer research | ≤ 30 searches | ~250k+ |
 
-Baseline before these rules: a blind Standard run (v0.7.0) used ~224k tokens and 72 tool calls.
+Searches that return bare links (no snippets): two unused searches buy one extra page read, so search in two batches. A redirect that lands on the page you wanted counts as one read.
 
-## 4. Size caps per document (all words, tables included)
-Long documents cost twice: once to write, and again every time a later phase or tool reads them. Caps are WARNs in `check_idea_pack.py`.
+## 3. Size caps (words, tables included; WARNs in `check_idea_pack.py`)
 | Document | Quick | Standard | Deep |
 |---|---|---|---|
 | EVALUATION.md | 2,000 | 3,000 | 4,500 |
-| COMPETITORS.md | 600 (Lite) | 1,200 | 2,000 |
+| COMPETITORS.md | 600 | 1,200 | 2,000 |
 | DESIGN_DIRECTION.md | — | 1,500 | 2,500 |
-| PRD.md (draft) | — | 2,000 — full stories for Musts, one line per Should/Could | 3,000 |
+| PRD.md (draft) | — | 2,000 (full stories for Musts, one line per Should/Could) | 3,000 |
 | CLARITY.md | 800 | 1,000 | 1,500 |
 | ONE_PAGER.md | 550 | 550 | 550 |
 
-## 5. Token rules for the Idea Pack (MUST)
-1. **Research once, cite everywhere.** Facts go to `docs/product/research/<topic>.md` with IDs (R1, R2…); other documents cite the ID instead of repeating the fact.
-2. **One home per fact.** Competitor detail lives in COMPETITORS; EVALUATION §6 summarises it in ≤ 150 words of prose (tables excluded; §7 differentiation is separate). The PRD links personas, flows and screens by ID instead of copying them. ONE_PAGER ≤ 500 words.
-3. **Search before you read.** A search snippet with the figure and date is enough to cite. Open a page only for numbers or quotes you need; prefer round-up and comparison pages that cover several competitors in one read. If search returns bare links (no snippets), trade two unused searches for one extra page read — so run searches in two batches (half, then decide), not all at once. Stop a competitor ring when two sources agree. A fact the budget can't reach becomes a CLARITY question, not a guess.
-4. **Copy templates, don't read them.** `cp` the template into place, read only its HOW TO FILL notes and one example block, then fill it section by section with targeted edits. Templates without HOW TO FILL notes (brief, CLARITY, one-pager, README index) are short — read each once in full. Exception: the wireframe template is also read once in full (its CSS kit and script contract are needed to fill it) — never twice.
-5. **Write once, check with a script.** Write each document in one pass from your notes. Don't re-read your own output — run `check_idea_pack.py` (idea-pack/scripts) and fix only what it flags.
-6. **Small subagent briefs.** Give each perspective agent the brief plus the one reference it needs and the research file; replies ≤ 300 words. Agents read the research cache before searching, and their own search caps count **inside** the mode's budget. No subagents available → play the perspectives inline: ≤ 5 lines each in Quick, ≤ 10 in Standard, full in Deep.
+## 4. Token rules for the Idea Pack (MUST)
+1. **Research once, cite everywhere.** Facts go to `docs/product/research/<topic>.md` with IDs (R1, R2…); other docs cite the ID. Facts from the kit's own references cite the file (e.g. `accessibility-law-summary.md`) instead of a URL.
+2. **One home per fact.** Competitor detail lives in COMPETITORS (EVALUATION §6 ≤ 150 prose words). The PRD links personas, flows and screens by ID.
+3. **Snippets first.** A snippet with figure and date is enough to cite. Open a page only for a number or quote you need; prefer round-up pages. Stop a ring when two sources agree. Out of budget → CLARITY question, not a guess.
+4. **Copy templates, don't read them.** `cp` the template, read its HOW TO FILL comment (top of file) and one example, then write the filled document. Short templates (brief, CLARITY, STATUS, DECISIONS, COSTS, one-pager, README index) and the wireframe template have no HOW TO FILL comment — read each once in full, never twice.
+5. **Write once, check with a script.** Write each document in one call from your notes (draft the section lengths against the cap first); don't re-read your output — run `check_idea_pack.py` (with `--only` for the files this phase wrote) and fix only what it flags.
+6. **Small subagent briefs.** Each perspective agent gets the brief's **Idea card** (§0, ≤ 120 words) + its one reference + the research file, not the whole brief. Their searches count inside the budget. No subagents → play them inline: ≤ 5 lines each (Quick), ≤ 10 (Standard).
+7. **Few, large tool calls.** One call per document — or several small documents (STATUS, DECISIONS, COSTS, README index) in one shell call; all searches for a ring in one turn; every check in one shell call.
+8. **Raw research stays out of the conversation.** Write findings to the research file; carry forward only R-ids and one-line facts.
+9. **Accessibility law:** read `accessibility-law-summary.md` at the idea stage; open the full `accessibility-law.md` only for Deep or `ship-checklist`, and then grep the launch market's rows.
 
-## 6. How tokens are really spent (measured on blind runs)
-Most tokens are not the documents — they are the conversation re-read on every tool call. A 50-call run re-reads its whole history 50 times. So:
-7. **Few, large tool calls.** Write each document in one call from notes; run all searches for a ring in one turn; run every check (checker, grep for placeholders, link check) in one shell call. Target: ≤ 25 tool calls for Quick, ≤ 45 for Standard.
-8. **Keep raw research out of the conversation.** Write findings straight to `docs/product/research/<topic>.md` and carry forward only R-ids and one-line facts.
-9. **Read once.** Never re-read a file you wrote or a template you already read; use grep for one line.
+## 5. Model routing per step (when the tool lets you choose)
+| Step | Model |
+|---|---|
+| Interview questions, filling templates, tables, one-pager, index, formatting, renames, small UI/copy edits | **fast** (Claude Sonnet/Haiku, GPT-6 Luna, Gemini Flash, Cursor auto — names change; `standards-refresh` re-checks them) |
+| Market research, checklist reviews (`market-researcher`, `qa-engineer`, `accessibility-auditor`, `ux-reviewer`) | **fast** |
+| Evaluation verdict and scorecard, devil's advocate, architecture, security review, build tasks touching auth, data, payments or AI | **strongest** |
 
-## 7. Which doc to load for which task (after engineering-docs)
-| Task touches | Load | Don't load |
-|---|---|---|
-| any task | AGENTS.md · docs/RULES.md · docs/MEMORY.md · HANDOFF/STATUS · the PLAN task · its PRD stories | the whole PRD, DESIGN_SYSTEM, EVALUATION |
-| a table, migration, policy | docs/DATABASE.md (that table's block) | ARCHITECTURE |
-| a new flow, service, integration | docs/ARCHITECTURE.md §4–5 | DATABASE |
-| first task in a repo, or a style question | docs/CODE_STYLE.md | — |
-| tests | docs/TESTING.md | — |
-| a review | the diff + docs/SECURITY.md or CODE_STYLE.md + one standard | the repo |
+Agents declare `model:` in their frontmatter. Inline, switch the model in chat if the tool allows; otherwise keep the fast steps short.
 
-## 8. Research budget after approval (per phase)
-| Phase | Searches | Page reads | How to stay inside it |
-|---|---|---|---|
-| tool-plan | ≤ 3 | ≤ 3 | one official pricing/limits page per tool the owner has; anything else "unverified" |
-| name-product | ≤ 8 | ≤ 4 | one search per name for the top 6; deep checks (store, domain, trademark) only for the top 3 |
-| tech-stack | ≤ 4 | ≤ 4 | versions from the package registry (`npm view <pkg> version`, `pip index versions`) — registry lookups don't count as page reads |
-| project-setup | ≤ 2 | ≤ 2 | free-tier limits from the vendors' limits pages; a number not on the page → "unverified" |
-| design-system, write-prd (full), engineering-docs | 0 | 0 | work from the Idea Pack, research cache and standards |
-Unverified facts become CLARITY questions; never quote a limit or price from memory.
-
-## 9. Cost reference (measured on kit evals, Sept 2026)
-| Activity | Typical tokens | How to keep it down |
-|---|---|---|
-| Discovery interview (new-idea) | ~80k | Pre-fill from the pitch; short first reply |
-| Full evaluation with web research | ~110–120k | Reuse `docs/product/research/`; refinement rounds re-research only what changed |
-| Quality review of one feature branch | ~100k | Review the diff, not the repo; one standard file per reviewer |
-| Build one S/M task | 30–150k | One task per session; `handoff` then start fresh |
-
-## 10. Model routing
-- Agents declare their model: checklist/research agents (`market-researcher`, `qa-engineer`, `accessibility-auditor`, `ux-reviewer`) use a faster model (`sonnet` in Claude, medium reasoning in Codex); judgement-heavy ones (`devils-advocate`, `architect`, `security-reviewer`, builders) inherit the strongest.
-- Cursor copies always `inherit` (Cursor uses its own model names) — pick the model in Cursor's chat.
-- Mechanical edits (renames, formatting, copy tweaks) → fastest model; evaluations, architecture, security → strongest.
-
-## 11. Local models (Ollama on your Mac) — free and private, but weaker
-Good for: summarising your own interview notes, first-draft translations for a native speaker to fix, renaming/boilerplate, reading long logs. Not for: evaluation, architecture, security review, anything customer-facing without review.
-- Quick use: `ollama run <model> "Summarise these notes into themes:" < notes.md` (pick a model that fits your RAM; check `ollama list`).
-- Codex with a local model: `codex --oss` (or `ollama launch codex`); use a model with a ≥ 64k context window. Keep a separate Codex profile in `~/.codex/` so your normal setup is unchanged.
-- Claude and Cursor use cloud models; keep them for judgement-heavy work.
-- Never paste secrets or users' personal data into any model, local or cloud, without a reason and consent.
+## More
+After approval — which doc to load per task, research budget per phase, measured costs, local models: `context-budget-more.md`.

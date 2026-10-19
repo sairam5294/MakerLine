@@ -11,6 +11,7 @@ For any product feature that uses an AI model: chat, generation (text, image, au
 Starting point: the web starter's `src/ai/` harness (provider wrapper, versioned prompt, schema, redaction, quota, live eval runner).
 - Call models **only from the server** (edge/server function); keys never reach the client.
 - Pick the cheapest model that passes your evals (§4); record model + version in TECH_STACK.md. Re-run evals before switching models.
+- Current families (verified 2026-10-20 in provider docs — re-check before recording): Anthropic Claude Fable 5.1 / Opus 5.5 / Sonnet 5.5 / Haiku 5.5; OpenAI GPT-6 Astra / GPT-6.1 Sol / GPT-6 Luna; Google Gemini 4 Argon, Gemini 3.8 Flash, Gemini 3.5 Flash-Lite. Start with the fastest tier (Haiku, Luna, Flash-Lite) and move up only when evals fail.
 - Keep prompts in version-controlled files (`src/ai/prompts/<feature>.v1.md`), not inline strings; change = new version + eval run.
 - Ask for **structured output** (JSON schema) and validate it with Zod before use; on invalid output retry once, then fall back.
 - Set timeouts (≤ 30 s), retries with backoff, and a graceful fallback message.
@@ -48,7 +49,8 @@ Starting point: the web starter's `src/ai/` harness (provider wrapper, versioned
 - **Know your rights to outputs**: check each generator's terms (commercial use, ownership, attribution). Some music/image tools grant commercial *use* but not *ownership*; AI-only output may not be copyrightable, so competitors could copy it. For content that is your product's core value (songs, stories, art), prefer human-created or human-edited work you own, or licensed libraries.
 - **Never** generate imitations of real artists' voices/styles, real people, logos, or copyrighted characters/songs; don't train or prompt on content you don't have rights to.
 - **Label synthetic media**: India's IT Amendment Rules 2026 (in force 20 Feb 2026) require clear visible labels for AI-generated images/video, audible disclosure for audio, and embedded metadata/identifiers where feasible for platforms that let users create such content, plus fast takedown timelines. Label AI content in-app regardless — it builds trust.
-- **Store rules**: Google Play's AI-Generated Content policy applies to apps whose core feature is generative AI (chatbots, image/voice generators): prevent harmful outputs and provide in-app reporting/flagging. Apple requires the same safety and privacy standards plus accurate privacy labels.
+- **EU AI Act (Article 50, applies from 2 Aug 2026)** to any app offered in the EU: tell users when they are talking to an AI (unless obvious); providers mark AI-generated audio/image/video/text in a machine-readable way (systems already on the market before 2 Aug 2026 have until 2 Dec 2026); disclose deepfakes and AI-written public-interest text. The Digital Omnibus moved Annex III high-risk duties to 2 Dec 2027 (approved June 2026; Official Journal publication unverified). Verified 2026-10-20.
+- **Store rules**: Google Play's AI-Generated Content policy applies to apps whose core feature is generative AI (chatbots, image/voice generators): prevent harmful outputs and provide in-app reporting/flagging. Apple requires the same safety and privacy standards plus accurate privacy labels; since 16 Oct 2026 Guideline 1.2 explicitly bans nonconsensual intimate imagery (incl. AI-generated) and "nudification" apps — generators must proactively prevent and remove it.
 - Keep a record of how each piece of content was made (tool, prompt, human edits, date) in `docs/product/CONTENT_SOURCES.md`.
 
 ## 8. Cost

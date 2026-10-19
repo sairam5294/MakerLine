@@ -1,6 +1,6 @@
 ---
 name: project-setup
-description: Set up the repo after the engineering docs — a proper README, SETUP (clone or download → install → env → run locally → deploy), STRUCTURE (folder tree, where every file goes, rules), a fully commented .env.example, GITHUB (PRs, merge strategy, branch cleanup, experiment branches, previews, deployment retention, storage monitoring), CONTEXT_PACK for tools that can't read the repo, and project-specific rules for every AI tool — .cursor/rules/*.mdc scoped by folder, .claude (CLAUDE.md, project skills), .github (copilot instructions, CODEOWNERS, workflows). Trigger with "set up the repo", "write the README", "cursor rules", "folder structure", "env file", "GitHub rules", or after engineering-docs.
+description: Set up the repo, README and AI tool rules. Covers a proper README, SETUP (clone or download → install → env → run locally → deploy), STRUCTURE (folder tree, where every file goes, rules), a fully commented .env.example, GITHUB (PRs, merge strategy, branch cleanup, experiment branches, previews, deployment retention, storage monitoring), CONTEXT_PACK for tools that can't read the repo, and project-specific rules for every AI tool — .cursor/rules/*.mdc scoped by folder, .claude (CLAUDE.md, project skills), .github (copilot instructions, CODEOWNERS, workflows). Trigger with "set up the repo", "write the README", "cursor rules", "folder structure", "env file", "GitHub rules", or after engineering-docs.
 argument-hint: "<one part, e.g. 'cursor rules' or 'README', or nothing for the full setup>"
 ---
 
@@ -60,6 +60,7 @@ Give the repo one shared source of truth that every AI tool reads, plus the file
    - `AGENTS.md` stays the shared rulebook (Codex reads it natively; Claude via CLAUDE.md; Copilot via `.github/copilot-instructions.md`).
    - `.cursor/rules/`: write `project.mdc` (always applied: stack in one line, import aliases, hard rules with their enforcement, and the **rule index** table of every scoped rule and the globs it attaches to) and one scoped `.mdc` per area that exists in this project, from `templates/cursor-rules/`: architecture, components, design, data-api, forms-validation, errors-logging, permissions, i18n, dates-time, accessibility, security, testing, ai-features. Each: frontmatter `description` + `globs` for the real folders, the project's actual patterns with one short example, an "Enforced by" table (lint / hook / CI / review only — a rule whose lint config doesn't exist yet says "planned — first build task"), and "never" lines. Skip areas the project doesn't have. Don't duplicate the kit's own rules (`product-workflow`, `security-backend`, `testing`, `ui-accessibility-ux`) — link them.
    - Claude: the root `CLAUDE.md` stays `@AGENTS.md` + Claude notes (Claude Code reads it from the repo root; don't put a CLAUDE.md inside `.claude/`). `.claude/` holds `settings.json`, `hooks/` and project skills — add project skills in `.claude/skills/` from `templates/claude-skill/SKILL.template.md` for the 1–3 jobs this project repeats most (e.g. "add a screen", "add a table + RLS + migration", "add a translated string") — each a short step list using this project's real paths and commands.
+   - Other agents: keep the kit's thin pointers (`GEMINI.md`, `.aider.conf.yml`, `.continue/rules/00-agents-md.md`) and add none for tools that read AGENTS.md natively — table and gotchas (Zed reads only the first rules file it finds) in `docs/kit/AGENT-ADAPTERS.md`. Never copy rules into them.
    - `docs/CONTEXT_PACK.md` from `templates/CONTEXT_PACK.md`: ≤ 1 page for tools that can't read the repo (ChatGPT in the browser, a contractor): the product in 5 lines, stack, rules that matter, terminology, where answers must go back. Regenerate when RULES or BRAND change.
 8. **Check:**
    - a fresh clone → follow SETUP.md literally in a clean folder (or the kit's `scripts/new-project.sh` output) and confirm `install → run → test` works
@@ -78,6 +79,7 @@ Give the repo one shared source of truth that every AI tool reads, plus the file
 | `docs/SETUP.md`, `README.md` | 4, 5 | quick start ≤ 5 commands |
 | `docs/GITHUB.md` + `.github/` | 6 | — |
 | `.cursor/rules/*.mdc`, `.claude/skills/*`, `docs/CONTEXT_PACK.md` | 7 | CONTEXT_PACK ≤ 1 page |
+| `GEMINI.md`, `.aider.conf.yml`, `.continue/rules/00-agents-md.md` (kept from the kit template) | 7 | each ≤ 10 lines |
 
 Present in ≤ 10 lines: what was written, what the fresh-clone check found, unverified free-tier limits → CLARITY.
 
@@ -116,4 +118,4 @@ If **~~database** is connected:
 ## Related
 
 - Before: `engineering-docs` · After: `plan-build`, `build-feature`
-- Reads: `templates/STRUCTURE.md`, `env.example`, `SETUP.md`, `README.md`, `GITHUB.md`, `CONTEXT_PACK.md`, `github/`, `cursor-rules/`, `claude-skill/SKILL.template.md`; `scripts/new-project.sh`, `scripts/check-branch.sh`
+- Reads: `templates/STRUCTURE.md`, `env.example`, `SETUP.md`, `README.md`, `GITHUB.md`, `CONTEXT_PACK.md`, `github/`, `cursor-rules/`, `claude-skill/SKILL.template.md`; `docs/kit/AGENT-ADAPTERS.md`; `scripts/new-project.sh`, `scripts/check-branch.sh`

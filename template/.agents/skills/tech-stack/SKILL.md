@@ -1,6 +1,6 @@
 ---
 name: tech-stack
-description: Recommend 2–3 tech stacks (frontend web/iOS/Android, backend, DB, auth, hosting, payments, analytics, AI, testing, CI) with plain-language trade-offs and costs, then record the owner's choice as an ADR → TECH_STACK.md. Trigger with "which tech/framework/stack?", "what should I build this with?", or after approval and name-product.
+description: Recommend a tech stack with costs. Compares 2–3 stacks (frontend web/iOS/Android, backend, DB, auth, hosting, payments, analytics, AI, testing, CI) with plain-language trade-offs and costs, then record the owner's choice as an ADR → TECH_STACK.md. Trigger with "which tech/framework/stack?", "what should I build this with?", or after approval and name-product.
 argument-hint: "<constraints (e.g. 'web only', 'must be free'), or nothing to use the brief and OWNER.md>"
 ---
 

@@ -1,4 +1,4 @@
-<!-- Size: Quick ≤ 2,000 · Standard ≤ 3,000 · Deep ≤ 4,500 words incl. tables. Each section = its table + ≤ 3 bullets; link COMPETITORS and research files instead of repeating them. -->
+<!-- HOW TO FILL: Standard and Deep (Quick uses report-template-quick.md). Size: Standard ≤ 3,000 · Deep ≤ 4,500 words incl. tables. Each section = its table + ≤ 3 bullets; link COMPETITORS and research files instead of repeating them. -->
 # Idea Evaluation Report — {{working name}}
 
 _Version {{n}} · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.md · Open questions: CLARITY.md_
@@ -22,8 +22,8 @@ _Score = the idea as briefed · target = the strongest version (§2) after the c
 | Audience clarity & reach | /10 | | |
 | Market size & growth | /10 | | |
 | Differentiation | /10 | | |
-| Feasibility for owner | /10 | | |
-| Monetization | /10 | | |
+| Feasibility for this owner | /10 | | |
+| Monetization / sustainability | /10 | | |
 | Distribution & retention | /10 | | |
 | Risk | /10 | | |
 | **Weighted total** | **/10** | calculation | **target after changes: /10** |
@@ -41,7 +41,7 @@ Calibration: {{which OUTCOMES.md notes changed a score, or "No calibration data 
 | Risk | Likelihood | Impact | Mitigation or test |
 |---|---|---|---|
 ### What would have to be true (devils-advocate)
-- {{3–5 conditions; each links to a test in §11 or a CLARITY id}}
+- {{3–5 conditions; each links to a test in §12 or a CLARITY id}}
 ### Perspectives disagree on… (or "no material disagreement")
 - {{market-researcher vs devils-advocate vs idea-champion — and what evidence would settle it}}
 ### Weak assumptions in the brief

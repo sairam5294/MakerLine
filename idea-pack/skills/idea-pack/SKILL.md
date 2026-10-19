@@ -1,6 +1,6 @@
 ---
 name: idea-pack
-description: Run the whole Idea Pack from one command, before any code — discovery questions, an honest and constructive evaluation (strongest version, reality check, competitors and differentiator test, path to Go, tools and cost, accessibility and compliance), design direction with clickable wireframes, a draft PRD and a one-pager. Trigger with "I have an idea", "run the idea pack", "give me everything for this idea", "evaluate my idea", or "who are my competitors?".
+description: Run the whole Idea Pack before any code. Covers discovery questions, an honest and constructive evaluation (strongest version, reality check, competitors and differentiator test, path to Go, tools and cost, accessibility and compliance), design direction with clickable wireframes, a draft PRD and a one-pager. Trigger with "I have an idea", "run the idea pack", "give me everything for this idea", "evaluate my idea", or "who are my competitors?".
 argument-hint: "<idea, 'give me everything for this idea', or nothing to resume>"
 ---
 
@@ -59,8 +59,9 @@ Run the Idea Pack phases in order, one at a time. Each phase is a sibling skill 
 
 1. **Locate the project.** Find `docs/product/STATUS.md`. Found → say the current phase in one line and continue. Not found → create `docs/product/`, copy `templates/STATUS.md`, `templates/DECISIONS.md` and `templates/COSTS.md`, start phase 1.
 2. **Pick the depth.** Quick, Standard (default) or Deep — see `../product-standards/references/context-budget.md` for outputs, research budgets and token rules. Suggest Quick for early ideas; say which mode you're using.
+   - **Quick runs 1 → 2 → one-pager only, and wins over "give me everything".** Read each once, nothing else: this file and `templates/*.md`; `../new-idea/SKILL.md` (+ owner-unavailable path), `references/question-bank.md`, `brief-template.md`, `clarity-template.md`; `../evaluate-idea/SKILL.md`, `references/scoring-rubric.md`, `report-template-quick.md`, `competitors-lite.md`, `research-cache.md`; `../product-standards/references/context-budget.md`, `inclusion.md`, `accessibility-law-summary.md`. Mark 2a and 2b `Skipped (Quick mode)`.
 3. **Run one phase at a time.** Finish the phase, write its file, get the owner's confirmation, update STATUS.md, offer the next. After 2b write `docs/product/ONE_PAGER.md` and `docs/product/README.md` from `templates/ONE_PAGER.md` and `templates/IDEA_PACK_README.md`; refresh them after later phases.
-4. **All in one go** ("give me everything for this idea"): run 1 → 2 → 2a → 2b → one-pager (skip 1 if a brief exists), pausing only for questions that block the next phase. Skip per-phase presentations; present the one-pager with one line per phase.
+4. **All in one go** ("give me everything for this idea"): Standard/Deep run 1 → 2 → 2a → 2b → one-pager (Quick: step 2) (skip 1 if a brief exists), pausing only for questions that block the next phase. Skip per-phase presentations; present the one-pager with one line per phase.
 5. **Owner unavailable:** take the recommended default for every decision, mark it `[Default]` and "default (unconfirmed)" in DECISIONS.md, set those phases to `Waiting for owner`, list the defaults at the top of the one-pager. Facts stay unknown with a question id — never guess them.
 6. **Check before presenting.** Run `python3 scripts/check_idea_pack.py <project> --mode <mode>` (this skill's folder) and fix every FAIL. No shell → walk its checks by hand.
 7. **Decision.** The owner decides go, change or stop. Record their words in DECISIONS.md.
@@ -92,7 +93,7 @@ If **~~design** is connected:
 ## Rules
 
 - **Honest coach, not judge:** candid about weaknesses; every weakness comes with how to make the idea stronger or a test that would settle it.
-- **Accessible worldwide, no discrimination:** apply `../product-standards/references/inclusion.md` whatever the launch market, plus that market's law (`accessibility-law.md`). Not legal advice.
+- **Accessible worldwide, no discrimination:** apply `../product-standards/references/inclusion.md` whatever the launch market, plus that market's law (`accessibility-law-summary.md`; Deep: `accessibility-law.md`). Not legal advice.
 - **Evidence over opinion:** real, linked, dated sources; "unknown + how to find out" beats an invented number.
 - **Style:** plain language, 3–5 questions per round with a recommended option for decisions. Keep context lean: load only the files a phase needs.
 - **No build phases here:** offer the full Product Kit when the owner decides to build.
@@ -106,4 +107,4 @@ If **~~design** is connected:
 ## Related
 
 - Entry point: `start` · Phases: `new-idea` → `evaluate-idea` → `design-direction` → `write-prd` → `validate-idea` · Anytime: `tool-plan`
-- Reads: `templates/*.md`, `scripts/check_idea_pack.py`, `../product-standards/references/context-budget.md`, `inclusion.md`, `accessibility-law.md`
+- Reads: `templates/*.md`, `scripts/check_idea_pack.py`, `../product-standards/references/context-budget.md`, `inclusion.md`, `accessibility-law-summary.md`

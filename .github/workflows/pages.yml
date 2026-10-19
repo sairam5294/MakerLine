@@ -1,6 +1,6 @@
 # Publishes the docs site (GitHub Pages) from the repo's own Markdown on every push to main.
-# The site has no content of its own: scripts/build-site.py renders README, GETTING-STARTED,
-# the Idea Pack README, the ClubSlot example, CHANGELOG and LESSONS.
+# scripts/build-site.py renders the hand-written pages in docs/site/ (landing, five-minute walkthrough,
+# case studies, privacy) plus the repo's own Markdown (README, GETTING-STARTED, Idea Pack README, CHANGELOG, LESSONS).
 name: Docs site
 
 on:

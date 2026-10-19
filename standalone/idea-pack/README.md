@@ -43,6 +43,10 @@ Four agents run inside the evaluation: `market-researcher`, `devils-advocate`, `
 
 `docs/product/ONE_PAGER.md` on top, then the brief, clarity log, evaluation, competitors, design direction, wireframes and draft PRD — all in `docs/product/` and `design/`, checked by a script before you see them. You decide: go, change or stop. When you decide to build, install the full Product Kit.
 
+## What it runs and sends
+
+Reads and writes only `docs/product/` and `design/` in the folder you connect · web searches about your idea's market go to Claude's search tool · one local checker script, no network · no servers of its own, no telemetry, no accounts. Details: [CONNECTORS.md](CONNECTORS.md).
+
 ## MCP integrations
 
 > If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).
@@ -50,3 +54,7 @@ Four agents run inside the evaluation: `market-researcher`, `devils-advocate`, `
 Everything works standalone. Connect a knowledge base (prior research), Figma (wireframes there) or GitHub (an existing repo) for more.
 
 Generated from Product Kit's `plugin/` by `scripts/build-idea-pack.py` — edit the kit, not this copy.
+
+---
+
+Created by **[Sairam Mogullapalli](https://github.com/sairam5294)** — UX designer, building products with AI. MIT licence.

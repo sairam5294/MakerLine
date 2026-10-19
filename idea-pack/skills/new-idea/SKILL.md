@@ -1,6 +1,6 @@
 ---
 name: new-idea
-description: Interview the owner about a new product idea (problem, goal, audience, alternatives, differentiator, platforms, scope, design, tech, money, naming) and make every unknown visible instead of guessed → PROJECT_BRIEF.md + CLARITY.md. Trigger with "new idea", "new app", "new project", "I have an idea", or when capturing requirements.
+description: Turn a new idea into a clear brief. Interviews the owner about a new product idea (problem, goal, audience, alternatives, differentiator, platforms, scope, design, tech, money, naming) and make every unknown visible instead of guessed → PROJECT_BRIEF.md + CLARITY.md. Trigger with "new idea", "new app", "new project", "I have an idea", or when capturing requirements.
 argument-hint: "<the idea in 2–5 sentences, or nothing to be asked for it>"
 ---
 
@@ -42,7 +42,7 @@ Understand the idea well enough to evaluate it honestly, and make every unknown 
 ## Inputs
 
 - The pitch (2–5 sentences) from the owner.
-- `docs/product/OWNER.md` (skills, hours, budget, accounts, preferences). None → copy the kit's `owner/OWNER.md` (or `owner/OWNER.example.md` if that doesn't exist) to `docs/product/OWNER.md`.
+- `docs/product/OWNER.md` (skills, hours, budget, accounts, preferences). None → if you're working inside a clone of the kit repo, copy its `owner/OWNER.md` (or `owner/OWNER.example.md`); with the plugin alone there is no kit folder — create `docs/product/OWNER.md` from the owner's answers (owner unavailable: the brief's owner section, fields marked *unconfirmed*).
 - `references/question-bank.md` (questions, C/O and D/F tags), `references/brief-template.md`, `references/clarity-template.md`.
 - No gate: this is the first phase.
 
@@ -67,7 +67,7 @@ Understand the idea well enough to evaluate it honestly, and make every unknown 
 ### Owner unavailable
 
 Applies when the run is async, scheduled, or the owner says "just make the brief":
-- Send round 1 as a message anyway (`docs/product/INTERVIEW_ROUND1.md` if no chat). With no chat at all, `INTERVIEW_ROUND1.md` replaces the first reply (same content: restatement, what you know, the questions).
+- Send round 1 as a message anyway (`docs/product/INTERVIEW_ROUND1.md` if no chat). With no chat at all, `INTERVIEW_ROUND1.md` replaces the first reply (same content: restatement, what you know, the questions, and the "About you" block when OWNER.md has gaps).
 - Write a **v0** brief from the pitch: tag every line [Pitch], [Default] (recommended option for a decision), [Assumption] or [Research]; leave facts blank with a Q-id.
 - Write CLARITY.md with every unanswered question. Evaluation may start on defaults and is marked provisional; STATUS Discovery stays `Waiting for owner` until they confirm.
 

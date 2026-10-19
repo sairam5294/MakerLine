@@ -1,6 +1,6 @@
 ---
 name: start
-description: Start or resume a Product Kit project and run the next phases — all of the Idea Pack in one go, all of the setup after approval in one go, or one phase at a time. Trigger with "/product-kit:start", "start", "run everything", "run the whole kit", "continue", or "what's next".
+description: Give me everything for my product idea. Covers all of the Idea Pack in one go, all of the setup after approval in one go, or one phase at a time. Trigger with "/product-kit:start", "start", "run everything", "run the whole kit", "continue", or "what's next".
 argument-hint: "<idea + 'everything' | 'set it all up' | 'build it' | nothing to resume>"
 ---
 
@@ -29,7 +29,7 @@ Short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` 
 ## Rules
 
 - Never write `Evaluation: APPROVED` yourself; the owner approves between the Idea Pack and setup.
-- Everything else (depth, gate, owner-unavailable path, checks) lives in `../product-kickoff/SKILL.md` — don't improvise.
+- Everything else (depth, gate, checks) lives in `../product-kickoff/SKILL.md`; the owner-unavailable path is kickoff step 8 plus `../new-idea/SKILL.md` → Owner unavailable — don't improvise.
 
 ## Related
 

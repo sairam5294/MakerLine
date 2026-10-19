@@ -67,8 +67,9 @@ def build(out: pathlib.Path) -> None:
     shutil.copy2(SRC / "skills" / "test-plan" / "references" / "accessibility-user-testing.md",
                  orch / "references" / "accessibility-user-testing.md")
     shutil.copy2(STANDALONE / "README.md", out / "README.md")
-    shutil.copy2(SRC / "CONNECTORS.md", out / "CONNECTORS.md")
-    shutil.copy2(SRC / ".mcp.json", out / ".mcp.json")
+    # The pack gets its own, shorter connector list: only the three connectors its skills use.
+    shutil.copy2(STANDALONE / "CONNECTORS.md", out / "CONNECTORS.md")
+    shutil.copy2(STANDALONE / ".mcp.json", out / ".mcp.json")
 
     for f in out.rglob("*.md"):
         text = f.read_text(encoding="utf-8")
@@ -84,7 +85,10 @@ def build(out: pathlib.Path) -> None:
         "name": "idea-pack",
         "version": kit["version"],
         "description": "Turn a product idea into an Idea Pack before any code: discovery, honest constructive evaluation with competitors, differentiator test and path to Go, accessibility and compliance lens, design direction with clickable wireframes, draft PRD and one-pager.",
-        "author": kit.get("author", {"name": "Sai"}),
+        "author": kit.get("author", {"name": "Sairam Mogullapalli", "url": "https://github.com/sairam5294"}),
+        "homepage": kit.get("homepage", ""),
+        "repository": kit.get("repository", ""),
+        "license": "MIT",
         "keywords": ["idea", "discovery", "evaluation", "competitors", "prd", "wireframes", "accessibility"],
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 

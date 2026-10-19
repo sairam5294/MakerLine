@@ -1,0 +1,7 @@
+# Aider doesn't load AGENTS.md on its own; `read:` adds it to every chat as a read-only file,
+# so Aider follows the same rulebook as every other tool (project rules: docs/RULES.md).
+# Details: docs/kit/AGENT-ADAPTERS.md
+read: [AGENTS.md]
+# Aider adds ".aider*" to .gitignore by default, which would hide this shared config; .gitignore
+# already ignores Aider's history/cache files instead.
+gitignore: false

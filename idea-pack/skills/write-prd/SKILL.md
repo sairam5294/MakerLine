@@ -1,6 +1,6 @@
 ---
 name: write-prd
-description: Write the PRD — a draft PRD at the idea stage (problem, goals and metrics, personas, positioning, scope, journeys, user stories, design links, risks, release plan) and the full PRD after approval (adds data and permissions, analytics, stack, non-functional detail) → PRD.md. Trigger with "PRD", "spec", "requirements", "user stories", or after design-direction / design-system.
+description: Write a PRD for my product. Covers a draft PRD at the idea stage (problem, goals and metrics, personas, positioning, scope, journeys, user stories, design links, risks, release plan) and the full PRD after approval (adds data and permissions, analytics, stack, non-functional detail) → PRD.md. Trigger with "PRD", "spec", "requirements", "user stories", or after design-direction / design-system.
 argument-hint: "<'draft' or 'full', or nothing to pick the mode from STATUS.md>"
 ---
 
@@ -65,9 +65,11 @@ Turn the brief, evaluation and design direction into one PRD that is concrete en
    - If even the smallest wedge is longer, define a **Release 0**: a standalone slice of ≤ 4 weeks that tests the riskiest assumption with real users (a free tool, a single flow, a concierge version), then the MVP as Release 1.
    - Multi-release scope (platform approved, wedge first): full stories for Release 0 and Release 1; Release 2+ as epics with goals, the metric that triggers starting them and the stories' titles only — detail them when the previous release ships. The ~8-week check applies to each release.
    - AI features before approval: describe them in PRD §12 (what the AI does, human approval, failure path, cost cap) and mark `ai-feature: after approval`; run ai-feature and link `AI_FEATURE_*.md` only once it exists.
-5. **Testable and measurable.** Every acceptance criterion must be automatable; every metric needs an event that measures it.
+5. **Testable and measurable.** Every acceptance criterion must be automatable; every metric needs an event that measures it. A metric that can't be measured without tracking people (e.g. installs from a public registry) uses the public count or a survey instead — say which.
+   - Non-functional section: include the **accessibility statement** (conformance level, known gaps, how to report a barrier) and the feedback route — the checker fails a PRD without it.
 6. **Present** in ≤ 12 lines: the MVP in one sentence, number of Must stories, estimated build time, top 3 risks, open questions that block approval.
 7. **Iterate.** Owner reviews (draft) or approves (full) → STATUS: PRD draft `Done` after review.
+8. **Re-run on a new brief or evidence** (new brief version, answered Q-id, VALIDATION_RESULTS V-id): update only the affected sections and stories — don't regenerate the PRD (stable story IDs keep tests and PLAN links valid). Bump the version, add a *What changed in v{n}* block under the title line (≤ 5 bullets, each citing its trigger) and a row in the PRD's version table.
 
 ## Output
 
@@ -101,6 +103,7 @@ If **~~knowledge base** is connected:
 - Full mode promotes the draft; never start over.
 - Every acceptance criterion automatable; every metric has an event.
 - A Pivot verdict is specced as the pivot, labelled at the top.
+- Re-runs edit in place: affected sections only, a *What changed in v{n}* block (≤ 5 bullets) and a version-table row; never renumber existing US-ids.
 
 ## Tips
 

@@ -21,7 +21,7 @@ REQUIRED["standard"] = REQUIRED["quick"] + ["DESIGN_DIRECTION.md", "PRD.md"]
 REQUIRED["deep"] = REQUIRED["standard"]
 
 # Prose word ranges per mode (tables, code and the sources list don't count).
-EVAL_WORDS = {"quick": (600, 1500), "standard": (1500, 3000), "deep": (2500, 4500)}
+EVAL_WORDS = {"quick": (600, 1500), "standard": (900, 2000), "deep": (1500, 3200)}
 ONE_PAGER_MAX = 550
 
 # Phrases each document must contain (case-insensitive). Kept loose on purpose:
@@ -156,18 +156,24 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("project", nargs="?", default=".")
     ap.add_argument("--mode", choices=["quick", "standard", "deep"], default="standard")
+    ap.add_argument("--only", nargs="+", metavar="FILE",
+                    help="check only these docs/product files (one phase, e.g. evaluate-idea); skips required-file and wireframe checks")
     a = ap.parse_args()
+    only = set(a.only or [])
+
+    def want(name):
+        return not only or name in only
     root = Path(a.project)
     docs = root / "docs" / "product"
     if not docs.is_dir():
         print(f"No docs/product folder in {root.resolve()}")
         return 1
 
-    for f in REQUIRED[a.mode]:
+    for f in ([] if only else REQUIRED[a.mode]):
         if not (docs / f).exists():
             report("FAIL", f"missing docs/product/{f} ({a.mode} mode)")
 
-    for f in sorted(docs.glob("*.md")):
+    for f in sorted(x for x in docs.glob("*.md") if want(x.name)):
         text = f.read_text(encoding="utf-8", errors="replace")
         body = re.sub(r"<!--.*?-->", " ", text, flags=re.S)
         n = len(re.findall(r"(?<![$=])\{\{", body))  # ignore GitHub Actions ${{ }} and JSX style={{ }}
@@ -194,13 +200,13 @@ def main():
     }
     for name, by_mode in caps.items():
         f = docs / name
-        if f.exists():
+        if f.exists() and want(name):
             total = len(re.findall(r"[\w₹$€£%'’-]+", re.sub(r"<!--.*?-->", " ", f.read_text(encoding="utf-8"), flags=re.S)))
             cap = by_mode[a.mode]
             if total > cap and not (name == "PRD.md" and "v1." in f.read_text(encoding="utf-8")[:400]):
                 report("WARN", f"{name}: {total} words incl. tables (cap {cap} for {a.mode}) — every later phase re-reads it")
     ev = docs / "EVALUATION.md"
-    if ev.exists():
+    if ev.exists() and want("EVALUATION.md"):
         w = prose_words(ev.read_text(encoding="utf-8"))
         lo, hi = EVAL_WORDS[a.mode]
         lvl = "WARN" if not lo <= w <= hi else "INFO"
@@ -209,12 +215,12 @@ def main():
         if "raise it by" not in t:
             report("FAIL", "EVALUATION.md: scorecard has no 'Raise it by…' column")
     op = docs / "ONE_PAGER.md"
-    if op.exists():
+    if op.exists() and want("ONE_PAGER.md"):
         w = prose_words(op.read_text(encoding="utf-8"))
         if w > ONE_PAGER_MAX:
             report("WARN", f"ONE_PAGER.md: {w} words (max {ONE_PAGER_MAX})")
     cl = docs / "CLARITY.md"
-    if cl.exists():
+    if cl.exists() and want("CLARITY.md"):
         rows = [r for r in cl.read_text(encoding="utf-8").splitlines() if re.match(r"\|\s*Q-\d+", r)]
         report("INFO", f"CLARITY.md: {len(rows)} open questions")
         for r in rows:
@@ -225,13 +231,13 @@ def main():
                 if default and not re.search(r"none|must be found|unknown|—|-$", default):
                     report("WARN", f"CLARITY.md: {cells[0]} is a fact but has a default ('{cells[-1][:40]}') — facts are found out, not assumed")
     prd = docs / "PRD.md"
-    if prd.exists() and a.mode != "quick":
+    if prd.exists() and a.mode != "quick" and want("PRD.md"):
         g = len(re.findall(r"\bGiven\b", prd.read_text(encoding="utf-8")))
         if g < 6:
             report("FAIL", f"PRD.md: only {g} Given/When/Then criteria (need ≥ 6)")
 
     wf = root / "design" / "wireframes" / "index.html"
-    if a.mode != "quick":
+    if a.mode != "quick" and not only:
         if wf.exists():
             check_wireframes(wf)
         else:
@@ -242,7 +248,8 @@ def main():
         print(f"{lvl:4}  {msg}")
     fails = sum(1 for lvl, _ in results if lvl == "FAIL")
     warns = sum(1 for lvl, _ in results if lvl == "WARN")
-    print(f"\nIdea Pack check ({a.mode}): {fails} fail · {warns} warn")
+    scope = f", only {', '.join(sorted(only))}" if only else ""
+    print(f"\nIdea Pack check ({a.mode}{scope}): {fails} fail · {warns} warn")
     return 1 if fails else 0
 
 

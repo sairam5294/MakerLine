@@ -23,10 +23,13 @@ jobs:
       - run: for f in scripts/*.sh template/scripts/*.sh template/.claude/hooks/*.sh; do bash -n "$f" || exit 1; done
       # Pull-request branches follow <type>/<Mon>-<DD>-<summary> (bots exempt).
       - if: github.event_name == 'pull_request'
-        run: scripts/check-branch.sh "${{ github.head_ref }}"
+        env:
+          BRANCH: ${{ github.head_ref }}  # via env, never inline: branch names are attacker-controlled
+        run: scripts/check-branch.sh "$BRANCH"
       - run: bash tests/hooks.test.sh
       - run: bash tests/upgrade.test.sh
       - run: bash tests/idea-pack.test.sh
+      - run: bash tests/kit-ui.test.sh
       - run: python3 scripts/build-idea-pack.py --check
       - run: python3 -m pip install --user markdown==3.10.3 && python3 scripts/build-site.py /tmp/site
       # Marketplace + plugin manifests must be valid JSON.

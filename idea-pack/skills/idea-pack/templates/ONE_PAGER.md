@@ -1,8 +1,10 @@
 # {{Working name}} — one-pager
 
-<!-- ≤ 500 words (550 with a "Defaults to confirm" line); one line per label. Quick mode: omit the Look-and-feel line and say "Version 1" is provisional. -->
+<!-- ≤ 550 words including the "Defaults to confirm" line; one line per label. Quick mode: omit the Look-and-feel line and say "Version 1" is provisional. -->
 
 _{{date}} · Verdict: **{{Go / Go with changes / Pivot / Drop}}** ({{confidence}}) · Idea Pack index: `docs/product/README.md`_
+
+**Defaults to confirm.** {{Owner unavailable only — ≤ 3 defaults with their Q-ids; delete this line otherwise.}}
 
 **The idea in one line.** For {{audience}} who {{need}}, {{name}} is a {{category}} that {{benefit}}. Unlike {{alternative}}, it {{differentiator}}.
 

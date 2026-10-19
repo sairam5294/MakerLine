@@ -1,0 +1,33 @@
+name: Rule or standard proposal
+description: Propose a new rule, check or standard (for an outdated rule, use "Standards drift")
+labels: ["rule"]
+body:
+  - type: input
+    id: rule
+    attributes:
+      label: The rule in one sentence
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: The real failure it prevents
+      description: Link an issue, eval run or LESSONS.md row, or describe what went wrong.
+    validations:
+      required: true
+  - type: dropdown
+    id: enforce
+    attributes:
+      label: How it could be enforced
+      multiple: true
+      options:
+        - Claude Code hook
+        - Git hook
+        - Lint or test
+        - CI step
+        - Checker script (for example check_idea_pack.py)
+        - Prose only
+  - type: textarea
+    id: touches
+    attributes:
+      label: Which skills, agents or standards files it touches

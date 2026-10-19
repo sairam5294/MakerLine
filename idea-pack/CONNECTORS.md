@@ -2,26 +2,26 @@
 
 ## How tool references work
 
-Skill files use `~~category` as a placeholder for whatever tool you connect in that category — `~~source control` means GitHub, GitLab or any other repository host with an MCP server. Every skill works **standalone** without connectors; connectors add live data and let the kit act in your tools.
+Skill files use `~~category` as a placeholder for whatever tool you connect in that category. Every Idea Pack skill works **standalone** — your words and the web are enough. Connectors are optional; connecting is your choice, per tool, under the plugin's **Connectors** tab. `.mcp.json` pre-configures the three below; any MCP server in the same category works.
 
-`.mcp.json` pre-configures the servers below; any MCP server in the same category works. Connecting is your choice, per tool, under the plugin's **Connectors** tab.
+## Connectors the Idea Pack can use
 
-## Connectors for this plugin
+| Category | Placeholder | Included server | Used by | The kit reads | The kit may write (only when you ask) | Never |
+|---|---|---|---|---|---|---|
+| Knowledge base | `~~knowledge base` | Notion | new-idea, evaluate-idea | pages you share with the integration (prior research, notes) | a page you ask for (e.g. the one-pager) | edit or delete existing pages |
+| Design | `~~design` | Figma | design-direction | frames and screenshots you point to | a new wireframe file you name | change or delete your existing frames |
+| Source control | `~~source control` | GitHub | evaluate-idea (existing product) | the README and STATUS of a repo you name | — | push, open PRs, change settings |
 
-| Category | Placeholder | Included server | Other options | Used by |
-|---|---|---|---|---|
-| Source control | `~~source control` | GitHub | GitLab, Bitbucket | build-feature, quality-review, project-setup, ship-checklist, portfolio |
-| Design | `~~design` | Figma | Penpot | design-direction, design-system, design-qa, name-product (brand) |
-| Hosting | `~~hosting` | Vercel | Netlify, Cloudflare | ship-checklist, post-launch, project-setup (previews, env) |
-| Database | `~~database` | Supabase | Neon, Firebase | engineering-docs, build-feature, ship-checklist (RLS, backups) |
-| Knowledge base | `~~knowledge base` | Notion | Confluence, Google Drive | evaluate-idea, new-idea, engineering-docs |
-| Project tracker | `~~project tracker` | Linear | Jira, Asana, GitHub Issues | plan-build, build-feature, post-launch |
-| Chat | `~~chat` | — | Slack, Microsoft Teams | handoff, post-launch, ship-checklist |
-| Product analytics | `~~product analytics` | — | PostHog, Amplitude, Mixpanel | evaluate-idea (existing products), post-launch |
-| Monitoring | `~~monitoring` | — | Sentry, Datadog | post-launch, ship-checklist |
+Placeholders other skills mention (hosting, database, project tracker, chat, analytics) belong to the full Product Kit's build phases; the Idea Pack never uses them.
+
+## What the Idea Pack runs and sends
+
+- **Files:** reads and writes only `docs/product/` and `design/` in the folder you connect.
+- **Web:** search queries about your idea's market and competitors go to the search tool built into Claude.
+- **Shell:** one local script, `check_idea_pack.py`, which checks the documents it wrote. No network access.
+- **No servers of its own, no telemetry, no accounts.** Connectors run under your own account, with the limits above.
 
 ## Rules
 
-- Secrets, keys and users' personal data never go into prompts or documents, whatever is connected.
-- A connector reads first; writes (creating tickets, pushing, deploying) happen only when you ask in chat.
+- Secrets, keys and anyone's personal data never go into prompts or documents.
 - If a connector isn't available, the skill says so once and continues standalone — it never asks you to connect one.

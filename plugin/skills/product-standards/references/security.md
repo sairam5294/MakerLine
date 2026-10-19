@@ -1,6 +1,6 @@
 # Security Standard
 
-Baselines: **OWASP Top 10:2025**, **OWASP ASVS 5** (web/API), **OWASP MASVS v2** (mobile), **OWASP Top 10 for LLM Applications** (if the product uses AI). Security is designed in, not bolted on.
+Baselines: **OWASP Top 10:2025**, **OWASP ASVS 5** (web/API), **OWASP MASVS v2** (2.1.0, mobile; test with MASTG v2), **OWASP Top 10 for LLM Applications** (if the product uses AI). Security is designed in, not bolted on. *(Last verified 2026-10-20.)*
 
 ## 1. OWASP Top 10:2025 → what we do
 

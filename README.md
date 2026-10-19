@@ -1,4 +1,4 @@
-# Product Kit v0.11
+# Product Kit v0.12
 
 **The open-source designer's AI toolkit.** One setup that takes an idea from "I have a new idea" to a shipped web / iOS / Android product, and works the same way in **Claude**, **Cursor** and **Codex**. Built by a designer with light coding skills, for designers and solo makers who build with AI. The rules are enforced by checks, not just written down.
 
@@ -101,6 +101,16 @@ See everything at once: `python3 scripts/portfolio.py` → open `portfolio/index
 
 GitHub Free can't protect `main` on private repos. setup-github.sh tells you if so, and the `no-push-to-main` git hook covers it locally. The kit repo itself uses the same idea: run `git config core.hooksPath .githooks` once per clone, and pushes to `main` are refused — work on `<type>/<Mon>-<DD>-<summary>` branches (`scripts/branch.sh fix "what changed"`) and merge through pull requests.
 
+## The cockpit (optional web UI)
+A local page that shows every project, its phase, whether it's approved, and the exact prompt to paste next — the chat still does the work.
+```bash
+python3 scripts/kit-ui.py --projects ~/Desktop/Code_Projects/"Product Kit"/projects   # then open http://127.0.0.1:8765
+```
+Runs only on your computer, reads your files, writes nothing unless you tick "save" on the New idea form. Details: [kit-ui/README.md](kit-ui/README.md).
+
+## Works with your AI tools
+One rulebook (`AGENTS.md`) for Claude, Cursor, Codex, Copilot, Gemini CLI, Windsurf, Cline, Roo Code, Zed, JetBrains Junie, Kiro, Antigravity, OpenCode, Amp, Aider and Continue — see `template/docs/kit/AGENT-ADAPTERS.md`.
+
 ## Using the three tools together
 
 - **Claude**: discovery, evaluation, planning, multi-file features, parallel reviews.
@@ -127,3 +137,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for ground rules, [SECURITY.md](SECURITY.
 
 ## Other plugins
 You also have design / engineering / product-management plugins. The kit's versions win for kit phases (see `template/docs/kit/PLUGIN-OVERLAP.md`); complementary skills like ux-copy and research-synthesis are used inside phases.
+
+---
+
+Created by **[Sairam Mogullapalli](https://github.com/sairam5294)** — UX designer, building products with AI. MIT licence.

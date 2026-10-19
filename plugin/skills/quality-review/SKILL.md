@@ -1,6 +1,6 @@
 ---
 name: quality-review
-description: Review a branch, PR, diff or screen against the kit standards (WCAG 2.2, OWASP 2025) — parallel accessibility, UX, security, code and test reviewers, verified findings, one prioritised report with a verdict → docs/product/reviews/. Trigger with "review", "audit", "is it ready?", before merge or release, or after build-feature.
+description: Review a PR for accessibility, security and UX. Covers parallel accessibility, UX, security, code and test reviewers, verified findings, one prioritised report with a verdict → docs/product/reviews/. Trigger with "review", "audit", "is it ready?", before merge or release, or after build-feature.
 argument-hint: "<branch, PR, files or screen to review; nothing = diff against main>"
 ---
 
@@ -8,7 +8,7 @@ argument-hint: "<branch, PR, files or screen to review; nothing = diff against m
 
 > If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
-Run five specialist reviews on the same change and hand the owner one verified, prioritised findings report with a Ready / Not ready verdict.
+Run five specialist reviews on the same change and hand the owner one verified, prioritised findings report with a verdict (Ready / Ready after fixes / Not ready).
 
 **Why:** each reviewer sees the diff plus one standard, so nothing is missed for lack of context and nothing is invented for lack of code.
 
@@ -28,7 +28,7 @@ Run five specialist reviews on the same change and hand the owner one verified, 
 ├──────────────────────────────────────────────────────────────┤
 │  STANDALONE (always works)                                   │
 │  ✓ Five reviewers: accessibility, UX, security, code, QA     │
-│  ✓ Each gets only the diff + its one standard file           │
+│  ✓ Each gets only the diff + its standard files (table)      │
 │  ✓ Findings verified against code, deduped, severity-rated   │
 │  ✓ One report: verdict · MUST / SHOULD / Suggestion table    │
 │  ✓ Offer to fix MUSTs now; SHOULDs become PLAN tasks         │
@@ -52,11 +52,13 @@ Run five specialist reviews on the same change and hand the owner one verified, 
 1. **Set the scope.** Diff/branch/files/screens + stories implemented; prefer `git diff main...`. Adopted project with no diff → boot-path modules, `tests/`, config and workflows, sampled by code path.
    - Reviewers also get `docs/SECURITY.md` (security) and `docs/CODE_STYLE.md` (code) when they exist; a finding that changes a rule updates that doc.
 2. **Run the applicable reviewers** in parallel (subagents) or in sequence; skip non-applicable ones and say so.
-   - Pass each reviewer only the diff + its one standard file (saves tokens).
+   - Pass each reviewer only the diff + its standard files from the table below (saves tokens). A missing project doc (stories, `docs/SECURITY.md`, `docs/CODE_STYLE.md`, PLAN.md) is skipped and named in the report — never block on it.
    - Diff touches AI calls/prompts → security-reviewer + ux-reviewer also get `ai.md`.
 3. **Verify each finding** against the code; drop speculative ones; dedupe.
    - Severity: breaking any standards MUST (incl. injection, missing UI states, secrets, authz, a11y AA) = MUST-violation — never downgrade because code is unused or "small".
-4. **Write the report** `docs/product/reviews/YYYY-MM-DD-<scope>.md` (shape below).
+   - Agents rate in their own scales; map them: Critical/High, P0/P1, blocker/serious → **MUST**; Medium, P2, moderate → **SHOULD**; Low, P3, minor → **Suggestion**.
+4. **Write the report** `docs/product/reviews/YYYY-MM-DD-<scope>.md` (shape below); `<scope>` = branch name, `pr-<n>` or the screen name in kebab-case.
+   - Verdict: **Ready** = no MUST, ≤ 3 SHOULD · **Ready after fixes** = MUSTs that are small and local (≤ ~1 h each) · **Not ready** = any MUST in security, privacy or data, or MUSTs needing redesign.
 5. **Offer to fix MUSTs now;** SHOULDs become PLAN tasks.
 
 ### Reviewers and their standard
@@ -64,7 +66,7 @@ Run five specialist reviews on the same change and hand the owner one verified, 
 | Reviewer | Standard file (`../product-standards/references/`) |
 |---|---|
 | accessibility-auditor | `accessibility.md` |
-| ux-reviewer | `ux.md` + design system |
+| ux-reviewer | `ux.md` + `docs/product/DESIGN_SYSTEM.md` (if it exists) |
 | security-reviewer | `security.md`, `privacy.md`, `backend.md` |
 | code-reviewer | `development.md`, `performance.md`, `mobile.md` |
 | qa-engineer | `testing.md` |
@@ -93,7 +95,7 @@ If **~~project tracker** is connected:
 
 - A MUST violation is a MUST violation — never downgrade because code is unused or "small".
 - Every finding is verified against the code; speculative findings are dropped, duplicates merged.
-- Each reviewer gets the diff + one standard file only; skipped reviewers are named in the report.
+- Each reviewer gets the diff + its standard files from the table only (agents live in `plugin/agents/`); skipped reviewers and missing docs are named in the report.
 - A finding that changes a project rule updates `docs/SECURITY.md` or `docs/CODE_STYLE.md`.
 
 ## Tips

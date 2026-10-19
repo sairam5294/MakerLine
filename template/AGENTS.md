@@ -1,6 +1,7 @@
 # AGENTS.md
 
 Rules for every AI agent in this repo — Claude (via CLAUDE.md), Cursor (`.cursor/rules/`, index in `project.mdc`), Codex (reads this file), GitHub Copilot (`.github/copilot-instructions.md`), and tools that can't read the repo such as ChatGPT (paste `docs/CONTEXT_PACK.md`). One rulebook; each tool's folder only points here. Keep this file short; details live in linked files.
+Other tools (Gemini CLI, Aider, Continue, Windsurf, Cline, Roo, Zed, Junie, Kiro, Antigravity, OpenCode, Amp): native or thin pointer — see `docs/kit/AGENT-ADAPTERS.md`.
 
 ## Start every session
 1. Read `docs/product/HANDOFF.md` (if present), `docs/product/STATUS.md` and `docs/product/OWNER.md` (who you're building with: skills, time, budget, tools).

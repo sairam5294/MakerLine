@@ -78,6 +78,7 @@ Floor: WCAG 2.2 AA — contrast, 44 pt / 48 dp targets, text to 200 %, screen-re
 
 ## 10. Wireframes
 - File: `design/wireframes/index.html` — open in a browser; "Prototype" mode clicks through the core flow.
+- Figma (if built): {{link}} · `<Product> — Wireframes v<n>` · {{date}} · mirrors the HTML, which stays the source of truth (delete this line if no Figma file)
 - Screens covered: {{list}} · states shown: {{empty, error…}}
 - What a 5-person prototype test should check (→ validate-idea):
 

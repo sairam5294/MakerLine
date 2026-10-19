@@ -150,3 +150,7 @@ Your profile lives in the project: `docs/product/OWNER.md` (hours, budget, accou
 ## The full kit
 
 Project templates, safety hooks, CI, git hooks, the Expo and Next.js starters, evals and the docs site live in the repo: https://github.com/sairam5294/product-kit — create a project with `scripts/new-project.sh`. MIT licence.
+
+---
+
+Created by **[Sairam Mogullapalli](https://github.com/sairam5294)** — UX designer, building products with AI. MIT licence.
