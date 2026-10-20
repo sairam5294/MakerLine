@@ -29,7 +29,7 @@ The plugins' own outputs (wireframes, the local cockpit) are checked the same wa
 
 If something on this site or in the plugins is hard or impossible for you to use, we want to know.
 
-- **Report it:** [open an accessibility barrier report](https://github.com/sairam5294/product-kit/issues/new?template=accessibility_barrier.yml) on GitHub. It asks what you were trying to do, what happened and what assistive technology you use, if any; every question except the first is optional.
+- **Report it:** [open an accessibility barrier report](https://github.com/sairam5294/makerline/issues/new?template=accessibility_barrier.yml) on GitHub. It asks what you were trying to do, what happened and what assistive technology you use, if any; every question except the first is optional.
 - **What happens next:** we reply within 5 working days and tell you how and when we'll fix it.
 
 ## Other formats

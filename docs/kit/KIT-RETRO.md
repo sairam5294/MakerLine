@@ -26,7 +26,7 @@ A 30-minute review the owner runs once a month to decide what the kit changes ne
 
 | Input | Where | What to pull out |
 |---|---|---|
-| GitHub issues | [Issues](https://github.com/sairam5294/product-kit/issues), filter by `created:>YYYY-MM-DD` (last retro date) | Count by label (bug, accessibility, standards, enhancement, rule); the two or three with the most reactions or comments; any accessibility barrier (always reviewed) |
+| GitHub issues | [Issues](https://github.com/sairam5294/makerline/issues), filter by `created:>YYYY-MM-DD` (last retro date) | Count by label (bug, accessibility, standards, enhancement, rule); the two or three with the most reactions or comments; any accessibility barrier (always reviewed) |
 | Lessons | `LESSONS.md` | Rows added since the last retro; any lesson whose "Kit change" is still empty |
 | Eval results | `evals/results.md` and `evals/runs/` | Pass or fail per case, misses and severity misses, compared with the previous run |
 | Token usage of the last runs | Eval run notes, `KIT_FRICTION.md` files in `examples/`, the Claude usage page, `docs/product/COSTS.md` in projects | Tokens per Idea Pack run by depth (Quick target ~50–70k), tool calls per run, the most expensive file or step |

@@ -10,7 +10,7 @@ Works on macOS today. The terminal parts also run on Linux; Windows is untested 
 
 ### 0. Get the kit
 ```bash
-git clone https://github.com/sairam5294/product-kit ~/Documents/makerline
+git clone https://github.com/sairam5294/makerline ~/Documents/makerline
 cd ~/Documents/makerline
 ```
 Planning to contribute? Fork it on GitHub first and clone your fork instead. The rest of this guide assumes the kit is at `~/Documents/makerline`; any folder works, just adjust the paths.
@@ -27,7 +27,7 @@ node -v && git --version && brew --version
 ### 2. Install the kit in your AI tools
 **Claude Code** (recommended; updates with one command):
 ```bash
-claude plugin marketplace add sairam5294/product-kit
+claude plugin marketplace add sairam5294/makerline
 claude plugin install makerline@makerline
 ```
 Later, `claude plugin marketplace update makerline` picks up new versions.
@@ -36,7 +36,7 @@ Only want the idea stage (no building)? Install `makerline-idea@makerline` inste
 
 **Claude app (desktop / web) — easiest: add the repo as a marketplace** (once; updates come from GitHub):
 1. Open **Customize** in the left sidebar → **Plugins**.
-2. Choose **Add marketplace** and enter `sairam5294/product-kit`.
+2. Choose **Add marketplace** and enter `sairam5294/makerline`.
 3. Find **makerline** (or **makerline-idea**) in the list → **Install**.
 4. Later: **Check for updates** on that marketplace, or turn on **Sync automatically**.
 The marketplace installs whatever is on the `main` branch, so merge a release's pull request first.

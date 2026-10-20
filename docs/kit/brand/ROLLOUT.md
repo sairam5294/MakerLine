@@ -4,7 +4,7 @@ Everything in the repo, the docs site and the local folder is done by `build_bra
 
 ## GitHub repository settings
 
-- [ ] **Settings → General → Repository name:** `makerline`. Then, in the clone, run `scripts/rename-repo-urls.sh --apply` on a branch and open a pull request (switches every link and the docs site address; GitHub redirects old repo links, but not the old site address).
+- [x] **Settings → General → Repository name:** `makerline` (done 20 Oct 2026; links switched by `scripts/rename-repo-urls.sh`). Then, in the clone, run `scripts/rename-repo-urls.sh --apply` on a branch and open a pull request (switches every link and the docs site address; GitHub redirects old repo links, but not the old site address).
 - [ ] **About (gear icon on the repo home) → Description:**
   > MakerLine — know if it's worth building, then build it right. Open-source Claude plugin: honest idea evaluation, competitors, wireframes, PRD, then build and ship with accessibility (WCAG 2.2 AA), security and tests enforced.
 - [ ] **About → Website:** `https://sairam5294.github.io/makerline/` (after the rename; until then `…/product-kit/`).

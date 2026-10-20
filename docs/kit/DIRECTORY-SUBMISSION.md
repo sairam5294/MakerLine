@@ -24,7 +24,7 @@ _Researched 2026-10-20. **Confirmed** = read on an Anthropic page linked here. *
 
 | Field | Value |
 |---|---|
-| Repository | `sairam5294/product-kit` |
+| Repository | `sairam5294/makerline` |
 | Plugin path | `makerline-idea` (the folder holding `.claude-plugin/plugin.json`) |
 | Branch or tag | `main` (the marketplace install already tracks `main`) |
 | Update method | GitHub push webhook (needs admin access to the repo, which the owner has) |
@@ -73,7 +73,7 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 
 **Connectors** (`makerline-idea/.mcp.json`): GitHub, Figma, Vercel, Supabase, Notion, Linear, all remote `https://` servers. They are opt-in: connecting each is the user's choice in the plugin's Connectors settings, every skill works without them, and `CONNECTORS.md` lists them. A connector reads first and writes only when asked in chat. _Unconfirmed: whether all six are approved directory connectors (policy 3F lets plugins connect to "any Connector approved in the Software Directory"). Check each in the directory before submitting._
 
-**Privacy policy link:** https://sairam5294.github.io/product-kit/privacy.html (source: `docs/site/privacy.md`).
+**Privacy policy link:** https://sairam5294.github.io/makerline/privacy.html (source: `docs/site/privacy.md`).
 
 ## 6. Permissions and what the plugin runs
 
@@ -133,7 +133,7 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 
 ## 10. Support, versioning, ownership
 
-- **Support contact:** GitHub issues, https://github.com/sairam5294/product-kit/issues/new/choose (forms for bugs, skill requests, standards drift and accessibility barriers). Security: private reporting per `SECURITY.md` (acknowledged within 7 days).
+- **Support contact:** GitHub issues, https://github.com/sairam5294/makerline/issues/new/choose (forms for bugs, skill requests, standards drift and accessibility barriers). Security: private reporting per `SECURITY.md` (acknowledged within 7 days).
 - **Compliance contact email:** the owner's own email, entered in the portal only; don't publish it in the repo.
 - **Versioning:** `MAJOR.MINOR.PATCH`, the same number in both plugins (see `plugin/.claude-plugin/plugin.json`). `scripts/release-kit.sh` bumps it and then runs `build-idea-pack.py`, which copies the kit's version into `makerline-idea/.claude-plugin/plugin.json`. Raise it with every release; the directory docs ask for this.
 - **Ownership:** submit from the owner's personal Pro account; the first organization to submit a folder owns the listing.

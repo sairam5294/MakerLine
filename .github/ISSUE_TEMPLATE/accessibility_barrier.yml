@@ -30,7 +30,7 @@ body:
     id: url
     attributes:
       label: Page, file or screen
-      placeholder: https://sairam5294.github.io/product-kit/… or docs/product/…
+      placeholder: https://sairam5294.github.io/makerline/… or docs/product/…
   - type: textarea
     id: setup
     attributes:

@@ -52,14 +52,14 @@
 <h3>Claude app, desktop or web</h3>
 <ol>
 <li>Open <strong>Customize</strong>, then <strong>Plugins</strong>.</li>
-<li>Choose <strong>Add marketplace</strong> and enter <code>sairam5294/product-kit</code>.</li>
+<li>Choose <strong>Add marketplace</strong> and enter <code>sairam5294/makerline</code>.</li>
 <li>Install <strong>makerline</strong> or <strong>makerline-idea</strong>, not both.</li>
 <li>Turn on <strong>Sync automatically</strong> to get updates.</li>
 </ol>
 </div>
 <div>
 <h3>Claude Code</h3>
-<pre tabindex="0"><code>claude plugin marketplace add sairam5294/product-kit
+<pre tabindex="0"><code>claude plugin marketplace add sairam5294/makerline
 claude plugin install makerline@makerline</code></pre>
 <p>Check it worked: type <code>/makerline:</code> in a new chat and the skills appear.</p>
 </div>

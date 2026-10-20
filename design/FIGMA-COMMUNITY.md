@@ -11,7 +11,7 @@ The file **"Product Kit — Design System"** (Primitives, Semantic Light/Dark, D
 **Description:**
 A small, accessible design system that matches the MakerLine starters (Expo + Supabase, Next.js). Variables in three collections — Primitives, Semantic (Light and Dark modes) and Dimensions — generated from one `design/tokens.json` in W3C Design Tokens format, so Figma and code never drift. Five type styles. Button, TextField and ScreenState component sets bound to variables, with every colour pair contrast-checked for WCAG 2.2 AA in both modes.
 
-Duplicate it, rename it for your product, then sync `tokens.json` from your copy (the kit's `design-system` skill explains both directions). Part of the open-source MakerLine: https://github.com/sairam5294/product-kit
+Duplicate it, rename it for your product, then sync `tokens.json` from your copy (the kit's `design-system` skill explains both directions). Part of the open-source MakerLine: https://github.com/sairam5294/makerline
 
 **Tags:** design system, design tokens, accessibility, wcag, dark mode, variables, expo, react native, nextjs, starter
 
