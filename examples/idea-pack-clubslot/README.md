@@ -1,5 +1,7 @@
 # Example Idea Pack — "ClubSlot" (blind eval run, 19 Oct 2026, kit v0.8.0, Standard depth)
 
+> **Made with kit v0.8.0, before document size limits existed (added in 0.12).** Today `check_idea_pack.py` flags its COMPETITORS, DESIGN_DIRECTION, PRD and EVALUATION as longer than the current Standard caps (5 warnings, 0 failures). A run now produces shorter documents with the same sections; this pack is kept as it was made so the case study stays accurate.
+
 Produced by an agent following the kit's skills blind (it never saw the answer key) from the brief in `evals/cases/community-amenities`. The owner was treated as unavailable, so decisions are defaults marked for confirmation.
 
 Start with [`docs/product/ONE_PAGER.md`](docs/product/ONE_PAGER.md), then [`docs/product/README.md`](docs/product/README.md) for the index. Wireframes: open `design/wireframes/index.html` in a browser (add `?mode=prototype` to click through).

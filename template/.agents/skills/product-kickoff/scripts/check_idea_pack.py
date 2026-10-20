@@ -152,10 +152,23 @@ def check_wireframes(path):
         report("FAIL", "wireframes: clickable span chips — use <button class=\"chip\" aria-pressed>")
 
 
+def detect_mode(docs):
+    """Depth recorded by the run: 'Depth: Quick|Standard|Deep' in STATUS.md, or a phase
+    marked 'Skipped (Quick mode)'. Anything else is checked as standard."""
+    status = docs / "STATUS.md"
+    text = status.read_text(encoding="utf-8", errors="ignore") if status.exists() else ""
+    m = re.search(r"^Depth:\s*(Quick|Standard|Deep)", text, re.M | re.I)
+    if m:
+        return m.group(1).lower()
+    return "quick" if "Skipped (Quick mode)" in text else "standard"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("project", nargs="?", default=".")
-    ap.add_argument("--mode", choices=["quick", "standard", "deep"], default="standard")
+    # No --mode: read the depth the run recorded in STATUS.md, so a Quick pack isn't failed for
+    # skipping the design direction and PRD it never had to write.
+    ap.add_argument("--mode", choices=["quick", "standard", "deep"], default=None)
     ap.add_argument("--only", nargs="+", metavar="FILE",
                     help="check only these docs/product files (one phase, e.g. evaluate-idea); skips required-file and wireframe checks")
     a = ap.parse_args()
@@ -168,6 +181,8 @@ def main():
     if not docs.is_dir():
         print(f"No docs/product folder in {root.resolve()}")
         return 1
+    if a.mode is None:
+        a.mode = detect_mode(docs)
 
     for f in ([] if only else REQUIRED[a.mode]):
         if not (docs / f).exists():

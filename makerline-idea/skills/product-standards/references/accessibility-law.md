@@ -44,10 +44,10 @@ Accessibility and privacy obligations arrive together. Check `privacy.md` §2 an
 
 ## Standards and app stores
 - **WCAG 2.2** is the W3C Recommendation (Oct 2023) and, since Oct 2025, the ISO standard **ISO/IEC 40500:2025** (replacing ISO/IEC 40500:2012 = WCAG 2.0). **WCAG 3.0** is a Working Draft with no completion date — never plan compliance against it.
-- **Beyond WCAG:** Section 508 Ch. 5–6 (software honouring user settings, accessible docs and support) and EN 301 549 §5.3 biometrics, §6 two-way voice / RTT, §7 caption and audio-description controls, §11.7 user preferences, §12 docs and support. Checklist in `accessibility.md` §5c.
+- **Beyond WCAG:** Section 508 Ch. 5–6 (software honouring user settings, accessible docs and support) and EN 301 549 §5.3 biometrics, §6 two-way voice / RTT, §7 caption and audio-description controls, §11.7 user preferences, §12 docs and support. (Clause numbers verified 2026-10-21 against the Government of Canada's EN 301 549 technical summary.) Checklist in `accessibility.md` §5c.
 - **ACR / VPAT:** current template VPAT 2.5Rev (WCAG, 508, EU, INT editions) — how-to in `acr-vpat.md`.
 - **Apple Accessibility Nutrition Labels** (App Store pages, OS 26+): nine declared features (VoiceOver, Voice Control, Larger Text, Dark Interface, Differentiate Without Color Alone, Sufficient Contrast, Reduced Motion, Captions, Audio Descriptions). Voluntary now; Apple says they will become required, date unannounced. Misleading labels are actionable under App Review Guideline 2.3 — claim only what you tested.
-- **Google Play:** no equivalent label programme found (**unverified**).
+- **Google Play accessibility tags** (Play Console → Grow users → Store presence → Store settings → App category → Manage tags): six tags — Screen reader-friendly, Visual assistance, Hearing assistance, Learning disability, Motor assistance, Accessible communication. They describe who the app serves and count toward the five-tag limit; they are not per-feature labels like Apple's. Add one only when it's true and tested (verified 2026-10-21, support.google.com/googleplay/android-developer/answer/9859673).
 
 ## What a solo founder does, and which law asks for it
 1. **WCAG 2.2 AA** — satisfies the 2.0 / 2.1 AA levels every law above cites. (AODA 50+, ADA II/III practice, 508, EAA / EN 301 549, UK, India, Australia)

@@ -2,7 +2,7 @@
 
 Five steps from nothing to a one-page answer about your idea. You need a Claude account and the Claude app (desktop or web) or Claude Code. No terminal and no coding are needed for these steps.
 
-The 5 minutes is your time. Claude's research runs while you wait; a Quick run used about 120,000 tokens in the latest measured run ([how it's measured](../../evals/results.md)).
+The 5 minutes is your time. Claude's research runs while you wait; a Quick run adds about 28,000 tokens of its own ([what a run costs](#what-a-run-costs)).
 
 ## 1. Install the plugin (1 minute)
 
@@ -63,12 +63,14 @@ Nothing gets built until **you** approve the evaluation. In the Claude app, say 
 
 ## What a run costs
 
-Claude plans have usage limits, and research is the expensive part. Measured runs from the [evaluation log](../../evals/results.md):
+Claude plans have usage limits, and research is the expensive part. Measured runs from the [evaluation log](../../evals/results.md), in our test setup:
 
 | Run | Tokens | Tool calls | Your time |
 |---|---|---|---|
-| Quick Idea Pack (brief, evaluation, one-pager) | about 120,000 | 19 | 1 minute, then about 5 minutes of waiting |
-| Standard evaluation step on its own | about 150,000 | 34 | A few answers, then about 10 minutes of waiting |
+| Quick Idea Pack (brief, evaluation, one-pager), 0.14.0 | about 106,000 in total; MakerLine's own share about 28,000 | 12 | 1 minute, then about 3 minutes of waiting |
+| Standard evaluation step on its own | about 150,000 in total | 34 | A few answers, then about 10 minutes of waiting |
+
+An empty run in the same setup uses about 78,000 tokens before the kit does anything (the app's own instructions and tools), so totals in your Claude app depend on its setup. What MakerLine adds is the share above that.
 
 Ways to make your limits go further:
 

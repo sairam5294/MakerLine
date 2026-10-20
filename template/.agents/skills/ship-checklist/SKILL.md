@@ -90,6 +90,7 @@ Walk every launch gate with evidence, write `docs/product/RELEASE.md`, and stop 
 **Stores**
 - icons, screenshots, copy, support + privacy URLs
 - age rating / Kids & Families rules
+- accessibility on the store page, only for what was tested end to end: Apple Accessibility Nutrition Labels · Google Play accessibility tags (e.g. "Screen reader-friendly") · see `mobile.md`
 - TestFlight/internal test with 5+ real users · staged rollout · minimum-version check
 
 **Launch**
