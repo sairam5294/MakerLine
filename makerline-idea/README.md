@@ -63,4 +63,4 @@ Generated from MakerLine's `plugin/` by `scripts/build-idea-pack.py` — edit th
 
 ---
 
-Created by **[Sairam Mogullapalli](https://github.com/sairam5294)** — UX designer, building products with AI. MIT licence.
+Created by **[Sairam Mogullapalli](https://www.sairammogullapalli.com/)**, Head of Product Design, building products with AI ([GitHub](https://github.com/sairam5294)). MIT licence.
