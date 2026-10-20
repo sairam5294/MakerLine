@@ -1,4 +1,6 @@
-"""Preferences: reminder interval, sound, and the optional Open at login.
+"""Settings window: reminder interval, sound, and the optional Open at login.
+
+macOS 13+ calls this "Settings…" (it was "Preferences…"); the class keeps the older name.
 
 Every change is saved the moment it's made (Mac convention: no Save button), so closing the
 window — Done, Return, Esc, Cmd+W or the red close button — never loses anything.
@@ -38,7 +40,7 @@ class PreferencesWindow:
             NSBackingStoreBuffered,
             False,
         )
-        self.window.setTitle_(f"{DISPLAY_NAME} Preferences")
+        self.window.setTitle_(f"{DISPLAY_NAME} Settings")
         self.window.setReleasedWhenClosed_(False)
 
         label = "Remind me every"

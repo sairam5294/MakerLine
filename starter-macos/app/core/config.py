@@ -12,7 +12,7 @@ DISPLAY_NAME = "Break Reminder"
 BUNDLE_ID = "com.example.breakreminder"
 VERSION = "0.1.0"
 
-# Interval choices offered in Preferences. A short fixed list is easier to use (and to
+# Interval choices offered in Settings. A short fixed list is easier to use (and to
 # validate) than a free-text field, and covers the common "every 20/30/60 minutes" advice.
 ALLOWED_INTERVALS: tuple[int, ...] = (15, 20, 30, 45, 60, 90)
 DEFAULT_INTERVAL = 30

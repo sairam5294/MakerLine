@@ -4,8 +4,8 @@ Use for: **small Mac utilities that live in the menu bar** — reminders, timers
 monitors, quick toggles. (Use the Expo starter for iOS/Android apps, the web starter for sites.)
 
 What's in it: a generic "take a break" reminder that shows the patterns, not a product.
-A menu-bar icon with a menu (status in words · Pause/Resume · Preferences… Cmd+, · About ·
-Quit Cmd+Q), an accessible reminder window, and a Preferences window (interval, sound,
+A menu-bar icon with a menu (status in words · Pause/Resume · Settings… Cmd+, · About ·
+Quit Cmd+Q), an accessible reminder window, and a Settings window (interval, sound,
 optional Open at login). Settings are a small JSON file. No network, no analytics, no account.
 
 ## First run (on a Mac)
@@ -59,7 +59,7 @@ need a person:
       is announced in full when it appears; every control says what it is.
 - [ ] **Keyboard only**: Return = Done, Esc = Not now, Tab reaches every control (turn on
       System Settings → Keyboard → Keyboard navigation), Cmd+, and Cmd+Q in the menu,
-      Esc and Cmd+W close Preferences.
+      Esc and Cmd+W close Settings.
 - [ ] **Reduce Motion** (Accessibility → Display): the reminder appears without animating.
 - [ ] **Increase Contrast** (Accessibility → Display): secondary text and borders get stronger.
 - [ ] **Dark Mode**: switch while the reminder is open — colours update live.

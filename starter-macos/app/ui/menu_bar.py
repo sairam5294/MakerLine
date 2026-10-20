@@ -45,7 +45,7 @@ def pause_title(paused: bool) -> str:
 def build_menu(handlers: dict[str, Callable[[Any], None]], keep: list[Any], paused: bool) -> tuple[Any, dict[str, Any]]:
     """The status menu. Returned items let the controller update titles later.
 
-    Keyboard equivalents follow Mac convention: Cmd+, opens Preferences, Cmd+Q quits.
+    Keyboard equivalents follow Mac convention: Cmd+, opens Settings, Cmd+Q quits.
     (They work while the menu is open; a menu-bar app has no always-on app menu.)
     """
     menu = NSMenu.alloc().initWithTitle_(DISPLAY_NAME)
@@ -63,7 +63,7 @@ def build_menu(handlers: dict[str, Callable[[Any], None]], keep: list[Any], paus
     menu.addItem_(NSMenuItem.separatorItem())
     items = {"status": status, "pause": item("pause", pause_title(paused))}
     menu.addItem_(NSMenuItem.separatorItem())
-    items["preferences"] = item("preferences", "Preferences…", ",")
+    items["preferences"] = item("preferences", "Settings…", ",")
     items["about"] = item("about", f"About {DISPLAY_NAME}")
     menu.addItem_(NSMenuItem.separatorItem())
     items["quit"] = item("quit", f"Quit {DISPLAY_NAME}", "q")

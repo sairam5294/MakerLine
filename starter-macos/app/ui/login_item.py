@@ -2,7 +2,7 @@
 
 macOS keeps this setting itself (System Settings → General → Login Items), so we never store
 it in settings.json — we ask macOS each time. It only works from the built .app: run from
-source, the process is Python, not our app, so we report "unavailable" and the Preferences
+source, the process is Python, not our app, so we report "unavailable" and the Settings
 window explains the manual route instead.
 """
 

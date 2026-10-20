@@ -73,7 +73,7 @@ class ReminderScheduler:
 
 
 def interval_label(minutes: int) -> str:
-    """'45 minutes', '1 hour', '1 hour 30 minutes' — for the Preferences pop-up menu."""
+    """'45 minutes', '1 hour', '1 hour 30 minutes' — for the Settings pop-up menu."""
     hours, mins = divmod(minutes, 60)
     parts = []
     if hours:

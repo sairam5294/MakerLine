@@ -10,7 +10,7 @@ meet **WCAG 2.2 level AA** (applied to a native app) and Apple's accessibility g
 ## What we do
 - Every button, checkbox and pop-up menu has a spoken name and role (tested on every change).
 - Everything works from the keyboard: Return = Done, Esc = Not now / close, Tab moves between
-  controls, Cmd+, opens Preferences, Cmd+Q quits.
+  controls, Cmd+, opens Settings, Cmd+Q quits.
 - Clickable targets are at least 44 × 44 points.
 - Text and controls meet at least 4.5:1 contrast (3:1 for borders and focus rings) in light
   and dark appearance; Increase Contrast makes secondary text and borders stronger still.
