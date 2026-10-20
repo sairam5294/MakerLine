@@ -16,7 +16,7 @@ _Updated {{date}} · Standard: `.agents/skills/product-standards/references/deve
 
 ## 3. Components and state
 - Design-system components and tokens only (`docs/product/DESIGN_SYSTEM.md`); no raw colours, sizes or fonts in feature code.
-- Every screen renders all five states (loading, empty, error, offline, success) — prefer one `<StateView>` pattern.
+- Every screen renders all seven states (loading, empty, error, offline, success, permission denied, partial) — prefer one `<StateView>` pattern.
 - Server state via {{TanStack Query / SWR}}; local UI state in the component; global state only for {{auth, settings}}.
 - Forms: schema-validated ({{zod}}) on client *and* server; labels, errors and `autocomplete` per accessibility standard.
 

@@ -7,8 +7,10 @@ alwaysApply: false
 # Forms Validation
 
 - One schema ({{zod}}) per form in `lib/validation/`, used on client **and** server.
-- Visible labels (placeholder is not a label), `autocomplete` attributes, required marked in text.
-- Errors: field-level text linked with `aria-describedby`, summary at the top on submit, focus moves to the first error; keep what the user typed.
+- Visible labels (placeholder is not a label), `autocomplete` attributes.
+- Required fields marked in text, e.g. "Email (required)" — not colour or a lone `*`; when most fields are required, also label optional ones "(optional)".
+- Errors: field-level text linked with `aria-describedby`, summary at the top on submit (each item links to its field), focus moves to the summary or first error; keep what the user typed.
+- Changing a field never submits or navigates by itself (WCAG 3.2.2); payments, contracts and deletions get a review/confirm or undo step (3.3.4).
 - No redundant entry (WCAG 3.3.7); paste allowed everywhere; no CAPTCHA puzzles without an alternative.
 
 ## Never

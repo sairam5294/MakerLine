@@ -29,5 +29,5 @@ Every project gets a copy of this file (`docs/product/OWNER.md`). Skills read it
 - <!-- e.g. Plain-language explanations of technical trade-offs -->
 
 ## Kit locations
-- Kit folder: <!-- e.g. ~/Documents/product-kit -->
-- Idea outcomes log (cross-project learning): <!-- e.g. ~/Documents/product-kit/portfolio/OUTCOMES.md -->
+- Kit folder: <!-- e.g. ~/Documents/makerline -->
+- Idea outcomes log (cross-project learning): <!-- e.g. ~/Documents/makerline/portfolio/OUTCOMES.md -->

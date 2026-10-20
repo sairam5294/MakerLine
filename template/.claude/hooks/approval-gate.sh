@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# PreToolUse hook (Edit|Write|MultiEdit) — the Product Kit approval gate, for Claude Code.
+# PreToolUse hook (Edit|Write|MultiEdit) — the MakerLine approval gate, for Claude Code.
 #  1. Until docs/product/STATUS.md says "Evaluation: APPROVED", only planning/docs/config files may be
 #     edited — not app code.
 #  2. The AI may never write "Evaluation: APPROVED" itself: only the owner approves, with
@@ -31,8 +31,8 @@ case "$rel" in
   docs/*|validation/*|design/*|.agents/*|.claude/*|.cursor/*|.codex/*|.github/*|scripts/*) exit 0 ;;
   *.md|.gitignore|.cursorignore|lefthook.yml|.mcp.json|.product-kit-version) exit 0 ;;
 esac
-[ -f "$status" ] || exit 0                        # Not a Product Kit project → don't block.
+[ -f "$status" ] || exit 0                        # Not a MakerLine project → don't block.
 grep -q "Evaluation: APPROVED" "$status" && exit 0
 
-echo "Blocked by the Product Kit approval gate: '$rel' is app code, but the owner hasn't approved the evaluation yet (docs/product/STATUS.md). Finish evaluate-idea; the owner approves with scripts/approve.sh. Landing pages for validation go in a separate project or the validation/ folder." >&2
+echo "Blocked by the MakerLine approval gate: '$rel' is app code, but the owner hasn't approved the evaluation yet (docs/product/STATUS.md). Finish evaluate-idea; the owner approves with scripts/approve.sh. Landing pages for validation go in a separate project or the validation/ folder." >&2
 exit 2

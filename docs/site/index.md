@@ -1,7 +1,8 @@
 <section class="hero" markdown="0">
 <div>
-<h1>Know if your idea is worth building. Then build it properly.</h1>
-<p class="lead">Product Kit is a free, open-source Claude plugin for designers and solo makers. It turns a few sentences into an honest verdict, real competitors, wireframes and a draft PRD. Once you approve, it helps you build the product with accessibility, security and tests enforced at every step.</p>
+<h1>Know if it's worth building. Then build it right.</h1>
+<svg class="line-tick" viewBox="0 0 240 24" aria-hidden="true" focusable="false"><path d="M2 12H202L210 19L228 5"/></svg>
+<p class="lead">MakerLine is a free, open-source Claude plugin for designers and solo makers. It turns a few sentences into an honest verdict, real competitors, wireframes and a draft PRD (product requirements document). Once you approve, it helps you build the product with accessibility, security and tests enforced at every step.</p>
 <p class="actions"><a class="btn primary" href="five-minutes.md">Try it in 5 minutes</a> <a class="btn" href="#install">Install</a></p>
 </div>
 <figure class="verdict">
@@ -29,19 +30,19 @@
 <li><h3>Set it up</h3><p>Name and brand, stack, design system, engineering docs and repo rules.</p></li>
 <li><h3>Build, review, ship</h3><p>One task at a time, tests first, reviewed for accessibility and security.</p></li>
 </ol>
-<p class="track-note">Steps 1–3 are the <a href="../../idea-pack/README.md">Idea Pack</a>, also available as its own plugin.</p>
+<p class="track-note">Steps 1–3 give you an Idea Pack. They are also available on their own as <a href="../../makerline-idea/README.md">MakerLine Idea</a>.</p>
 </section>
 
 <section aria-labelledby="try" markdown="0">
 <h2 id="try">Try it</h2>
 <p>Connect an empty folder to a new Claude chat, then type one of these.</p>
 <ul class="prompts">
-<li><code>/product-kit:start give me everything for this idea, quick: a booking app for small physio clinics</code></li>
+<li><code>/makerline:start give me everything for this idea, quick: a booking app for small physio clinics</code></li>
 <li><code>Who are my competitors, and is my differentiator real?</code></li>
 <li><code>What would it look like? Show me wireframes.</code></li>
 <li><code>Make my tool plan. I have Claude, ChatGPT and Cursor.</code></li>
 </ul>
-<p>Using the Idea Pack plugin? Type <code>/idea-pack:start</code> instead.</p>
+<p>Using the MakerLine Idea plugin? Type <code>/makerline-idea:start</code> instead.</p>
 </section>
 
 <section id="install" aria-labelledby="install-h" markdown="0">
@@ -52,31 +53,31 @@
 <ol>
 <li>Open <strong>Customize</strong>, then <strong>Plugins</strong>.</li>
 <li>Choose <strong>Add marketplace</strong> and enter <code>sairam5294/product-kit</code>.</li>
-<li>Install <strong>product-kit</strong> or <strong>idea-pack</strong>, not both.</li>
+<li>Install <strong>makerline</strong> or <strong>makerline-idea</strong>, not both.</li>
 <li>Turn on <strong>Sync automatically</strong> to get updates.</li>
 </ol>
 </div>
 <div>
 <h3>Claude Code</h3>
 <pre tabindex="0"><code>claude plugin marketplace add sairam5294/product-kit
-claude plugin install product-kit@product-kit-marketplace</code></pre>
-<p>Check it worked: type <code>/product-kit:</code> in a new chat and the skills appear.</p>
+claude plugin install makerline@makerline</code></pre>
+<p>Check it worked: type <code>/makerline:</code> in a new chat and the skills appear.</p>
 </div>
 </div>
 </section>
 
 <section aria-labelledby="which" markdown="1">
-<h2 id="which">Idea Pack or the full kit?</h2>
+<h2 id="which">MakerLine or MakerLine Idea?</h2>
 
-| | Idea Pack | Full Product Kit |
+| | MakerLine Idea | MakerLine |
 |---|---|---|
 | Best for | Deciding whether an idea is worth building | Building and shipping it once you've decided |
-| You get | Brief, evaluation, competitors, wireframes, draft PRD, one-pager, validation tests | Everything in the Idea Pack, plus brand, stack, design system, engineering docs, repo setup, build, review, test and ship |
+| You get | An Idea Pack: brief, evaluation, competitors, wireframes, draft PRD, one-pager, validation tests | Everything in MakerLine Idea, plus brand, stack, design system, engineering docs, repo setup, build, review, test and ship |
 | Writes code | No | Yes, after you approve |
 | Needs a terminal | No | Only for building |
-| Start with | `/idea-pack:start` | `/product-kit:start` |
+| Start with | `/makerline-idea:start` | `/makerline:start` |
 
-Not sure? Start with the Idea Pack. If you decide to build, switch to the full kit: your documents stay in your folder and `/product-kit:start` picks up where you left off.
+Not sure? Start with MakerLine Idea. If you decide to build, switch to MakerLine: your documents stay in your folder and `/makerline:start` picks up where you left off.
 
 </section>
 

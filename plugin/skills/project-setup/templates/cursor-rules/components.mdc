@@ -18,7 +18,7 @@ export const {{Thing}} = ({ … }: I{{Thing}}Props) => {
   return …;
 };
 ```
-- Every data component renders loading, empty, error, offline and success states.
+- Every data component renders loading, empty, error, offline, success, permission-denied and partial states (`ux.md` §2).
 - Props interfaces `I<Component>Props`; booleans `is/has/can/should`; handlers `handle*`.
 - One component per file, ≤ ~300 lines; extract sub-components before that.
 

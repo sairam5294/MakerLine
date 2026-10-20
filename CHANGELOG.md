@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## 0.13.0 — 2026-10-20
+Renamed to MakerLine (plugins makerline and makerline-idea; commands /makerline:… and /makerline-idea:…). New logo, marks, favicon set, social previews and brand guide. Accessibility statement on the site. Independent accessibility audit: WCAG 2.2 gaps closed in the rules (flashing, text spacing, hover/focus content, live captions, audio description, pointer and keyboard criteria), AODA customer-service duties in full, beyond-WCAG list (508, EN 301 549), ACR/VPAT how-to, one severity mapping, one list of seven UI states, glossary. Wireframe template and local cockpit fixes; cockpit save form works in Chrome
+
 ## 0.12.1 — 2026-10-20
 Quick run in one guide (157k → 120k tokens, 30 → 19 calls); project-setup trimmed; kit-ui accessibility check in CI (0 axe violations) and verified on Python 3.9; directory submission screenshots and checklist progress
 

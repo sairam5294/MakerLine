@@ -1,24 +1,24 @@
 {
-  "name": "product-kit-marketplace",
-  "description": "Product Kit — the open-source designer's AI toolkit: idea-to-launch workflow with standards for accessibility, UX, security and AI",
+  "name": "makerline",
+  "description": "MakerLine — know if it's worth building, then build it right. Open-source Claude plugins by Sairam Mogullapalli.",
   "owner": {
     "name": "Sairam Mogullapalli",
     "url": "https://github.com/sairam5294"
   },
   "plugins": [
     {
-      "name": "product-kit",
+      "name": "makerline",
       "source": "./plugin",
-      "description": "Discovery, honest evaluation with approval gate, design system, PRD, build, multi-angle review, testing, shipping, portfolio and AI-feature skills",
+      "description": "MakerLine turns a product idea into an honest verdict, real competitors, wireframes and a draft PRD. Once you approve, it helps you build and ship the product, with WCAG 2.2 AA accessibility, security and tests enforced at every step.",
       "author": {
         "name": "Sairam Mogullapalli",
         "url": "https://github.com/sairam5294"
       }
     },
     {
-      "name": "idea-pack",
-      "source": "./idea-pack",
-      "description": "Just the idea stage: discovery, honest constructive evaluation with competitors and accessibility/compliance lens, design direction with wireframes, draft PRD and one-pager — no build phases",
+      "name": "makerline-idea",
+      "source": "./makerline-idea",
+      "description": "MakerLine Idea turns a product idea into an honest evaluation: a verdict, real competitors with a differentiator test, the strongest version of the idea, an accessibility and compliance check, clickable wireframes, a draft PRD and a one-page summary. No code; you decide go, change or stop.",
       "author": {
         "name": "Sairam Mogullapalli",
         "url": "https://github.com/sairam5294"

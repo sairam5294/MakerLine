@@ -1,4 +1,4 @@
-// Product Kit cockpit: the only script. Served as a file so the Content-Security-Policy can
+// MakerLine cockpit: the only script. Served as a file so the Content-Security-Policy can
 // forbid inline scripts (script-src 'self'). The page works without it; this adds Copy buttons
 // and moves keyboard focus to form errors or results so screen readers hear them.
 (function () {
@@ -48,6 +48,8 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     // After submitting the form, send focus to what changed: the errors, or the new prompt.
+    // Focus is the single announcement: the error summary deliberately has no role="alert",
+    // otherwise screen readers would read it twice (once as an alert, once on focus).
     var target = document.getElementById("error-summary") || document.getElementById("result");
     if (target) target.focus();
   });

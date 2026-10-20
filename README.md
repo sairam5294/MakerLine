@@ -1,14 +1,18 @@
-# Product Kit v0.12
+<p><img src="docs/kit/brand/makerline-logo.svg" alt="MakerLine" width="260"></p>
 
-**The open-source designer's AI toolkit.** One setup that takes an idea from "I have a new idea" to a shipped web / iOS / Android product, and works the same way in **Claude**, **Cursor** and **Codex**. Built by a designer with light coding skills, for designers and solo makers who build with AI. The rules are enforced by checks, not just written down.
+# MakerLine v0.13
 
-> **One command:** `/product-kit:start` + your idea + "give me everything". **Website: https://sairam5294.github.io/product-kit/** · **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
+**Know if it's worth building. Then build it right.**
 
-**Why it exists.** AI tools write working code fast, but they forget accessibility, UX heuristics, security, tests and honest evaluation unless you remind them every session, in every tool. Product Kit packages that know-how as skills, agents, standards, hooks and CI so every tool you use starts thinking like a senior product designer.
+MakerLine is a free, open-source Claude plugin for designers and solo makers who build with AI. Describe an idea in a few sentences and it interviews you, researches real competitors, and gives an honest evaluation: a verdict, the strongest version of the idea, who it leaves out and how to make it stronger. It sketches a design direction with clickable wireframes and a draft PRD. Nothing is built until you approve. Then it sets up your brand, stack, design system and engineering docs, and builds one task at a time, with accessibility, security and tests checked by hooks and CI. Accessible worldwide is the baseline: every product meets WCAG 2.2 AA and the accessibility law of the markets it launches in. The same rules work in **Claude**, **Cursor**, **Codex** and 12 more AI tools.
+
+> **One command:** `/makerline:start` + your idea + "give me everything". **Website: https://sairam5294.github.io/product-kit/** · **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
+
+**Why it exists.** AI tools write working code fast, but they forget accessibility, UX heuristics, security, tests and honest evaluation unless you remind them every session, in every tool. MakerLine packages that know-how as skills, agents, standards, hooks and CI so every tool you use starts thinking like a senior product designer.
 
 **What you get**
 - A 13-phase workflow from discovery interview to post-launch retro, with an approval gate AI tools cannot bypass
-- An **Idea Pack** for every idea before any code: honest, constructive evaluation, competitors and a differentiator test, a strengthening plan, draft design direction with clickable wireframes, a draft PRD and a one-pager, with an accessibility, inclusion and compliance lens (who it excludes, AODA / ADA / EAA / RPwD obligations by launch market). Three depths — Quick (~50–70k tokens), Standard, Deep — and `check_idea_pack.py` to verify the pack before you see it
+- An **Idea Pack** for every idea before any code: honest, constructive evaluation, competitors and a differentiator test, a strengthening plan, draft design direction with clickable wireframes, a draft PRD and a one-pager, with an accessibility, inclusion and compliance lens (who it excludes, AODA / ADA / EAA / RPwD obligations by launch market). Three depths — Quick (~120k tokens measured), Standard, Deep — and `check_idea_pack.py` to verify the pack before you see it
 - 25 skills and 14 specialist agents (strategist, UX reviewer, accessibility auditor and accessibility strategist, security reviewer, QA, devil's advocate and idea champion…)
 - Standards for accessibility (WCAG 2.2 AA), UX, security, testing, backend and AI features — split into small files so only the relevant ones load
 - Two tested starters: Expo + Supabase (iOS / Android / web) and Next.js (landing page + waitlist), both with axe, Lighthouse and contrast tests
@@ -20,12 +24,12 @@ Licensed under [MIT](LICENSE). Contributions welcome — see [CONTRIBUTING.md](C
 ## What's inside
 
 ```
-product-kit/
+makerline/
 ├── plugin/        THE SOURCE — edit only here (25 skills, 14 agents, standards). Installs into Claude.
 ├── template/      Copied into every project: AGENTS.md, safety settings, CI, git hooks, MCP, Cursor/Codex adapters
 ├── starter/       Tested Expo (iOS/Android/Web) + Supabase app: i18n (en/te/hi), Sentry, PostHog
 ├── starter-web/   Tested Next.js site: landing page + waitlist (nonce CSP, rate limit, optional Turnstile), AI harness with evals; Lighthouse 1.0/1.0/1.0
-├── design/        tokens.json (single source for Figma + code) + build-tokens.mjs · Figma library: https://www.figma.com/community/file/1692097443572763844/product-kit-design-system
+├── design/        tokens.json (single source for Figma + code) + build-tokens.mjs · Figma library: https://www.figma.com/community/file/1692097443572763844/makerline-design-system
 ├── owner/         OWNER.example.md → copy to OWNER.md (git-ignored): your profile, copied into every project
 ├── portfolio/     OUTCOMES.md (idea outcomes) + generated dashboard (index.html)
 ├── evals/         Sample cases with planted flaws + RUNBOOK (runs monthly on your Mac)
@@ -69,17 +73,17 @@ product-kit/
 ## Setup (once)
 
 ```bash
-git clone https://github.com/sairam5294/product-kit ~/Documents/product-kit
-cd ~/Documents/product-kit
+git clone https://github.com/sairam5294/product-kit ~/Documents/makerline
+cd ~/Documents/makerline
 brew install gh gitleaks                                   # GitHub CLI + secret scanning; Node 22+ required
 claude plugin marketplace add sairam5294/product-kit       # Claude Code
-claude plugin install product-kit@product-kit-marketplace
-./scripts/build-plugin.sh                                  # Claude app instead: open ../product-kit.plugin → Install
+claude plugin install makerline@makerline
+./scripts/build-plugin.sh                                  # Claude app instead: open ../makerline.plugin → Install
 cp owner/OWNER.example.md owner/OWNER.md                   # your profile (git-ignored); fill in hours, budget, accounts
 ```
 Full walkthrough, including Cursor and Codex: [GETTING-STARTED.md](GETTING-STARTED.md).
 
-**Only want the idea stage?** Install the standalone **Idea Pack** plugin instead (discovery → evaluation → design direction → draft PRD → one-pager, no build phases): `claude plugin install idea-pack@product-kit-marketplace`, or open `idea-pack.plugin` in the Claude app (built by `python3 scripts/build-idea-pack.py --zip ..`). See [idea-pack/README.md](idea-pack/README.md).
+**Only want the idea stage?** Install the standalone **Idea Pack** plugin instead (discovery → evaluation → design direction → draft PRD → one-pager, no build phases): `claude plugin install makerline-idea@makerline`, or open `makerline-idea.plugin` in the Claude app (built by `python3 scripts/build-idea-pack.py --zip ..`). See [makerline-idea/README.md](makerline-idea/README.md).
 
 Where the rules are enforced: Claude Code, Cursor and Codex get hooks, git hooks and CI. **Claude Cowork/desktop has no hooks**, so there the skills follow the gate rules themselves. Use Cowork for phases 1–8 (docs) and Claude Code, Cursor or Codex for building.
 Scheduled in Claude: a quarterly standards check (1 Jan, 1 Apr, 1 Jul, 1 Oct) and monthly evals on your Mac (3rd of each month).
@@ -104,7 +108,7 @@ GitHub Free can't protect `main` on private repos. setup-github.sh tells you if 
 ## The cockpit (optional web UI)
 A local page that shows every project, its phase, whether it's approved, and the exact prompt to paste next — the chat still does the work.
 ```bash
-python3 scripts/kit-ui.py --projects ~/Desktop/Code_Projects/"Product Kit"/projects   # then open http://127.0.0.1:8765
+python3 scripts/kit-ui.py --projects ~/Desktop/Code_Projects/"MakerLine"/projects   # then open http://127.0.0.1:8765
 ```
 Runs only on your computer, reads your files, writes nothing unless you tick "save" on the New idea form. Details: [kit-ui/README.md](kit-ui/README.md).
 

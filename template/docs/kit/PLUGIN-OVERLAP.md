@@ -1,10 +1,10 @@
-# Product Kit vs your other Claude plugins
+# MakerLine vs your other Claude plugins
 
 You also have the **design**, **engineering** and **product-management** plugins installed. Some of their skills do similar jobs.
 When two skills match a request, Claude may pick either one, so the kit sets the rules below.
 
-## Product Kit owns these (use the kit skill)
-| Job | Use (Product Kit) | Instead of | Why |
+## MakerLine owns these (use the kit skill)
+| Job | Use (MakerLine) | Instead of | Why |
 |---|---|---|---|
 | Accessibility audit | `quality-review` → accessibility-auditor | design:accessibility-review | Kit uses **WCAG 2.2** + iOS/Android rules; the other uses WCAG 2.1 |
 | Code / PR review | `quality-review` | engineering:code-review | Kit checks all 5 angles against your standards and writes reviews/ |

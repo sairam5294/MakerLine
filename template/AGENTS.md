@@ -16,9 +16,9 @@ Skills live in `.agents/skills/<name>/SKILL.md`. Outputs live in `docs/product/`
 - No stack choice, scaffolding or app code until STATUS.md says `Evaluation: APPROVED`. Only the owner approves (`scripts/approve.sh`) — never write that line yourself. (Enforced by a Claude Code hook, git hooks and CI.)
 - Log decisions in `docs/product/DECISIONS.md`. Update STATUS.md after each phase/task.
 
-## Definition of done (details: `.agents/skills/product-standards/references/`)
+## Definition of done (details: `.agents/skills/product-standards/references/`; unfamiliar terms: `glossary.md` there)
 - WCAG 2.2 AA: accessible names, keyboard/screen-reader operable, contrast ≥ 4.5:1, targets ≥ 44 CSS px (web) / 44 pt (iOS) / 48 dp (Android) — the starters use 48 as one safe value, text scales to 200%. Accessibility statement + barrier-feedback route from first release; accessible worldwide and non-discriminatory by default (`inclusion.md`), plus the accessibility law of each launch market (`accessibility-law.md`: AODA, ADA, EAA, RPwD…).
-- Every screen: loading, empty, error, offline, success states. Design tokens only — no raw colours.
+- Every screen: loading, empty, error, offline, success, permission-denied and partial states. Design tokens only — no raw colours.
 - Server-side authorization + RLS on every user-data table; schema-validated input; parameterized queries.
 - No secrets in code, logs or client bundles; only `.env.example` is committed.
 - Every acceptance criterion has a test; bug fixes start with a failing test; never weaken tests.

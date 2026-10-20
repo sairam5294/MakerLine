@@ -1,0 +1,21 @@
+{
+  "name": "makerline-idea",
+  "version": "0.13.0",
+  "description": "MakerLine Idea turns a product idea into an honest evaluation: a verdict, real competitors with a differentiator test, the strongest version of the idea, an accessibility and compliance check, clickable wireframes, a draft PRD and a one-page summary. No code; you decide go, change or stop.",
+  "author": {
+    "name": "Sairam Mogullapalli",
+    "url": "https://github.com/sairam5294"
+  },
+  "homepage": "https://github.com/sairam5294/product-kit",
+  "repository": "https://github.com/sairam5294/product-kit",
+  "license": "MIT",
+  "keywords": [
+    "idea",
+    "discovery",
+    "evaluation",
+    "competitors",
+    "prd",
+    "wireframes",
+    "accessibility"
+  ]
+}

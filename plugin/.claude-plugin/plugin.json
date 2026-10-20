@@ -1,20 +1,22 @@
 {
-  "name": "product-kit",
-  "version": "0.12.1",
-  "description": "Idea-to-launch product workflow: discovery interview, honest idea evaluation with approval gate, naming, tech stack, design system, PRD, build plan, build, multi-angle quality review, testing and shipping — with accessibility, UX, security, testing and backend standards built in.",
+  "name": "makerline",
+  "version": "0.13.0",
+  "description": "MakerLine turns a product idea into an honest verdict, real competitors, wireframes and a draft PRD. Once you approve, it helps you build and ship the product, with WCAG 2.2 AA accessibility, security and tests enforced at every step.",
   "author": {
     "name": "Sairam Mogullapalli",
     "url": "https://github.com/sairam5294"
   },
   "keywords": [
+    "makerline",
     "product",
-    "discovery",
+    "idea",
     "evaluation",
+    "prd",
     "ux",
     "accessibility",
+    "wcag",
     "security",
-    "mobile",
-    "web"
+    "design-system"
   ],
   "homepage": "https://github.com/sairam5294/product-kit",
   "repository": "https://github.com/sairam5294/product-kit",

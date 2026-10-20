@@ -28,7 +28,7 @@ Walk every launch gate with evidence, write `docs/product/RELEASE.md`, and stop 
 ├──────────────────────────────────────────────────────────────┤
 │  STANDALONE (always works)                                   │
 │  ✓ Blocks: Quality · Security & privacy · Expert review ·    │
-│    Operations · Stores · Launch                              │
+│    Operations · Stores · Launch · Ontario AODA               │
 │  ✓ Each item ✅/❌/N/A with evidence; runs what it can verify │
 │  ✓ RELEASE.md: version, date, results, known issues,         │
 │    rollout, rollback                                         │
@@ -44,7 +44,7 @@ Walk every launch gate with evidence, write `docs/product/RELEASE.md`, and stop 
 ## Inputs
 
 - `STATUS.md`, the latest review in `docs/product/reviews/`, `TEST_PLAN.md` results, `TECH_STACK.md`.
-- `references/expert-review.md` (brief for a professional) and `../test-plan/references/accessibility-user-testing.md`.
+- `references/expert-review.md` (brief for a professional), `../product-standards/references/acr-vpat.md` (ACR how-to) and `../test-plan/references/accessibility-user-testing.md`.
 - `../product-standards/references/accessibility-law.md` for launch-market obligations.
 - Ask the owner: launch markets, whether payments / children's data / health or finance data / > 10k users apply, and who owns week-1 monitoring.
 
@@ -61,8 +61,16 @@ Walk every launch gate with evidence, write `docs/product/RELEASE.md`, and stop 
 - tests green on release build · no P0/P1 · no open MUST review findings
 - axe clean + manual screen-reader pass + a usability round with 3–5 assistive-tech users (`../test-plan/references/accessibility-user-testing.md`)
 - performance budgets met on low-end Android
-- accessibility statement published with a working feedback route; ACR (VPAT) ready if selling to businesses or government
-- launch-market obligations met (`../product-standards/references/accessibility-law.md`, e.g. AODA compliance report, EAA service information)
+- accessibility statement published with a working feedback route; ACR (VPAT) ready if selling to businesses or government, filled from test results (`../product-standards/references/acr-vpat.md`)
+- launch-market obligations met (`../product-standards/references/accessibility-law.md`, e.g. EAA service information)
+
+**Ontario — AODA customer service (MUST if the organisation has ≥ 1 employee in Ontario; IASR Part IV.2)**
+- feedback process for how you serve people with disabilities, with the public told it exists and that accessible formats / communication supports are available for it (s.11, 80.50)
+- accessible formats and communication supports on request: in a timely manner, at no more than the regular cost, format chosen with the person (s.12, 80.51)
+- notice of temporary disruptions to services people with disabilities rely on (e.g. an accessible checkout or support line down): reason, expected duration, alternatives (80.48)
+- training on the IASR and the Ontario Human Rights Code for every employee and volunteer, everyone who develops policies, and contractors who serve the public for you (s.7, 80.49)
+- accessibility policies in place (s.3, 80.46); emergency or public-safety information you publish is available in accessible formats on request (s.13)
+- 20+ employees: compliance report filed (every 3 years; next 31 Dec 2026) · 50+: written policies and notices that they're available, training records, multi-year accessibility plan posted and reviewed every 5 years, websites at WCAG 2.0 AA (s.4, 14)
 
 **Security & privacy (MUST)**
 - audit + secrets scan clean, exposed keys rotated
@@ -131,4 +139,4 @@ If **~~monitoring** is connected:
 ## Related
 
 - Before: `quality-review`, `test-plan` · After: `post-launch`
-- Reads: `references/expert-review.md`; `../test-plan/references/accessibility-user-testing.md`; `../product-standards/references/accessibility-law.md`, `security.md`, `privacy.md`
+- Reads: `references/expert-review.md`, `../product-standards/references/acr-vpat.md`; `../test-plan/references/accessibility-user-testing.md`; `../product-standards/references/accessibility-law.md`, `security.md`, `privacy.md`

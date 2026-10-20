@@ -9,7 +9,7 @@ The starting split `tool-plan` adjusts to what the owner has: "Primary" does the
 | Brainstorming, angles, "what else could this be?" | ChatGPT | Claude (chat) | fast, cheap, divergent; nothing is decided here |
 | Naming long-lists, taglines, first-draft copy | ChatGPT | Claude | volume first; Claude (name-product) scores and checks conflicts |
 | Quick fact lookups, "what is X" | ChatGPT or Claude with web search | — | either; record anything you'll rely on in `docs/product/research/` |
-| Discovery interview, evaluation, competitors, reality check | Claude (Product Kit: new-idea, evaluate-idea) | — | needs the kit's method, sources and the owner's profile |
+| Discovery interview, evaluation, competitors, reality check | Claude (MakerLine: new-idea, evaluate-idea) | — | needs the kit's method, sources and the owner's profile |
 | Design direction, wireframes, Figma | Claude (design-direction) + Figma | Cursor for small HTML tweaks | follows the kit's accessibility rules |
 | Specs: PRD, engineering docs, rules, README | Claude (write-prd, engineering-docs, project-setup) | — | long, consistent, cross-referenced documents |
 | Plan and multi-file features | Claude Code | Codex for well-specified independent tasks | reads AGENTS.md, hooks enforce the gate |

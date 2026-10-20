@@ -1,12 +1,12 @@
 # Accessibility Law — summary for the idea stage
 
-_Condensed from `accessibility-law.md` (last verified 2026-10-19; not legal advice). Cite this file in EVALUATION §11. Uncertain + high stakes (public-sector buyers, EU consumer services, US public accommodations, health or finance) → "confirm with a lawyer" + a CLARITY question. Deep runs and `ship-checklist` read the full file._
+_Condensed from `accessibility-law.md` (last verified 2026-10-19, Ontario 2026-10-20; not legal advice). Cite this file in EVALUATION §11. Uncertain + high stakes (public-sector buyers, EU consumer services, US public accommodations, health or finance) → "confirm with a lawyer" + a CLARITY question. Deep runs and `ship-checklist` read the full file._
 
-**Baseline everywhere:** WCAG 2.2 AA, accessible worldwide, no discrimination (`inclusion.md`). It meets the WCAG level every law below cites.
+**Baseline everywhere:** WCAG 2.2 AA (= ISO/IEC 40500:2025), accessible worldwide, no discrimination (`inclusion.md`). It meets the WCAG level every law below cites.
 
 | Market | Law | Who it binds | What a small product must do |
 |---|---|---|---|
-| Ontario | AODA (IASR) | Every org with ≥ 1 employee (customer service); 50+ staff (web) | Feedback route, accessible formats on request, training; 20+: compliance report (next due 31 Dec 2026); 50+: WCAG 2.0 AA |
+| Ontario | AODA (IASR) | Every org with ≥ 1 employee in Ontario (customer service); 50+ staff (web) | Policies, publicised feedback route, accessible formats on request (timely, no extra cost), notice of service disruptions, training on IASR + Human Rights Code for staff and contractors; 20+: compliance report (next due 31 Dec 2026); 50+: written policies, multi-year plan, WCAG 2.0 AA |
 | Canada federal | Accessible Canada Act | Federal and federally regulated buyers | EN 301 549 conformance + ACR when selling to them |
 | USA private | ADA Title III | Public accommodations (websites and apps in practice) | WCAG 2.1/2.2 AA, accessibility statement, real screen-reader testing, no overlays; lawsuits rising (3,117 in 2025) |
 | USA public | ADA Title II | State/local government, schools and their vendors | WCAG 2.1 AA + ACR; deadlines 26 Apr 2027 (≥ 50k pop.) / 26 Apr 2028 |

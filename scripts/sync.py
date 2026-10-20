@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy the Product Kit from its single source (plugin/) into the project template.
+"""Copy MakerLine from its single source (plugin/) into the project template.
 
     plugin/skills/*     -> template/.agents/skills/*      Cursor + Codex read skills here
     plugin/agents/*.md  -> template/.cursor/agents/*.md   Cursor subagents (Claude gets agents

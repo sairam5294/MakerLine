@@ -17,5 +17,5 @@ let s = ""; process.stdin.on("data", d => s += d).on("end", () => {
   process.stdout.write(typeof v === "string" ? v : "");
 });' "$field"
 else
-  echo "Product Kit hooks need python3 or node" >&2; exit 1
+  echo "MakerLine hooks need python3 or node" >&2; exit 1
 fi

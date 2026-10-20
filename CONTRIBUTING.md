@@ -1,4 +1,4 @@
-# Contributing to Product Kit
+# Contributing to MakerLine
 
 Thanks for helping make AI tools think like senior product designers. Contributions of every size are welcome: a fixed typo in a skill, a new rule backed by a real failure, a case study, or a whole adapter.
 

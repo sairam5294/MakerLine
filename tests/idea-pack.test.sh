@@ -59,11 +59,11 @@ python3 "$CHECK" "$T/p" --mode quick > "$T/out" && ok || { bad "quick mode needs
 mk_pack; python3 "$CHECK" "$T/p" --only EVALUATION.md > "$T/out" && grep -q "only EVALUATION.md" "$T/out" && ok || { bad "--only should check one file without requiring the rest"; cat "$T/out"; }
 
 # The one-file Quick guide must point only at files that exist, in both plugins.
-for root in "$KIT/plugin/skills" "$KIT/idea-pack/skills"; do
+for root in "$KIT/plugin/skills" "$KIT/makerline-idea/skills"; do
   d="$root/evaluate-idea/references"; miss=""
   for f in $(grep -o '`[^`]*\.md`\|`[^`]*templates/`' "$d/quick-run.md" | tr -d '`' | grep -v 'docs/product\|^ONE_PAGER\|INTERVIEW'); do [ -e "$d/$f" ] || miss="$miss $f"; done
   [ -z "$miss" ] && ok || bad "quick-run.md in $root points at missing files:$miss"
 done
 
-echo "idea-pack: $pass passed, $fail failed"
+echo "makerline-idea: $pass passed, $fail failed"
 [ "$fail" = 0 ]

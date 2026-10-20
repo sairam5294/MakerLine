@@ -1,4 +1,4 @@
-# Product Kit Web Starter — Next.js (SEO-fast landing page + waitlist)
+# MakerLine Web Starter — Next.js (SEO-fast landing page + waitlist)
 
 Use for: **validate-idea landing pages**, marketing sites, SEO-critical public pages, simple web apps.
 (Use the Expo starter for app-like products on iOS/Android/web.)

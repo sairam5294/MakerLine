@@ -67,6 +67,6 @@ Verify current pricing before recommending; prefer tools the owner already has (
 | Product analytics | PostHog | Plausible (web-only, simple) | No personal data in events |
 | Feedback & support | GitHub issues (dev tools), Tally form, WhatsApp Business (India consumer) | Canny, Crisp | One channel to start |
 | Project tracking | `docs/product/PLAN.md` + GitHub issues | Linear, Notion | Keep the plan in the repo so every AI tool reads it |
-| Building with AI | Claude Code + Product Kit | Cursor, Codex | Same AGENTS.md and skills in all three |
+| Building with AI | Claude Code + MakerLine | Cursor, Codex | Same AGENTS.md and skills in all three |
 | Payments (India) | Razorpay / UPI | Cashfree, PhonePe PG | App-store rules for digital goods |
 | Email | Resend | Postmark | |

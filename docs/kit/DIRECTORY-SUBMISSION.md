@@ -1,6 +1,6 @@
-# Directory submission pack: idea-pack
+# Directory submission pack: makerline-idea
 
-Everything needed to submit the **idea-pack** plugin to Anthropic's plugin directory, the catalog people browse inside Claude and on [Claude Marketplace](https://claude.com/marketplace/plugins). Idea-pack goes first because it is the easier first ask for strangers: documents only, no code, no hooks, nothing to set up. Submit **product-kit** later, as its own submission, using the same pack.
+Everything needed to submit the **makerline-idea** plugin to Anthropic's plugin directory, the catalog people browse inside Claude and on [Claude Marketplace](https://claude.com/marketplace/plugins). Idea-pack goes first because it is the easier first ask for strangers: documents only, no code, no hooks, nothing to set up. Submit **makerline** later, as its own submission, using the same pack.
 
 _Researched 2026-10-20. **Confirmed** = read on an Anthropic page linked here. **Unconfirmed** = not stated on any page found; our choice or a guess. Re-check the linked pages before submitting: the process changed recently (the old Console form is retired)._
 
@@ -25,16 +25,16 @@ _Researched 2026-10-20. **Confirmed** = read on an Anthropic page linked here. *
 | Field | Value |
 |---|---|
 | Repository | `sairam5294/product-kit` |
-| Plugin path | `idea-pack` (the folder holding `.claude-plugin/plugin.json`) |
+| Plugin path | `makerline-idea` (the folder holding `.claude-plugin/plugin.json`) |
 | Branch or tag | `main` (the marketplace install already tracks `main`) |
 | Update method | GitHub push webhook (needs admin access to the repo, which the owner has) |
 | Auto-publish passing versions | Off for the first month; turn on once two updates have gone through cleanly. _(Our choice.)_ |
 
 ## 3. Listing text
 
-The portal reads the listing from `idea-pack/.claude-plugin/plugin.json` (name, description) and `idea-pack/README.md` (shown as the listing's description). Both are **generated** from `plugin/` by `scripts/build-idea-pack.py`, so change the generator or the source, never the copy, then re-validate.
+The portal reads the listing from `makerline-idea/.claude-plugin/plugin.json` (name, description) and `makerline-idea/README.md` (shown as the listing's description). Both are **generated** from `plugin/` by `scripts/build-idea-pack.py`, so change the generator or the source, never the copy, then re-validate.
 
-**Name:** `idea-pack` (display: Idea Pack) · **Author:** Sairam Mogullapalli · **Licence:** MIT
+**Name:** `makerline-idea` (display: Idea Pack) · **Author:** Sairam Mogullapalli · **Licence:** MIT
 
 **One line (≤ 80 characters):**
 > Decide if a product idea is worth building, before you write any code.
@@ -43,7 +43,7 @@ The portal reads the listing from `idea-pack/.claude-plugin/plugin.json` (name, 
 > Turn a product idea into an honest evaluation, real competitors, wireframes, a draft PRD and a one-pager. Accessibility and compliance included. No code; just documents in your folder.
 
 **Long (the opening of the README):**
-> Idea Pack turns a few sentences about a product idea into everything you need to decide whether to build it. It interviews you briefly, researches the market, and writes an honest, constructive evaluation: the strongest version of your idea, a reality check, a scorecard with sources, real competitors and a test of your differentiator, and a path to "Go". It asks who the idea could leave out and which accessibility and privacy laws apply where you launch. At the Standard depth it adds a design direction with clickable low-fi wireframes and a draft PRD. Everything lands as plain Markdown and HTML files in the folder you connect, checked by a script before you see it. You decide: go, change or stop. Made by a UX designer for designers and solo makers who build with AI. Part of the open-source Product Kit.
+> Idea Pack turns a few sentences about a product idea into everything you need to decide whether to build it. It interviews you briefly, researches the market, and writes an honest, constructive evaluation: the strongest version of your idea, a reality check, a scorecard with sources, real competitors and a test of your differentiator, and a path to "Go". It asks who the idea could leave out and which accessibility and privacy laws apply where you launch. At the Standard depth it adds a design direction with clickable low-fi wireframes and a draft PRD. Everything lands as plain Markdown and HTML files in the folder you connect, checked by a script before you see it. You decide: go, change or stop. Made by a UX designer for designers and solo makers who build with AI. Part of the open-source MakerLine.
 
 **Keywords** (already in `plugin.json`): idea, discovery, evaluation, competitors, prd, wireframes, accessibility. Consider adding `product-management` and `ux`.
 **Category:** Product management / Design. _Unconfirmed: no category field was found; Anthropic may assign placement during review._
@@ -52,13 +52,13 @@ The portal reads the listing from `idea-pack/.claude-plugin/plugin.json` (name, 
 
 The policy asks for at least three working prompts ([policy](https://support.claude.com/en/articles/13145358-anthropic-software-directory-policy)). Each one should be re-run on a fresh account before submitting (checklist, section 11).
 
-1. `/idea-pack:start — Give me everything for this idea, quick: a booking app for small physio clinics so patients can rebook from a text message.`
+1. `/makerline-idea:start — Give me everything for this idea, quick: a booking app for small physio clinics so patients can rebook from a text message.`
 2. `I have a new idea: a meal-planning app for families where one person has diabetes.` (the discovery interview)
 3. `Who are my competitors and is my differentiator real?` (after a brief exists)
 4. `What would it look like?` (design direction and clickable wireframes)
 5. `Make my tool plan — I have Claude Pro and ChatGPT Plus, and 6 hours a week.`
 
-**Test sample data** (policy 3D asks for a test account with sample data): idea-pack needs no account. Point reviewers at the public brief `evals/cases/community-amenities/PROJECT_BRIEF.md` and the finished output in `examples/idea-pack-clubslot/` so they can compare a run with a known-good pack.
+**Test sample data** (policy 3D asks for a test account with sample data): makerline-idea needs no account. Point reviewers at the public brief `evals/cases/community-amenities/PROJECT_BRIEF.md` and the finished output in `examples/idea-pack-clubslot/` so they can compare a run with a known-good pack.
 
 ## 5. Data handling answers
 
@@ -71,7 +71,7 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 | How long does it keep data? | **It keeps nothing.** | Files live in the user's folder until the user deletes them. |
 | Is it intended for people under 18? | **No.** | Audience: designers and solo makers planning products. |
 
-**Connectors** (`idea-pack/.mcp.json`): GitHub, Figma, Vercel, Supabase, Notion, Linear, all remote `https://` servers. They are opt-in: connecting each is the user's choice in the plugin's Connectors settings, every skill works without them, and `CONNECTORS.md` lists them. A connector reads first and writes only when asked in chat. _Unconfirmed: whether all six are approved directory connectors (policy 3F lets plugins connect to "any Connector approved in the Software Directory"). Check each in the directory before submitting._
+**Connectors** (`makerline-idea/.mcp.json`): GitHub, Figma, Vercel, Supabase, Notion, Linear, all remote `https://` servers. They are opt-in: connecting each is the user's choice in the plugin's Connectors settings, every skill works without them, and `CONNECTORS.md` lists them. A connector reads first and writes only when asked in chat. _Unconfirmed: whether all six are approved directory connectors (policy 3F lets plugins connect to "any Connector approved in the Software Directory"). Check each in the directory before submitting._
 
 **Privacy policy link:** https://sairam5294.github.io/product-kit/privacy.html (source: `docs/site/privacy.md`).
 
@@ -83,7 +83,7 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 | 4 agents (`market-researcher`, `devils-advocate`, `idea-champion`, `accessibility-strategist`) | Tools: Read, Grep, Glob, WebSearch, WebFetch; three also list Bash | Research and the four evaluation perspectives; Bash runs the checker |
 | `skills/idea-pack/scripts/check_idea_pack.py` | Reads the pack's files, prints pass, warn or fail; standard library only, no network | Checks the pack before the user sees it. SKILL.md tells Claude to run it; no hook runs it, so the "scripts the validator couldn't follow" hold should not apply ([checklist](https://claude.com/docs/plugins/pre-submission-checklist)) |
 | `.mcp.json` | Six remote MCP servers, no credentials in the file | Optional connectors |
-| Hooks | **None** in idea-pack | The approval gate hooks live in projects made with the full kit |
+| Hooks | **None** in makerline-idea | The approval gate hooks live in projects made with the full kit |
 
 ## 7. Safety notes
 
@@ -95,7 +95,7 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 
 ## 7b. Icon
 
-`docs/kit/brand/idea-pack-icon.svg` (+ `-512.png`, `-32.png`): a white spark on approval green, the sibling of Product Kit's check-mark icon (`product-kit-icon.svg`, also the docs site favicon). Readable at 16 px; contrast white on #17694A is 6.5:1. The directory may not ask for an icon (none found in its requirements); use it for the social preview and the README.
+`docs/kit/brand/makerline-idea-mark.svg` (+ `-mark-512.png`, `-logo.svg`, `-social-preview.png`): the MakerLine line just starting from a spark, on Idea green — the sibling of MakerLine's line-into-tick mark (`makerline-mark.svg`, also the docs site favicon). Readable at 16 px; white on #17694A is 6.7:1. Usage rules: `docs/kit/brand/README.md`. The directory may not ask for an icon (none found in its requirements); use the social preview for link cards and the logo in the README.
 
 ## 8. Screenshots to capture
 
@@ -105,7 +105,7 @@ _Sizes are our choice (no requirement found). Use 1600 × 1000 PNG (16:10), ligh
 
 | # | What to capture | Alt text |
 |---|---|---|
-| 1 | Claude app: the `/idea-pack:start … quick` prompt and the first question round | Claude asking three short discovery questions about a physio-booking idea |
+| 1 | Claude app: the `/makerline-idea:start … quick` prompt and the first question round | Claude asking three short discovery questions about a physio-booking idea |
 | 2 | `ONE_PAGER.md` rendered, verdict line visible | One-page summary with a "Go with changes" verdict, competitors and the next test |
 | 3 | `EVALUATION.md` scorecard table | Scorecard: eight dimensions with scores, evidence and how to raise each |
 | 4 | `COMPETITORS.md` differentiator test | Differentiator test table comparing the idea with three competitors |
@@ -114,7 +114,7 @@ _Sizes are our choice (no requirement found). Use 1600 × 1000 PNG (16:10), ligh
 | 7 | Folder view of `docs/product/` after a Standard run | File list: one-pager, brief, clarity log, evaluation, competitors, PRD |
 | 8 | Social preview (1280 × 640): name, one line, "by Sairam Mogullapalli" | Idea Pack: decide if a product idea is worth building, before you write any code |
 
-Use the ClubSlot example for 3–6 so every number shown is real. If images go into the plugin's README, they must be PNG, JPEG, GIF or WebP files inside `idea-pack/`, shown with Markdown image syntax ([checklist](https://claude.com/docs/plugins/pre-submission-checklist)).
+Use the ClubSlot example for 3–6 so every number shown is real. If images go into the plugin's README, they must be PNG, JPEG, GIF or WebP files inside `makerline-idea/`, shown with Markdown image syntax ([checklist](https://claude.com/docs/plugins/pre-submission-checklist)).
 
 ## 9. 90-second demo script
 
@@ -123,45 +123,45 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 | Time | Shot | Voiceover |
 |---|---|---|
 | 0:00–0:08 | Title card: "Idea Pack", one line, author | "You have an idea. Before you spend weeks building it, spend five minutes finding out if it's worth it." |
-| 0:08–0:20 | Claude app → Customize → Plugins → Add marketplace → Install idea-pack | "Idea Pack is a free, open-source Claude plugin. Install it once from the Plugins menu." |
+| 0:08–0:20 | Claude app → Customize → Plugins → Add marketplace → Install makerline-idea | "Idea Pack is a free, open-source Claude plugin. Install it once from the Plugins menu." |
 | 0:20–0:32 | New chat, connect an empty folder, type the quick prompt | "Connect an empty folder, type your idea and the word 'quick'." |
 | 0:32–0:42 | Claude asks a short question round; user replies "just do it" | "It asks a few questions. Don't know an answer? Say 'just do it' and it marks a default for you to confirm later." |
 | 0:42–0:58 | Research running; then the one-pager opens, zoom on the verdict | "It researches real competitors and writes an honest verdict, with the strongest version of your idea and the biggest risks, in plain words." |
 | 0:58–1:10 | Scroll to accessibility table, then the Standard run's wireframes clicking through | "It asks who your idea could leave out and what the law expects where you launch. Go deeper and you get clickable wireframes and a draft PRD." |
 | 1:10–1:22 | Finder/Explorer showing the files | "Everything is plain files in your folder. No account, no tracking, no server." |
-| 1:22–1:30 | End card: "Try it: /idea-pack:start" + docs site URL + "Created by Sairam Mogullapalli" | "Go, change, or stop: you decide. Try Idea Pack today." |
+| 1:22–1:30 | End card: "Try it: /makerline-idea:start" + docs site URL + "Created by Sairam Mogullapalli" | "Go, change, or stop: you decide. Try Idea Pack today." |
 
 ## 10. Support, versioning, ownership
 
 - **Support contact:** GitHub issues, https://github.com/sairam5294/product-kit/issues/new/choose (forms for bugs, skill requests, standards drift and accessibility barriers). Security: private reporting per `SECURITY.md` (acknowledged within 7 days).
 - **Compliance contact email:** the owner's own email, entered in the portal only; don't publish it in the repo.
-- **Versioning:** `MAJOR.MINOR.PATCH`, currently 0.11.0, the same number in both plugins. `scripts/release-kit.sh` bumps it and then runs `build-idea-pack.py`, which copies the kit's version into `idea-pack/.claude-plugin/plugin.json`. Raise it with every release; the directory docs ask for this.
+- **Versioning:** `MAJOR.MINOR.PATCH`, the same number in both plugins (see `plugin/.claude-plugin/plugin.json`). `scripts/release-kit.sh` bumps it and then runs `build-idea-pack.py`, which copies the kit's version into `makerline-idea/.claude-plugin/plugin.json`. Raise it with every release; the directory docs ask for this.
 - **Ownership:** submit from the owner's personal Pro account; the first organization to submit a folder owns the listing.
 
 ## 11. Pre-submission checklist
 
 **Validate**
-- [x] `claude plugin validate ./idea-pack` prints "Validation passed" (passed 2026-10-20)
+- [x] `claude plugin validate ./makerline-idea` prints "Validation passed" (passed 2026-10-20)
 - [x] `claude plugin validate ./plugin` and `claude plugin validate .` (marketplace) also pass (passed 2026-10-20)
-- [ ] Portal **Validate** on `idea-pack`: no **Blocking** findings; read every **Policy hold** and **Warning**
+- [ ] Portal **Validate** on `makerline-idea`: no **Blocking** findings; read every **Policy hold** and **Warning**
 - [x] `version` raised since the last published version
 
 **Things the portal checks that are worth fixing first** ([checklist](https://claude.com/docs/plugins/pre-submission-checklist))
-- [ ] Name: `idea-pack` is made of generic words. Generic-only names can be **held for a reviewer** ("Name may be confused with an existing listing"). Decide before submitting, because the folder and name are fixed afterwards: keep it, or rename to something distinctive such as `product-kit-idea-pack` (this changes install commands in README, GETTING-STARTED and the site). _Unconfirmed whether another listing already uses the name: search the directory first._
-- [x] Trim `idea-pack/CONNECTORS.md` and `.mcp.json` to what idea-pack's skills use (done in 0.12.0: own 3-connector list) (GitHub, Figma, Notion). Today both are copies of the full kit's and list skills idea-pack doesn't contain; the policy requires descriptions to match functionality. Change it in `scripts/build-idea-pack.py`.
-- [x] Add a short "What it runs and sends" section to the idea-pack README (web search, `check_idea_pack.py`, optional connectors, no telemetry). The scan looks for undisclosed behaviour, and the README is where it's disclosed.
-- [x] No `.DS_Store`, symlinks, binaries, or files over 256 KiB in `idea-pack/` (checked 2026-10-20: 57 files, none over 250 KB, no binaries)
+- [x] Name: decided 20 Oct 2026 — **MakerLine Idea** (`makerline-idea`), built on the owner's own product name as the pre-submission checklist recommends; run **Validate** before submitting to confirm the directory has no clash
+- [x] Trim `makerline-idea/CONNECTORS.md` and `.mcp.json` to what makerline-idea's skills use (done in 0.12.0: own 3-connector list) (GitHub, Figma, Notion). Today both are copies of the full kit's and list skills makerline-idea doesn't contain; the policy requires descriptions to match functionality. Change it in `scripts/build-idea-pack.py`.
+- [x] Add a short "What it runs and sends" section to the makerline-idea README (web search, `check_idea_pack.py`, optional connectors, no telemetry). The scan looks for undisclosed behaviour, and the README is where it's disclosed.
+- [x] No `.DS_Store`, symlinks, binaries, or files over 256 KiB in `makerline-idea/` (checked 2026-10-20: 57 files, none over 250 KB, no binaries)
 - [x] README at least 40 words outside code blocks; `license` set in `plugin.json` (both true today)
 
 **Fresh-account install test**
-- [ ] On a second Claude account (or a clean profile) with no kit installed: add the marketplace, install idea-pack, type `/idea-pack:` and see the skills
+- [ ] On a second Claude account (or a clean profile) with no kit installed: add the marketplace, install makerline-idea, type `/makerline-idea:` and see the skills
 - [ ] Run all five prompts in section 4 in an empty folder; each finishes, and `check_idea_pack.py` passes
-- [x] Repeat in Claude Code with `claude plugin install idea-pack@product-kit-marketplace` (verified 2026-10-20 on a clean profile: marketplace add + install → idea-pack 0.12.0 enabled)
+- [x] Repeat in Claude Code with `claude plugin install makerline-idea@makerline` (verified 2026-10-20 on a clean profile: marketplace add + install → makerline-idea 0.12.0 enabled)
 - [x] With no connectors connected, nothing asks the user to connect one (verified in three blind Quick runs, 2026-10-20)
 - [ ] Optional: `claude plugin eval` to compare output with and without the plugin ([checklist](https://claude.com/docs/plugins/pre-submission-checklist))
 
 **Renders and reads well**
-- [ ] `idea-pack/README.md` renders on GitHub: tables, links and the `CONNECTORS.md` link work
+- [ ] `makerline-idea/README.md` renders on GitHub: tables, links and the `CONNECTORS.md` link work
 - [x] Docs site builds (`python3 scripts/build-site.py`) and the privacy page is live
 - [ ] Every screenshot has alt text; the demo has captions
 
@@ -175,4 +175,4 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 
 - Track status in the portal ([Track your submission](https://claude.com/docs/directory/submission-status)). A "Policy hold" is not a rejection.
 - Once live, add the directory link to the README, the docs site and the release notes, and add directory usage to the monthly kit retro (`docs/kit/KIT-RETRO.md`).
-- Then repeat this pack for `plugin` (product-kit). Its hooks and larger scope make a hold more likely, so expect a longer review.
+- Then repeat this pack for `plugin` (makerline). Its hooks and larger scope make a hold more likely, so expect a longer review.

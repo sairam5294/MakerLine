@@ -10,6 +10,10 @@ alwaysApply: false
 - Visible focus, logical order, focus moved on route change and into/out of dialogs; skip link on pages with nav.
 - Targets ≥ 44 px / 44 pt / 48 dp; text to 200%; reduced motion respected; status via live regions.
 - Label in name for speech input; alt text for meaningful images, `alt=""` for decorative.
+- Reflow at 320 CSS px; text-spacing overrides don't clip (use `min-height`, not fixed heights); tooltips dismiss with Esc and stay while hovered.
+- Actions on pointer up; multi-finger, drag and shake gestures have a button alternative; single-key shortcuts can be turned off.
+- Moving or auto-updating content can be paused; nothing flashes > 3 times a second; video has captions and keyboard-operable player controls.
+- Non-text contrast ≥ 3:1 (borders, icons, focus ring); visible in forced-colours mode.
 | Enforced by | |
 |---|---|
 | jsx-a11y lint + axe in e2e (CI) | automatable checks |

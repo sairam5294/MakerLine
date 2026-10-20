@@ -2,7 +2,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
 
-// Next.js recommended rules (incl. jsx-a11y accessibility checks) + Product Kit rules.
+// Next.js recommended rules (incl. jsx-a11y accessibility checks) + MakerLine rules.
 export default defineConfig([
   ...nextVitals,
   ...nextTs,

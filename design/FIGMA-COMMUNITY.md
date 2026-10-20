@@ -1,6 +1,6 @@
 # Publishing the kit's Figma library to Community
 
-**Published 2026-10-14:** https://www.figma.com/community/file/1692097443572763844/product-kit-design-system
+**Published 2026-10-14:** https://www.figma.com/community/file/1692097443572763844/makerline-design-system
 
 The file **"Product Kit — Design System"** (Primitives, Semantic Light/Dark, Dimensions, type styles; Button, TextField, ScreenState bound to variables) is published on Figma Community so anyone using the kit can duplicate it. Publisher profile: https://www.figma.com/@sairammogullapa
 
@@ -9,9 +9,9 @@ The file **"Product Kit — Design System"** (Primitives, Semantic Light/Dark, D
 **Name:** Product Kit — Design System
 
 **Description:**
-A small, accessible design system that matches the Product Kit starters (Expo + Supabase, Next.js). Variables in three collections — Primitives, Semantic (Light and Dark modes) and Dimensions — generated from one `design/tokens.json` in W3C Design Tokens format, so Figma and code never drift. Five type styles. Button, TextField and ScreenState component sets bound to variables, with every colour pair contrast-checked for WCAG 2.2 AA in both modes.
+A small, accessible design system that matches the MakerLine starters (Expo + Supabase, Next.js). Variables in three collections — Primitives, Semantic (Light and Dark modes) and Dimensions — generated from one `design/tokens.json` in W3C Design Tokens format, so Figma and code never drift. Five type styles. Button, TextField and ScreenState component sets bound to variables, with every colour pair contrast-checked for WCAG 2.2 AA in both modes.
 
-Duplicate it, rename it for your product, then sync `tokens.json` from your copy (the kit's `design-system` skill explains both directions). Part of the open-source Product Kit: https://github.com/sairam5294/product-kit
+Duplicate it, rename it for your product, then sync `tokens.json` from your copy (the kit's `design-system` skill explains both directions). Part of the open-source MakerLine: https://github.com/sairam5294/product-kit
 
 **Tags:** design system, design tokens, accessibility, wcag, dark mode, variables, expo, react native, nextjs, starter
 
