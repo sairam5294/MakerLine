@@ -1,5 +1,8 @@
 blank_issues_enabled: true
 contact_links:
+  - name: Report an accessibility barrier by email (no GitHub account needed)
+    url: mailto:sairammogullapalli.sm@gmail.com?subject=MakerLine%20accessibility%20barrier
+    about: Describe what was hard to use, in any format. Your email isn't published.
   - name: Questions and ideas (Discussions)
     url: https://github.com/sairam5294/makerline/discussions
     about: How do I…? Is this a good fit? Show what you made. Discussions are for anything that isn't a bug or a concrete request.

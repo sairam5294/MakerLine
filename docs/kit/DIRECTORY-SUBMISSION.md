@@ -99,7 +99,7 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 
 ## 8. Screenshots to capture
 
-**Ready (2026-10-20):** 2–8 are in `docs/kit/submission-assets/` (`2-one-pager.png` … `8-social.png`), rendered from the ClubSlot example so every number is real. Still to capture yourself: **1** (the Claude app conversation).
+**Ready (2026-10-20):** 2–8 are in `docs/kit/submission-assets/` (`2-one-pager.png` … `8-social.png`), rendered from the ClubSlot example so every number is real. Still to capture yourself: **1** (the Claude app conversation). A 9-second demo GIF (plays once) is also ready: `docs/kit/brand/makerline-demo.gif`. Launch posts: `docs/kit/LAUNCH.md`.
 
 _Sizes are our choice (no requirement found). Use 1600 × 1000 PNG (16:10), light mode, plus one dark-mode shot; the 1280 × 640 GitHub social preview is GitHub's recommended size. Write alt text for every image; never let text in an image be the only place a fact appears._
 
@@ -134,7 +134,7 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 ## 10. Support, versioning, ownership
 
 - **Support contact:** GitHub issues, https://github.com/sairam5294/makerline/issues/new/choose (forms for bugs, skill requests, standards drift and accessibility barriers). Security: private reporting per `SECURITY.md` (acknowledged within 7 days).
-- **Compliance contact email:** the owner's own email, entered in the portal only; don't publish it in the repo.
+- **Compliance contact email:** the owner's own email. Since 20 Oct 2026 it is also public as the no-GitHub route for accessibility barriers (`docs/site/accessibility.md`, issue-form contact link), as on the owner's portfolio.
 - **Versioning:** `MAJOR.MINOR.PATCH`, the same number in both plugins (see `plugin/.claude-plugin/plugin.json`). `scripts/release-kit.sh` bumps it and then runs `build-idea-pack.py`, which copies the kit's version into `makerline-idea/.claude-plugin/plugin.json`. Raise it with every release; the directory docs ask for this.
 - **Ownership:** submit from the owner's personal Pro account; the first organization to submit a folder owns the listing.
 

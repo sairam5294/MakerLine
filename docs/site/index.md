@@ -1,5 +1,6 @@
 <section class="hero" markdown="0">
 <div>
+<nav aria-label="Language"><ul class="langs"><li><a href="index.md" lang="en" hreflang="en" aria-current="page">English</a></li><li><a href="hi/index.md" lang="hi" hreflang="hi">हिन्दी</a></li><li><a href="es/index.md" lang="es" hreflang="es">Español</a></li></ul></nav>
 <p class="eyebrow">Open-source Claude plugin · Free · MIT licence</p>
 <h1 class="words"><span>Know</span> <span>if</span> <span>it's</span> <span>worth</span> <span>building.</span> <span>Then</span> <span>build</span> <span>it</span> <span>right.</span></h1>
 <svg class="line-tick" viewBox="0 0 240 24" aria-hidden="true" focusable="false"><path d="M2 12H202L210 19L228 5"/></svg>
@@ -15,7 +16,7 @@
 <div><dt>Reality check</dt><dd>MyGate, NoBrokerHood and ADDA already bundle booking for about 25,000 communities each.</dd></div>
 <div><dt>How to make it stronger</dt><dd>Cut version 1 to fair, no-install booking from a WhatsApp link, and test it with five committees before writing code.</dd></div>
 </dl>
-<figcaption>From a real Idea Pack run. <a href="case-clubslot.md">Read the ClubSlot case study</a></figcaption>
+<figcaption>From a real Idea Pack run. <a href="../../examples/idea-pack-clubslot/docs/product/ONE_PAGER.md">Open the full one-pager</a> or <a href="case-clubslot.md">read the case study</a>.</figcaption>
 </figure>
 </section>
 
@@ -26,6 +27,35 @@
 <div><dt>Lines of code written before you approve the idea</dt><dd>0</dd></div>
 <div><dt>The accessibility floor for everything it helps you build</dt><dd>2.2 AA</dd></div>
 </dl>
+</section>
+
+<section aria-labelledby="demo-h" markdown="0">
+<div class="section-intro">
+<p class="eyebrow">See a run</p>
+<h2 id="demo-h">One sentence in, a one-pager out</h2>
+<p>A real Quick run, replayed in a few seconds. The real thing takes about five minutes while Claude does the research.</p>
+</div>
+<figure class="demo" data-reveal>
+<div class="demo-window">
+<p class="demo-bar"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span>Claude · project folder: clubslot</p>
+<div class="demo-body">
+<p class="demo-prompt"><span class="who">You</span><code>/makerline-idea:start give me everything, quick: amenity booking for gated communities in Hyderabad</code></p>
+<ol class="demo-steps">
+<li>Writes the brief and lists what it doesn't know</li>
+<li>Searches competitors and app-store reviews</li>
+<li>Checks India's accessibility and data laws (RPwD, DPDP)</li>
+<li>Argues for and against the idea</li>
+<li>Writes the evaluation and one-pager, then checks them</li>
+</ol>
+<div class="demo-result">
+<p class="doc-path">docs/product/ONE_PAGER.md</p>
+<p class="verdict-line"><span class="stamp">Pivot</span> Booking only, from a WhatsApp link, no app to install</p>
+<p class="demo-open"><a href="../../examples/idea-pack-clubslot/docs/product/ONE_PAGER.md">Open the full one-pager</a></p>
+</div>
+</div>
+</div>
+<figcaption><span>Replayed from the <a href="case-clubslot.md">ClubSlot case study</a>, sped up.</span> <button type="button" class="replay" hidden>Replay</button></figcaption>
+</figure>
 </section>
 
 <section aria-labelledby="route" markdown="0">
@@ -97,6 +127,25 @@
 </ul>
 </div>
 </div>
+</section>
+
+<section aria-labelledby="compare" markdown="1">
+<p class="eyebrow" markdown="0">Why a plugin</p>
+<h2 id="compare">Why not just ask Claude?</h2>
+
+You can. MakerLine is everything you'd have to remember to ask for, every time, in every tool.
+
+| | Asking in a plain chat | A PRD or spec template | MakerLine |
+|---|---|---|---|
+| Finds real competitors, with sources | If you ask | No | Every run |
+| Tells you to pivot or stop | Rarely; chats tend to agree with you | No | A verdict with a confidence level |
+| Accessibility law where you launch | If you know to ask | No | Every evaluation |
+| Writes down what it doesn't know | No | Partly | Every unknown, in `CLARITY.md` |
+| Stops before code until you approve | No | No | Enforced by hooks and CI |
+| Checks its own work | No | No | A checker, tests and axe |
+| Keeps your rules next session | No | No | In your repo, for 15 AI tools |
+| Where your work lives | A chat thread | One document | Plain files in your folder |
+
 </section>
 
 <section aria-labelledby="try" markdown="0">

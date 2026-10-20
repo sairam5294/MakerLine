@@ -7,6 +7,16 @@
   var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
   var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var tools = document.querySelector("header.site .tools");
+  // Interface words follow the page language (the home page is also in Hindi and Spanish).
+  var WORDS = {
+    en: { dark: "Switch to dark theme", light: "Switch to light theme", menu: "Menu", copy: "Copy", copied: "Copied",
+          copyCode: "Copy code", copiedSay: "Code copied to clipboard", copyFail: "Couldn't copy. Select the text and copy it instead." },
+    hi: { dark: "डार्क थीम पर जाएँ", light: "लाइट थीम पर जाएँ", menu: "मेन्यू", copy: "कॉपी", copied: "कॉपी हो गया",
+          copyCode: "कोड कॉपी करें", copiedSay: "कोड क्लिपबोर्ड पर कॉपी हो गया", copyFail: "कॉपी नहीं हो सका। टेक्स्ट चुनकर कॉपी करें।" },
+    es: { dark: "Cambiar al tema oscuro", light: "Cambiar al tema claro", menu: "Menú", copy: "Copiar", copied: "Copiado",
+          copyCode: "Copiar código", copiedSay: "Código copiado", copyFail: "No se pudo copiar. Selecciona el texto y cópialo." }
+  };
+  var W = WORDS[(root.lang || "en").slice(0, 2)] || WORDS.en;
 
   function icon(path) {
     return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="' + path + '"/></svg>';
@@ -24,7 +34,7 @@
     themeBtn.className = "icon-btn theme-btn";
     var paint = function () {
       var next = currentTheme() === "dark" ? "light" : "dark";
-      themeBtn.setAttribute("aria-label", "Switch to " + next + " theme");
+      themeBtn.setAttribute("aria-label", next === "dark" ? W.dark : W.light);
       themeBtn.innerHTML = icon(next === "dark" ? MOON : SUN);
     };
     themeBtn.addEventListener("click", function () {
@@ -45,7 +55,7 @@
       menuBtn.className = "menu-btn";
       menuBtn.setAttribute("aria-expanded", "false");
       menuBtn.setAttribute("aria-controls", "site-nav");
-      menuBtn.innerHTML = icon("M4 7h16M4 12h16M4 17h16") + "<span>Menu</span>";
+      menuBtn.innerHTML = icon("M4 7h16M4 12h16M4 17h16") + "<span>" + W.menu + "</span>";
       var setOpen = function (open) {
         menuBtn.setAttribute("aria-expanded", String(open));
         document.querySelector("header.site").classList.toggle("nav-open", open);
@@ -78,14 +88,14 @@
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "copy-btn";
-      btn.textContent = "Copy";
-      btn.setAttribute("aria-label", "Copy code");
+      btn.textContent = W.copy;
+      btn.setAttribute("aria-label", W.copyCode);
       btn.addEventListener("click", function () {
         navigator.clipboard.writeText(pre.innerText.trim()).then(function () {
-          btn.textContent = "Copied";
-          status.textContent = "Code copied to clipboard";
-          setTimeout(function () { btn.textContent = "Copy"; status.textContent = ""; }, 2000);
-        }, function () { status.textContent = "Couldn't copy. Select the text and copy it instead."; });
+          btn.textContent = W.copied;
+          status.textContent = W.copiedSay;
+          setTimeout(function () { btn.textContent = W.copy; status.textContent = ""; }, 2000);
+        }, function () { status.textContent = W.copyFail; });
       });
       wrap.appendChild(btn);
     });
@@ -107,5 +117,17 @@
       });
     }, { rootMargin: "0px 0px -10% 0px" });
     reveal.forEach(function (el) { seen.observe(el); });
+  }
+
+  // 6. The demo can be replayed (it plays once by itself, in about four seconds).
+  var demo = document.querySelector(".demo");
+  var replay = demo && demo.querySelector(".replay");
+  if (replay && !calm) {
+    replay.hidden = false;
+    replay.addEventListener("click", function () {
+      demo.classList.remove("in");
+      void demo.offsetWidth; // restart the CSS animations
+      demo.classList.add("in");
+    });
   }
 })();
