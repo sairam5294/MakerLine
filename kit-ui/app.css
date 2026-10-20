@@ -9,9 +9,9 @@
   --muted: #55585f;       /* 7.0:1 on surface, 6.6:1 on bg */
   --line: #d9d9d3;        /* decorative only */
   --line-strong: #8a8c93; /* 3.4:1: borders of inputs (non-text, needs 3:1) */
-  --accent: #1f5a85;      /* links + primary button, 7.2:1 on surface */
+  --accent: #2337B0;      /* brand ultramarine: links + primary button, 9.4:1 on surface */
   --accent-fg: #ffffff;
-  --accent-soft: #e7eff6;
+  --accent-soft: #E9EEFC;
   --ok: #1d6b3f;          /* 6.4:1 */
   --wait: #8a4b00;        /* 6.3:1 */
   --warn: #b42318;        /* 6.5:1 */
@@ -29,9 +29,9 @@
     --muted: #b3b6bd;     /* 8.3:1 */
     --line: #2f3238;
     --line-strong: #7d818a;
-    --accent: #8fc3ec;    /* 8.6:1 */
+    --accent: #A3B6FF;    /* brand ultramarine, dark mode: 8.5:1 on surface */
     --accent-fg: #0f1720;
-    --accent-soft: #1f2b36;
+    --accent-soft: #1B2747;
     --ok: #7fd6a1;
     --wait: #ffc266;
     --warn: #ff9a8f;
@@ -88,7 +88,7 @@ code {
   display: inline-flex; align-items: center; gap: 0.45rem; min-height: 44px;
   color: var(--fg); text-decoration: none; font-weight: 650; letter-spacing: -0.01em;
 }
-.brand-mark { color: var(--accent); }
+.brand-mark { display: block; width: 26px; height: 26px; border-radius: 6px; }
 .brand-sub { color: var(--muted); font-weight: 400; }
 .top nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; }
 .top nav a {

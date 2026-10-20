@@ -95,7 +95,7 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 
 ## 7b. Icon
 
-`docs/kit/brand/makerline-idea-mark.svg` (+ `-mark-512.png`, `-logo.svg`, `-social-preview.png`): the MakerLine line just starting from a spark, on Idea green — the sibling of MakerLine's line-into-tick mark (`makerline-mark.svg`, also the docs site favicon). Readable at 16 px; white on #17694A is 6.7:1. Usage rules: `docs/kit/brand/README.md`. The directory may not ask for an icon (none found in its requirements); use the social preview for link cards and the logo in the README.
+`docs/kit/brand/makerline-idea-mark.svg` (+ `-mark-512.png`, `-logo.svg`, `-social-preview.png`): the MakerLine ML monogram with a spark in the corner, on Idea green — the sibling of MakerLine's monogram (`makerline-mark.svg`, ultramarine, also the docs site favicon). Readable at 16 px; white on #17694A is 6.7:1. Usage rules and every description: `docs/kit/brand/README.md`. The directory may not ask for an icon (none found in its requirements); use the social preview for link cards and the logo in the README.
 
 ## 8. Screenshots to capture
 

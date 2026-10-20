@@ -1,3 +1,5 @@
+<p><img src="https://raw.githubusercontent.com/sairam5294/product-kit/main/docs/kit/brand/makerline-idea-logo.svg" alt="MakerLine Idea" width="260"></p>
+
 # MakerLine Idea
 
 **Decide if a product idea is worth building, before you write any code.**

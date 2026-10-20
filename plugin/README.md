@@ -1,3 +1,5 @@
+<p><img src="https://raw.githubusercontent.com/sairam5294/product-kit/main/docs/kit/brand/makerline-logo.svg" alt="MakerLine" width="260"></p>
+
 # MakerLine
 
 **Know if it's worth building. Then build it right.**
