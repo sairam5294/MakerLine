@@ -1,4 +1,4 @@
-<!-- Quick EVALUATION. Cap 1,400 words incl. tables (prose 500–1,000). Standard section numbers, so a Standard run fills the gaps. Cite R-ids; link COMPETITORS.md, don't repeat it. -->
+<!-- Quick EVALUATION. Cap 1,400 words incl. tables (prose 500–1,000). Standard section numbers; cite R-ids; link COMPETITORS.md, don't repeat it. -->
 # Idea Evaluation Report — {{working name}}
 
 _Quick · {{date}} · PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.md (Lite) · Open questions: CLARITY.md · Run Standard for the full report_
@@ -6,6 +6,7 @@ _Quick · {{date}} · PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.md (Lite)
 ## 1. Verdict
 **{{Go · Go with changes · Pivot · Drop/Park}}** — confidence {{Low/Medium/High}}. {{2 sentences.}}
 - Promising: · Biggest reality check: · The one change that most improves the odds: · Next step:
+- Lens: {{the owner's stated goal, or "business (no goal stated)"}} · If this is a learning project: {{portfolio-lens score and verdict in one line, or delete}}
 
 | Dimension | Score | Why (evidence) | Raise it by… |
 |---|---|---|---|
@@ -41,7 +42,7 @@ MVP keep / cut in one line.
 Price and payer (sourced benchmark) · MVP weeks at {{hours}}/week · monthly cost now → at 1,000 users · provisional stack in one line.
 
 ## 11. Accessibility, inclusion and compliance
-_Not legal advice; source: `accessibility-law-summary.md`._ ≤ 5 rows `| Who could be excluded / which law | Why | Must do |`: the groups most at risk, the launch market's accessibility law, its data-protection law.
+_Not legal advice; source: `accessibility-law-summary.md`._ ≤ 5 rows `| Who could be excluded / which law | Why | Must do |`.
 
 ## 12. Cheapest validation tests
 | Test | Assumption (Q/A id) | Success threshold | Kill criterion |
