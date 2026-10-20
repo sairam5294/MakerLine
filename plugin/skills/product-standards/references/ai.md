@@ -25,7 +25,7 @@ Starting point: the web starter's `src/ai/` harness (provider wrapper, versioned
 | Errors | Plain-language failure + retry + non-AI path. Don't blame the user. |
 | Trust | Show sources/citations for factual answers; say "I'm not sure" rather than invent. |
 | Feedback | 👍/👎 + "report a problem" on outputs (also required by Google Play for generative-AI apps). |
-| Accessibility | Streamed text announced politely (live region), not every token; generated images need alt text; voice features need text alternatives. |
+| Accessibility | Chat: announce each **finished** message (or a short "Assistant is replying" then the result) in a polite live region — never every token. A visible **Stop** button reachable by keyboard and screen reader while generating. Keep focus in the message box after sending; don't steal focus when the reply lands; new messages added below, history in a list with headings or labels per speaker. AI-written alt text is a draft: a human checks it before publishing. Voice features need text alternatives. |
 | Onboarding | Set expectations with 2–3 example prompts; show limits (daily quota) before users hit them. |
 
 ## 4. Quality: evals before launch (MUST)

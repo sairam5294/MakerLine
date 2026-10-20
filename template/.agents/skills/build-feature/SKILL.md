@@ -73,7 +73,7 @@ Load only these (use search / grep instead of reading whole large files):
 |---|---|
 | ACs | every acceptance criterion tested |
 | a11y | names, focus, contrast via tokens, targets, text scaling |
-| states | all UI states (loading, empty, error, offline, success) |
+| states | all UI states (loading, empty, error, offline, success, permission denied, partial) |
 | security | authz / validation / no secrets |
 | deps | no unrecorded dependencies |
 | hygiene | no debug leftovers |

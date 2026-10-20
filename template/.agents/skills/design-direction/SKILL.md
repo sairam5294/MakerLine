@@ -56,7 +56,7 @@ Give the owner a draft design direction and clickable wireframes before any code
 7. **Content and voice** — tone in 3 words with do/don't, a terminology list (one word per concept), and real microcopy for the key moments: onboarding promise, empty states, the main error, the success moment.
 8. **Visual directions** — 2–3 distinct options. Recommend one and say why; follow platform conventions (Apple HIG / Material 3) where the brief targets native apps. Never imitate a specific brand's identity. Each option has:
    - name, mood words, one reference product
-   - palette with text/background pairs and contrast ratios (≥ 4.5:1 for text)
+   - palette with text/background pairs and contrast ratios (text ≥ 4.5:1; borders, icons, focus ring ≥ 3:1; both themes)
    - type pairing, shape and spacing feel, imagery and iconography, motion
 9. **Accessibility and inclusion plan** — from personas and EVALUATION §11. State the conformance target (WCAG 2.2 AA everywhere, plus what launch markets add) and lock in the "cheap now, expensive later" choices. Add accessibility notes to each wireframe (heading, focus order, what the screen reader says for icons and status). Cover:
    - the persona spectrum (permanent, temporary, situational), languages and scripts, text scaling

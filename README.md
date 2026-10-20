@@ -1,6 +1,6 @@
 <p><img src="docs/kit/brand/makerline-logo.svg" alt="MakerLine" width="260"></p>
 
-# MakerLine v0.12
+# MakerLine v0.13
 
 **Know if it's worth building. Then build it right.**
 

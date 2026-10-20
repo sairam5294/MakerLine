@@ -95,7 +95,7 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 
 ## 7b. Icon
 
-`docs/kit/brand/makerline-idea-icon.svg` (+ `-512.png`, `-32.png`): a white spark on approval green, the sibling of MakerLine's check-mark icon (`makerline-icon.svg`, also the docs site favicon). Readable at 16 px; contrast white on #17694A is 6.5:1. The directory may not ask for an icon (none found in its requirements); use it for the social preview and the README.
+`docs/kit/brand/makerline-idea-mark.svg` (+ `-mark-512.png`, `-logo.svg`, `-social-preview.png`): the MakerLine line just starting from a spark, on Idea green — the sibling of MakerLine's line-into-tick mark (`makerline-mark.svg`, also the docs site favicon). Readable at 16 px; white on #17694A is 6.7:1. Usage rules: `docs/kit/brand/README.md`. The directory may not ask for an icon (none found in its requirements); use the social preview for link cards and the logo in the README.
 
 ## 8. Screenshots to capture
 
@@ -135,7 +135,7 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 
 - **Support contact:** GitHub issues, https://github.com/sairam5294/product-kit/issues/new/choose (forms for bugs, skill requests, standards drift and accessibility barriers). Security: private reporting per `SECURITY.md` (acknowledged within 7 days).
 - **Compliance contact email:** the owner's own email, entered in the portal only; don't publish it in the repo.
-- **Versioning:** `MAJOR.MINOR.PATCH`, currently 0.11.0, the same number in both plugins. `scripts/release-kit.sh` bumps it and then runs `build-idea-pack.py`, which copies the kit's version into `makerline-idea/.claude-plugin/plugin.json`. Raise it with every release; the directory docs ask for this.
+- **Versioning:** `MAJOR.MINOR.PATCH`, the same number in both plugins (see `plugin/.claude-plugin/plugin.json`). `scripts/release-kit.sh` bumps it and then runs `build-idea-pack.py`, which copies the kit's version into `makerline-idea/.claude-plugin/plugin.json`. Raise it with every release; the directory docs ask for this.
 - **Ownership:** submit from the owner's personal Pro account; the first organization to submit a folder owns the listing.
 
 ## 11. Pre-submission checklist
@@ -147,7 +147,7 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 - [x] `version` raised since the last published version
 
 **Things the portal checks that are worth fixing first** ([checklist](https://claude.com/docs/plugins/pre-submission-checklist))
-- [ ] Name: `makerline-idea` is made of generic words. Generic-only names can be **held for a reviewer** ("Name may be confused with an existing listing"). Decide before submitting, because the folder and name are fixed afterwards: keep it, or rename to something distinctive such as `makerline-makerline-idea` (this changes install commands in README, GETTING-STARTED and the site). _Unconfirmed whether another listing already uses the name: search the directory first._
+- [x] Name: decided 20 Oct 2026 — **MakerLine Idea** (`makerline-idea`), built on the owner's own product name as the pre-submission checklist recommends; run **Validate** before submitting to confirm the directory has no clash
 - [x] Trim `makerline-idea/CONNECTORS.md` and `.mcp.json` to what makerline-idea's skills use (done in 0.12.0: own 3-connector list) (GitHub, Figma, Notion). Today both are copies of the full kit's and list skills makerline-idea doesn't contain; the policy requires descriptions to match functionality. Change it in `scripts/build-idea-pack.py`.
 - [x] Add a short "What it runs and sends" section to the makerline-idea README (web search, `check_idea_pack.py`, optional connectors, no telemetry). The scan looks for undisclosed behaviour, and the README is where it's disclosed.
 - [x] No `.DS_Store`, symlinks, binaries, or files over 256 KiB in `makerline-idea/` (checked 2026-10-20: 57 files, none over 250 KB, no binaries)

@@ -33,3 +33,17 @@ What a mobile app must do to feel native, survive the platform's lifecycle and p
 - Background audio configured properly (iOS audio session, Android foreground service/media session) with lock-screen controls.
 - Download for offline with storage management UI.
 - Stream with adaptive bitrate (HLS) for video; compressed AAC/Opus for audio.
+
+## 5. Accessibility (MUST — details in `accessibility.md`)
+
+| Feature | iOS | Android | What to check |
+|---|---|---|---|
+| Screen reader | VoiceOver | TalkBack | Every control has a name, role and state; reading order matches the screen; custom gestures have an alternative |
+| Speech input | Voice Control | Voice Access | Say each visible label ("Tap Save") and it works — accessible name contains the visible text |
+| Switch access | Switch Control | Switch Access | Every action reachable by scanning; no time-limited gestures |
+| Hardware keyboard | Full Keyboard Access | Keyboard / D-pad navigation | Tab order, visible focus, no traps; works on iPad and Chromebook too |
+| Text size | Dynamic Type incl. Accessibility sizes | Font scale up to 200% | No clipping or overlap; layouts reflow (stack instead of truncating) |
+| Motion and colour | Reduce Motion, Increase Contrast, Differentiate Without Color | Remove animations, high-contrast text | Respect the setting; nothing relies on colour alone |
+
+- **App Store accessibility nutrition labels:** declare in App Store Connect only the features you tested end to end on the common tasks (VoiceOver, Voice Control, Larger Text, Dark Interface, Differentiate Without Color Alone, Sufficient Contrast, Reduced Motion, Captions, Audio Descriptions). Keep the test notes as evidence; misleading labels break App Review Guideline 2.3. See `accessibility-law.md` → Standards and app stores.
+- No equivalent Google Play label was found at last check (unverified); describe accessibility support in the listing honestly instead.

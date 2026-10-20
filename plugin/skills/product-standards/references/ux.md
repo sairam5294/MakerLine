@@ -10,21 +10,24 @@ Grounded in Nielsen's 10 heuristics, Apple Human Interface Guidelines, Material 
 
 ## 2. Every screen MUST design these states
 
+The kit's one list: **loading, empty, error, offline, success, permission denied, partial** (same in AGENTS.md, `build-feature` and the components rule).
+
 | State | Requirement |
 |---|---|
 | Loading | Skeletons for content > 300 ms; never a blank screen; spinners only for short actions |
 | Empty | Explain what goes here and give the action to fill it (first-run empty ≠ no-results empty) |
 | Error | Plain language, what happened, what to do next, a retry; keep user input |
-| Partial / offline | Show cached data with a "last updated" note; queue writes where possible |
+| Offline | Show cached data with a "last updated" note; queue writes where possible; say what will sync later |
 | Success | Confirm the result; show what changed; offer the next step |
-| Permission denied | Explain why the permission helps and how to enable it later |
+| Permission denied | OS permission refused or the user's role can't see this: explain why it helps / who to ask, and how to enable it later |
+| Partial | Some data loaded and some failed (one widget down, a few rows missing): show what you have, mark what's missing, retry just that part |
 
 ## 3. Heuristics checklist (review every flow)
 
 1. **Visibility of status** — feedback within 100 ms of any tap; progress for anything > 1 s.
 2. **Match the real world** — user's words, not system words ("Couldn't save" not "Error 500").
 3. **Control & freedom** — undo over confirm dialogs; clear back/cancel; no dead ends.
-4. **Consistency** — same component = same behaviour; follow platform conventions (iOS back swipe, Android system back).
+4. **Consistency** — same component = same behaviour; follow platform conventions (iOS back swipe, Android system back). Repeated navigation keeps the same order on every screen, and help (contact, FAQ, chat) sits in the same place (WCAG 3.2.3, 3.2.6).
 5. **Error prevention** — constrain inputs (pickers, masks), inline validation after blur, confirm only destructive irreversible actions.
 6. **Recognition over recall** — show options, recent items, defaults.
 7. **Flexibility** — shortcuts for frequent users without hurting new ones.
@@ -43,10 +46,17 @@ Grounded in Nielsen's 10 heuristics, Apple Human Interface Guidelines, Material 
 
 ## 5. Forms
 
-- Single column; label above field; group related fields; mark optional fields rather than required when most are required.
+- Single column; label above field; group related fields.
+- Mark required fields in text, e.g. "Email (required)" — not colour or a lone asterisk. When most fields are required, also label the optional ones "(optional)". (Same rule in `accessibility.md` §3 and the forms-validation rule.)
 - Use correct keyboard types (`email`, `tel`, `numeric`), `autocomplete`, and OTP autofill.
 - Validate inline after the user leaves the field; never clear the form on error.
+- On submit with errors: show an error summary at the top listing each problem as a link to its field, and move focus to the summary (or the first error field) so keyboard and screen-reader users land on it.
 - Ask only what is needed now; defer the rest (progressive profiling).
+
+## 5b. Feedback messages and time limits
+
+- **Toasts / snackbars:** visible at least 5 s (longer for long text), pause on hover or focus, announced via a polite live region, never the only place an error or action appears. Errors and anything with an action (Undo, Retry) stay until dismissed — put errors inline, not only in a toast.
+- **Session timeout:** warn before it ends (e.g. 2 minutes before) in an accessible dialog that takes focus, with one action to extend; keep the user's input if it does expire (WCAG 2.2.1).
 
 ## 6. Onboarding & first run
 

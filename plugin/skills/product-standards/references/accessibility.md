@@ -130,7 +130,7 @@ Any WCAG 2.2 AA failure is at least **MUST**, whatever its impact label. A block
 
 - Which laws apply depends on where you launch and who pays: see `accessibility-law.md` (AODA, ADA, Section 508, European Accessibility Act, UK, India RPwD/GIGW, and others). WCAG 2.2 AA meets or exceeds the WCAG 2.0/2.1 AA levels most laws cite, but some laws ask for more (feedback routes, alternate formats, statements, reports, staff training).
 - MUST: an accessibility statement (conformance level, known gaps, contact) and a way to report barriers, from the first public release.
-- Selling to businesses, schools or government: expect to provide an Accessibility Conformance Report (VPAT template) — how-to in `../../ship-checklist/references/acr-vpat.md`.
+- Selling to businesses, schools or government: expect to provide an Accessibility Conformance Report (VPAT template) — how-to in `acr-vpat.md`.
 
 ## 8. Content for children or low-literacy users (when relevant)
 
