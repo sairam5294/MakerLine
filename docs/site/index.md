@@ -1,87 +1,98 @@
-# Product Kit
-
-<p class="lead">An open-source Claude plugin that takes a product idea from "I have a new idea" to a shipped web, iOS or Android product, with accessibility, UX, security and testing standards built in and enforced.</p>
-
-**Who it's for:** designers and solo makers who build with AI and have light coding skills. It was built by one: a UX designer who wanted every AI tool he used to start thinking like a senior product designer, every session, without being reminded.
-
-[Try it in 5 minutes](five-minutes.md) · [See real runs](case-studies.md) · [Getting started](../../GETTING-STARTED.md)
-
-## What you get
-
-<div class="cards" markdown="1">
-<section markdown="1">
-### An honest answer before any code
-
-The **Idea Pack** turns a few sentences into a brief, a researched evaluation with a verdict (Go, Go with changes, Pivot or Drop), real competitors with a differentiator test, the strongest version of the idea and a path to Go.
-</section>
-<section markdown="1">
-### Something you can show people
-
-A design direction with clickable low-fi wireframes, a draft PRD and a one-page summary, all in plain Markdown and HTML files in your own folder.
-</section>
-<section markdown="1">
-### Rules that are enforced, not just written
-
-After **you** approve the idea: brand, stack, design system, engineering docs, build, review, test and ship, with WCAG 2.2 AA, OWASP 2025 and test rules checked by hooks, git hooks and CI. No AI tool can approve the idea for you.
-</section>
+<section class="hero" markdown="0">
+<div>
+<h1>Know if your idea is worth building. Then build it properly.</h1>
+<p class="lead">Product Kit is a free, open-source Claude plugin for designers and solo makers. It turns a few sentences into an honest verdict, real competitors, wireframes and a draft PRD. Once you approve, it helps you build the product with accessibility, security and tests enforced at every step.</p>
+<p class="actions"><a class="btn primary" href="five-minutes.md">Try it in 5 minutes</a> <a class="btn" href="#install">Install</a></p>
 </div>
+<figure class="verdict">
+<p class="doc-path">clubslot/docs/product/ONE_PAGER.md</p>
+<p class="verdict-line"><span class="stamp">Pivot</span> Medium-low confidence</p>
+<dl>
+<div><dt>The brief said</dt><dd>"No competitors" for a booking app in gated communities.</dd></div>
+<div><dt>Reality check</dt><dd>MyGate, NoBrokerHood and ADDA already bundle booking for about 25,000 communities each.</dd></div>
+<div><dt>How to make it stronger</dt><dd>Cut version 1 to fair, no-install booking from a WhatsApp link, and test it with five committees before writing code.</dd></div>
+</dl>
+<figcaption>From a real Idea Pack run. <a href="case-clubslot.md">Read the ClubSlot case study</a></figcaption>
+</figure>
+</section>
 
-Accessible worldwide is the baseline: every evaluation asks who the idea leaves out and which accessibility laws apply where you launch (for example AODA, ADA, the European Accessibility Act and India's RPwD Act).
+<section aria-labelledby="how" markdown="0">
+<div class="section-intro">
+<h2 id="how">From idea to launch, with you in charge</h2>
+<p>Every phase is a skill you can run on its own or all at once. The kit stops before any code until you approve the idea, and no AI tool can approve it for you.</p>
+</div>
+<ol class="track">
+<li><h3>Describe the idea</h3><p>A short interview, or just your pitch.</p></li>
+<li><h3>Get an honest evaluation</h3><p>A verdict, real competitors, the strongest version and who it leaves out.</p></li>
+<li><h3>See it</h3><p>Design direction, clickable wireframes and a draft PRD.</p></li>
+<li class="gate"><h3>You approve</h3><p>Nothing is built until you say so.</p></li>
+<li><h3>Set it up</h3><p>Name and brand, stack, design system, engineering docs and repo rules.</p></li>
+<li><h3>Build, review, ship</h3><p>One task at a time, tests first, reviewed for accessibility and security.</p></li>
+</ol>
+<p class="track-note">Steps 1–3 are the <a href="../../idea-pack/README.md">Idea Pack</a>, also available as its own plugin.</p>
+</section>
 
-## Try it
+<section aria-labelledby="try" markdown="0">
+<h2 id="try">Try it</h2>
+<p>Connect an empty folder to a new Claude chat, then type one of these.</p>
+<ul class="prompts">
+<li><code>/product-kit:start give me everything for this idea, quick: a booking app for small physio clinics</code></li>
+<li><code>Who are my competitors, and is my differentiator real?</code></li>
+<li><code>What would it look like? Show me wireframes.</code></li>
+<li><code>Make my tool plan. I have Claude, ChatGPT and Cursor.</code></li>
+</ul>
+<p>Using the Idea Pack plugin? Type <code>/idea-pack:start</code> instead.</p>
+</section>
 
-Connect an empty folder to a new chat, then type one of these:
+<section id="install" aria-labelledby="install-h" markdown="0">
+<h2 id="install-h">Install</h2>
+<div class="two">
+<div>
+<h3>Claude app, desktop or web</h3>
+<ol>
+<li>Open <strong>Customize</strong>, then <strong>Plugins</strong>.</li>
+<li>Choose <strong>Add marketplace</strong> and enter <code>sairam5294/product-kit</code>.</li>
+<li>Install <strong>product-kit</strong> or <strong>idea-pack</strong>, not both.</li>
+<li>Turn on <strong>Sync automatically</strong> to get updates.</li>
+</ol>
+</div>
+<div>
+<h3>Claude Code</h3>
+<pre tabindex="0"><code>claude plugin marketplace add sairam5294/product-kit
+claude plugin install product-kit@product-kit-marketplace</code></pre>
+<p>Check it worked: type <code>/product-kit:</code> in a new chat and the skills appear.</p>
+</div>
+</div>
+</section>
 
-- *"/product-kit:start — Give me everything for this idea, quick: a booking app for small physio clinics"*
-- *"I have a new idea: …"* (a short interview, one round at a time)
-- *"Who are my competitors and what's my real differentiator?"*
-- *"What would it look like?"* (design direction and clickable wireframes)
-- *"Make my tool plan — I have Claude, ChatGPT and Cursor"*
+<section aria-labelledby="which" markdown="1">
+<h2 id="which">Idea Pack or the full kit?</h2>
 
-Using the Idea Pack plugin instead? Start with `/idea-pack:start` in place of `/product-kit:start`.
-
-## Install
-
-### Claude app (desktop or web)
-
-1. Open **Customize** in the left sidebar, then **Plugins**.
-2. Choose **Add marketplace** and enter `sairam5294/product-kit`.
-3. Find **idea-pack** or **product-kit** in the list and choose **Install**.
-4. For updates, turn on **Sync automatically** for that marketplace.
-
-### Claude Code
-
-```bash
-claude plugin marketplace add sairam5294/product-kit
-claude plugin install idea-pack@product-kit-marketplace      # or: product-kit@product-kit-marketplace
-```
-
-Check it worked: start a new chat and type `/idea-pack:` or `/product-kit:`. The list of skills should appear.
-
-## Idea Pack or the full kit?
-
-Install one, not both: the full kit already contains the Idea Pack, and every skill would appear twice.
-
-| Question | Idea Pack | Full Product Kit |
+| | Idea Pack | Full Product Kit |
 |---|---|---|
 | Best for | Deciding whether an idea is worth building | Building and shipping it once you've decided |
-| What it does | Discovery, evaluation, competitors, design direction with wireframes, draft PRD, one-pager, validation tests, tool plan | Everything in the Idea Pack, plus naming and brand, tech stack, design system, full PRD, engineering docs, repo setup, build, review, test, ship and post-launch |
-| Writes code? | No, only documents and HTML wireframes | Yes, after you approve the evaluation |
-| Needs a terminal? | No | Only for building (Claude Code, Cursor or Codex) |
+| You get | Brief, evaluation, competitors, wireframes, draft PRD, one-pager, validation tests | Everything in the Idea Pack, plus brand, stack, design system, engineering docs, repo setup, build, review, test and ship |
+| Writes code | No | Yes, after you approve |
+| Needs a terminal | No | Only for building |
 | Start with | `/idea-pack:start` | `/product-kit:start` |
-| Read more | [Idea Pack](../../idea-pack/README.md) | [Full overview](../../README.md) |
 
-<div class="note" markdown="1">
-**Not sure?** Start with the Idea Pack. If you decide to build, remove it and install the full kit: your documents stay in your folder, and `/product-kit:start` reads their status and offers the next step.
+Not sure? Start with the Idea Pack. If you decide to build, switch to the full kit: your documents stay in your folder and `/product-kit:start` picks up where you left off.
+
+</section>
+
+<section aria-labelledby="cases" markdown="0">
+<h2 id="cases">See it on real projects</h2>
+<div class="cases">
+<a class="case" href="case-rhythmbuddy.md"><strong>RhythmBuddy</strong><span>A shipped macOS app adopted into the kit. Four reviewers found 8 must-fix problems in a project that already had 275 passing tests.</span></a>
+<a class="case" href="case-clubslot.md"><strong>ClubSlot</strong><span>An Idea Pack run on a brief that claimed "no competitors". The kit found the real ones and recommended a sharper pivot.</span></a>
 </div>
+</section>
 
-## See it on real projects
-
-- [RhythmBuddy](case-rhythmbuddy.md): a shipped macOS app adopted into the kit, then reviewed. Four reviewers found 8 must-fix problems in a project that already had 275 passing tests.
-- [ClubSlot](case-clubslot.md): an Idea Pack run on a brief that claimed "no competitors". The kit found the real ones and recommended a sharper pivot.
-
-## Open source, and honest about its mistakes
-
-MIT licence. Every project's mistakes are logged in [What the kit got wrong](../../LESSONS.md) and turned into fixes listed in the [changelog](../../CHANGELOG.md). Found a bug, an outdated rule or an accessibility barrier? [Open an issue](https://github.com/sairam5294/product-kit/issues/new/choose).
-
-Created by **[Sairam Mogullapalli](https://github.com/sairam5294)**, UX designer, building products with AI.
+<section aria-labelledby="principles" markdown="0">
+<h2 id="principles">Built on three promises</h2>
+<div class="three">
+<div><h3>Accessible worldwide</h3><p>WCAG 2.2 AA is the floor for everything it makes. Every evaluation asks who the idea leaves out and which accessibility laws apply where you launch.</p></div>
+<div><h3>Honest about its mistakes</h3><p>Every blind test and real project is logged in <a href="../../LESSONS.md">what the kit got wrong</a>, and turned into fixes in the <a href="../../CHANGELOG.md">changelog</a>.</p></div>
+<div><h3>Your files stay yours</h3><p>Everything it writes is Markdown and HTML in your own folder. No servers of its own, no tracking, no account. <a href="privacy.md">Privacy</a></p></div>
+</div>
+</section>
