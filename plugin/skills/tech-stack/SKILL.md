@@ -49,7 +49,7 @@ Help the owner choose a stack they can actually run — explained in plain words
 4. **Verify versions.** Check current stable versions and breaking changes in official docs or the package registry (`npm view <pkg> version` — doesn't count as a page read) — never from memory. Check each host's terms for commercial use on its free tier.
    - If the newest major is under ~3 months old or breaks the starter (e.g. a compiler rewrite), recommend the major the kit starter pins and note when to revisit.
 5. **Owner decides** → write `docs/product/TECH_STACK.md` as an ADR (context, decision, versions, rejected options, consequences, commands).
-6. **Scaffold with a kit starter** so setup is skipped: `scripts/new-project.sh <path> --starter` (Expo + Supabase: iOS/Android/app-like web) or `<path> --web` (Next.js: SEO/marketing/landing pages, Lighthouse ≥ 0.9). Products needing both usually use both (site + app).
+6. **Scaffold with a kit starter** so setup is skipped: `scripts/new-project.sh <path> --starter` (Expo + Supabase: iOS/Android/app-like web) `<path> --web` (Next.js: SEO/marketing/landing pages, Lighthouse ≥ 0.9) or `<path> --macos` (Python + PyObjC macOS menu-bar apps: accessible windows, py2app + DMG). Products needing both a site and an app usually use both.
 7. **Record.** Fill AGENTS.md "Commands"; update DECISIONS + STATUS.
 
 ## Output

@@ -1,0 +1,47 @@
+# CI for the macOS menu-bar app (from MakerLine's starter-macos).
+# Cost note: macOS runners use GitHub Actions minutes ~10x faster than Linux, so everything
+# that doesn't need AppKit (lint, types, tokens, contrast, core tests) runs on Linux, and
+# only the AppKit UI tests and the app build run on macOS.
+name: macOS app
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: macos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint · types · tokens · core tests (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with: { python-version: "3.11", cache: pip, cache-dependency-path: requirements-dev.txt }
+      # No PyObjC on Linux: the AppKit UI tests skip themselves here.
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: mypy .
+      - run: python scripts/build_tokens.py --check
+      - run: python scripts/check_contrast.py
+      - run: pytest -q
+
+  macos:
+    name: UI accessibility tests · app build (macOS)
+    runs-on: macos-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with: { python-version: "3.11", cache: pip }
+      - run: pip install -r requirements.txt -r requirements-dev.txt -r requirements-build.txt
+      - run: scripts/check.sh
+      - run: python setup.py py2app
+      - run: scripts/build_dmg.sh
