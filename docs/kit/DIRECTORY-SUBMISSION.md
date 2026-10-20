@@ -93,6 +93,10 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 - **Readable instructions.** All guidance is plain Markdown in the plugin folder; nothing is fetched at runtime as instructions (policy 2F, 2G).
 - **No restricted categories.** No payments, ads, or image, video or audio generation (wireframes are design aids, which the policy allows).
 
+## 7b. Icon
+
+`docs/kit/brand/idea-pack-icon.svg` (+ `-512.png`, `-32.png`): a white spark on approval green, the sibling of Product Kit's check-mark icon (`product-kit-icon.svg`, also the docs site favicon). Readable at 16 px; contrast white on #17694A is 6.5:1. The directory may not ask for an icon (none found in its requirements); use it for the social preview and the README.
+
 ## 8. Screenshots to capture
 
 **Ready (2026-10-20):** 2–8 are in `docs/kit/submission-assets/` (`2-one-pager.png` … `8-social.png`), rendered from the ClubSlot example so every number is real. Still to capture yourself: **1** (the Claude app conversation).
