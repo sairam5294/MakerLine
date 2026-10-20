@@ -1,6 +1,7 @@
 <section class="hero" markdown="0">
 <div>
 <h1>Know if it's worth building. Then build it right.</h1>
+<svg class="line-tick" viewBox="0 0 240 24" aria-hidden="true" focusable="false"><path d="M2 12H202L210 19L228 5"/></svg>
 <p class="lead">MakerLine is a free, open-source Claude plugin for designers and solo makers. It turns a few sentences into an honest verdict, real competitors, wireframes and a draft PRD (product requirements document). Once you approve, it helps you build the product with accessibility, security and tests enforced at every step.</p>
 <p class="actions"><a class="btn primary" href="five-minutes.md">Try it in 5 minutes</a> <a class="btn" href="#install">Install</a></p>
 </div>
