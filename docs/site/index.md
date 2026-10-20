@@ -90,7 +90,7 @@
 <div class="flow-col out">
 <h3>What comes out</h3>
 <ul>
-<li><strong>One verdict:</strong> Go, Pivot or Stop, with confidence</li>
+<li><span><strong>One verdict:</strong> Go, Pivot or Stop, with confidence</span></li>
 <li>Real competitors and a differentiator test</li>
 <li>Clickable wireframes</li>
 <li>A draft PRD and a one-pager</li>
