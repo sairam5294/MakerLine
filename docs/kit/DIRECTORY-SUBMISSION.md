@@ -173,6 +173,8 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 
 ## 12. After submitting
 
+Next: once this listing is live, submit the full kit with [`DIRECTORY-SUBMISSION-MAKERLINE.md`](DIRECTORY-SUBMISSION-MAKERLINE.md).
+
 - Track status in the portal ([Track your submission](https://claude.com/docs/directory/submission-status)). A "Policy hold" is not a rejection.
 - Once live, add the directory link to the README, the docs site and the release notes, and add directory usage to the monthly kit retro (`docs/kit/KIT-RETRO.md`).
 - Then repeat this pack for `plugin` (makerline). Its hooks and larger scope make a hold more likely, so expect a longer review.
