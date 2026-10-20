@@ -22,6 +22,29 @@ def application():
     return AppKit.NSApplication.sharedApplication()
 
 
+def role(view):
+    """The role VoiceOver gets for a view.
+
+    On a CI machine nothing is listening for accessibility, so AppKit can answer "AXUnknown"
+    from the modern accessibilityRole() until the element is first queried the way an
+    assistive app does. We ask that way too (the attribute API), so the check stays strict:
+    the role must still be the right one, not merely present.
+    """
+    found = view.accessibilityRole()
+    if found in (None, "", AppKit.NSAccessibilityUnknownRole):
+        found = view.accessibilityAttributeValue_(AppKit.NSAccessibilityRoleAttribute)
+    if found in (None, "", AppKit.NSAccessibilityUnknownRole) and hasattr(view, "cell") and view.cell() is not None:
+        found = view.cell().accessibilityRole()
+    return found
+
+
+def shown(window):
+    # Accessibility is computed for windows on screen; CI runners have a window server.
+    window.orderFrontRegardless()
+    window.contentView().layoutSubtreeIfNeeded()
+    return window
+
+
 def all_views(view):
     yield view
     for sub in view.subviews():
@@ -38,17 +61,18 @@ def interactive(window):
 
 
 def assert_accessible(window):
+    shown(window)
     controls = interactive(window)
     assert controls, "window has no controls"
     for control in controls:
         name = control.accessibilityLabel()
         assert name, f"{control} has no accessibility label"
-        assert control.accessibilityRole(), f"{name} has no accessibility role"
+        assert role(control) not in (None, "", AppKit.NSAccessibilityUnknownRole), f"{name} has no accessibility role"
         size = control.frame().size
         assert size.height >= palette.MIN_TARGET_PT, f"{name} is {size.height} pt tall"
         assert size.width >= palette.MIN_TARGET_PT, f"{name} is {size.width} pt wide"
     for label in (v for v in all_views(window.contentView()) if isinstance(v, AppKit.NSTextField)):
-        assert label.accessibilityRole() == AppKit.NSAccessibilityStaticTextRole
+        assert role(label) == AppKit.NSAccessibilityStaticTextRole, f"{label.stringValue()!r} is not static text"
         assert not label.isSelectable(), "plain text should not be a Tab stop"
 
 
@@ -71,8 +95,9 @@ def test_reminder_keyboard_return_is_done_and_esc_is_not_now():
 
 def test_reminder_roles_are_buttons():
     w = ReminderWindow(on_done=lambda: None, on_not_now=lambda: None)
-    assert w.done.accessibilityRole() == AppKit.NSAccessibilityButtonRole
-    assert w.not_now.accessibilityRole() == AppKit.NSAccessibilityButtonRole
+    shown(w.window)
+    assert role(w.done) == AppKit.NSAccessibilityButtonRole
+    assert role(w.not_now) == AppKit.NSAccessibilityButtonRole
 
 
 def test_reminder_message_is_words_not_colour():
