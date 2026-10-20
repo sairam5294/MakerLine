@@ -27,18 +27,18 @@ The plugins' own outputs (wireframes, the local cockpit) are checked the same wa
 - **Not yet tested with every screen reader.** Automated checks catch about a third to half of accessibility problems. A full pass with VoiceOver, NVDA and TalkBack is planned; until then, some problems may be missed. Please tell us about them.
 - **Wide tables** (on the changelog and the full overview) scroll sideways inside their own area on small screens, rather than the whole page.
 - **The example wireframes** are low-fidelity sketches, made to show a design idea. They are checked for accessibility, but they are not finished products.
-- **Reporting a barrier currently needs a GitHub account** (see below). A way to reach us without an account is coming.
 
 ## Tell us about a barrier
 
 If something on this site or in the plugins is hard or impossible for you to use, we want to know.
 
 - **Report it:** [open an accessibility barrier report](https://github.com/sairam5294/makerline/issues/new?template=accessibility_barrier.yml) on GitHub. It asks what you were trying to do, what happened and what assistive technology you use, if any; every question except the first is optional.
+- **No GitHub account?** Email [sairammogullapalli.sm@gmail.com](mailto:sairammogullapalli.sm@gmail.com?subject=MakerLine%20accessibility%20barrier) with the same details, in any format that suits you (text, voice note or screenshot). Your email isn't published.
 - **What happens next:** we reply within 5 working days and tell you how and when we'll fix it.
 
 ## Other formats
 
-Everything on this site is plain text in the project's repository, so it works with any reader, and you can download it. If you need any page or document in another format (large print, plain text, a different structure), ask through the same route. It costs nothing, and we'll provide it as soon as we can.
+Everything on this site is plain text in the project's repository, so it works with any reader, and you can download it. If you need any page or document in another format (large print, plain text, a different structure), ask through either route. It costs nothing, and we'll provide it as soon as we can.
 
 ## About this statement
 

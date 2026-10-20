@@ -31,6 +31,8 @@ SITE = "docs/site"  # hand-written site pages (Markdown; simple HTML blocks allo
 PAGES = [
     (f"{SITE}/index.md", "index.html", None, "MakerLine — know if it's worth building. Then build it right."),
     (f"{SITE}/five-minutes.md", "five-minutes.html", "Start in 5 minutes", "5 minutes with MakerLine"),
+    (f"{SITE}/hi/index.md", "hi/index.html", None, "MakerLine — पहले जानिए कि बनाना सही है या नहीं। फिर सही तरीके से बनाइए।"),
+    (f"{SITE}/es/index.md", "es/index.html", None, "MakerLine — Descubre si vale la pena construirlo. Luego constrúyelo bien."),
     ("GETTING-STARTED.md", "getting-started.html", "Getting started", "Getting started"),
     (f"{SITE}/case-studies.md", "case-studies/index.html", "Case studies", "Case studies"),
     ("makerline-idea/README.md", "makerline-idea.html", "MakerLine Idea", "MakerLine Idea"),
@@ -60,12 +62,16 @@ RAW_BRAND = "https://raw.githubusercontent.com/sairam5294/makerline/main/docs/ki
 PORTFOLIO = "https://www.sairammogullapalli.com/"
 
 # A small label above each page title, so people always know what kind of page they're on.
+# The home page is also written in Hindi and Spanish (AI-translated, open to native-speaker fixes).
+LANGS = {"index.html": "en", "hi/index.html": "hi", "es/index.html": "es"}
+HOMES = ("index.html", "hi/index.html", "es/index.html")
+
 EYEBROWS = {"five-minutes.html": "Guide", "getting-started.html": "Guide", "overview.html": "Reference",
             "makerline-idea.html": "Plugin", "changelog.html": "Release notes", "lessons.html": "Honesty log",
             "privacy.html": "Trust", "accessibility.html": "Trust", "case-studies/index.html": "Proof", "404.html": "Error 404"}
 
 PAGE = """<!doctype html>
-<html lang="en">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,7 +85,7 @@ PAGE = """<!doctype html>
 <meta property="og:image" content="https://sairam5294.github.io/makerline/assets/social-preview.png">
 <meta property="og:image:alt" content="MakerLine: know if it's worth building. Then build it right.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="author" content="Sairam Mogullapalli">
+<meta name="author" content="Sairam Mogullapalli">{alternates}
 <title>{title}</title>
 <link rel="icon" href="{root}assets/favicon.ico" sizes="48x48">
 <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
@@ -105,6 +111,7 @@ PAGE = """<!doctype html>
 <p class="foot-name"><img class="on-light" src="{root}assets/favicon.svg" alt="" width="24" height="24"><img class="on-dark" src="{root}assets/mark-on-dark.svg" alt="" width="24" height="24">MakerLine</p>
 <p>Know if it's worth building. Then build it right.</p>
 <p>Created by <a href="{portfolio}">Sairam Mogullapalli</a>, Head of Product Design. Open source under the MIT licence.</p>
+<p>Home page in <a href="{root}index.html" lang="en" hreflang="en">English</a> · <a href="{root}hi/index.html" lang="hi" hreflang="hi">हिन्दी</a> · <a href="{root}es/index.html" lang="es" hreflang="es">Español</a></p>
 </div>
 <nav aria-labelledby="f-learn"><h2 id="f-learn">Learn</h2><ul>
 <li><a href="{root}five-minutes.html">Start in 5 minutes</a></li>
@@ -207,6 +214,8 @@ def render(src: str, out: str, title: str, nav_items, root_out: pathlib.Path) ->
         head, rest = body[:end], body[end:]
         body = head + re.sub(r"<(/?)h1\b", r"<\1h2", rest)
     body = rewrite_links(body, src, out)
+    # The README demo GIF isn't needed on the site: the home page has the same demo, shorter and replayable.
+    body = re.sub(r'<p><img[^>]*makerline-demo\.gif[^>]*></p>\n?', "", body)
 
     depth = out.count("/")
     root = "../" * depth
@@ -233,7 +242,7 @@ def render(src: str, out: str, title: str, nav_items, root_out: pathlib.Path) ->
     plain = re.sub(r"<[^>]+>", "", md.convert(text.split("\n\n", 2)[1] if "\n\n" in text else text))
     desc = html.escape(" ".join(plain.split())[:155], quote=True)
 
-    if out == "index.html":
+    if out in HOMES:
         content, main_class = body, ' class="home"'
     else:
         # Page head: a small label and reading time above the title, so long documents feel navigable.
@@ -259,8 +268,14 @@ def render(src: str, out: str, title: str, nav_items, root_out: pathlib.Path) ->
         wide = out in ("changelog.html", "lessons.html") or "example/" in out
         classes = [c for c, on in (("wide", wide), ("has-toc", bool(toc))) if on]
         main_class = f' class="{" ".join(classes)}"' if classes else ""
+    alternates = ""
+    if out in HOMES:  # tell search engines and browsers the three home pages are translations of each other
+        site = "https://sairam5294.github.io/makerline/"
+        alternates = "".join(f'\n<link rel="alternate" hreflang="{LANGS[h]}" href="{site}{h.replace("index.html", "")}">'
+                             for h in HOMES) + f'\n<link rel="alternate" hreflang="x-default" href="{site}">'
     page = PAGE.format(title=html.escape(title), desc=desc, root=root, nav="".join(nav), content=content,
-                       repo=REPO, portfolio=PORTFOLIO, main_class=main_class)
+                       repo=REPO, portfolio=PORTFOLIO, main_class=main_class, lang=LANGS.get(out, "en"),
+                       alternates=alternates)
     dest = root_out / out
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(page, encoding="utf-8")
@@ -272,8 +287,8 @@ def main() -> None:
         shutil.rmtree(out)
     shutil.copytree(ROOT / ASSETS, out / "assets")
     (out / "assets/brand").mkdir()
-    for svg in (ROOT / BRAND).glob("*.svg"):
-        shutil.copy2(svg, out / "assets/brand" / svg.name)
+    for f in [*(ROOT / BRAND).glob("*.svg"), *(ROOT / BRAND).glob("*.gif")]:
+        shutil.copy2(f, out / "assets/brand" / f.name)
     for src, dest in COPY.items():
         if (ROOT / src).exists():
             (out / dest).parent.mkdir(parents=True, exist_ok=True)

@@ -3,6 +3,7 @@
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
 ## Unreleased — docs site refresh
+Site, part 2: a replayable demo of a Quick run (and `docs/kit/brand/makerline-demo.gif` for READMEs, plays once), "Why not just ask Claude?" comparison, link to the sample one-pager, the home page in Hindi and Spanish (AI-translated, marked as such, with language links and `hreflang`), case studies become a showcase with an "add your project" form, "What a run costs" in the 5-minute guide, and a no-GitHub email route for accessibility barriers. Kit docs: `LAUNCH.md` (LinkedIn, article outline, Product Hunt, communities) and `VOICEOVER-TEST.md` (screen reader script).
 Docs site: fixed the broken logo on the overview page (brand images now served by the site, with a dark-theme version) and the site address (GitHub Pages uses the lowercase `…/makerline/`). New home page with a numbers band, a "pick your path" router, the six stops drawn as one line, a "many sources in, one verdict out" diagram, a measured token chart and a maker credit. Light/dark switch, mobile menu, copy buttons, "On this page" contents for long pages, reading time, reading-progress line, page-to-page fades, a page-not-found page and a fuller footer. All motion is off under reduced motion; 0 axe issues on 23 pages in both themes; no sideways scroll at 320 px; works without JavaScript. The 5-minute guide's token figure now matches the measured run (about 120k, not 50–70k).
 
 ## 0.13.0 — 2026-10-20

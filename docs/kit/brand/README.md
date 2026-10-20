@@ -41,6 +41,7 @@ The long descriptions live at the top of `README.md` (MakerLine) and `standalone
 | `line-tick.svg` | The supporting detail on its own, under a headline |
 | `makerline-idea-*` | Same set for MakerLine Idea |
 | `makerline-social-preview.png`, `makerline-idea-social-preview.png` | Link previews (1280 × 640) |
+| `makerline-demo.gif` | 9-second demo of a Quick run (720 px, about 80 KB), for READMEs, the directory listing and posts. Rebuilt from the home page's demo with Playwright and ffmpeg |
 | `../../site/assets/` | Site favicon set: `favicon.svg`, `favicon.ico` (16/32/48), `favicon-32.png`, `apple-touch-icon.png` (180), `icon-192/512.png`, `icon-maskable-512.png`, `site.webmanifest` |
 
 The wordmark is set in Bricolage Grotesque (weight 760, slightly tightened) and converted to outlines, so it looks the same without the font installed. Body text on the site uses Atkinson Hyperlegible Next. Both are under the SIL Open Font License.

@@ -1,0 +1,49 @@
+name: Show what you made with MakerLine
+description: Add your project to the showcase on the MakerLine website
+labels: ["showcase"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for sharing. Projects of every size are welcome: an Idea Pack that told you to stop counts too.
+        Only share what you're happy to make public. Don't include customer data, private links or anyone's personal details.
+  - type: input
+    id: name
+    attributes:
+      label: Project name
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: How far did it go
+      options:
+        - Idea Pack only (verdict, competitors, wireframes)
+        - Approved and set up
+        - Built and shipped
+        - Adopted an existing app into the kit
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What it is, in one or two sentences
+    validations:
+      required: true
+  - type: textarea
+    id: verdict
+    attributes:
+      label: What MakerLine told you, and what you did about it
+      description: The verdict, a finding that changed your plan, or something it got wrong.
+  - type: input
+    id: link
+    attributes:
+      label: Link (optional)
+      description: A public page, repo or one-pager.
+  - type: checkboxes
+    id: ok
+    attributes:
+      label: Permission
+      options:
+        - label: You may show this project, its name and link on the MakerLine website.
+          required: true

@@ -61,6 +61,22 @@ You have three good choices:
 
 Nothing gets built until **you** approve the evaluation. In the Claude app, say *"I approve the evaluation"* and Claude records your exact words. AI tools cannot approve for you.
 
+## What a run costs
+
+Claude plans have usage limits, and research is the expensive part. Measured runs from the [evaluation log](../../evals/results.md):
+
+| Run | Tokens | Tool calls | Your time |
+|---|---|---|---|
+| Quick Idea Pack (brief, evaluation, one-pager) | about 120,000 | 19 | 1 minute, then about 5 minutes of waiting |
+| Standard evaluation step on its own | about 150,000 | 34 | A few answers, then about 10 minutes of waiting |
+
+Ways to make your limits go further:
+
+- **Start with Quick.** Run Standard (design direction, wireframes, PRD) only for ideas that survive the Quick verdict.
+- **Continue instead of starting again.** Standard reuses Quick's research, so it doesn't search again.
+- **One idea per chat.** Start a new chat for the next idea; long chats re-read everything.
+- **On a busy day, ask for less:** "just the competitors", or "just the one-pager".
+
 ## What next
 
 - See what a full Standard run produces: [the ClubSlot case study](case-clubslot.md)

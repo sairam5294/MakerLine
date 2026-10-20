@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         Thank you. Accessibility barriers are treated as bugs, and the kit's baseline is WCAG 2.2 AA.
-        You don't need to know WCAG to report one; describe what happened in your own words. If this form is hard to use, open a blank issue instead, or write in a discussion.
+        You don't need to know WCAG to report one; describe what happened in your own words. If this form is hard to use, open a blank issue, write in a discussion, or email sairammogullapalli.sm@gmail.com.
   - type: textarea
     id: barrier
     attributes:
