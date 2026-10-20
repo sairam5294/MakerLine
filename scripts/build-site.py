@@ -67,7 +67,7 @@ PAGE = """<!doctype html>
 <meta name="theme-color" content="#0D1522" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://sairam5294.github.io/makerline/assets/social-preview.png">
+<meta property="og:image" content="https://sairam5294.github.io/MakerLine/assets/social-preview.png">
 <meta property="og:image:alt" content="MakerLine: know if it's worth building. Then build it right.">
 <meta name="twitter:card" content="summary_large_image">
 <title>{title}</title>

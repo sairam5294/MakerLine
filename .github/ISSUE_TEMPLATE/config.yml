@@ -4,7 +4,7 @@ contact_links:
     url: https://github.com/sairam5294/makerline/discussions
     about: How do I…? Is this a good fit? Show what you made. Discussions are for anything that isn't a bug or a concrete request.
   - name: Getting started and docs
-    url: https://sairam5294.github.io/makerline/
+    url: https://sairam5294.github.io/MakerLine/
     about: Install steps, the 5-minute walkthrough, case studies and the full README.
   - name: Report a security vulnerability
     url: https://github.com/sairam5294/makerline/security/advisories/new

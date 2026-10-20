@@ -2,7 +2,7 @@
 # Run ONCE, right after renaming the GitHub repo from product-kit to makerline
 # (GitHub → Settings → General → Repository name). It switches every link in the kit:
 #   github.com/sairam5294/product-kit      → github.com/sairam5294/makerline
-#   sairam5294.github.io/product-kit       → sairam5294.github.io/makerline
+#   sairam5294.github.io/product-kit       → sairam5294.github.io/MakerLine
 #   marketplace add sairam5294/product-kit → marketplace add sairam5294/makerline
 #
 # Why a script: before the rename these new links would 404, so they can't be changed early.
@@ -24,7 +24,7 @@ echo "$files"
 [ "${1:-}" = "--apply" ] || { echo; echo "Preview only. Run again with --apply."; exit 0; }
 
 for f in $files; do
-  sed -i.bak -e 's#sairam5294\.github\.io/product-kit#sairam5294.github.io/makerline#g' \
+  sed -i.bak -e 's#sairam5294\.github\.io/product-kit#sairam5294.github.io/MakerLine#g' \
              -e 's#sairam5294/product-kit#sairam5294/makerline#g' "$f" && rm -f "$f.bak"
 done
 git remote set-url origin "https://github.com/sairam5294/makerline.git" 2>/dev/null || true

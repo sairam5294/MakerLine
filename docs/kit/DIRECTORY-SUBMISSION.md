@@ -73,7 +73,7 @@ The four questions on the Data handling step, as listed in [Submit a plugin](htt
 
 **Connectors** (`makerline-idea/.mcp.json`): GitHub, Figma, Vercel, Supabase, Notion, Linear, all remote `https://` servers. They are opt-in: connecting each is the user's choice in the plugin's Connectors settings, every skill works without them, and `CONNECTORS.md` lists them. A connector reads first and writes only when asked in chat. _Unconfirmed: whether all six are approved directory connectors (policy 3F lets plugins connect to "any Connector approved in the Software Directory"). Check each in the directory before submitting._
 
-**Privacy policy link:** https://sairam5294.github.io/makerline/privacy.html (source: `docs/site/privacy.md`).
+**Privacy policy link:** https://sairam5294.github.io/MakerLine/privacy.html (source: `docs/site/privacy.md`).
 
 ## 6. Permissions and what the plugin runs
 
