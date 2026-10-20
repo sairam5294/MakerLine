@@ -6,7 +6,7 @@
 
 MakerLine is a free, open-source Claude plugin for designers and solo makers who build with AI. Describe an idea in a few sentences and it interviews you, researches real competitors, and gives an honest evaluation: a verdict, the strongest version of the idea, who it leaves out and how to make it stronger. It sketches a design direction with clickable wireframes and a draft PRD. Nothing is built until you approve. Then it sets up your brand, stack, design system and engineering docs, and builds one task at a time, with accessibility, security and tests checked by hooks and CI. Accessible worldwide is the baseline: every product meets WCAG 2.2 AA and the accessibility law of the markets it launches in. The same rules work in **Claude**, **Cursor**, **Codex** and 12 more AI tools.
 
-> **One command:** `/makerline:start` + your idea + "give me everything". **Website: https://sairam5294.github.io/product-kit/** · **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
+> **One command:** `/makerline:start` + your idea + "give me everything". **Website: https://sairam5294.github.io/MakerLine/** · **New here? Read [GETTING-STARTED.md](GETTING-STARTED.md)** — how to run it and how to update it, step by step.
 
 **Why it exists.** AI tools write working code fast, but they forget accessibility, UX heuristics, security, tests and honest evaluation unless you remind them every session, in every tool. MakerLine packages that know-how as skills, agents, standards, hooks and CI so every tool you use starts thinking like a senior product designer.
 
@@ -73,10 +73,10 @@ makerline/
 ## Setup (once)
 
 ```bash
-git clone https://github.com/sairam5294/product-kit ~/Documents/makerline
+git clone https://github.com/sairam5294/makerline ~/Documents/makerline
 cd ~/Documents/makerline
 brew install gh gitleaks                                   # GitHub CLI + secret scanning; Node 22+ required
-claude plugin marketplace add sairam5294/product-kit       # Claude Code
+claude plugin marketplace add sairam5294/makerline       # Claude Code
 claude plugin install makerline@makerline
 ./scripts/build-plugin.sh                                  # Claude app instead: open ../makerline.plugin → Install
 cp owner/OWNER.example.md owner/OWNER.md                   # your profile (git-ignored); fill in hours, budget, accounts

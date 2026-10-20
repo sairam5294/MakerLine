@@ -15,4 +15,4 @@ Amenity booking for gated communities in Hyderabad, run through the full Idea Pa
 </section>
 </div>
 
-Want to add your own project? See [examples](https://github.com/sairam5294/product-kit/tree/main/examples) on GitHub: copy the layout, remove anything private, and open a pull request.
+Want to add your own project? See [examples](https://github.com/sairam5294/makerline/tree/main/examples) on GitHub: copy the layout, remove anything private, and open a pull request.

@@ -395,6 +395,7 @@ def layout(title: str, body: str, active: str = "") -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>{esc(title)} · MakerLine</title>
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/app.css">
 <script src="/app.js" defer></script>
 </head>
@@ -402,7 +403,7 @@ def layout(title: str, body: str, active: str = "") -> str:
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">◆</span> MakerLine <span class="brand-sub">cockpit</span></a>
+    <a class="brand" href="/"><picture><source srcset="/mark-on-dark.svg" media="(prefers-color-scheme: dark)"><img class="brand-mark" src="/mark.svg" alt="" width="26" height="26"></picture>MakerLine <span class="brand-sub">cockpit</span></a>
     <nav aria-label="Main">
       <ul>{nav("/", "Projects", "projects")}{nav("/new", "New idea", "new")}{nav("/skills", "Skills", "skills")}</ul>
     </nav>
@@ -716,8 +717,10 @@ def make_handler(root: pathlib.Path, port: int, can_save: bool):
             try:
                 if route == "/":
                     return self.send(200, page_projects(root, scan(root)))
-                if route in ("/app.css", "/app.js"):
-                    ctype = "text/css; charset=utf-8" if route.endswith(".css") else "text/javascript; charset=utf-8"
+                if route in ("/app.css", "/app.js", "/mark.svg", "/mark-on-dark.svg"):
+                    # The two SVGs are the brand mark (light and dark tile), copied from docs/kit/brand/.
+                    ctype = {"css": "text/css; charset=utf-8", "js": "text/javascript; charset=utf-8",
+                             "svg": "image/svg+xml"}[route.rsplit(".", 1)[1]]
                     return self.send(200, (STATIC / route[1:]).read_bytes(), ctype)
                 if route == "/project":
                     p = find_project(root, qs.get("id", [""])[0])

@@ -6,12 +6,12 @@ The 5 minutes is your time. Claude's research runs while you wait; a Quick run u
 
 ## 1. Install the plugin (1 minute)
 
-In the Claude app: **Customize** → **Plugins** → **Add marketplace** → enter `sairam5294/product-kit` → find **makerline** (or **makerline-idea**, if you only want the thinking stage) → **Install**.
+In the Claude app: **Customize** → **Plugins** → **Add marketplace** → enter `sairam5294/makerline` → find **makerline** (or **makerline-idea**, if you only want the thinking stage) → **Install**.
 
 In Claude Code:
 
 ```bash
-claude plugin marketplace add sairam5294/product-kit
+claude plugin marketplace add sairam5294/makerline
 claude plugin install makerline@makerline
 ```
 

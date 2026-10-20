@@ -1,16 +1,18 @@
+<p><img src="https://raw.githubusercontent.com/sairam5294/makerline/main/docs/kit/brand/makerline-idea-logo.svg" alt="MakerLine Idea" width="260"></p>
+
 # MakerLine Idea
 
 **Decide if a product idea is worth building, before you write any code.**
 
-MakerLine Idea is the idea stage of [MakerLine](https://github.com/sairam5294/product-kit), as its own plugin. Describe your idea and it asks a few short questions, researches who you're up against, and tells you plainly whether it's worth building — and how to make it stronger if it isn't yet. You get an **Idea Pack**: a brief, an evaluation with a scorecard, a competitor analysis, a design direction with clickable wireframes, a draft PRD and a one-pager, all as files in your own folder. It writes no code and sends nothing anywhere except the web searches it runs. When you decide to build, switch to MakerLine.
+MakerLine Idea is the idea stage of [MakerLine](https://github.com/sairam5294/makerline), as its own plugin. Describe your idea and it asks a few short questions, researches who you're up against, and tells you plainly whether it's worth building — and how to make it stronger if it isn't yet. You get an **Idea Pack**: a brief, an evaluation with a scorecard, a competitor analysis, a design direction with clickable wireframes, a draft PRD and a one-pager, all as files in your own folder. It writes no code and sends nothing anywhere except the web searches it runs. When you decide to build, switch to MakerLine.
 
 ## Installation
 
-**Claude app:** Customize → Plugins → **Add marketplace** → `sairam5294/product-kit` → install **makerline-idea**.
+**Claude app:** Customize → Plugins → **Add marketplace** → `sairam5294/makerline` → install **makerline-idea**.
 
 **Claude Code:**
 ```bash
-claude plugin marketplace add sairam5294/product-kit
+claude plugin marketplace add sairam5294/makerline
 claude plugin install makerline-idea@makerline
 ```
 

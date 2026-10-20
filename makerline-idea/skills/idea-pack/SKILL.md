@@ -65,7 +65,7 @@ Run the Idea Pack phases in order, one at a time. Each phase is a sibling skill 
 5. **Owner unavailable:** take the recommended default for every decision, mark it `[Default]` and "default (unconfirmed)" in DECISIONS.md, set those phases to `Waiting for owner`, list the defaults at the top of the one-pager. Facts stay unknown with a question id — never guess them.
 6. **Check before presenting.** Run `python3 scripts/check_idea_pack.py <project> --mode <mode>` (this skill's folder) and fix every FAIL. No shell → walk its checks by hand.
 7. **Decision.** The owner decides go, change or stop. Record their words in DECISIONS.md.
-   - This standalone pack has no build phases: where a skill mentions `scripts/approve.sh`, naming, tech stack, design system or building, that's the full MakerLine (https://github.com/sairam5294/product-kit) — offer it when the owner decides to build.
+   - This standalone pack has no build phases: where a skill mentions `scripts/approve.sh`, naming, tech stack, design system or building, that's the full MakerLine (https://github.com/sairam5294/makerline) — offer it when the owner decides to build.
 8. **End each turn** with: produced · one decision needed · next phase.
 
 ## Output

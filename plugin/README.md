@@ -1,3 +1,5 @@
+<p><img src="https://raw.githubusercontent.com/sairam5294/makerline/main/docs/kit/brand/makerline-logo.svg" alt="MakerLine" width="260"></p>
+
 # MakerLine
 
 **Know if it's worth building. Then build it right.**
@@ -8,11 +10,11 @@ Nothing is built until **you** approve the idea: the kit cannot write `Evaluatio
 
 ## Installation
 
-**Claude app (desktop or web):** Customize → Plugins → **Add marketplace** → `sairam5294/product-kit` → install **makerline**. Turn on *Sync automatically* for updates.
+**Claude app (desktop or web):** Customize → Plugins → **Add marketplace** → `sairam5294/makerline` → install **makerline**. Turn on *Sync automatically* for updates.
 
 **Claude Code:**
 ```bash
-claude plugin marketplace add sairam5294/product-kit
+claude plugin marketplace add sairam5294/makerline
 claude plugin install makerline@makerline
 ```
 
@@ -151,7 +153,7 @@ Your profile lives in the project: `docs/product/OWNER.md` (hours, budget, accou
 
 ## The full kit
 
-Project templates, safety hooks, CI, git hooks, the Expo and Next.js starters, evals and the docs site live in the repo: https://github.com/sairam5294/product-kit — create a project with `scripts/new-project.sh`. MIT licence.
+Project templates, safety hooks, CI, git hooks, the Expo and Next.js starters, evals and the docs site live in the repo: https://github.com/sairam5294/makerline — create a project with `scripts/new-project.sh`. MIT licence.
 
 ---
 

@@ -30,4 +30,4 @@ Static pages on GitHub Pages. No cookies, no scripts, no analytics, no external 
 
 ## Contact
 
-Questions or concerns: [open an issue on GitHub](https://github.com/sairam5294/product-kit/issues/new/choose). To report a security problem privately, follow [SECURITY.md](../../SECURITY.md).
+Questions or concerns: [open an issue on GitHub](https://github.com/sairam5294/makerline/issues/new/choose). To report a security problem privately, follow [SECURITY.md](../../SECURITY.md).
