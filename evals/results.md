@@ -32,3 +32,4 @@ Hallucinations spotted: none in spot checks; unverifiable inputs were labelled a
 | Same, after trims (0.12.0) | **Checker clean first time**; verdict Pivot | 24 calls, ~146k tokens |
 | Trust Kit, Quick → Standard continue (0.12.0) | Checker clean; gate untouched | 32 calls, ~161k tokens, 0 new searches (research reused) |
 | Same, one-file Quick guide (0.12.1) | **Checker clean first time**; verdict Pivot (Low) | 19 calls, ~120k tokens (from 157k / 30 calls at 0.11.0); 7 searches, 4 reads |
+| Quick run with budget caps (unreleased) | Checker clean first time (run 1) / after 1 fix (run 2); verdict Pivot via business lens when no goal stated | 11–12 calls, ~106–109k tokens (from 120k / 19 calls); 4 searches, ≤ 1 fetch |

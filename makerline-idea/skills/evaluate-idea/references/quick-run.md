@@ -9,14 +9,14 @@
   `cat "$Q/report-template-quick.md" "$Q/competitors-lite.md"; grep -E "^\*\*(Baseline|Privacy|Solo)|^\| ($M)" "$Q/../../product-standards/references/accessibility-law-summary.md"; [ -f docs/product/OWNER.md ] && cat docs/product/OWNER.md || true`
   (no shell: read `report-template-quick.md`, `competitors-lite.md`, `../../product-standards/references/accessibility-law-summary.md`). Nothing else; never re-read your own documents.
 - **≤ 12 tool calls:** 3 reads · **≤ 4 searches, sent in one turn; 0 page fetches by default** (≤ 1, step 2) · 1–2 writes ending with the checker · ≤ 1 fix (+ 1 question round if the owner is present).
-- **Words incl. tables:** EVALUATION 1,400 · CLARITY 600 · brief 500 · COMPETITORS 450 · ONE_PAGER 450 · research 350.
+- **Words incl. tables:** EVALUATION 1,400 (prose 500–1,000; the checker warns outside it) · CLARITY 600 · brief 500 · COMPETITORS 450 · ONE_PAGER 450 · research 350.
 - Out of budget → a CLARITY question, never a guess.
 
 ## Steps
 1. **Ask or default.** Say "Quick mode". Owner present → one round of these 5. Unavailable (scheduled, "just do it", no reply) → write them to `docs/product/INTERVIEW_ROUND1.md`, take the recommended option for each **decision** (`[Default]`; "default (unconfirmed)" in DECISIONS), leave each **fact** open with a Q-id.
    1. (fact) A real moment someone feels this; how they cope today. 2. (fact) Who are the first 100 users, and where? 3. (decision) Goal: learning/portfolio · side income · business · impact · personal tool. 4. (decision) Platforms and launch markets for v1. 5. (fact) What do you have that others don't?
    Goal not stated by the owner or pitch → record "Assumed goal: business (unconfirmed)" as a Q-id in CLARITY; it decides the verdict (step 3).
-   OWNER.md missing → ask hours/week, budget, skills, AI subscriptions and write it (unavailable: add them to INTERVIEW_ROUND1, fill OWNER.md from the pitch, *unconfirmed*); COSTS needs the budget.
+   OWNER.md missing → ask hours/week, budget, skills, AI subscriptions and write it (unavailable: add them to INTERVIEW_ROUND1, fill OWNER.md with what the pitch says and write "not stated (default: 5 h/week, ₹0/$0 budget)" for the rest, *unconfirmed*); COSTS needs the budget.
 2. **Research.** S1 `<category> app for <audience> <market>` → top 3 direct competitors. S2 all three in one query (`A vs B vs C reviews complaints`) → one sourced complaint each (launch-market store, Reddit, G2). S3 pricing benchmark + audience-size input. S4 only for a gap (platform/payment/legal constraint, missed competitor). Cite title + URL + "accessed <date>"; a result with no snippet is marked "(title only)". Fetch one page only when a must-have fact — a competitor's existence or price, or the launch-market law — can't be confirmed from results; never retry. Facts → `docs/product/research/<topic>.md` as `| R1 | accessed date | fact | title + URL |`; other docs cite R-ids.
 3. **Think inline** (≤ 5 lines each, no section): evidence · case against · strongest honest case for · who it excludes, which law. Score the idea **as briefed**; the strongest version is the target; every score ≤ 6 gets "Raise it by…".
 4. **Write all docs in one shell call** (heredocs; too big → two, brief + CLARITY + research first; no shell → one write per doc): `mkdir -p docs/product/research`, `cp` STATUS, DECISIONS, COSTS from `../../idea-pack/templates/` unread, then
@@ -25,7 +25,7 @@
    DECISIONS: `| <date> | <decision> | <options considered> | <why; "default (unconfirmed)" if so> | <revisit when> |`
    COSTS: `| <YYYY-MM> | <tool/service> | <what for> | <amount> | <notes> |`, and set `- Monthly budget (from OWNER.md): <amount>` with `perl -pi`.
    Then write research, brief, CLARITY, COMPETITORS, EVALUATION, ONE_PAGER, README; end with `python3 "$Q/../../idea-pack/scripts/check_idea_pack.py" . --mode quick`.
-5. **Fix** every FAIL and trim any length WARN in one call.
+5. **Fix** every FAIL and every length WARN (trim if over, add substance if under) in one call.
 6. **Present** ≤ 10 lines: verdict · promising · top 3 risks · top 3 moves · cheapest test · defaults to confirm. End `Produced: … · Decision needed: … · Next: …`; offer Standard.
 
 ## Scoring rubric (1–10 each)
