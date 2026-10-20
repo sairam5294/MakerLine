@@ -10,11 +10,15 @@ We aim to meet the **Web Content Accessibility Guidelines (WCAG) 2.2, level AA**
 
 On every change to this website:
 
-- An automated check (axe-core) runs on every page, in light and dark mode. The last run found **0 issues** against WCAG 2.2 AA.
+- An automated check (axe-core) runs on every page, in light and dark mode, and with the theme switch used both ways. The last run found **0 issues** against WCAG 2.2 AA.
 - Every page reflows at 320 pixels wide (about 400% zoom) without scrolling sideways.
 - Every page works with a keyboard alone. The first Tab press reaches a "Skip to content" link, and focus is always visible.
 - All text meets a contrast ratio of at least 4.5:1, and logos and icons at least 3:1, in both colour schemes.
 - Body text uses Atkinson Hyperlegible Next, a typeface designed to be easier to read for people with low vision. The site makes no outside requests and uses no tracking.
+- A **light and dark theme switch** sits in the header. The site follows your device setting until you choose, and remembers your choice in your browser only.
+- **Motion is decorative and short.** Headlines rise in, diagrams draw once and the flow diagram's connectors move slowly. If your device asks for reduced motion, all of it is off and everything shows complete. Nothing flashes.
+- **Every page works without JavaScript.** Scripts only add the theme switch, the mobile menu, copy buttons and the open-by-default contents panel; the check also runs with scripts blocked.
+- Diagrams and the chart have text alternatives, and long pages have an "On this page" list of sections.
 
 The plugins' own outputs (wireframes, the local cockpit) are checked the same way, and the plugins require every product they help build to meet WCAG 2.2 AA, publish an accessibility statement and offer a way to report barriers.
 

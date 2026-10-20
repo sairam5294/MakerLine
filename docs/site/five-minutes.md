@@ -2,7 +2,7 @@
 
 Five steps from nothing to a one-page answer about your idea. You need a Claude account and the Claude app (desktop or web) or Claude Code. No terminal and no coding are needed for these steps.
 
-The 5 minutes is your time. Claude's research runs while you wait; a Quick run uses roughly 50,000–70,000 tokens.
+The 5 minutes is your time. Claude's research runs while you wait; a Quick run used about 120,000 tokens in the latest measured run ([how it's measured](../../evals/results.md)).
 
 ## 1. Install the plugin (1 minute)
 

@@ -26,7 +26,7 @@ Projects created with the full kit include safety settings that block reading `.
 
 ## This website
 
-Static pages on GitHub Pages. No cookies, no scripts, no analytics, no external fonts. GitHub, as the host, may keep standard server logs under [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+Static pages on GitHub Pages. No cookies, no analytics, no external fonts or requests. Two small scripts from the site itself add a light/dark switch, a mobile menu and copy buttons; every page works without them. If you pick a theme, that choice is saved only in your own browser (local storage, key `makerline-theme`) and never sent anywhere. GitHub, as the host, may keep standard server logs under [GitHub's privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
 
 ## Contact
 

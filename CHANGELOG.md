@@ -2,6 +2,9 @@
 
 Versions follow MAJOR.MINOR.PATCH. Each project records the kit version it started from in `docs/product/STATUS.md`.
 
+## Unreleased — docs site refresh
+Docs site: fixed the broken logo on the overview page (brand images now served by the site, with a dark-theme version) and the site address (GitHub Pages uses the lowercase `…/makerline/`). New home page with a numbers band, a "pick your path" router, the six stops drawn as one line, a "many sources in, one verdict out" diagram, a measured token chart and a maker credit. Light/dark switch, mobile menu, copy buttons, "On this page" contents for long pages, reading time, reading-progress line, page-to-page fades, a page-not-found page and a fuller footer. All motion is off under reduced motion; 0 axe issues on 23 pages in both themes; no sideways scroll at 320 px; works without JavaScript. The 5-minute guide's token figure now matches the measured run (about 120k, not 50–70k).
+
 ## 0.13.0 — 2026-10-20
 Renamed to MakerLine (plugins makerline and makerline-idea; commands /makerline:… and /makerline-idea:…). New logo, marks, favicon set, social previews and brand guide. Accessibility statement on the site. Independent accessibility audit: WCAG 2.2 gaps closed in the rules (flashing, text spacing, hover/focus content, live captions, audio description, pointer and keyboard criteria), AODA customer-service duties in full, beyond-WCAG list (508, EN 301 549), ACR/VPAT how-to, one severity mapping, one list of seven UI states, glossary. Wireframe template and local cockpit fixes; cockpit save form works in Chrome
 
