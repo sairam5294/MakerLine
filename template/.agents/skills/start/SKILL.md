@@ -6,9 +6,9 @@ argument-hint: "<idea + 'everything' | 'set it all up' | 'build it' | nothing to
 
 # /start
 
-Short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` and follow it exactly, choosing the mode from what the owner said.
+**Quick** ("quick", "worth a weekend?"): read only `../evaluate-idea/references/quick-run.md` and follow it — it is the whole Quick run in one file; don't open the orchestrator, the phase skills or the rest of this file.
 
-**Quick** ("quick", "worth a weekend?"): read only `../evaluate-idea/references/quick-run.md` and follow it — it is the whole Quick run in one file; don't open the orchestrator or the phase skills.
+Otherwise this is the short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` and follow it exactly, choosing the mode from what the owner said.
 
 ## Usage
 
