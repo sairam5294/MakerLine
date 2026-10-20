@@ -6,7 +6,7 @@ The file **"Product Kit — Design System"** (Primitives, Semantic Light/Dark, D
 
 ## Listing copy (paste into the publish dialog)
 
-**Name:** Product Kit — Design System
+**Name:** Product Kit — Design System _(the published Community file still carries the old name; rename it to "MakerLine — Design System" in Figma, then update the 6 references listed by `grep -rn "Product Kit — Design System"`)_
 
 **Description:**
 A small, accessible design system that matches the MakerLine starters (Expo + Supabase, Next.js). Variables in three collections — Primitives, Semantic (Light and Dark modes) and Dimensions — generated from one `design/tokens.json` in W3C Design Tokens format, so Figma and code never drift. Five type styles. Button, TextField and ScreenState component sets bound to variables, with every colour pair contrast-checked for WCAG 2.2 AA in both modes.
