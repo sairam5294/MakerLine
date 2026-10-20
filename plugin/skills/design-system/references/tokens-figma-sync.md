@@ -8,7 +8,7 @@ Figma variables (Light/Dark modes)  ⇄  design/tokens.json  →  npm run tokens
 
 ## Kit Figma library
 
-- A ready library matching the starters, "Product Kit — Design System" (Primitives, Semantic Light/Dark, Dimensions, type styles; Button, TextField, ScreenState), is published on Figma Community: https://www.figma.com/community/file/1692097443572763844/makerline-design-system
+- A ready library matching the starters, "MakerLine — Design System" (Primitives, Semantic Light/Dark, Dimensions, type styles; Button, TextField, ScreenState), is published on Figma Community: https://www.figma.com/community/file/1692097443572763844/makerline-design-system
 - Duplicate it per product, then sync tokens.json from the copy. (Maintainers: see design/FIGMA-COMMUNITY.md.)
 - Code Connect templates (`starter/figma/*.figma.ts`) link these components to code in Dev Mode — needs a Figma Organization/Enterprise plan.
 

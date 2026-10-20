@@ -1,6 +1,6 @@
 # Code Connect (Figma ↔ code components)
 
-Links the components in the **Product Kit — Design System** Figma file to the real components in `src/components/`.
+Links the components in the **MakerLine — Design System** Figma file to the real components in `src/components/`.
 In Figma Dev Mode, selecting a Button then shows `<Button label=… />` from this codebase instead of generic CSS.
 
 Figma file: https://www.figma.com/design/Vjdm4Jlw4SnV5Prtaz1IFP

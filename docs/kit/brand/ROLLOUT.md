@@ -19,7 +19,7 @@ Everything in the repo, the docs site and the local folder is done by `build_bra
 
 ## Figma
 
-- [ ] Rename the Community file **"Product Kit — Design System"** → **"MakerLine — Design System"** (File menu → Rename, then republish the Community listing). Then tell Claude: "the Figma file is renamed" — it updates the 6 references (`design/FIGMA-COMMUNITY.md`, `GETTING-STARTED.md`, `starter/figma/README.md`, `plugin/skills/design-system/…` ×2 and the synced template copy).
+- [ ] In Figma, rename the file **"Product Kit — Design System"** → **"MakerLine — Design System"** (click the file name at the top), then **republish** the Community listing so its title and thumbnail update. Done for you on 21 Oct 2026: the cover and Community thumbnail text inside the file, and the 6 references in the repo.
 - [ ] Add the logo to the Community listing cover if you'd like: `makerline-logo@4x.png`.
 
 ## Other profiles (optional)
