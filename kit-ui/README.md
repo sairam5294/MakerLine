@@ -40,3 +40,8 @@ WCAG 2.2 AA: skip link, landmarks, one `h1` per page, visible focus, all keyboar
 - `scripts/kit-ui.py` — the server (reuses `scripts/portfolio.py` to find and read projects)
 - `kit-ui/app.css`, `kit-ui/app.js` — styles and the Copy button
 - `tests/kit-ui.test.sh` — starts it on a sample project and checks pages, traversal refusal and the 127.0.0.1 binding
+
+## How it's tested
+- `tests/kit-ui.test.sh` — 32 checks: pages load, path traversal refused, binds to 127.0.0.1 only, Host header checked. Passes on Python 3.9 (macOS default) and 3.13.
+- `tests/kit-ui-a11y.mjs` (in CI) — axe-core WCAG 2.2 AA on every page in light and dark mode, skip link is the first Tab stop, no sideways scroll at 320 px. Last result: 0 violations.
+- Still manual: a pass with VoiceOver on macOS (VO + arrow keys through Projects, a project page, Copy buttons and the New idea form). Note anything confusing in a GitHub issue ("Accessibility barrier" form).

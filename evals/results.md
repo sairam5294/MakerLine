@@ -31,3 +31,4 @@ Hallucinations spotted: none in spot checks; unverifiable inputs were labelled a
 | Quick Idea Pack, flatmates app (0.11.0) | Checker clean after 3 trims; verdict Pivot | 30 calls, ~157k tokens |
 | Same, after trims (0.12.0) | **Checker clean first time**; verdict Pivot | 24 calls, ~146k tokens |
 | Trust Kit, Quick → Standard continue (0.12.0) | Checker clean; gate untouched | 32 calls, ~161k tokens, 0 new searches (research reused) |
+| Same, one-file Quick guide (0.12.1) | **Checker clean first time**; verdict Pivot (Low) | 19 calls, ~120k tokens (from 157k / 30 calls at 0.11.0); 7 searches, 4 reads |

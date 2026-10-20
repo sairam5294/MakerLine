@@ -3,7 +3,8 @@
 # Builds a tiny passing Idea Pack, then breaks it one way at a time and
 # checks the script catches each problem.
 set -u
-CHECK="$(cd "$(dirname "$0")/.." && pwd)/plugin/skills/product-kickoff/scripts/check_idea_pack.py"
+KIT="$(cd "$(dirname "$0")/.." && pwd)"
+CHECK="$KIT/plugin/skills/product-kickoff/scripts/check_idea_pack.py"
 T="$(mktemp -d)"; trap 'rm -rf "$T"' EXIT
 pass=0; fail=0
 ok()  { pass=$((pass+1)); }
@@ -54,6 +55,15 @@ mk_pack; printf 'run: echo ${{ github.token }}\n<div style={{ a: 1 }}>\n' >> "$T
 python3 "$CHECK" "$T/p" > "$T/out"; grep -q "unfilled" "$T/out" && { bad "GitHub ${{ }} / JSX style={{ }} must not count as placeholders"; cat "$T/out"; } || ok
 mk_pack; rm -r "$T/p/design" "$T/p/docs/product/PRD.md" "$T/p/docs/product/DESIGN_DIRECTION.md"
 python3 "$CHECK" "$T/p" --mode quick > "$T/out" && ok || { bad "quick mode needs no PRD/wireframes"; cat "$T/out"; }
+
+mk_pack; python3 "$CHECK" "$T/p" --only EVALUATION.md > "$T/out" && grep -q "only EVALUATION.md" "$T/out" && ok || { bad "--only should check one file without requiring the rest"; cat "$T/out"; }
+
+# The one-file Quick guide must point only at files that exist, in both plugins.
+for root in "$KIT/plugin/skills" "$KIT/idea-pack/skills"; do
+  d="$root/evaluate-idea/references"; miss=""
+  for f in $(grep -o '`[^`]*\.md`\|`[^`]*templates/`' "$d/quick-run.md" | tr -d '`' | grep -v 'docs/product\|^ONE_PAGER\|INTERVIEW'); do [ -e "$d/$f" ] || miss="$miss $f"; done
+  [ -z "$miss" ] && ok || bad "quick-run.md in $root points at missing files:$miss"
+done
 
 echo "idea-pack: $pass passed, $fail failed"
 [ "$fail" = 0 ]

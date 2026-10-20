@@ -1,7 +1,7 @@
 # Clarity Log — {{working name}}
 
 _Updated {{date}}_
-**Readiness:** Evaluation can start{{ (provisional) / — blocked by Q-xx}} · {{n}} questions block approval · {{m}} of {{k}} blocking questions answered (k = all questions marked Blocking, answered or not)
+**Readiness:** Evaluation can start{{ (provisional) / — blocked by Q-xx}} · {{n}} questions block approval · {{m}} of {{k}} blocking questions answered (k = questions whose **Blocks** cell names approval or the next phase, answered or not)
 
 A question is **blocking** if a phase can't sensibly proceed without it and it has no default (facts, assumptions), or the owner must confirm its default before approval (decisions).
 

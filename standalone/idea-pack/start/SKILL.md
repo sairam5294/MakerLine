@@ -8,11 +8,14 @@ argument-hint: "<idea + 'everything' (add 'quick' or 'deep'), or nothing to resu
 
 Short entry point: read `../idea-pack/SKILL.md` and follow it, choosing the mode from what the owner said.
 
+**Quick** ("quick", "worth a weekend?"): read only `../evaluate-idea/references/quick-run.md` and follow it — it is the whole Quick run in one file.
+
 ## Usage
 
 ```
 /start                                  # resume: read STATUS.md, say where the project is, offer the next step
-/start <idea> — give me everything      # all phases in one go (add "quick" or "deep" for depth)
+/start <idea> — give me everything      # all phases in one go (add "deep" for more)
+/start <idea> — quick                   # Quick: one guide (evaluate-idea/references/quick-run.md)
 ```
 
 ## Modes
