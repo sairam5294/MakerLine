@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Build the standalone Idea Pack plugin from the kit's single source (plugin/).
+"""Build the standalone MakerLine Idea plugin from the kit's single source (plugin/).
 
-    plugin/skills/{new-idea,evaluate-idea,...}  -> idea-pack/skills/...
-    plugin/agents/{market-researcher,...}.md    -> idea-pack/agents/...
-    standalone/idea-pack/SKILL.md               -> idea-pack/skills/idea-pack/SKILL.md (orchestrator)
-    product-kickoff templates + checker script  -> idea-pack/skills/idea-pack/{templates,scripts}
+    plugin/skills/{new-idea,evaluate-idea,...}  -> makerline-idea/skills/...
+    plugin/agents/{market-researcher,...}.md    -> makerline-idea/agents/...
+    standalone/makerline-idea/SKILL.md          -> makerline-idea/skills/idea-pack/SKILL.md (orchestrator)
+    product-kickoff templates + checker script  -> makerline-idea/skills/idea-pack/{templates,scripts}
 
 Why generated: the Idea Pack skills must stay identical to the full kit's, so
 there is one source to edit (plugin/) and this script copies and re-points paths.
 
 Usage:
-    python3 scripts/build-idea-pack.py           rebuild idea-pack/
-    python3 scripts/build-idea-pack.py --check   fail if idea-pack/ is out of date (CI)
-    python3 scripts/build-idea-pack.py --zip DIR also write DIR/idea-pack.plugin
+    python3 scripts/build-idea-pack.py           rebuild makerline-idea/
+    python3 scripts/build-idea-pack.py --check   fail if makerline-idea/ is out of date (CI)
+    python3 scripts/build-idea-pack.py --zip DIR also write DIR/makerline-idea.plugin
 """
 import filecmp
 import json
@@ -25,8 +25,8 @@ import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "plugin"
-STANDALONE = ROOT / "standalone" / "idea-pack"
-OUT = ROOT / "idea-pack"
+STANDALONE = ROOT / "standalone" / "makerline-idea"
+OUT = ROOT / "makerline-idea"
 
 SKILLS = ["new-idea", "evaluate-idea", "design-direction", "write-prd", "validate-idea", "tool-plan", "product-standards"]
 AGENTS = ["market-researcher", "devils-advocate", "idea-champion", "accessibility-strategist"]
@@ -52,7 +52,7 @@ def build(out: pathlib.Path) -> None:
     for a in AGENTS:
         shutil.copy2(SRC / "agents" / f"{a}.md", out / "agents" / f"{a}.md")
 
-    orch = out / "skills" / "idea-pack"
+    orch = out / "skills" / "idea-pack"  # the orchestrator skill keeps its name: /makerline-idea:idea-pack
     (orch / "templates").mkdir(parents=True)
     (orch / "scripts").mkdir()
     (orch / "references").mkdir()
@@ -82,9 +82,9 @@ def build(out: pathlib.Path) -> None:
     kit = json.loads((SRC / ".claude-plugin" / "plugin.json").read_text())
     (out / ".claude-plugin").mkdir()
     (out / ".claude-plugin" / "plugin.json").write_text(json.dumps({
-        "name": "idea-pack",
+        "name": "makerline-idea",
         "version": kit["version"],
-        "description": "Turn a product idea into an Idea Pack before any code: discovery, honest constructive evaluation with competitors, differentiator test and path to Go, accessibility and compliance lens, design direction with clickable wireframes, draft PRD and one-pager.",
+        "description": "MakerLine Idea turns a product idea into an honest evaluation: a verdict, real competitors with a differentiator test, the strongest version of the idea, an accessibility and compliance check, clickable wireframes, a draft PRD and a one-page summary. No code; you decide go, change or stop.",
         "author": kit.get("author", {"name": "Sairam Mogullapalli", "url": "https://github.com/sairam5294"}),
         "homepage": kit.get("homepage", ""),
         "repository": kit.get("repository", ""),
@@ -118,17 +118,17 @@ def main() -> None:
     args = sys.argv[1:]
     if "--check" in args:
         with tempfile.TemporaryDirectory() as tmp:
-            fresh = pathlib.Path(tmp) / "idea-pack"
+            fresh = pathlib.Path(tmp) / "makerline-idea"
             build(fresh)
             if not OUT.exists() or not same_tree(fresh, OUT):
-                sys.exit("idea-pack/ is out of date — run: python3 scripts/build-idea-pack.py")
-        print("idea-pack/ is up to date")
+                sys.exit("makerline-idea/ is out of date — run: python3 scripts/build-idea-pack.py")
+        print("makerline-idea/ is up to date")
         return
     build(OUT)
     n_skills = len(list((OUT / "skills").iterdir()))
-    print(f"Built idea-pack/ ({n_skills} skills, {len(AGENTS)} agents)")
+    print(f"Built makerline-idea/ ({n_skills} skills, {len(AGENTS)} agents)")
     if "--zip" in args:
-        dest = pathlib.Path(args[args.index("--zip") + 1]).expanduser().resolve() / "idea-pack.plugin"
+        dest = pathlib.Path(args[args.index("--zip") + 1]).expanduser().resolve() / "makerline-idea.plugin"
         dest.unlink(missing_ok=True)
         with zipfile.ZipFile(dest, "w", zipfile.ZIP_DEFLATED) as z:
             for f in sorted(OUT.rglob("*")):

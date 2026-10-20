@@ -1,6 +1,6 @@
 ---
 name: product-kickoff
-description: Run the whole Product Kit from one command. Covers idea to launch, phase by phase with approval gates, or in one go ("give me everything for this idea" runs the full Idea Pack; "set it all up" after approval runs naming/brand, stack, design system, full PRD, engineering docs and project setup). Trigger with "I have a new idea", "run the whole kit", "give me everything", "set it all up", "start a project", "kickoff", or "where are we / what's next?".
+description: Run the whole MakerLine from one command. Covers idea to launch, phase by phase with approval gates, or in one go ("give me everything for this idea" runs the full Idea Pack; "set it all up" after approval runs naming/brand, stack, design system, full PRD, engineering docs and project setup). Trigger with "I have a new idea", "run the whole kit", "give me everything", "set it all up", "start a project", "kickoff", or "where are we / what's next?".
 argument-hint: "<idea, 'give me everything', 'set it all up', 'build it', or nothing to resume>"
 ---
 
@@ -104,7 +104,7 @@ If **~~knowledge base** is connected: pull the owner profile and prior decisions
 
 - Never write `Evaluation: APPROVED` yourself.
 - Phases 1–8 (docs) work anywhere, incl. the Claude app. Phases 9–12 need a shell and the repo (Claude Code, Cursor, Codex); without hooks, follow the gate yourself.
-- Overlapping plugins: the Product Kit skill wins for kit phases; complementary skills (ux-copy, research-synthesis, debug, metrics-review) are welcome inside phases.
+- Overlapping plugins: the MakerLine skill wins for kit phases; complementary skills (ux-copy, research-synthesis, debug, metrics-review) are welcome inside phases.
 - Owner = senior UX designer, light coding: plain language, 3–5 questions per round with a recommended option. Honest coach, not judge — every weakness comes with how to make the idea stronger.
 
 ## Tips

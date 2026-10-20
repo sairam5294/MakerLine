@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Portfolio dashboard: one page showing every Product Kit project and the ideas' outcomes.
+"""Portfolio dashboard: one page showing every MakerLine project and the ideas' outcomes.
 
 Scans folders for docs/product/STATUS.md and writes:
   portfolio/index.html   open in any browser (accessible, light/dark)

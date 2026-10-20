@@ -42,7 +42,7 @@ body:
       label: Which plugin should have it
       options:
         - Both (idea stage)
-        - product-kit only (after approval)
+        - makerline only (after approval)
         - Not sure
   - type: textarea
     id: cost

@@ -7,7 +7,7 @@ input="$(cat)"
 cmd="$(printf '%s' "$input" | "$(dirname "$0")/_read-input.sh" tool_input.command)"
 [ -z "$cmd" ] && exit 0
 
-block() { echo "Blocked by Product Kit safety hook: $1" >&2; exit 2; }
+block() { echo "Blocked by MakerLine safety hook: $1" >&2; exit 2; }
 
 # 1. Recursive force-delete anywhere (rm -rf, rm -fr, rm -r -f …).
 printf '%s' "$cmd" | grep -Eq '(^|[;&| ])rm[[:space:]]+(-[a-zA-Z]*r[a-zA-Z]*f|-[a-zA-Z]*f[a-zA-Z]*r|-r[[:space:]]+-f|-f[[:space:]]+-r)' \

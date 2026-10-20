@@ -24,7 +24,7 @@ android/
 .aider.chat.history.md
 .aider.input.history
 .aider.tags.cache.v*/
-# Product Kit upgrade backups
+# MakerLine upgrade backups
 .product-kit-backup/
 # Web build output & caches
 .next/

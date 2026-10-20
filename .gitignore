@@ -1,4 +1,4 @@
-# Product Kit repo
+# MakerLine repo
 node_modules/
 .next/
 dist/
@@ -10,7 +10,7 @@ test-results/
 .lighthouseci/
 *.tsbuildinfo
 next-env.d.ts
-product-kit.plugin
+makerline.plugin
 portfolio/index.html
 portfolio/PORTFOLIO.md
 .DS_Store

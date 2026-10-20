@@ -1,6 +1,6 @@
-# Getting started with the Product Kit
+# Getting started with MakerLine
 
-Plain-language guide. The kit lives in `~/Documents/product-kit` on your Mac.
+Plain-language guide. The kit lives in `~/Documents/makerline` on your Mac.
 
 ---
 
@@ -10,10 +10,10 @@ Works on macOS today. The terminal parts also run on Linux; Windows is untested 
 
 ### 0. Get the kit
 ```bash
-git clone https://github.com/sairam5294/product-kit ~/Documents/product-kit
-cd ~/Documents/product-kit
+git clone https://github.com/sairam5294/product-kit ~/Documents/makerline
+cd ~/Documents/makerline
 ```
-Planning to contribute? Fork it on GitHub first and clone your fork instead. The rest of this guide assumes the kit is at `~/Documents/product-kit`; any folder works, just adjust the paths.
+Planning to contribute? Fork it on GitHub first and clone your fork instead. The rest of this guide assumes the kit is at `~/Documents/makerline`; any folder works, just adjust the paths.
 
 ### 1. Check your Mac has the basics
 Open **Terminal** (Spotlight → "Terminal") and paste:
@@ -28,35 +28,35 @@ node -v && git --version && brew --version
 **Claude Code** (recommended; updates with one command):
 ```bash
 claude plugin marketplace add sairam5294/product-kit
-claude plugin install product-kit@product-kit-marketplace
+claude plugin install makerline@makerline
 ```
-Later, `claude plugin marketplace update product-kit-marketplace` picks up new versions.
+Later, `claude plugin marketplace update makerline` picks up new versions.
 
-Only want the idea stage (no building)? Install `idea-pack@product-kit-marketplace` instead — the same Idea Pack skills without the build phases. **Don't install both**: you'd see every skill twice (`/product-kit:…` and `/idea-pack:…`). If you did, remove `idea-pack` under Customize → Plugins.
+Only want the idea stage (no building)? Install `makerline-idea@makerline` instead — the same Idea Pack skills without the build phases. **Don't install both**: you'd see every skill twice (`/makerline:…` and `/makerline-idea:…`). If you did, remove `makerline-idea` under Customize → Plugins.
 
 **Claude app (desktop / web) — easiest: add the repo as a marketplace** (once; updates come from GitHub):
 1. Open **Customize** in the left sidebar → **Plugins**.
 2. Choose **Add marketplace** and enter `sairam5294/product-kit`.
-3. Find **product-kit** (or **idea-pack**) in the list → **Install**.
+3. Find **makerline** (or **makerline-idea**) in the list → **Install**.
 4. Later: **Check for updates** on that marketplace, or turn on **Sync automatically**.
 The marketplace installs whatever is on the `main` branch, so merge a release's pull request first.
 
 **Claude app — from a file instead** (for a build that isn't on `main` yet):
 ```bash
-./scripts/build-plugin.sh      # writes ../product-kit.plugin (a zip file)
+./scripts/build-plugin.sh      # writes ../makerline.plugin (a zip file)
 ```
-Then **Customize → Plugins → upload** and pick the file. Double-clicking the file or opening it in Finder does nothing — it has to be uploaded there. If the upload dialog greys it out, rename the copy to `product-kit.zip` (it is a zip) and upload that. To replace an older version: open the installed plugin → **Remove**, then upload the new one.
+Then **Customize → Plugins → upload** and pick the file. Double-clicking the file or opening it in Finder does nothing — it has to be uploaded there. If the upload dialog greys it out, rename the copy to `makerline.zip` (it is a zip) and upload that. To replace an older version: open the installed plugin → **Remove**, then upload the new one.
 
-Either way, Claude now knows the kit's skills (you'll see them as `/product-kit:…`). Plugins installed in the Claude app are saved to your account, so the same skills are available in Claude Code too.
+Either way, Claude now knows the kit's skills (you'll see them as `/makerline:…`). Plugins installed in the Claude app are saved to your account, so the same skills are available in Claude Code too.
 
 **Run everything with one command** (you don't need to call skills one by one):
-- `/product-kit:start` then your idea + *"give me everything"* → the whole Idea Pack in one go (add *"quick"* or *"deep"*).
-- After you approve: `/product-kit:start` *"set it all up"* → names + brand, stack, design system, full PRD, engineering docs and project setup in one go (it asks your picks once, up front).
-- Then `/product-kit:start` *"build it"* → one task at a time, each on its own branch.
-- Idea Pack only: `/idea-pack:start` + your idea.
+- `/makerline:start` then your idea + *"give me everything"* → the whole Idea Pack in one go (add *"quick"* or *"deep"*).
+- After you approve: `/makerline:start` *"set it all up"* → names + brand, stack, design system, full PRD, engineering docs and project setup in one go (it asks your picks once, up front).
+- Then `/makerline:start` *"build it"* → one task at a time, each on its own branch.
+- Idea Pack only: `/makerline-idea:start` + your idea.
 You can also just type the idea in plain words — the kit's skills trigger on "I have a new idea…".
 
-**Check it worked:** start a new chat and type `/product-kit:` — the skill list should appear. In Claude Code: `claude plugin list` shows `product-kit` with the version from the release.
+**Check it worked:** start a new chat and type `/makerline:` — the skill list should appear. In Claude Code: `claude plugin list` shows `makerline` with the version from the release.
 
 **Cursor, Codex and Copilot** need nothing here: every project you create in Part 2 carries their rules (`.cursor/rules/`, `AGENTS.md`, `.github/copilot-instructions.md`). **ChatGPT** can't read your repo: paste the project's `docs/CONTEXT_PACK.md` into a ChatGPT project. Which tool to use for what: say *"make my tool plan"* (the `tool-plan` skill).
 
@@ -65,9 +65,9 @@ Copy `owner/OWNER.example.md` to `owner/OWNER.md` (it is git-ignored, so your de
 
 ### 4. Stay current
 ```bash
-cd ~/Documents/product-kit && git pull
+cd ~/Documents/makerline && git pull
 ```
-Then re-run step 2's install (Claude Code: `claude plugin marketplace update product-kit-marketplace`) and, for existing projects, Part 3B.
+Then re-run step 2's install (Claude Code: `claude plugin marketplace update makerline`) and, for existing projects, Part 3B.
 
 ---
 
@@ -92,7 +92,7 @@ Then naming, tech stack, design system, the full PRD and the plan also work in t
 ### B. Building phases (code) — use Claude Code, Cursor or Codex
 Create the project folder with the kit's starter (in Terminal):
 ```bash
-cd ~/Documents/product-kit
+cd ~/Documents/makerline
 ./scripts/new-project.sh ~/Projects/bakery-orders --starter   # phone app (iOS + Android + web)
 # or
 ./scripts/new-project.sh ~/Projects/bakery-site --web         # website / landing page
@@ -135,28 +135,28 @@ All of them read the same `AGENTS.md` and `docs/product/` — switch any time, j
 ## Part 3 — Updating
 
 ### A. Update the kit itself (improve a skill, rule or starter)
-Easiest: open `~/Documents/product-kit` in **Claude Code** and ask, e.g.
-> "Update the Product Kit: the evaluation report should also include a pricing page benchmark. Then release it as 0.6.0."
+Easiest: open `~/Documents/makerline` in **Claude Code** and ask, e.g.
+> "Update MakerLine: the evaluation report should also include a pricing page benchmark. Then release it as 0.6.0."
 
 Claude edits the files in `plugin/` and runs the release. Or do it yourself:
 1. Edit files in **`plugin/`** only (never edit `template/.agents` — it's generated).
 2. Release:
    ```bash
-   cd ~/Documents/product-kit
+   cd ~/Documents/makerline
    ./scripts/release-kit.sh 0.6.0 "What changed, in one line"
    ```
-   This copies changes into the template, runs the kit tests, sets the version, adds a CHANGELOG line, rebuilds `~/Documents/product-kit.plugin`, and commits.
-3. **Reinstall the plugin in Claude**: Claude Code → `claude plugin marketplace update product-kit-marketplace` (after you push); Claude app → open the new `product-kit.plugin` → Install.
+   This copies changes into the template, runs the kit tests, sets the version, adds a CHANGELOG line, rebuilds `~/Documents/makerline.plugin`, and commits.
+3. **Reinstall the plugin in Claude**: Claude Code → `claude plugin marketplace update makerline` (after you push); Claude app → open the new `makerline.plugin` → Install.
 4. If the kit is on GitHub: `git push` (CI checks everything again).
 5. If you changed a skill, the monthly evals (3rd of each month) will tell you if it got worse. To check now: in Claude Code say "Run the kit evals following evals/RUNBOOK.md".
 
 ### B. Bring an existing project up to the new kit version
 ```bash
-cd ~/Documents/product-kit
+cd ~/Documents/makerline
 ./scripts/upgrade-project.sh ~/Projects/bakery-orders          # preview only
 ./scripts/upgrade-project.sh ~/Projects/bakery-orders --apply  # do it
 ```
-Kit files (skills, agents, rules, hooks) are replaced, with backups. **Your** files (AGENTS.md, settings, code, docs) are never overwritten — the output lists differences; ask your AI tool to "merge the Product Kit template changes into AGENTS.md".
+Kit files (skills, agents, rules, hooks) are replaced, with backups. **Your** files (AGENTS.md, settings, code, docs) are never overwritten — the output lists differences; ask your AI tool to "merge the MakerLine template changes into AGENTS.md".
 
 **Adopting a project that was built before the kit** (any stack, including Python): run the same command. The script notices the project has never seen the kit and switches to *adopt mode*: nothing that exists is overwritten (your CI, rules and scripts stay, and are listed in `.product-kit-keep` so later upgrades leave them alone), missing kit files are added, and `docs/product/STATUS.md` is created marked approved-by-adoption so the review, test and ship skills start from where the project really is. It warns if your `.gitignore` hides anything it added or if you already use another hook manager.
 
@@ -178,7 +178,7 @@ Or ask Claude: "Sync my Figma variables to design/tokens.json".
 ---
 
 ## If something goes wrong
-- "Blocked by Product Kit approval gate" → you haven't approved yet (`scripts/approve.sh`).
+- "Blocked by MakerLine approval gate" → you haven't approved yet (`scripts/approve.sh`).
 - "Blocked by safety hook" → the AI tried something risky (delete, force-push, read secrets). Good. Do it yourself if you really mean it.
 - Commit refused → read the message: usually a leaked key, lint error or the approval gate.
-- Lost track → "Where are we?" or `python3 ~/Documents/product-kit/scripts/portfolio.py` and open `portfolio/index.html`.
+- Lost track → "Where are we?" or `python3 ~/Documents/makerline/scripts/portfolio.py` and open `portfolio/index.html`.

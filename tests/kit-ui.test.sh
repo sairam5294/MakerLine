@@ -55,7 +55,7 @@ check "doc HTML is escaped"                '! has "<script>alert" "$B/doc?id=sam
 check "javascript: links not linked"       '! has "href=\"javascript" "$B/doc?id=sample-app&file=docs/product/ONE_PAGER.md"'
 check "new idea page 200"                  '[ "$(code "$B/new")" = 200 ]'
 check "skills page 200"                    '[ "$(code "$B/skills")" = 200 ]'
-check "skills lists start"                 'has "/product-kit:start" "$B/skills"'
+check "skills lists start"                 'has "/makerline:start" "$B/skills"'
 check "css served"                         '[ "$(code "$B/app.css")" = 200 ]'
 check "CSP header set"                     'has "Content-Security-Policy: default-src" -I "$B/"'
 check "unknown page 404"                   '[ "$(code "$B/nope")" = 404 ]'
@@ -75,7 +75,10 @@ TOKEN="$(sed -n 's/.*name="token" value="\([^"]*\)".*/\1/p' <<<"$NEWPAGE")"
 check "form without token refused"         '[ "$(code -d "pitch=An app for plant swaps" "$B/new")" = 403 ]'
 check "form makes a prompt"                'has "give me everything (quick)" -d "token=$TOKEN&pitch=An+app+for+plant+swaps&depth=quick" "$B/new"'
 check "form wrote nothing by default"      '[ "$(find "$TMP/projects" -name PITCH.md | wc -l)" -eq 0 ]'
-check "empty pitch shows an alert"         'has "role=\"alert\"" -d "token=$TOKEN&pitch=" "$B/new"'
+check "empty pitch shows error summary"   'has "id=\"error-summary\"" -d "token=$TOKEN&pitch=" "$B/new"'
+check "error page title starts Error:"    'has "<title>Error: New idea" -d "token=$TOKEN&pitch=" "$B/new"'
+check "error summary not role=alert"      '! has "role=\"alert\"" -d "token=$TOKEN&pitch=" "$B/new"'
+check "pitch marked required"             'has "aria-required=\"true\"" "$B/new"'
 check "save rejects traversal folder"      '[ "$(code -d "token=$TOKEN&pitch=An+app+for+plant+swaps&save=yes&folder=../evil" "$B/new")" = 400 ] && [ ! -e "$TMP/evil" ]'
 check "save writes PITCH.md when ticked"   '[ "$(code -d "token=$TOKEN&pitch=An+app+for+plant+swaps&save=yes&folder=plant-swap" "$B/new")" = 200 ] && [ -f "$TMP/projects/plant-swap/docs/product/PITCH.md" ]'
 check "save never overwrites"              '[ "$(code -d "token=$TOKEN&pitch=Another+idea+entirely&save=yes&folder=plant-swap" "$B/new")" = 400 ]'
@@ -97,5 +100,11 @@ if [ -n "$OTHER_IP" ] && [ "$OTHER_IP" != "127.0.0.1" ]; then
   check "unreachable on $OTHER_IP"         '! curl -s -m 2 -o /dev/null "http://$OTHER_IP:$PORT/"'
 fi
 
+# Browsers send the page's real Origin on form posts only if the referrer policy allows it ("no-referrer"
+# makes Chrome send "Origin: null" and every save is refused). Keep it same-origin.
+HDRS="$(curl -s -D - -o /dev/null "$B/new")"
+check "referrer policy lets the browser send its origin" 'grep -qi "^referrer-policy: same-origin" <<<"$HDRS"'
+TOKEN="$(grep -o 'name="token" value="[^"]*"' <<<"$NEWPAGE" | sed 's/.*value="//; s/"$//')"
+check "a same-origin form post is accepted" '[ "$(code -X POST -H "Origin: $B" --data-urlencode "token=$TOKEN" --data-urlencode "pitch=A booking app" --data-urlencode depth=quick "$B/new")" = 200 ]'
 echo "kit-ui: $pass passed, $fail failed"
 [ "$fail" -eq 0 ]

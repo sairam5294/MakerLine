@@ -1,4 +1,4 @@
-# CI for the Product Kit repo itself: keeps generated files in sync and both starters green.
+# CI for the MakerLine repo itself: keeps generated files in sync and both starters green.
 name: Kit CI
 
 on:

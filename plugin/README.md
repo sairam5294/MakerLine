@@ -1,42 +1,44 @@
-# Product Kit Plugin
+# MakerLine
 
-**The open-source designer's AI toolkit.** Takes an idea from "I have a new idea" to a shipped web, iOS or Android product — honest evaluation, competitors, design direction, PRD, engineering docs, repo setup, build, review, test, ship — with accessibility (WCAG 2.2 AA, accessible worldwide), UX, security (OWASP 2025) and testing standards built in and enforced. Designed for the Claude desktop app and Claude Code; the same rules travel to Cursor, Codex and Copilot through every project it creates.
+**Know if it's worth building. Then build it right.**
+
+MakerLine turns a product idea into an honest verdict, real competitors, wireframes and a draft PRD. Once you approve, it helps you build and ship the product — engineering docs, repo setup, build, review, test, ship — with WCAG 2.2 AA accessibility, UX, security (OWASP 2025) and tests enforced at every step. Designed for the Claude desktop app and Claude Code; the same rules travel to Cursor, Codex, Copilot and 12 more AI tools through every project it creates.
 
 Nothing is built until **you** approve the idea: the kit cannot write `Evaluation: APPROVED` itself.
 
 ## Installation
 
-**Claude app (desktop or web):** Customize → Plugins → **Add marketplace** → `sairam5294/product-kit` → install **product-kit**. Turn on *Sync automatically* for updates.
+**Claude app (desktop or web):** Customize → Plugins → **Add marketplace** → `sairam5294/product-kit` → install **makerline**. Turn on *Sync automatically* for updates.
 
 **Claude Code:**
 ```bash
 claude plugin marketplace add sairam5294/product-kit
-claude plugin install product-kit@product-kit-marketplace
+claude plugin install makerline@makerline
 ```
 
-Only want the thinking stage? Install **idea-pack** instead (same Idea Pack skills, no build phases). Don't install both — every skill would appear twice.
+Only want the thinking stage? Install **makerline-idea** instead (same Idea Pack skills, no build phases). Don't install both — every skill would appear twice.
 
 ## Try it
 
 Connect an empty folder to a new chat, then type one of these:
 
-- *"/product-kit:start — Give me everything for this idea: a booking app for small physio clinics"*
-- *"/product-kit:start — Give me everything for this idea, quick: …"* (fast first look)
+- *"/makerline:start — Give me everything for this idea: a booking app for small physio clinics"*
+- *"/makerline:start — Give me everything for this idea, quick: …"* (fast first look)
 - *"Who are my competitors and what's my real differentiator?"*
 - *"Set it all up"* (after you approve: name and brand, stack, design system, full PRD, engineering docs, repo setup)
 - *"Make my tool plan — I have Claude, ChatGPT and Cursor"*
 - *"Review this branch before I merge"*
 
-…or type `/product-kit:` in any chat to see every skill.
+…or type `/makerline:` in any chat to see every skill.
 
 ## One command runs the whole kit
 
 | You want | Type |
 |---|---|
-| The whole Idea Pack at once | `/product-kit:start` + *"Give me everything for this idea: …"* (add *quick* or *deep*) |
-| Everything after approval, at once | `/product-kit:start` + *"set it all up"* — asks your picks once (name, stack, look) |
-| Build | `/product-kit:start` + *"build it"* — one task per session, each on its own branch |
-| Where am I? | `/product-kit:start` |
+| The whole Idea Pack at once | `/makerline:start` + *"Give me everything for this idea: …"* (add *quick* or *deep*) |
+| Everything after approval, at once | `/makerline:start` + *"set it all up"* — asks your picks once (name, stack, look) |
+| Build | `/makerline:start` + *"build it"* — one task per session, each on its own branch |
+| Where am I? | `/makerline:start` |
 
 ## Commands
 
@@ -101,7 +103,7 @@ Specialists the skills call in parallel (you can also address them directly):
 
 ### A new idea, start to one-pager
 ```
-/product-kit:start
+/makerline:start
 Give me everything for this idea: a fair-booking app for shared amenities in gated communities.
 ```
 You answer short question rounds (or say *"just do it"* and get marked defaults). You get a brief, a clarity log, an evaluation with competitors and a path to Go, a design direction with clickable wireframes, a draft PRD and a one-pager — all in `docs/product/` and `design/`.
@@ -109,13 +111,13 @@ You answer short question rounds (or say *"just do it"* and get marked defaults)
 ### Approve, then set everything up
 ```
 I approve the pivot.
-/product-kit:start — set it all up
+/makerline:start — set it all up
 ```
 The kit asks your picks once (name from the top 3, stack A or B, visual direction), then writes the brand kit, stack ADR, design tokens, full PRD, engineering docs and the repo setup, including rules for Claude, Cursor, Codex and Copilot.
 
 ### Build one task
 ```
-/product-kit:start — build it
+/makerline:start — build it
 ```
 Picks the next `PLAN.md` task, creates a correctly named branch (`feat/Oct-19-booking-form`), writes failing tests, builds, runs the checks, and opens a pull request.
 

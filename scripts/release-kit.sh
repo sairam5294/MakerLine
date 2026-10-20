@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Publish a new version of the Product Kit after you (or an AI) changed files in plugin/.
+# Publish a new version of MakerLine after you (or an AI) changed files in plugin/.
 #
 #   ./scripts/release-kit.sh 0.6.0 "Short note of what changed"
 #
 # It: checks the version, copies plugin/ into template/, runs the kit tests,
-# sets the version, adds a CHANGELOG line, and rebuilds ../product-kit.plugin (next to the kit folder).
+# sets the version, adds a CHANGELOG line, and rebuilds ../makerline.plugin (next to the kit folder).
 # Afterwards: reinstall the plugin in Claude, and run upgrade-project.sh on projects you want updated.
 set -euo pipefail
 KIT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -26,8 +26,8 @@ bash tests/idea-pack.test.sh
 
 # 3. Set the version everywhere it's shown.
 sed -i.bak "s/\"version\": *\"$OLD\"/\"version\": \"$NEW\"/" "$MANIFEST" && rm -f "$MANIFEST.bak"
-sed -i.bak "s/^# Product Kit (Claude plugin) v.*/# Product Kit (Claude plugin) v${NEW%.*}/" plugin/README.md && rm -f plugin/README.md.bak
-sed -i.bak "s/^# Product Kit v[0-9.]*/# Product Kit v${NEW%.*}/" README.md && rm -f README.md.bak
+sed -i.bak "s/^# MakerLine (Claude plugin) v.*/# MakerLine (Claude plugin) v${NEW%.*}/" plugin/README.md && rm -f plugin/README.md.bak
+sed -i.bak "s/^# MakerLine v[0-9.]*/# MakerLine v${NEW%.*}/" README.md && rm -f README.md.bak
 
 # 4. Changelog entry at the top (under the title).
 today="$(date +%Y-%m-%d)"
@@ -41,13 +41,13 @@ entry = f"\n## {new} — {today}\n{note}\n"
 p.write_text(t[:i] + entry + t[i:] if i >= 0 else t + entry)
 PY
 
-# 5. Rebuild the Claude plugin files next to the kit folder (full kit + standalone Idea Pack).
+# 5. Rebuild the Claude plugin files next to the kit folder (full kit + MakerLine Idea).
 "$KIT/scripts/build-plugin.sh" >/dev/null
 python3 scripts/build-idea-pack.py --zip "$KIT/.." >/dev/null
 
 # 6. Commit if this is a git repo.
-if git rev-parse >/dev/null 2>&1; then git add -A && git commit -q -m "Product Kit v$NEW: $NOTE" && echo "✔ committed (push with: git push)"; fi
+if git rev-parse >/dev/null 2>&1; then git add -A && git commit -q -m "MakerLine v$NEW: $NOTE" && echo "✔ committed (push with: git push)"; fi
 
-echo "✅ Product Kit $OLD → $NEW"
-echo "Next: 1) open ../product-kit.plugin in Claude and install (replaces the old one)"
+echo "✅ MakerLine $OLD → $NEW"
+echo "Next: 1) open ../makerline.plugin in Claude and install (replaces the old one)"
 echo "      2) update projects: ./scripts/upgrade-project.sh ~/Projects/<app>   (preview, then --apply)"

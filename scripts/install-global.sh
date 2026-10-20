@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install Product Kit skills and agents at USER level (available in every project).
+# Install MakerLine skills and agents at USER level (available in every project).
 # Usage: ./scripts/install-global.sh claude|cursor|codex [more...]
 #   claude -> ~/.claude/skills + ~/.claude/agents (Claude Code CLI; Cowork/desktop should use the .plugin file instead)
 #   cursor -> ~/.cursor/skills + ~/.cursor/agents

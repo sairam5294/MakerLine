@@ -57,7 +57,7 @@ Turn a launched product into evidence: what the numbers and users say, what to d
 4. **Decide.** Output 3 findings · 1–3 actions → PLAN.md tasks. Decide with evidence: persevere, iterate, or pivot — tie back to EVALUATION kill criteria.
 5. **Retro (every 2–4 weeks)** → `docs/product/LESSONS.md`: what worked · what didn't · what we'll change · kit improvements (skill/rule/standard that was wrong or missing).
 6. **Outcome log (weeks 4, 12 and when parked).** Add/update this project's row in the kit's `portfolio/OUTCOMES.md`: verdict & score at approval vs what happened, metric vs target, total cost from COSTS.md. When a pattern repeats across projects, add a calibration note for evaluate-idea.
-7. **Project end / major milestone.** List kit improvements as concrete edits (file + change) for the Product Kit repo's `LESSONS.md` and CHANGELOG.
+7. **Project end / major milestone.** List kit improvements as concrete edits (file + change) for the MakerLine repo's `LESSONS.md` and CHANGELOG.
 
 ## Output
 

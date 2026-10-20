@@ -1,6 +1,6 @@
 # Privacy and data handling
 
-This page covers the **product-kit** and **idea-pack** Claude plugins and this website. Short version: the plugins are instructions and checklists that run inside your own Claude session. They have no server, collect nothing and send nothing to the author.
+This page covers the **makerline** and **makerline-idea** Claude plugins and this website. Short version: the plugins are instructions and checklists that run inside your own Claude session. They have no server, collect nothing and send nothing to the author.
 
 ## What the plugins touch
 
@@ -20,7 +20,7 @@ This page covers the **product-kit** and **idea-pack** Claude plugins and this w
 - No secrets: the rules forbid putting keys, passwords or users' personal data in prompts or documents
 - Connectors read first; they only write (create a ticket, push, deploy) when you ask in the chat
 
-## The full Product Kit, when you build
+## The full MakerLine, when you build
 
 Projects created with the full kit include safety settings that block reading `.env` secret files and destructive commands in Claude Code. The apps you build are yours: the kit's standards ask for the minimum personal data, and for verifiable parental consent before any children's data.
 

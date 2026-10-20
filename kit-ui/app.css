@@ -1,4 +1,4 @@
-/* Product Kit cockpit styles.
+/* MakerLine cockpit styles.
    Served as a file (not inline) so the Content-Security-Policy can stay strict: style-src 'self'.
    All colours are tokens below; every text/background pair is >= 4.5:1 in light and dark. */
 

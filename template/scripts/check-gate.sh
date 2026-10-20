@@ -6,7 +6,7 @@
 set -euo pipefail
 
 status="docs/product/STATUS.md"
-[ -f "$status" ] || exit 0                                  # Not a Product Kit project → skip.
+[ -f "$status" ] || exit 0                                  # Not a MakerLine project → skip.
 grep -q "Evaluation: APPROVED" "$status" && exit 0          # Approved → nothing to check.
 
 is_allowed() {

@@ -1,4 +1,4 @@
-// ESLint (flat config). Expo's recommended rules + a few Product Kit rules.
+// ESLint (flat config). Expo's recommended rules + a few MakerLine rules.
 const { defineConfig } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
 

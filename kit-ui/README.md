@@ -1,6 +1,6 @@
-# Product Kit cockpit (kit-ui)
+# MakerLine cockpit (kit-ui)
 
-A small web page on your own computer that shows every Product Kit project and tells you **what to paste into Claude next**. The chat stays the engine; this is the dashboard beside it.
+A small web page on your own computer that shows every MakerLine project and tells you **what to paste into Claude next**. The chat stays the engine; this is the dashboard beside it.
 
 ## Run it
 
@@ -18,7 +18,7 @@ Open **http://127.0.0.1:8765/**. Stop it with Ctrl+C. Needs Python 3.9+ only: no
 |---|---|
 | **Projects** | A card per folder with `docs/product/STATUS.md`: name, current phase, approval, next step, last updated, a *Stale* badge after 14 days |
 | **Project** | Phase timeline (done, up next, waiting for you, skipped, not started, with the ★ approval gate), every `docs/**/*.md` as a readable page, and **Run next**: the folder to open and the exact prompt to paste, with a Copy button |
-| **New idea** | Pitch, depth (Quick / Standard / Deep), launch markets, platforms → a ready-to-paste `/product-kit:start … — give me everything` prompt |
+| **New idea** | Pitch, depth (Quick / Standard / Deep), launch markets, platforms → a ready-to-paste `/makerline:start … — give me everything` prompt |
 | **Skills** | Every skill in `plugin/skills` with the first sentence of its description |
 
 Approval is never a prompt: when the Idea Pack is ready, Run next shows `scripts/approve.sh` to run in Terminal yourself.

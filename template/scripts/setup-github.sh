@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-time GitHub setup for a Product Kit project (or the kit itself).
+# One-time GitHub setup for a MakerLine project (or the kit itself).
 #   1. creates a PRIVATE GitHub repo from this folder and pushes it
 #   2. protects `main`: changes must come through a pull request with green CI
 #

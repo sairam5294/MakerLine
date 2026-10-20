@@ -1,6 +1,6 @@
 # Security policy
 
-Product Kit ships safety hooks, permission rules, CI checks and starter apps that other people run on their machines and deploy. A weakness in any of those matters.
+MakerLine ships safety hooks, permission rules, CI checks and starter apps that other people run on their machines and deploy. A weakness in any of those matters.
 
 ## Supported versions
 Only the latest minor version receives fixes. Upgrade projects with `scripts/upgrade-project.sh`.

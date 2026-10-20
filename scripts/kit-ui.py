@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Product Kit cockpit: a small local web page that shows your projects and the next prompt to paste.
+"""MakerLine cockpit: a small local web page that shows your projects and the next prompt to paste.
 
 The chat (Claude, Cursor, Codex) stays the engine. This page only *reads* your projects'
 docs/product/ files and tells you what to say next. It never calls an AI API and never
@@ -215,23 +215,23 @@ def run_next(project: dict) -> dict:
     extra = []
     if focus and PHASE_SKILLS.get(focus["id"]) and focus["id"] not in ("✦",):
         extra.append({"label": f"Or run just this phase ({focus['name']})",
-                      "text": f"/product-kit:{PHASE_SKILLS[focus['id']]}", "kind": "prompt"})
+                      "text": f"/makerline:{PHASE_SKILLS[focus['id']]}", "kind": "prompt"})
 
     if not any(p["kind"] != "current" and p["kind"] != "todo" for p in phases if p["id"] != "★"):
         return {"title": "Start the Idea Pack", "why": "Nothing has run yet. Describe the idea in a sentence or two.",
                 "primary": {"label": "Prompt to paste into Claude",
-                            "text": "/product-kit:start <describe your idea in one or two sentences> — give me everything",
+                            "text": "/makerline:start <describe your idea in one or two sentences> — give me everything",
                             "kind": "prompt"},
                 "extra": [], "focus": focus_name}
     if not approved:
         if open_ids & (PRE_GATE - {"3"}):
             return {"title": "Continue the Idea Pack", "why": f"Next up: {focus_name}.",
-                    "primary": {"label": "Prompt to paste into Claude", "text": "/product-kit:start — continue", "kind": "prompt"},
+                    "primary": {"label": "Prompt to paste into Claude", "text": "/makerline:start — continue", "kind": "prompt"},
                     "extra": extra, "focus": focus_name}
         more = []
         if "3" in open_ids:
             more.append({"label": "Optional, recommended first: test demand with real people",
-                         "text": "/product-kit:validate-idea", "kind": "prompt"})
+                         "text": "/makerline:validate-idea", "kind": "prompt"})
         return {"title": "Your decision: approve, change or park",
                 "why": "The Idea Pack is ready. Read ONE_PAGER.md, then decide. Claude can't approve for you — "
                        "that's on purpose. To approve, run this in Terminal inside the project folder:",
@@ -240,22 +240,22 @@ def run_next(project: dict) -> dict:
                 "extra": more, "focus": focus_name}
     if open_ids & SETUP:
         all_fresh = all(p["kind"] in ("todo", "current") for p in phases if p["id"] in SETUP)
-        text = "/product-kit:start — set it all up" if all_fresh else "/product-kit:start — continue"
+        text = "/makerline:start — set it all up" if all_fresh else "/makerline:start — continue"
         return {"title": "Set it all up", "why": f"Approved. Next up: {focus_name}. Have your name, stack and visual picks ready.",
                 "primary": {"label": "Prompt to paste into Claude", "text": text, "kind": "prompt"},
                 "extra": extra, "focus": focus_name}
     if open_ids & {"8", "9"}:
         return {"title": "Build it", "why": f"Next up: {focus_name}. One task per session.",
-                "primary": {"label": "Prompt to paste into Claude", "text": "/product-kit:start — build it", "kind": "prompt"},
+                "primary": {"label": "Prompt to paste into Claude", "text": "/makerline:start — build it", "kind": "prompt"},
                 "extra": extra, "focus": focus_name}
     for pid in ("10", "11", "12"):
         if pid in open_ids:
             return {"title": f"Next: {focus_name}", "why": "Run this in Claude Code, Cursor or Codex inside the project.",
                     "primary": {"label": "Prompt to paste into Claude",
-                                "text": f"/product-kit:{PHASE_SKILLS[pid]}", "kind": "prompt"},
+                                "text": f"/makerline:{PHASE_SKILLS[pid]}", "kind": "prompt"},
                     "extra": [], "focus": focus_name}
     return {"title": "Launched — keep learning", "why": "Every phase is done. Review metrics and feedback weekly.",
-            "primary": {"label": "Prompt to paste into Claude", "text": "/product-kit:post-launch", "kind": "prompt"},
+            "primary": {"label": "Prompt to paste into Claude", "text": "/makerline:post-launch", "kind": "prompt"},
             "extra": [], "focus": focus_name}
 
 
@@ -394,7 +394,7 @@ def layout(title: str, body: str, active: str = "") -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>{esc(title)} · Product Kit</title>
+<title>{esc(title)} · MakerLine</title>
 <link rel="stylesheet" href="/app.css">
 <script src="/app.js" defer></script>
 </head>
@@ -402,7 +402,7 @@ def layout(title: str, body: str, active: str = "") -> str:
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">◆</span> Product Kit <span class="brand-sub">cockpit</span></a>
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">◆</span> MakerLine <span class="brand-sub">cockpit</span></a>
     <nav aria-label="Main">
       <ul>{nav("/", "Projects", "projects")}{nav("/new", "New idea", "new")}{nav("/skills", "Skills", "skills")}</ul>
     </nav>
@@ -574,9 +574,9 @@ def build_idea_prompt(form: dict, saved_rel: str | None = None) -> str:
     depth = form.get("depth", "standard")
     bits = []
     if saved_rel:
-        bits.append(f"/product-kit:start — my idea is in {saved_rel}/docs/product/PITCH.md — give me everything")
+        bits.append(f"/makerline:start — my idea is in {saved_rel}/docs/product/PITCH.md — give me everything")
     else:
-        bits.append(f"/product-kit:start {form.get('pitch', '').strip()} — give me everything")
+        bits.append(f"/makerline:start {form.get('pitch', '').strip()} — give me everything")
     if depth in ("quick", "deep"):
         bits[0] += f" ({depth})"
     if form.get("markets", "").strip():
@@ -598,12 +598,15 @@ def page_new(form: dict, errors: dict, result: dict, token: str, can_save: bool)
     summary = ""
     if errors:
         items = "".join(f'<li><a href="#{k}">{esc(v)}</a></li>' for k, v in errors.items())
-        summary = f'<div class="error-summary" role="alert" tabindex="-1" id="error-summary"><h2>Please fix {len(errors)} thing{"s" if len(errors) > 1 else ""}</h2><ul>{items}</ul></div>'
+        # No role="alert" here on purpose: app.js moves focus to this box after a failed submit, and
+        # focus alone makes a screen reader read it (via aria-labelledby). Having both made it read twice.
+        # The page <title> also starts with "Error: " so the problem is heard as soon as the page loads.
+        summary = f'<div class="error-summary" tabindex="-1" id="error-summary" aria-labelledby="error-summary-h"><h2 id="error-summary-h">Please fix {len(errors)} thing{"s" if len(errors) > 1 else ""}</h2><ul>{items}</ul></div>'
     depth = form.get("depth", "standard")
     radios = "".join(
         f'<label class="choice"><input type="radio" name="depth" value="{k}"{" checked" if k == depth else ""}> '
         f'<span><strong>{v}</strong> <span class="muted">{hint}</span></span></label>'
-        for (k, v), hint in zip(DEPTHS.items(), ("first look, ~50–70k tokens", "recommended default", "more research, more tokens")))
+        for (k, v), hint in zip(DEPTHS.items(), ("first look, ~120k tokens", "recommended default", "more research, more tokens")))
     chosen = form.get("platforms", [])
     boxes = "".join(
         f'<label class="choice"><input type="checkbox" name="platforms" value="{esc(x)}"{" checked" if x in chosen else ""}> {esc(x)}</label>'
@@ -635,9 +638,10 @@ def page_new(form: dict, errors: dict, result: dict, token: str, can_save: bool)
 {out}
 <form class="panel form" method="post" action="/new" novalidate>
   <input type="hidden" name="token" value="{esc(token)}">
-  <label for="pitch">Your idea, in a sentence or two</label>
+  <label for="pitch">Your idea, in a sentence or two <span class="muted">(required)</span></label>
   <p class="hint" id="pitch-hint">Who it's for and what problem it solves. Plain words are fine.</p>
-  <textarea id="pitch" name="pitch" rows="4"{described("pitch", "pitch-hint")}>{esc(form.get("pitch", ""))}</textarea>
+  <!-- aria-required, not required: the form is novalidate so our own error summary does the checking -->
+  <textarea id="pitch" name="pitch" rows="4" aria-required="true"{described("pitch", "pitch-hint")}>{esc(form.get("pitch", ""))}</textarea>
   {err("pitch")}
   <fieldset><legend>Depth</legend>{radios}</fieldset>
   <label for="markets">Launch markets</label>
@@ -648,15 +652,16 @@ def page_new(form: dict, errors: dict, result: dict, token: str, can_save: bool)
   {save_block}
   <button type="submit" class="btn btn--primary">Make my prompt</button>
 </form>"""
-    return layout("New idea", body, "new")
+    # WCAG 3.3.1: prefix the title so a failed submit is announced the moment the page loads.
+    return layout("Error: New idea" if errors else "New idea", body, "new")
 
 
 def page_skills(skills: list) -> str:
     rows = "".join(
-        f'<li class="skill"><h2><code>/product-kit:{esc(s["name"])}</code></h2><p>{esc(s["summary"])}</p></li>'
+        f'<li class="skill"><h2><code>/makerline:{esc(s["name"])}</code></h2><p>{esc(s["summary"])}</p></li>'
         for s in skills) or "<li>No skills found in plugin/skills.</li>"
     body = f"""<h1>Skills</h1>
-<p class="lede">{len(skills)} skills in <code>plugin/skills</code>. Type any of these in Claude. Most people only need <code>/product-kit:start</code>.</p>
+<p class="lede">{len(skills)} skills in <code>plugin/skills</code>. Type any of these in Claude. Most people only need <code>/makerline:start</code>.</p>
 <ul class="skills" role="list">{rows}</ul>"""
     return layout("Skills", body, "skills")
 
@@ -685,7 +690,10 @@ def make_handler(root: pathlib.Path, port: int, can_save: bool):
                              "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; "
                              "form-action 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'")
             self.send_header("X-Content-Type-Options", "nosniff")
-            self.send_header("Referrer-Policy", "no-referrer")
+            # same-origin: no referrer ever leaves this page for another site, but the browser still sends
+            # this page's own Origin on form posts — which the CSRF check below relies on. ("no-referrer"
+            # made Chrome send "Origin: null", so every save was refused.)
+            self.send_header("Referrer-Policy", "same-origin")
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
             if self.command != "HEAD":
@@ -786,7 +794,7 @@ def make_handler(root: pathlib.Path, port: int, can_save: bool):
                 pitch_file = target / "docs" / "product" / "PITCH.md"
                 pitch_file.parent.mkdir(parents=True, exist_ok=True)
                 pitch_file.write_text(
-                    f"# Pitch\n\n_Saved {dt.date.today()} from the Product Kit cockpit._\n\n{form['pitch']}\n\n"
+                    f"# Pitch\n\n_Saved {dt.date.today()} from the MakerLine cockpit._\n\n{form['pitch']}\n\n"
                     f"- Depth: {DEPTHS[form['depth']]}\n- Launch markets: {form['markets'] or 'not set'}\n"
                     f"- Platforms: {', '.join(form['platforms']) or 'not set'}\n", encoding="utf-8")
                 result["saved"] = pitch_file.relative_to(root).as_posix()
@@ -802,7 +810,7 @@ def make_handler(root: pathlib.Path, port: int, can_save: bool):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Local Product Kit cockpit (read-only by default).")
+    ap = argparse.ArgumentParser(description="Local MakerLine cockpit (read-only by default).")
     ap.add_argument("--projects", default="~/Projects", help="folder that holds your projects (default ~/Projects)")
     ap.add_argument("--port", type=int, default=8765, help="port on 127.0.0.1 (default 8765)")
     ap.add_argument("--no-save", action="store_true", help="hide the 'save PITCH.md' option: never write anything")
@@ -811,7 +819,7 @@ def main():
     if not root.is_dir():
         sys.exit(f"Projects folder not found: {root}  (use --projects <folder>)")
     server = http.server.ThreadingHTTPServer((HOST, args.port), make_handler(root, args.port, not args.no_save))
-    print(f"Product Kit cockpit → http://{HOST}:{args.port}/   (projects: {root})  ·  Ctrl+C to stop", flush=True)
+    print(f"MakerLine cockpit → http://{HOST}:{args.port}/   (projects: {root})  ·  Ctrl+C to stop", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

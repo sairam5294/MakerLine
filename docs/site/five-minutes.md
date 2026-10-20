@@ -1,4 +1,4 @@
-# 5 minutes with Product Kit
+# 5 minutes with MakerLine
 
 Five steps from nothing to a one-page answer about your idea. You need a Claude account and the Claude app (desktop or web) or Claude Code. No terminal and no coding are needed for these steps.
 
@@ -6,16 +6,16 @@ The 5 minutes is your time. Claude's research runs while you wait; a Quick run u
 
 ## 1. Install the plugin (1 minute)
 
-In the Claude app: **Customize** → **Plugins** → **Add marketplace** → enter `sairam5294/product-kit` → find **product-kit** (or **idea-pack**, if you only want the thinking stage) → **Install**.
+In the Claude app: **Customize** → **Plugins** → **Add marketplace** → enter `sairam5294/product-kit` → find **makerline** (or **makerline-idea**, if you only want the thinking stage) → **Install**.
 
 In Claude Code:
 
 ```bash
 claude plugin marketplace add sairam5294/product-kit
-claude plugin install product-kit@product-kit-marketplace
+claude plugin install makerline@makerline
 ```
 
-Install one of the two plugins, not both. [Which one?](index.md#idea-pack-or-the-full-kit)
+Install one of the two plugins, not both. [Which one?](index.md#which)
 
 ## 2. Connect an empty folder (30 seconds)
 
@@ -27,9 +27,9 @@ The kit reads and writes only inside the folder you connect. It has no server of
 
 Type the command, the word *quick*, and your idea in two to five sentences:
 
-> /product-kit:start — Give me everything for this idea, quick: a booking app for small physio clinics, so patients can rebook their next session from a text message instead of calling the front desk.
+> /makerline:start — Give me everything for this idea, quick: a booking app for small physio clinics, so patients can rebook their next session from a text message instead of calling the front desk.
 
-With the Idea Pack plugin, type `/idea-pack:start` instead.
+With the MakerLine Idea plugin, type `/makerline-idea:start` instead.
 
 The kit may ask a short round of questions. Answer what you know. If you don't know, say *"just do it"*: it picks sensible defaults and marks each one so you can confirm it later. Every unknown is written down in `CLARITY.md` with the decision it blocks, rather than guessed silently.
 
@@ -56,7 +56,7 @@ You have three good choices:
 | If the one-pager says… | Do this |
 |---|---|
 | The idea is promising but unproven | Run the **next test** it suggests, or say *"validate demand"* for interview questions, a landing page or a prototype test |
-| You want to go deeper first | Run `/product-kit:start` again with *"give me everything for this idea"* (no *quick*) for the design direction, clickable wireframes and a draft PRD |
+| You want to go deeper first | Run `/makerline:start` again with *"give me everything for this idea"* (no *quick*) for the design direction, clickable wireframes and a draft PRD |
 | It isn't worth it | Stop. You spent five minutes, not five weeks |
 
 Nothing gets built until **you** approve the evaluation. In the Claude app, say *"I approve the evaluation"* and Claude records your exact words. AI tools cannot approve for you.

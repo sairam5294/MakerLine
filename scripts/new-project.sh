@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Create (or upgrade) a project from the Product Kit.
+# Create (or upgrade) a project from MakerLine.
 #
 #   ./scripts/new-project.sh ~/Projects/my-app            → rules, skills, agents, safety, CI (any stack)
 #   ./scripts/new-project.sh ~/Projects/my-app --starter  → the above + tested Expo/Supabase app (iOS/Android/web)
@@ -55,10 +55,10 @@ chmod +x .claude/hooks/*.sh scripts/*.sh 2>/dev/null || true
 # New repo → first commit contains the scaffold, so the approval gate only checks YOUR later changes.
 if [ ! -d .git ] && command -v git >/dev/null; then
   git init -q -b main
-  git add -A && git commit -q --no-verify -m "chore: scaffold from Product Kit v$VERSION" \
+  git add -A && git commit -q --no-verify -m "chore: scaffold from MakerLine v$VERSION" \
     || echo "   (Couldn't make the first commit — set git user.name/user.email, then commit.)"
 fi
 
-echo "✅ Project ready at $DEST (Product Kit v$VERSION)"
+echo "✅ Project ready at $DEST (MakerLine v$VERSION)"
 [ -n "$STARTER" ] && echo "   Next: cd \"$DEST\" && npm install && cp .env.example .env.local && npx lefthook install"
 echo "   Then open it in Claude, Cursor or Codex and say: \"I have a new idea\"."

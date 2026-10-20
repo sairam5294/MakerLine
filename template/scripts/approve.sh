@@ -6,7 +6,7 @@
 #   scripts/approve.sh "landing page only"  → approve with a note (e.g. a validation landing page)
 set -euo pipefail
 status="docs/product/STATUS.md"
-[ -f "$status" ] || { echo "Run this inside a Product Kit project (no $status here)."; exit 1; }
+[ -f "$status" ] || { echo "Run this inside a MakerLine project (no $status here)."; exit 1; }
 grep -q "Evaluation: APPROVED" "$status" && { echo "Already approved."; exit 0; }
 
 note="${1:-}"

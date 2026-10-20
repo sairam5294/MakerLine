@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Upgrade an existing project to the current Product Kit version.
+# Upgrade an existing project to the current MakerLine version.
 #
 #   ./scripts/upgrade-project.sh ~/Projects/my-app           → preview only (nothing changes)
 #   ./scripts/upgrade-project.sh ~/Projects/my-app --apply   → apply the upgrade
@@ -34,7 +34,7 @@ KIT_OWNED=(.agents/skills .cursor/agents .cursor/rules .codex/agents .claude/hoo
 YOURS=(AGENTS.md CLAUDE.md .claude/settings.json .codex/config.toml .cursor/permissions.json .cursor/mcp.json
        .mcp.json lefthook.yml .gitignore .cursorignore)
 
-echo "Product Kit upgrade: $OLD → $NEW  ($DEST)"
+echo "MakerLine upgrade: $OLD → $NEW  ($DEST)"
 [ "$ADOPT" = 1 ] && echo "Adopt mode: this project was not created by the kit. Existing files are kept; only missing kit files are added."
 [ "$APPLY" = "--apply" ] || echo "(preview — run again with --apply to make changes)"
 
@@ -114,7 +114,7 @@ if [ "$ADOPT" = 1 ]; then
         -e "s/^| \([1-9][ab]*\) | \(.*\) | Not started | | \(.*\)|$/| \1 | \2 | Done (before kit) | $today | \3|/" \
         "$tpl/STATUS.md" > "$DEST/docs/product/STATUS.md"
     [ -f "$DEST/docs/product/DECISIONS.md" ] || cp "$tpl/DECISIONS.md" "$DEST/docs/product/DECISIONS.md"
-    printf '| %s | Adopted into Product Kit %s: existing code, CI and rules kept; kit skills, agents and hooks added | — | Owner decision | — |\n' "$today" "$NEW" >> "$DEST/docs/product/DECISIONS.md"
+    printf '| %s | Adopted into MakerLine %s: existing code, CI and rules kept; kit skills, agents and hooks added | — | Owner decision | — |\n' "$today" "$NEW" >> "$DEST/docs/product/DECISIONS.md"
     [ -f "$DEST/docs/product/COSTS.md" ] || cp "$tpl/COSTS.md" "$DEST/docs/product/COSTS.md"
     if [ ! -f "$DEST/docs/product/OWNER.md" ]; then
       if [ -f "$KIT/owner/OWNER.md" ]; then cp "$KIT/owner/OWNER.md" "$DEST/docs/product/OWNER.md"; else cp "$KIT/owner/OWNER.example.md" "$DEST/docs/product/OWNER.md"; fi
@@ -142,5 +142,5 @@ if [ "$APPLY" = "--apply" ]; then
   # Refresh the profile from the kit (it is git-ignored in projects, so this is the only way it travels).
   [ -f "$KIT/owner/OWNER.md" ] && cp "$KIT/owner/OWNER.md" "$DEST/docs/product/OWNER.md" 2>/dev/null || true
   echo; echo "✅ Upgraded to $NEW. Backups: ${backup#$DEST/}. Tip: ask your AI tool"
-  echo "   \"merge the Product Kit template changes into AGENTS.md/CLAUDE.md (see upgrade output)\"."
+  echo "   \"merge the MakerLine template changes into AGENTS.md/CLAUDE.md (see upgrade output)\"."
 fi

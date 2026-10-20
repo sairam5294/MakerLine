@@ -1,4 +1,4 @@
-# Product Kit Starter — Expo (iOS · Android · Web) + Supabase
+# MakerLine Starter — Expo (iOS · Android · Web) + Supabase
 
 Tested base for new products: accessible components, design tokens with automatic contrast checks,
 passwordless sign-in, secure session storage, RLS-protected database, unit + e2e + accessibility tests.

@@ -1,4 +1,4 @@
-# AI review on every pull request: Claude runs the Product Kit quality-review
+# AI review on every pull request: Claude runs the MakerLine quality-review
 # (accessibility, UX, security, code, tests) on the PR diff and comments on the PR.
 #
 # One-time setup (pick ONE):

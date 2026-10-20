@@ -27,7 +27,7 @@ check "kit cursor rules added alongside"        '[ "$(ls "$P/.cursor/rules" | wc
 check "kit scripts added"                       '[ -x "$P/scripts/check-gate.sh" ] && [ -x "$P/scripts/approve.sh" ]'
 check "STATUS.md approved by adoption"          'grep -q "^Evaluation: APPROVED (.*adopted" "$P/docs/product/STATUS.md"'
 check "phases 1-9 marked done, 10-13 untouched" '[ "$(grep -c "Done (before kit)" "$P/docs/product/STATUS.md")" = 13 ] && grep -q "^| 10 | Review | Not started" "$P/docs/product/STATUS.md"'
-check "DECISIONS.md records the adoption"       'grep -q "Adopted into Product Kit" "$P/docs/product/DECISIONS.md"'
+check "DECISIONS.md records the adoption"       'grep -q "Adopted into MakerLine" "$P/docs/product/DECISIONS.md"'
 check "warns about pre-commit"                  'grep -q "pre-commit/husky" <<<"$out"'
 check "warns about git-ignored additions"       'grep -q "git-ignored" <<<"$out" && grep -q ".cursor/agents" <<<"$out"'
 check "keep list written with ci.yml + rule"    'grep -qx ".github/workflows/ci.yml" "$P/.product-kit-keep" && grep -qx ".cursor/rules/testing.mdc" "$P/.product-kit-keep"'

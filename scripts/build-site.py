@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Product Kit docs site (GitHub Pages) from the repo's own Markdown.
+"""Build the MakerLine docs site (GitHub Pages) from the repo's own Markdown.
 
 Why: the site must never drift from the repo. Reference pages (README, GETTING-STARTED,
 the Idea Pack README, the ClubSlot example pack, CHANGELOG, LESSONS) are rendered as-is.
@@ -28,17 +28,18 @@ SITE = "docs/site"  # hand-written site pages (Markdown; simple HTML blocks allo
 
 # (source in repo, output page, nav label or None, page title)
 PAGES = [
-    (f"{SITE}/index.md", "index.html", None, "Product Kit — know if your idea is worth building"),
-    (f"{SITE}/five-minutes.md", "five-minutes.html", "Start in 5 minutes", "5 minutes with Product Kit"),
+    (f"{SITE}/index.md", "index.html", None, "MakerLine — know if it's worth building. Then build it right."),
+    (f"{SITE}/five-minutes.md", "five-minutes.html", "Start in 5 minutes", "5 minutes with MakerLine"),
     ("GETTING-STARTED.md", "getting-started.html", "Getting started", "Getting started"),
     (f"{SITE}/case-studies.md", "case-studies/index.html", "Case studies", "Case studies"),
-    ("idea-pack/README.md", "idea-pack.html", "Idea Pack", "Idea Pack"),
-    ("README.md", "overview.html", "Docs", "Product Kit — full overview"),
+    ("makerline-idea/README.md", "makerline-idea.html", "MakerLine Idea", "MakerLine Idea"),
+    ("README.md", "overview.html", "Docs", "MakerLine — full overview"),
     ("CHANGELOG.md", "changelog.html", "Changelog", "Changelog"),
     ("LESSONS.md", "lessons.html", None, "What the kit got wrong"),
     (f"{SITE}/case-rhythmbuddy.md", "case-studies/rhythmbuddy.html", None, "Case study: RhythmBuddy"),
     (f"{SITE}/case-clubslot.md", "case-studies/clubslot.html", None, "Case study: ClubSlot"),
     (f"{SITE}/privacy.md", "privacy.html", None, "Privacy and data handling"),
+    (f"{SITE}/accessibility.md", "accessibility.html", None, "Accessibility statement"),
     (f"{EX}/README.md", "example/index.html", None, "Example Idea Pack: ClubSlot"),
 ]
 EXAMPLE_DOCS = ["ONE_PAGER", "README", "PROJECT_BRIEF", "CLARITY", "EVALUATION", "COMPETITORS",
@@ -67,17 +68,20 @@ PAGE = """<!doctype html>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="https://sairam5294.github.io/product-kit/assets/social-preview.png">
+<meta property="og:image:alt" content="MakerLine: know if it's worth building. Then build it right.">
+<meta name="twitter:card" content="summary_large_image">
 <title>{title}</title>
+<link rel="icon" href="{root}assets/favicon.ico" sizes="48x48">
 <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="{root}assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
+<link rel="manifest" href="{root}assets/site.webmanifest">
 <link rel="preload" href="{root}assets/fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}assets/site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap bar">
-<a class="brand" href="{root}index.html"><img src="{root}assets/favicon.svg" alt="" width="28" height="28">Product Kit</a>
+<a class="brand" href="{root}index.html"><picture><source srcset="{root}assets/mark-on-dark.svg" media="(prefers-color-scheme: dark)"><img src="{root}assets/favicon.svg" alt="" width="28" height="28"></picture>MakerLine</a>
 <nav class="main" aria-label="Main"><ul>{nav}</ul></nav>
 </div></header>
 <main id="main" tabindex="-1"{main_class}>
@@ -91,6 +95,7 @@ PAGE = """<!doctype html>
 <nav aria-label="Footer"><ul>
 <li><a href="{repo}">Source on GitHub</a></li>
 <li><a href="{root}lessons.html">What the kit got wrong</a></li>
+<li><a href="{root}accessibility.html">Accessibility</a></li>
 <li><a href="{root}privacy.html">Privacy</a></li>
 <li><a href="{repo}/issues/new/choose">Open an issue</a></li>
 </ul></nav>
@@ -215,6 +220,12 @@ def main() -> None:
     nav_items = [(label, dest) for _, dest, label, _ in PAGES if label]
     for src, dest, _, title in PAGES:
         render(src, dest, title, nav_items, out)
+    # Old addresses from before the rename keep working: an instant redirect plus a visible link.
+    for old, new in {"idea-pack.html": "makerline-idea.html"}.items():
+        (out / old).write_text(
+            f'<!doctype html><html lang="en"><meta charset="utf-8"><title>Moved to {new}</title>'
+            f'<meta http-equiv="refresh" content="0; url={new}"><link rel="canonical" href="{new}">'
+            f'<p>This page moved: <a href="{new}">MakerLine Idea</a>.</p></html>\n', encoding="utf-8")
     (out / ".nojekyll").write_text("")
     print(f"Built {len(PAGES)} pages into {out}")
 
