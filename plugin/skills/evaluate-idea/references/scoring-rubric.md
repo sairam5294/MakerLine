@@ -35,7 +35,7 @@ Score the idea **as briefed**; the strongest version's score is the target. Appl
 - **Pivot** — weighted < 5.5 (or a dimension ≤ 3 without a clear fix) but the problem or audience is real and a specific pivot's target score reaches ≥ 5.5; propose 1–3 pivots and recommend one.
 - Also state **confidence** (Low / Medium / High) based on evidence quality.
 
-For learning/portfolio projects, say so and score a second lens — a "Drop" as a business can still be a "Go" as a portfolio project. Show both verdicts.
+**Which lens sets the verdict (MUST):** the goal the owner **stated** (brief §3 from the owner, not a default). Learning/portfolio → the portfolio lens below decides; personal tool → the personal-tool rule. **No stated goal → the business (product) lens decides**, the assumed goal is a Q-id in CLARITY, and other lenses get one line: "If this is a learning project: …". Never pick a goal because it softens the verdict. With a stated learning/portfolio goal, still show the business verdict too — a "Drop" as a business can still be a "Go" as a portfolio project.
 
 | Portfolio / learning lens | Weight |
 |---|---|

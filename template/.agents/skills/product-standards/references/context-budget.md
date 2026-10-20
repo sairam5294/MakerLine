@@ -13,21 +13,21 @@ Tokens = cost + quality. Most tokens are not the documents — they are the conv
 ## 2. Idea Pack depth (pick before starting; default Standard)
 | Mode | Use when | Produces | Research budget | Target |
 |---|---|---|---|---|
-| **Quick** — one guide: `../../evaluate-idea/references/quick-run.md` | "Worth a weekend?" | brief, CLARITY, short EVALUATION (600–1,500 prose words; *Quick: optional* sections may go), COMPETITORS Lite (`../../evaluate-idea/references/competitors-lite.md`), ONE_PAGER | ≤ 8 searches, ≤ 4 page reads | ≤ 25 tool calls · ~70–100k target (measured 120k with the one-file guide, 19 calls, Oct 2026) |
+| **Quick** — one guide: `../../evaluate-idea/references/quick-run.md` | "Worth a weekend?" | brief, CLARITY, short EVALUATION (500–1,000 prose words), COMPETITORS Lite (`../../evaluate-idea/references/competitors-lite.md`), ONE_PAGER | ≤ 4 searches, ≤ 1 page read (batched; no snippet trade) | ≤ 12 tool calls · ~70–100k target (measured 120k at 0.12.1 with 7 searches, 4 reads, 19 calls) |
 | **Standard** | Deciding whether to build | + DESIGN_DIRECTION, wireframes (≤ 8 screens), PRD draft | ≤ 15 searches, ≤ 8 page reads | ≤ 45 tool calls · ~120–150k |
 | **Deep** | Before spending money or pitching | + all four competitor rings, 12+ screens, Figma, payer research | ≤ 30 searches | ~250k+ |
 
-Searches that return bare links (no snippets): two unused searches buy one extra page read, so search in two batches. A redirect that lands on the page you wanted counts as one read.
+Searches that return bare links (no snippets), Standard and Deep: two unused searches buy one extra page read, so search in two batches. Quick has no such trade. A redirect that lands on the page you wanted counts as one read.
 
 ## 3. Size caps (words, tables included; WARNs in `check_idea_pack.py`)
 | Document | Quick | Standard | Deep |
 |---|---|---|---|
-| EVALUATION.md | 2,000 | 3,000 | 4,500 |
-| COMPETITORS.md | 600 | 1,200 | 2,000 |
+| EVALUATION.md | 1,400 | 3,000 | 4,500 |
+| COMPETITORS.md | 450 | 1,200 | 2,000 |
 | DESIGN_DIRECTION.md | — | 1,500 | 2,500 |
 | PRD.md (draft) | — | 2,000 (full stories for Musts, one line per Should/Could) | 3,000 |
-| CLARITY.md | 800 | 1,000 | 1,500 |
-| ONE_PAGER.md | 550 | 550 | 550 |
+| CLARITY.md | 600 | 1,000 | 1,500 |
+| ONE_PAGER.md | 450 | 550 | 550 |
 
 ## 4. Token rules for the Idea Pack (MUST)
 1. **Research once, cite everywhere.** Facts go to `docs/product/research/<topic>.md` with IDs (R1, R2…); other docs cite the ID. Facts from the kit's own references cite the file (e.g. `accessibility-law-summary.md`) instead of a URL.

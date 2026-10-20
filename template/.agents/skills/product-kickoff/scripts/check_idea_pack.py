@@ -21,8 +21,8 @@ REQUIRED["standard"] = REQUIRED["quick"] + ["DESIGN_DIRECTION.md", "PRD.md"]
 REQUIRED["deep"] = REQUIRED["standard"]
 
 # Prose word ranges per mode (tables, code and the sources list don't count).
-EVAL_WORDS = {"quick": (600, 1500), "standard": (900, 2000), "deep": (1500, 3200)}
-ONE_PAGER_MAX = 550
+EVAL_WORDS = {"quick": (500, 1000), "standard": (900, 2000), "deep": (1500, 3200)}
+ONE_PAGER_MAX = {"quick": 450, "standard": 550, "deep": 550}
 
 # Phrases each document must contain (case-insensitive). Kept loose on purpose:
 # they confirm a section exists, not its wording.
@@ -192,11 +192,11 @@ def main():
                 report("FAIL", f"{f.name}: broken link → {target}")
 
     caps = {
-        "EVALUATION.md": {"quick": 2000, "standard": 3000, "deep": 4500},
-        "COMPETITORS.md": {"quick": 600, "standard": 1200, "deep": 2000},
+        "EVALUATION.md": {"quick": 1400, "standard": 3000, "deep": 4500},
+        "COMPETITORS.md": {"quick": 450, "standard": 1200, "deep": 2000},
         "DESIGN_DIRECTION.md": {"quick": 10**9, "standard": 1500, "deep": 2500},
         "PRD.md": {"quick": 10**9, "standard": 2000, "deep": 3000},
-        "CLARITY.md": {"quick": 800, "standard": 1000, "deep": 1500},
+        "CLARITY.md": {"quick": 600, "standard": 1000, "deep": 1500},
     }
     for name, by_mode in caps.items():
         f = docs / name
@@ -217,8 +217,8 @@ def main():
     op = docs / "ONE_PAGER.md"
     if op.exists() and want("ONE_PAGER.md"):
         w = prose_words(op.read_text(encoding="utf-8"))
-        if w > ONE_PAGER_MAX:
-            report("WARN", f"ONE_PAGER.md: {w} words (max {ONE_PAGER_MAX})")
+        if w > ONE_PAGER_MAX[a.mode]:
+            report("WARN", f"ONE_PAGER.md: {w} words (max {ONE_PAGER_MAX[a.mode]})")
     cl = docs / "CLARITY.md"
     if cl.exists() and want("CLARITY.md"):
         rows = [r for r in cl.read_text(encoding="utf-8").splitlines() if re.match(r"\|\s*Q-\d+", r)]

@@ -96,7 +96,7 @@ If **~~source control** is connected (adopted project):
 - No hype and no cynicism; every criticism comes with a fix or a test.
 - "Unknown + how to find out" beats an invented number; never invent competitors, reviews or figures.
 - Judge feasibility for *this* owner's time, skills and budget; always assess distribution.
-- Learning or portfolio projects get the second lens in the rubric: say if it's a Drop as a business but a Go as a portfolio or personal tool.
+- The verdict follows the goal the owner **stated**; no stated goal → the business lens decides and other lenses get one line ("If this is a learning project: …"), with the assumed goal as a CLARITY question. Learning or portfolio projects get the second lens in the rubric: say if it's a Drop as a business but a Go as a portfolio or personal tool.
 
 ## Tips
 

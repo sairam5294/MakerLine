@@ -1,12 +1,12 @@
-<!-- Quick mode. Cap 2,000 words incl. tables (aim 1,200–1,600 in all; prose alone 600–1,500). Same section numbers as the Standard template so a later Standard run fills the gaps. Cite R-ids; link COMPETITORS.md instead of repeating it. -->
+<!-- Quick EVALUATION. Cap 1,400 words incl. tables (prose 500–1,000). Standard section numbers; cite R-ids; link COMPETITORS.md, don't repeat it. -->
 # Idea Evaluation Report — {{working name}}
 
-_Quick · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.md (Lite) · Open questions: CLARITY.md · Run Standard for the full report_
+_Quick · {{date}} · PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.md (Lite) · Open questions: CLARITY.md · Run Standard for the full report_
 
 ## 1. Verdict
-**{{Go · Go with changes · Pivot · Drop/Park}}** — confidence {{Low/Medium/High}}
-{{2–3 sentences.}}
+**{{Go · Go with changes · Pivot · Drop/Park}}** — confidence {{Low/Medium/High}}. {{2 sentences.}}
 - Promising: · Biggest reality check: · The one change that most improves the odds: · Next step:
+- Lens: {{the owner's stated goal, or "business (no goal stated)"}} · If this is a learning project: {{portfolio-lens score and verdict in one line, or delete}}
 
 | Dimension | Score | Why (evidence) | Raise it by… |
 |---|---|---|---|
@@ -20,48 +20,36 @@ _Quick · {{date}} · Based on PROJECT_BRIEF v{{n}} · Competitors: COMPETITORS.
 | Risk | /10 | | |
 | **Weighted total** | **/10** | calculation | **target: /10** |
 
-_An unknown fact that decides a score caps it at 5 (rubric in quick-run.md)._ Calibration: No calibration data yet (Quick).
-
 ## 2. The strongest version
-{{One paragraph: audience, wedge, form, why it would win.}} Honest ceiling: {{one line}}
+{{Audience, wedge, form, why it would win — one paragraph.}} Honest ceiling: {{one line}}
 
 ## 3. Reality check
-- Fatal flaws (or "none found") → fix:
-| Risk | Likelihood | Impact | Mitigation or test |
-|---|---|---|---|
-- What would have to be true (2–3, each → §12 test or CLARITY id):
+Fatal flaws (or "none found") → fix. Top risks as `| Risk | Likelihood | Impact | Mitigation or test |`. What would have to be true (2–3, each → a §12 test or Q-id).
 
 ## 5. Users and market
-- Primary persona (one line each: who, context, pain, accessibility needs):
-- Size: one bottom-up line with maths and R-ids
-- First 100 users: the one channel to try first and why
+Persona (who, context, pain, accessibility needs) · size: one bottom-up line with maths and R-ids · first 100 users: the channel to try first.
 
-## 6–7. Competitors and differentiation (detail in COMPETITORS.md)
-- Leaders in one line each, where this idea could win:
-- Differentiators that passed the 5-question test:
-- Positioning: For {{audience}} who {{need}}, {{name}} is a {{category}} that {{benefit}}. Unlike {{alternative}}, it {{differentiator}}.
+## 6–7. Competitors and differentiation
+Leaders in one line each and where this idea could win · differentiators that passed the 5-question test · positioning statement. Detail stays in COMPETITORS.md.
 
 ## 8. Path to Go
 | Weak dimension (score) | Change | Evidence that would confirm it | Expected score after |
 |---|---|---|---|
-- MVP keep / cut:
+
+MVP keep / cut in one line.
 
 ## 9–10. Money, feasibility and tools
-- Price and payer (sourced benchmark): · MVP time at {{hours}}/week: · Monthly cost now → at 1,000 users:
-- Provisional stack in one line (final choice in tech-stack):
+Price and payer (sourced benchmark) · MVP weeks at {{hours}}/week · monthly cost now → at 1,000 users · provisional stack in one line.
 
 ## 11. Accessibility, inclusion and compliance
-_Not legal advice; source: `accessibility-law-summary.md`._
-| Who could be excluded / which law applies | Why | Must do |
-|---|---|---|
-(≤ 5 rows: the groups most at risk, the launch market's accessibility law, the data-protection law.)
+_Not legal advice; source: `accessibility-law-summary.md`._ ≤ 5 rows `| Who could be excluded / which law | Why | Must do |`.
 
 ## 12. Cheapest validation tests
-| Test | Assumption (CLARITY id) | Success threshold | Kill criterion |
+| Test | Assumption (Q/A id) | Success threshold | Kill criterion |
 |---|---|---|---|
 
 ## 13. Questions to answer next
-Top 3 from CLARITY.md, ranked by what they unblock.
+Top 3 Q-ids, ranked by what they unblock.
 
 ## 14. Sources
 R-ids → `docs/product/research/`.
