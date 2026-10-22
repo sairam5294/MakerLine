@@ -1,7 +1,7 @@
 # Context index — <product>
 
 <!-- HOW TO FILL: a thin map, not a story. Every AI tool reads AGENTS.md, then this file, then only the
-files listed for its task. Update the "Field" table at every handoff (the handoff skill does this) and
+files listed for its task. Point at sections in long documents (`docs/RULES.md#payments`). Update the "Field" table at every handoff (the handoff skill does this) and
 run `context_check.py check .`. Paths are relative to the project root; add #section to point at part of a file. -->
 
 | Field | Value |
@@ -36,3 +36,11 @@ context pack for any tool. **private** never leaves this machine and never goes 
 | docs/product/STATUS.md | public |
 | docs/product/research/ | project |
 | .env | private |
+
+## Related repos
+
+<!-- Only when the product spans several repositories (code, docs, design system). Delete this section otherwise. -->
+
+| Repo | Path | Verified commit |
+|---|---|---|
+| <name> | <../relative/path> | <short hash> |

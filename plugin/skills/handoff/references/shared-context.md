@@ -48,11 +48,18 @@ Mark tiers in the index's "Privacy tiers" table. Secrets, personal data, named r
 
 **One writer at a time.** One tool owns a file or task at a time. Parallel code work uses `scripts/worktree.sh`; parallel research writes separate files that one tool then links.
 
-## 5. What `check` catches
+## 5. Larger projects
 
-Missing or empty index fields · index paths that don't exist · a `Verified commit` that isn't on this branch, or context files that changed after it · HANDOFF over 40 lines, STATUS over 60 · duplicate or malformed decision and assumption IDs · assumptions without an owner or a review-by date, and expired evidence · a HANDOFF newer than the index.
+- **Point at sections, not whole documents.** In "Read by task", `docs/RULES.md#payments` loads only the Payments section (down to the next heading of the same level), and `docs/product/DECISIONS.md#D-05` loads only that decision's row. `check` fails if the section is missing; `pack` includes only the section.
+- **One row per area or team.** Add rows such as "Customer app", "Partner app", "Admin web", each listing that area's spec sections and code folder, so a tool working on one app never loads the others. Add an Owner column when different people own different areas.
+- **Products split across repositories** (code, docs, design system) list each sibling in a "Related repos" table: `| Repo | Path | Verified commit |`, with paths relative to this project. `check` fails when a sibling is missing and warns when it changed after its verified commit. Index rows can then point into it (`../product-docs/docs/RULES.md#payments`).
+- Keep one index per product, in the repository where most work happens.
 
-## 6. Context recovery test
+## 6. What `check` catches
+
+Missing or empty index fields · index paths that don't exist · a `Verified commit` that isn't on this branch, or context files that changed after it · HANDOFF over 40 lines, STATUS over 60 · duplicate or malformed decision and assumption IDs · assumptions without an owner or a review-by date, and expired evidence · a HANDOFF newer than the index · a section anchor that doesn't exist · a related repo that's missing or changed after its verified commit.
+
+## 7. Context recovery test
 
 The direct test of the contract: a tool that has **only** the official context answers ten questions. Score with `context_check.py score answers.md key.json`. Each project keeps its answer key outside the project folder, so the tool being tested can't read it (format: `evals/context-recovery/README.md` in the kit). Run it at least once per tool, and after changing the contract.
 

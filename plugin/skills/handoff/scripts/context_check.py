@@ -106,15 +106,48 @@ def section(text: str, heading: str) -> str:
     return match.group(1) if match else ""
 
 
-def paths_in(cell: str) -> list[str]:
-    """Paths in a 'Read' cell: comma separated, optional backticks, optional #section."""
+def entries_in(cell: str) -> list[tuple[str, str]]:
+    """(path, section) pairs in a 'Read' cell: comma separated, optional backticks, optional #section."""
     out = []
     for part in cell.split(","):
         part = part.strip().strip("`").strip()
         if not part or part in ("-", "—"):
             continue
-        out.append(part.split("#", 1)[0].strip().strip("`"))
+        path, _, anchor = part.partition("#")
+        out.append((path.strip().strip("`"), anchor.strip()))
     return out
+
+
+def paths_in(cell: str) -> list[str]:
+    return [path for path, _ in entries_in(cell)]
+
+
+def slug(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def extract_section(text: str, anchor: str) -> str | None:
+    """The part of a Markdown file under the heading whose slug matches the anchor, down to the
+    next heading of the same or a higher level. Large docs stay out of the pack; only the
+    section a task needs goes in. Also matches a table row that starts with the anchor (e.g. D-05)."""
+    lines = text.splitlines()
+    want = slug(anchor)
+    for i, line in enumerate(lines):
+        match = re.match(r"^(#{1,6})\s+(.*)$", line)
+        if match and (slug(match.group(2)) == want or slug(match.group(2)).startswith(want + "-")):
+            level = len(match.group(1))
+            end = len(lines)
+            for j in range(i + 1, len(lines)):
+                nxt = re.match(r"^(#{1,6})\s", lines[j])
+                if nxt and len(nxt.group(1)) <= level:
+                    end = j
+                    break
+            return "\n".join(lines[i:end])
+    rows = [line for line in lines if re.match(rf"^\|\s*{re.escape(anchor)}\s*\|", line)]
+    if rows:
+        header = next((line for line in lines if line.startswith("|")), "")
+        return "\n".join([header, "|" + "---|" * (header.count("|") - 1), *rows]) if header else "\n".join(rows)
+    return None
 
 
 def parse_date(value: str) -> dt.date | None:
@@ -150,11 +183,18 @@ def read_index(root: pathlib.Path, report: Report) -> dict | None:
             if len(row) >= 2:
                 fields[row[0]] = row[1]
     reads: list[tuple[str, list[str]]] = []
+    anchors: dict[str, list[tuple[str, str]]] = {}
     read_table = find_table(text, "Task type")
     if read_table:
         for row in read_table[1:]:
             if len(row) >= 2 and row[0]:
                 reads.append((row[0], paths_in(row[1])))
+                anchors[row[0]] = entries_in(row[1])
+    repos: list[tuple[str, str, str]] = []
+    for repo_table in (tb for tb in tables(text) if tb and tb[0] and tb[0][0].lower() == "repo"):
+        for row in repo_table[1:]:
+            if len(row) >= 3 and row[0]:
+                repos.append((row[0], row[1].strip("` "), row[2].strip("` ")))
     tiers: dict[str, str] = {}
     tier_table = find_table(text, "Path")
     if tier_table:
@@ -162,7 +202,7 @@ def read_index(root: pathlib.Path, report: Report) -> dict | None:
             if len(row) >= 2 and row[0]:
                 for p in paths_in(row[0]):
                     tiers[p] = row[1].lower()
-    return {"fields": fields, "reads": reads, "tiers": tiers, "text": text}
+    return {"fields": fields, "reads": reads, "anchors": anchors, "repos": repos, "tiers": tiers, "text": text}
 
 
 def tier_of(path: str, tiers: dict[str, str]) -> str:
@@ -199,6 +239,11 @@ def check_index(root: pathlib.Path, index: dict, report: Report, today: dt.date)
                 continue
             if not (root / p).exists():
                 report.error(f"{INDEX}: task '{name}' points to missing file {p}")
+    for name, entries in index["anchors"].items():
+        for p, anchor in entries:
+            file = root / p
+            if anchor and file.is_file() and extract_section(file.read_text(encoding="utf-8"), anchor) is None:
+                report.error(f"{INDEX}: task '{name}' points to section #{anchor}, which isn't in {p}")
     for p, tier in index["tiers"].items():
         if tier not in TIERS:
             report.error(f"{INDEX}: privacy tier for {p} must be one of {', '.join(TIERS)} (got '{tier}')")
@@ -226,6 +271,30 @@ def check_commit(root: pathlib.Path, index: dict, report: Report) -> None:
     if changed_files:
         shown = ", ".join(changed_files[:5]) + (" …" if len(changed_files) > 5 else "")
         report.warn(f"context files changed after the verified commit {commit}: {shown}. Re-read them, then update the index")
+
+
+def check_repos(root: pathlib.Path, index: dict, report: Report) -> None:
+    """Products split across repositories (apps, docs, design system) list each in a 'Repo' table,
+    so a tool knows the docs repo moved on even when the code repo didn't."""
+    for name, rel, commit in index["repos"]:
+        if rel.startswith("<") or commit.startswith("<"):
+            report.warn(f"{INDEX}: the 'Related repos' row '{name}' is still the template; fill it in or delete the section")
+            continue
+        path = (root / rel).resolve()
+        if not path.is_dir():
+            report.error(f"{INDEX}: related repo '{name}' isn't at {rel}; clone it there or fix the path")
+            continue
+        head = git(path, "rev-parse", "HEAD")
+        if head is None:
+            report.error(f"{INDEX}: related repo '{name}' at {rel} isn't a git repository")
+            continue
+        full = git(path, "rev-parse", "--verify", "--quiet", f"{commit}^{{commit}}") if commit else None
+        if not full:
+            report.error(f"{INDEX}: related repo '{name}': verified commit '{commit}' isn't in that repository")
+        elif full != head:
+            changed = (git(path, "diff", "--name-only", full, head) or "").splitlines()
+            if changed:
+                report.warn(f"related repo '{name}' has {len(changed)} changed file(s) since {commit}; re-check what your task reads there")
 
 
 def check_limits(root: pathlib.Path, report: Report) -> None:
@@ -321,6 +390,7 @@ def cmd_check(args: argparse.Namespace) -> int:
     if index:
         check_index(root, index, report, today)
         check_commit(root, index, report)
+        check_repos(root, index, report)
         check_handoff(root, index, report)
     return report.print()
 
@@ -360,17 +430,17 @@ def cmd_pack(args: argparse.Namespace) -> int:
     if not index:
         return report.print()
     rows = dict(index["reads"])
-    start = next((paths for name, paths in index["reads"] if name.lower().startswith("any")), [])
     task = next((name for name in rows if name.lower() == args.task.lower()), None)
     if task is None:
         print(f"FAIL  no task '{args.task}' in {INDEX}. Choose one of: {', '.join(rows)}")
         return 1
-    wanted: list[str] = []
-    for p in start + rows[task]:
-        if p not in wanted:
-            wanted.append(p)
+    start_entries = next((e for name, e in index["anchors"].items() if name.lower().startswith("any")), [])
+    wanted: list[tuple[str, str]] = []
+    for entry in start_entries + index["anchors"][task]:
+        if entry not in wanted:
+            wanted.append(entry)
     included, skipped = [], []
-    for p in wanted:
+    for p, anchor in wanted:
         tier = tier_of(p, index["tiers"])
         if tier == "private" or (args.public_only and tier != "public"):
             skipped.append(f"{p} ({tier})")
@@ -380,6 +450,12 @@ def cmd_pack(args: argparse.Namespace) -> int:
             skipped.append(f"{p} (missing)")
             continue
         body = summarise_review(file) if file.name == "REVIEW.json" else file.read_text(encoding="utf-8")
+        if anchor:
+            section_text = extract_section(body, anchor)
+            if section_text is None:
+                skipped.append(f"{p}#{anchor} (section not found)")
+                continue
+            body = section_text
         body_lines = body.splitlines()
         if len(body_lines) > args.max_lines:
             body = "\n".join(body_lines[: args.max_lines]) + f"\n… (cut at {args.max_lines} lines; ask for the rest)"
@@ -387,7 +463,7 @@ def cmd_pack(args: argparse.Namespace) -> int:
             if pattern.search(body):
                 print(f"FAIL  {p} contains something that looks like a secret ({pattern.pattern[:24]}…). Remove it or mark the file private.")
                 return 1
-        included.append((p, body))
+        included.append((f"{p}#{anchor}" if anchor else p, body))
     commit = git(root, "rev-parse", "--short", "HEAD") or "not a git repository"
     created = dt.date.fromisoformat(args.today) if args.today else dt.date.today()
     fields = index["fields"]

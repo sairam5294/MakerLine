@@ -112,5 +112,28 @@ printf '## C01\nDemo is half-built.\n## C02\nNo task.\n## C03\nD-01, approved fo
 out="$($CC score answers.md key.json || true)"
 echo "$out" | grep -q '1/3 passed' && echo "$out" | grep -q 'missing: T-09' && echo "$out" | grep -q 'wrong: approved for build' && ok
 
+# 14. Scale: a section anchor packs only that section; a missing section fails the check.
+printf '# Big doc\n## Intro\nintro text\n## Payments\npay rules here\n### Refunds\nrefund rule\n## Other\nother text\n' > docs/product/BIG.md
+cp docs/product/CONTEXT_INDEX.md /tmp/ci2.bak.$$
+printf '| Payments | docs/product/BIG.md#payments, docs/product/DECISIONS.md#D-01 | big doc section only |\n' > /tmp/row.$$
+python3 -c "import sys;p='docs/product/CONTEXT_INDEX.md';t=open(p).read();r=open(sys.argv[1]).read();t=t.replace('| Review |',r+'| Review |',1);open(p,'w').write(t)" /tmp/row.$$
+git add -A && git commit -qm big
+$CC pack . --task payments --tool ChatGPT >/dev/null
+grep -q 'refund rule' docs/CONTEXT_PACK.md && ! grep -q 'other text' docs/CONTEXT_PACK.md && grep -q 'Narrow to one city' docs/CONTEXT_PACK.md && ok
+sed -i.b 's/BIG.md#payments/BIG.md#shipping/' docs/product/CONTEXT_INDEX.md && rm -f docs/product/CONTEXT_INDEX.md.b
+$CC check . --today 2026-10-22 | grep -q 'section #shipping' && ok
+
+# 15. Scale: related repos are checked for existence and drift.
+cp /tmp/ci2.bak.$$ docs/product/CONTEXT_INDEX.md
+R="$TMP/docs-repo"; mkdir -p "$R" && git -C "$R" init -q && git -C "$R" -c user.email=t@e -c user.name=T commit -q --allow-empty -m one
+rc="$(git -C "$R" rev-parse --short HEAD)"
+printf '\n## Related repos\n\n| Repo | Path | Verified commit |\n|---|---|---|\n| Product docs | ../docs-repo | %s |\n' "$rc" >> docs/product/CONTEXT_INDEX.md
+out="$($CC check . --today 2026-10-22)" || { echo "$out"; fail "current related repo should pass"; }
+echo x > "$R/new.md" && git -C "$R" add -A && git -C "$R" -c user.email=t@e -c user.name=T commit -qm two
+$CC check . --today 2026-10-22 | grep -q "related repo 'Product docs' has 1 changed file" && ok
+sed -i.b 's#| ../docs-repo |#| ../nowhere |#' docs/product/CONTEXT_INDEX.md && rm -f docs/product/CONTEXT_INDEX.md.b
+if $CC check . --today 2026-10-22 >/dev/null; then fail "missing related repo should fail"; fi; ok
+cp /tmp/ci2.bak.$$ docs/product/CONTEXT_INDEX.md; rm -f /tmp/ci2.bak.$$ /tmp/row.$$
+
 rm -f /tmp/ci.bak.$$
 echo "context-check: $pass checks passed"
