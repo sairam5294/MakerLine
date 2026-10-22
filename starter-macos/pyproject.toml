@@ -1,0 +1,39 @@
+# Tool settings for the macOS starter. The app itself is built with setup.py (py2app);
+# this file only configures ruff (lint + import order + format), mypy and pytest.
+[project]
+name = "break-reminder"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+# MakerLine kit files are replaced on every kit upgrade, so they follow the kit's style, not ours.
+extend-exclude = [".agents", ".product-kit-backup", "build", "dist", ".venv"]
+
+[tool.ruff.lint]
+# E/F/W: errors and pyflakes · I: import order · B: likely bugs · UP: modern syntax · S: security
+select = ["E", "F", "W", "I", "B", "UP", "S"]
+ignore = [
+    "S101",  # assert is how pytest checks things
+    "S603",  # subprocess with a fixed argument list (no shell) is the safe form
+    "S607",  # macOS tools (hdiutil, codesign) are called by name on purpose
+]
+
+[tool.mypy]
+python_version = "3.11"
+# AppKit/PyObjC have no type stubs (and aren't installed on Linux CI): treat them as Any.
+ignore_missing_imports = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+strict_equality = true
+# PyObjC's runtime imports confuse "unused ignore" checks across Linux and macOS.
+warn_unused_ignores = false
+exclude = '(^|/)(\.agents|\.product-kit-backup|build|dist|\.venv)/'
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# "." lets tests import app.*; "scripts" lets them import build_tokens.
+pythonpath = [".", "scripts"]
+addopts = ["--strict-markers", "-ra"]

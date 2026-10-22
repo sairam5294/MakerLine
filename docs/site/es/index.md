@@ -4,18 +4,18 @@
 <p class="eyebrow">Plugin de Claude de código abierto · Gratis · Licencia MIT</p>
 <h1 class="words"><span>Descubre</span> <span>si</span> <span>vale</span> <span>la</span> <span>pena</span> <span>construirlo.</span> <span>Luego</span> <span>constrúyelo</span> <span>bien.</span></h1>
 <svg class="line-tick" viewBox="0 0 240 24" aria-hidden="true" focusable="false"><path d="M2 12H202L210 19L228 5"/></svg>
-<p class="lead">MakerLine es un plugin de Claude para diseñadores y creadores independientes. Describe tu idea en unas frases y te devuelve un veredicto honesto, competidores reales, wireframes y un borrador de PRD (documento de requisitos del producto). Cuando lo apruebas, te ayuda a construir el producto con accesibilidad, seguridad y pruebas en cada paso.</p>
+<p class="lead">MakerLine es un plugin de Claude para diseñadores y creadores independientes. Cuéntale tu idea en unas frases y te devolverá un veredicto honesto, competidores reales, wireframes y un borrador de PRD (documento de requisitos del producto). Cuando des tu aprobación, te ayuda a construir el producto con accesibilidad, seguridad y pruebas obligatorias en cada paso.</p>
 <p class="actions"><a class="btn primary" href="../five-minutes.md">Pruébalo en 5 minutos</a> <a class="btn" href="#install">Instalar</a></p>
 <p class="ai-note">Esta página se tradujo con IA. Si ves un error, <a href="https://github.com/sairam5294/makerline/issues/new/choose">avísanos</a>. Las guías y la documentación están en inglés.</p>
 </div>
 <figure class="verdict">
 <div class="verdict-bar" aria-hidden="true"><span></span></div>
 <p class="doc-path">clubslot/docs/product/ONE_PAGER.md</p>
-<p class="verdict-line"><span class="stamp">Pivotar</span> Confianza media-baja</p>
+<p class="verdict-line"><span class="stamp">Reorientar</span> Confianza media-baja</p>
 <dl>
-<div><dt>El brief decía</dt><dd>"Sin competidores" para una app de reservas en comunidades cerradas.</dd></div>
-<div><dt>La realidad</dt><dd>MyGate, NoBrokerHood y ADDA ya ofrecen reservas a unas 25.000 comunidades cada una.</dd></div>
-<div><dt>Cómo hacerla más fuerte</dt><dd>Limita la versión 1 a reservas justas desde un enlace de WhatsApp, sin instalar nada, y pruébala con cinco comités antes de escribir código.</dd></div>
+<div><dt>El brief decía</dt><dd>"Sin competidores" para una app de reservas para urbanizaciones cerradas.</dd></div>
+<div><dt>La realidad</dt><dd>MyGate, NoBrokerHood y ADDA ya incluyen reservas para unas 25.000 urbanizaciones cada una.</dd></div>
+<div><dt>Cómo reforzarla</dt><dd>Limita la versión 1 a reservas equitativas desde un enlace de WhatsApp, sin instalar nada, y pruébala con cinco comités antes de escribir código.</dd></div>
 </dl>
 <figcaption>De una ejecución real del Idea Pack. <a href="../../../examples/idea-pack-clubslot/docs/product/ONE_PAGER.md">Abre el resumen completo</a> o <a href="../case-clubslot.md">lee el caso de estudio</a> (en inglés).</figcaption>
 </figure>
@@ -33,8 +33,8 @@
 <section aria-labelledby="how" markdown="0">
 <div class="section-intro">
 <p class="eyebrow">Cómo funciona</p>
-<h2 id="how">Una línea de la idea al lanzamiento, y tú decides</h2>
-<p>Cada parada es una skill que puedes ejecutar sola o todas a la vez. La línea se detiene antes de cualquier código hasta que apruebes la idea, y ninguna herramienta de IA puede aprobarla por ti.</p>
+<h2 id="how">Una línea de la idea al lanzamiento, contigo al mando</h2>
+<p>Cada parada es una skill que puedes ejecutar por separado o todas juntas. La línea se detiene antes de escribir código hasta que apruebes la idea, y ninguna herramienta de IA puede aprobarla por ti.</p>
 </div>
 <div class="line" data-reveal>
 <p class="span idea" aria-hidden="true">MakerLine Idea · sin código</p>
@@ -42,10 +42,10 @@
 <ol class="track">
 <li><h3>Describe la idea</h3><p>Una entrevista corta, o solo tu pitch.</p><p class="files">PROJECT_BRIEF.md · CLARITY.md</p></li>
 <li><h3>Recibe una evaluación honesta</h3><p>Un veredicto, competidores reales, la versión más fuerte y a quién deja fuera.</p><p class="files">EVALUATION.md · COMPETITORS.md</p></li>
-<li><h3>Velo</h3><p>Dirección de diseño, wireframes navegables y un borrador de PRD.</p><p class="files">wireframes · PRD.md</p></li>
+<li><h3>Visualízala</h3><p>Dirección de diseño, wireframes navegables y un borrador de PRD.</p><p class="files">wireframes · PRD.md</p></li>
 <li class="gate"><h3>Tú apruebas</h3><p>No se construye nada hasta que lo digas.</p><p class="files">Solo tú puedes aprobarlo</p></li>
 <li><h3>Configúralo</h3><p>Nombre y marca, stack, sistema de diseño, documentación técnica y reglas del repositorio.</p><p class="files">BRAND.md · TECH_STACK.md</p></li>
-<li><h3>Construye, revisa, lanza</h3><p>Una tarea a la vez, pruebas primero, revisado para accesibilidad y seguridad.</p><p class="files">PLAN.md · RELEASE.md</p></li>
+<li><h3>Construye, revisa, lanza</h3><p>Una tarea a la vez, pruebas primero, con revisión de accesibilidad y seguridad.</p><p class="files">PLAN.md · RELEASE.md</p></li>
 </ol>
 </div>
 <p class="track-note">Las paradas 1 a 3 te dan un Idea Pack. También están disponibles por separado como <a href="../../../makerline-idea/README.md">MakerLine Idea</a>.</p>
@@ -54,15 +54,15 @@
 <section aria-labelledby="verdict-h" markdown="0">
 <div class="section-intro">
 <p class="eyebrow">Dentro de una evaluación</p>
-<h2 id="verdict-h">Muchas fuentes de entrada, un veredicto claro de salida</h2>
-<p>Cuatro agentes especializados discuten tu idea desde distintos lados, con evidencia real. Recibes una decisión sobre la que puedes actuar, con las razones por escrito.</p>
+<h2 id="verdict-h">Muchas fuentes, un solo veredicto claro</h2>
+<p>Cuatro agentes especializados debaten tu idea desde distintos ángulos, con evidencia real. Recibes una decisión clara para pasar a la acción, con las razones por escrito.</p>
 </div>
 <div class="flow" data-reveal>
 <div class="flow-col">
 <h3>Lo que entra</h3>
 <ul>
 <li>Tu idea, en unas frases</li>
-<li>Webs de la competencia y reseñas en tiendas de apps</li>
+<li>Sitios web de la competencia y reseñas en tiendas de apps</li>
 <li>Leyes de accesibilidad donde vas a lanzar</li>
 <li>Tus herramientas, tiempo y presupuesto</li>
 </ul>
@@ -81,7 +81,7 @@
 <div class="flow-col out">
 <h3>Lo que sale</h3>
 <ul>
-<li><span><strong>Un veredicto:</strong> seguir, pivotar o parar, con nivel de confianza</span></li>
+<li><span><strong>Un veredicto:</strong> seguir, reorientar o parar, con nivel de confianza</span></li>
 <li>Competidores reales y una prueba de tu diferenciador</li>
 <li>Wireframes navegables</li>
 <li>Un borrador de PRD y un resumen de una página</li>
@@ -93,7 +93,7 @@
 <section aria-labelledby="try" markdown="0">
 <p class="eyebrow">Pruébalo</p>
 <h2 id="try">Escribe una frase para empezar</h2>
-<p>Conecta una carpeta vacía a un chat nuevo de Claude y escribe una de estas. También puedes escribir en español.</p>
+<p>Conecta una carpeta vacía a un chat nuevo de Claude y escribe una de estas frases. También puedes escribir en español.</p>
 <ul class="prompts">
 <li><code>/makerline:start give me everything for this idea, quick: a booking app for small physio clinics</code></li>
 <li><code>¿Quiénes son mis competidores y mi diferenciador es real?</code></li>
@@ -127,8 +127,8 @@ claude plugin install makerline@makerline</code></pre>
 <p class="eyebrow">Principios</p>
 <h2 id="principles">Construido sobre tres promesas</h2>
 <div class="three">
-<div class="promise"><h3>Accesible en todo el mundo</h3><p>WCAG 2.2 AA es el mínimo para todo lo que crea. Cada evaluación pregunta a quién deja fuera la idea y qué leyes de accesibilidad aplican donde lanzas.</p></div>
-<div class="promise"><h3>Honesto con sus errores</h3><p>Cada prueba a ciegas y cada proyecto real se registra en <a href="../../../LESSONS.md">lo que el kit hizo mal</a>, y se convierte en una mejora.</p></div>
+<div class="promise"><h3>Accesible en todo el mundo</h3><p>WCAG 2.2 AA es el mínimo para todo lo que crea. Cada evaluación pregunta a quién deja fuera la idea y qué leyes de accesibilidad se aplican donde lanzas.</p></div>
+<div class="promise"><h3>Honesto con sus errores</h3><p>Cada prueba a ciegas y cada proyecto real se registran en <a href="../../../LESSONS.md">lo que el kit hizo mal</a> y se convierten en mejoras.</p></div>
 <div class="promise"><h3>Tus archivos son tuyos</h3><p>Todo lo que escribe es Markdown y HTML en tu propia carpeta. Sin servidores propios, sin rastreo, sin cuenta. <a href="../privacy.md">Privacidad</a></p></div>
 </div>
 </section>
@@ -137,7 +137,7 @@ claude plugin install makerline@makerline</code></pre>
 <div>
 <p class="eyebrow">Hecho por un diseñador, para diseñadores</p>
 <h2 id="maker">Creado por Sairam Mogullapalli</h2>
-<p>Sairam es Head of Product Design en Hyderabad y lleva once años diseñando software empresarial con flujos complejos, donde un paso en falso cuesta dinero. Construye con Claude y Cursor, y MakerLine es el kit que él quería: las revisiones de un equipo sénior de diseño e ingeniería, para quienes construyen con IA pero no pueden revisar el código por su cuenta.</p>
+<p>Sairam es Head of Product Design en Hyderabad y lleva once años diseñando software empresarial con flujos complejos, donde un paso en falso cuesta dinero. Construye con Claude y Cursor, y MakerLine es el kit que él quería: las revisiones que haría un equipo sénior de diseño e ingeniería, para quienes construyen con IA pero no pueden revisar el código por su cuenta.</p>
 <p class="actions"><a class="btn primary" href="https://www.sairammogullapalli.com/">Ver el trabajo de Sairam</a> <a class="btn" href="https://github.com/sairam5294/makerline">Dale una estrella en GitHub</a></p>
 </div>
 <svg class="maker-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="15"/><path d="M15 44V20l10.5 14L36 20v24h14"/></svg>

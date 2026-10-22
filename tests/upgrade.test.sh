@@ -41,5 +41,13 @@ check "second run is not adopt mode"            '! grep -q "Adopt mode" <<<"$out
 check "second run keeps own ci.yml"             'grep -q "name: My CI" "$P/.github/workflows/ci.yml"'
 check "second run keeps own cursor rule"        'grep -q "My rule" "$P/.cursor/rules/testing.mdc"'
 
+# Python projects get a warning to keep kit files out of their linters (until they exclude .agents).
+printf '[tool.black]\nline-length = 100\n' > "$P/pyproject.toml"
+out="$("$KIT/scripts/upgrade-project.sh" "$P" 2>&1)"
+check "python project warned about linting kit files" 'grep -q "exclude the kit" <<<"$out"'
+printf '[tool.black]\nextend-exclude = "\\.agents"\n' > "$P/pyproject.toml"
+out="$("$KIT/scripts/upgrade-project.sh" "$P" 2>&1)"
+check "no warning once .agents is excluded" '! grep -q "exclude the kit" <<<"$out"'
+
 echo "upgrade: $pass passed, $fail failed"
 [ "$fail" = 0 ]

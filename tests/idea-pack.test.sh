@@ -56,6 +56,15 @@ python3 "$CHECK" "$T/p" > "$T/out"; grep -q "unfilled" "$T/out" && { bad "GitHub
 mk_pack; rm -r "$T/p/design" "$T/p/docs/product/PRD.md" "$T/p/docs/product/DESIGN_DIRECTION.md"
 python3 "$CHECK" "$T/p" --mode quick > "$T/out" && ok || { bad "quick mode needs no PRD/wireframes"; cat "$T/out"; }
 
+# No --mode: the depth comes from STATUS.md (a Quick pack isn't failed for skipping the PRD).
+mk_pack; rm -r "$T/p/design" "$T/p/docs/product/PRD.md" "$T/p/docs/product/DESIGN_DIRECTION.md"
+printf '# Status\nDepth: Quick\n' > "$T/p/docs/product/STATUS.md"
+python3 "$CHECK" "$T/p" > "$T/out" && grep -q "check (quick)" "$T/out" && ok || { bad "Depth: Quick in STATUS.md should select quick mode"; cat "$T/out"; }
+printf '# Status\n| 2a | Design direction | Skipped (Quick mode) | | |\n' > "$T/p/docs/product/STATUS.md"
+python3 "$CHECK" "$T/p" > "$T/out" && grep -q "check (quick)" "$T/out" && ok || { bad "'Skipped (Quick mode)' should select quick mode"; cat "$T/out"; }
+rm "$T/p/docs/product/STATUS.md"
+python3 "$CHECK" "$T/p" > "$T/out"; grep -q "missing docs/product/PRD.md" "$T/out" && ok || { bad "no STATUS.md should default to standard"; cat "$T/out"; }
+
 mk_pack; python3 "$CHECK" "$T/p" --only EVALUATION.md > "$T/out" && grep -q "only EVALUATION.md" "$T/out" && ok || { bad "--only should check one file without requiring the rest"; cat "$T/out"; }
 
 # The one-file Quick guide must point only at files that exist, in both plugins.

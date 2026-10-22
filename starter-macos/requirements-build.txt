@@ -1,0 +1,4 @@
+# Only needed to build the .app (macOS): python3 setup.py py2app
+# py2app 0.28.10 is the first release that supports setuptools 82 (pkg_resources removed).
+py2app==0.28.10
+setuptools==82.0.1

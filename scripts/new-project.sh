@@ -4,11 +4,12 @@
 #   ./scripts/new-project.sh ~/Projects/my-app            → rules, skills, agents, safety, CI (any stack)
 #   ./scripts/new-project.sh ~/Projects/my-app --starter  → the above + tested Expo/Supabase app (iOS/Android/web)
 #   ./scripts/new-project.sh ~/Projects/my-site --web     → the above + tested Next.js site (landing page, SEO, waitlist)
+#   ./scripts/new-project.sh ~/Projects/my-tool --macos   → the above + tested Python + PyObjC macOS menu-bar app
 #
 # Safe to re-run on an existing project: it never overwrites files you already have.
 set -euo pipefail
 KIT="$(cd "$(dirname "$0")/.." && pwd)"
-DEST="${1:?Usage: new-project.sh <path> [--starter | --web]}"
+DEST="${1:?Usage: new-project.sh <path> [--starter | --web | --macos]}"
 STARTER="${2:-}"
 VERSION="$(sed -n 's/.*"version": *"\([^"]*\)".*/\1/p' "$KIT/plugin/.claude-plugin/plugin.json")"
 
@@ -16,11 +17,14 @@ python3 "$KIT/scripts/sync.py" >/dev/null          # make sure template/ matches
 mkdir -p "$DEST"
 
 # Copy only files that don't exist yet (never overwrite the user's work).
+# Skips installed dependencies and caches that may exist in a kit checkout (Node and Python).
 copy_missing() {  # copy_missing <from-dir> <to-dir>
   if command -v rsync >/dev/null; then
-    rsync -a --ignore-existing --exclude node_modules "$1/" "$2/"
+    rsync -a --ignore-existing --exclude node_modules --exclude .venv --exclude __pycache__ \
+      --exclude .mypy_cache --exclude .ruff_cache --exclude .pytest_cache --exclude build --exclude dist "$1/" "$2/"
   else
-    (cd "$1" && find . -path ./node_modules -prune -o -type f -print) | while read -r f; do
+    (cd "$1" && find . \( -name node_modules -o -name .venv -o -name __pycache__ -o -name .mypy_cache \
+      -o -name .ruff_cache -o -name .pytest_cache -o -name build -o -name dist \) -prune -o -type f -print) | while read -r f; do
       [ -e "$2/$f" ] || { mkdir -p "$2/$(dirname "$f")"; cp -p "$1/$f" "$2/$f"; }
     done
   fi
@@ -39,6 +43,14 @@ json.dump(d, open(dest, "w"), indent=2)
 PY
 elif [ "$STARTER" = "--web" ]; then
   copy_missing "$KIT/starter-web" "$DEST"
+elif [ "$STARTER" = "--macos" ]; then
+  copy_missing "$KIT/starter-macos" "$DEST"
+  # The template's .gitignore is written for Node projects; add Python's generated files.
+  grep -qxF '.venv/' "$DEST/.gitignore" 2>/dev/null || printf '%s\n' \
+    '# Python (macOS starter)' '.venv/' '__pycache__/' '.mypy_cache/' '.ruff_cache/' '.pytest_cache/' '.eggs/' '*.egg-info/' \
+    >> "$DEST/.gitignore"
+elif [ -n "$STARTER" ]; then
+  echo "Unknown option: $STARTER (use --starter, --web or --macos)"; exit 1
 fi
 
 cd "$DEST"
@@ -60,5 +72,9 @@ if [ ! -d .git ] && command -v git >/dev/null; then
 fi
 
 echo "✅ Project ready at $DEST (MakerLine v$VERSION)"
-[ -n "$STARTER" ] && echo "   Next: cd \"$DEST\" && npm install && cp .env.example .env.local && npx lefthook install"
+if [ "$STARTER" = "--macos" ]; then
+  echo "   Next: cd \"$DEST\" && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt -r requirements-dev.txt && scripts/check.sh"
+elif [ -n "$STARTER" ]; then
+  echo "   Next: cd \"$DEST\" && npm install && cp .env.example .env.local && npx lefthook install"
+fi
 echo "   Then open it in Claude, Cursor or Codex and say: \"I have a new idea\"."

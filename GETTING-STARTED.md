@@ -167,7 +167,7 @@ Every quarter a scheduled report arrives by email/phone. Open the kit in Claude 
 > "Run standards-refresh with this report: <paste>". Then release (A.2).
 
 ### D. Update design tokens (colours, spacing)
-Change them in Figma (the "Product Kit — Design System" file or your product's copy) or in `design/tokens.json`, then in the project:
+Change them in Figma (the "MakerLine — Design System" file or your product's copy) or in `design/tokens.json`, then in the project:
 ```bash
 npm run tokens && npm run contrast
 ```

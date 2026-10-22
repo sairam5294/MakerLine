@@ -1,0 +1,5 @@
+# Development tools. No PyObjC here on purpose: Linux CI installs only this file and still
+# runs lint, types, token/contrast checks and the core tests (the AppKit tests skip there).
+ruff==0.17.1
+mypy==2.4.0
+pytest==9.1.1

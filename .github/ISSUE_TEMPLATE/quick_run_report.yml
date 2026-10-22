@@ -1,0 +1,74 @@
+name: Quick run report
+description: You tried a Quick Idea Pack. Tell us what worked and what didn't.
+labels: ["tester-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing MakerLine. Only the first question is required.
+        Please don't paste anything confidential: a one-line summary of your idea is enough. This report is public.
+  - type: textarea
+    id: verdict
+    attributes:
+      label: What verdict did you get, and did it feel right?
+      description: For example "Pivot, Medium confidence. Fair, but it missed my main competitor."
+    validations:
+      required: true
+  - type: input
+    id: idea
+    attributes:
+      label: Your idea in one line (optional)
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where did you run it?
+      options:
+        - Claude app (desktop)
+        - Claude app (web)
+        - Claude Code
+        - Other
+  - type: dropdown
+    id: plugin
+    attributes:
+      label: Which plugin?
+      options:
+        - MakerLine Idea
+        - MakerLine
+  - type: dropdown
+    id: install
+    attributes:
+      label: How was the install?
+      options:
+        - Easy, first try
+        - Worked after some trial and error
+        - Didn't work
+  - type: textarea
+    id: competitors
+    attributes:
+      label: Were the competitors real and relevant?
+      description: Any it missed, or any that were wrong or made up?
+  - type: textarea
+    id: confusing
+    attributes:
+      label: What was confusing, slow or broken?
+  - type: textarea
+    id: useful
+    attributes:
+      label: What was most useful?
+  - type: dropdown
+    id: again
+    attributes:
+      label: Would you use it again for your next idea?
+      options:
+        - "Yes"
+        - Maybe
+        - "No"
+  - type: textarea
+    id: access
+    attributes:
+      label: Assistive technology or settings you used (optional)
+      description: For example VoiceOver, NVDA, screen magnification, keyboard only, a language other than English. Did anything get in the way?
+  - type: input
+    id: time
+    attributes:
+      label: About how long did it take, start to one-pager? (optional)

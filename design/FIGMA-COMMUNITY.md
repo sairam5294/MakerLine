@@ -2,11 +2,11 @@
 
 **Published 2026-10-14:** https://www.figma.com/community/file/1692097443572763844/makerline-design-system
 
-The file **"Product Kit — Design System"** (Primitives, Semantic Light/Dark, Dimensions, type styles; Button, TextField, ScreenState bound to variables) is published on Figma Community so anyone using the kit can duplicate it. Publisher profile: https://www.figma.com/@sairammogullapa
+The file **"MakerLine — Design System"** (renamed from "Product Kit — Design System" on 21 Oct 2026; the cover and Community thumbnail were updated in the file, and the Community listing updates when it is republished) (Primitives, Semantic Light/Dark, Dimensions, type styles; Button, TextField, ScreenState bound to variables) is published on Figma Community so anyone using the kit can duplicate it. Publisher profile: https://www.figma.com/@sairammogullapa
 
 ## Listing copy (paste into the publish dialog)
 
-**Name:** Product Kit — Design System _(the published Community file still carries the old name; rename it to "MakerLine — Design System" in Figma, then update the 6 references listed by `grep -rn "Product Kit — Design System"`)_
+**Name:** MakerLine — Design System _(the published Community file still carries the old name; rename it to "MakerLine — Design System" in Figma, then update the 6 references listed by `grep -rn "MakerLine — Design System"`)_
 
 **Description:**
 A small, accessible design system that matches the MakerLine starters (Expo + Supabase, Next.js). Variables in three collections — Primitives, Semantic (Light and Dark modes) and Dimensions — generated from one `design/tokens.json` in W3C Design Tokens format, so Figma and code never drift. Five type styles. Button, TextField and ScreenState component sets bound to variables, with every colour pair contrast-checked for WCAG 2.2 AA in both modes.

@@ -87,6 +87,10 @@ Alt text for the GIF: "Demo: one sentence about an idea goes in; MakerLine write
 | Designer communities (ADPList, local UX groups in Hyderabad) | A short talk or demo: "Reviewing AI-built products as a designer" | Ask the organiser |
 | Accessibility communities (A11y Slack, a11yproject) | Ask for an expert audit of the kit's rules | Ask, don't pitch |
 
+## First outside testers
+
+Before or right after the LinkedIn post, ask five people to run a Quick pack on their own idea: who to ask, the message to send and the report form are in [`TESTERS.md`](TESTERS.md).
+
 ## After each post
 
 - Reply to every comment within a day; turn real problems into GitHub issues.

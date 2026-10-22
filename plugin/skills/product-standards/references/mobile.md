@@ -46,4 +46,4 @@ What a mobile app must do to feel native, survive the platform's lifecycle and p
 | Motion and colour | Reduce Motion, Increase Contrast, Differentiate Without Color | Remove animations, high-contrast text | Respect the setting; nothing relies on colour alone |
 
 - **App Store accessibility nutrition labels:** declare in App Store Connect only the features you tested end to end on the common tasks (VoiceOver, Voice Control, Larger Text, Dark Interface, Differentiate Without Color Alone, Sufficient Contrast, Reduced Motion, Captions, Audio Descriptions). Keep the test notes as evidence; misleading labels break App Review Guideline 2.3. See `accessibility-law.md` → Standards and app stores.
-- No equivalent Google Play label was found at last check (unverified); describe accessibility support in the listing honestly instead.
+- Google Play has accessibility tags, not per-feature labels: in Play Console → Store settings → Manage tags, pick a tag such as "Screen reader-friendly" only when the app was tested with TalkBack end to end (tags count toward the five-tag limit). Describe the accessibility support honestly in the listing as well (verified 2026-10-21).

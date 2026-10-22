@@ -36,4 +36,4 @@ Current template: **VPAT 2.5Rev** (ITI, April 2025). Use the edition your buyer 
 - Keep the test evidence (scan reports, screen-reader notes) next to the ACR in `docs/product/` — buyers and auditors ask for it.
 - Link the ACR from the accessibility statement.
 
-_Source: ITI VPAT page (itic.org/policy/accessibility/vpat), accessed 2026-10-20._
+_Source: ITI VPAT page (itic.org/policy/accessibility/vpat), accessed 2026-10-20. "Not Evaluated" limited to Level AAA re-checked 2026-10-21 against ITI's VPAT 2.5 instructions._

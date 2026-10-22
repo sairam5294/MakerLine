@@ -11,6 +11,8 @@ npx expo start                    # press i (iOS simulator), a (Android), w (web
 npx lefthook install              # git hooks: approval gate, secret scan, lint, format
 ```
 
+> **"Project is incompatible with this version of Expo Go"?** This starter uses Expo SDK 58 (released 15 Oct 2026). The App Store and Play Store versions of Expo Go move to SDK 58 a few weeks after the release, and until then they only open SDK 57 projects, even when they say they're up to date. Meanwhile, use the iOS Simulator or Android emulator (press `i` or `a`; the right Expo Go is installed for you), the web (`w`), or a development build on your phone (`npx expo run:ios --device` with Xcode, or `npx expo run:android --device` with Android Studio). See [Expo's SDK 58 notes](https://expo.dev/changelog/sdk-58).
+
 ## Database
 ```bash
 npx supabase init                 # once: creates supabase/config.toml (keeps the migrations folder)
@@ -26,6 +28,8 @@ npx supabase test db              # runs supabase/tests (RLS/authorization tests
 | `npm run contrast` | fails if any token colour pair breaks WCAG AA (light + dark) |
 | `npm run build:web && npm run test:e2e` | web build + Playwright flows + axe accessibility scan |
 | `maestro test .maestro/` | mobile smoke test on a simulator/emulator |
+
+After an Expo SDK upgrade, also run the 15-minute [device test](DEVICE-TEST.md) on a real iPhone and Android phone.
 
 ## Languages, errors, analytics
 - **Languages** (`src/i18n/`): English, Telugu, Hindi. Telugu and Hindi are machine-drafted, so get a native speaker to review them. Add a language with a new `xx.ts`; a test fails if any key or `{{placeholder}}` is missing. Telugu/Hindi get 20% taller line height automatically (no clipped matras).
