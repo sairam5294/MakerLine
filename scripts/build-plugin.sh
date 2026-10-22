@@ -9,6 +9,6 @@ OUT_DIR="${1:-$KIT/..}"
 OUT="$(cd "$OUT_DIR" && pwd)/makerline.plugin"
 command -v zip >/dev/null || { echo "zip is required (macOS and Linux have it by default)."; exit 1; }
 rm -f "$OUT"
-(cd "$KIT/plugin" && zip -qr "$OUT" . -x "*.DS_Store")
+(cd "$KIT/plugin" && zip -qr "$OUT" . -x "*.DS_Store" -x "*__pycache__*" -x "*.pyc")
 echo "✅ Built $OUT"
 echo "   Open it in a Claude chat and press Install (replaces any older version)."
