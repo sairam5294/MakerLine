@@ -29,7 +29,7 @@ Starting point: the web starter's `src/ai/` harness (provider wrapper, versioned
 | Onboarding | Set expectations with 2–3 example prompts; show limits (daily quota) before users hit them. |
 
 ## 4. Quality: evals before launch (MUST)
-- Build a small eval set per feature (`evals/ai/<feature>.cases.json`, run `npm run ai:eval`): 20–50 real-looking inputs incl. edge cases, other languages (Telugu/Hindi if relevant), empty/abusive inputs, and prompt-injection attempts.
+- Build a small eval set per feature (`evals/ai/<feature>.cases.json`, scored by the web starter's AI eval script): 20–50 real-looking inputs incl. edge cases, other languages (Telugu/Hindi if relevant), empty/abusive inputs, and prompt-injection attempts.
 - Define pass criteria (correct, safe, on-format, tone) and score every prompt/model change against the set; store results in `docs/product/ai-evals/`.
 - Track in production: error rate, fallback rate, 👎 rate, cost per active user, latency p95.
 

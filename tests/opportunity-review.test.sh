@@ -72,6 +72,10 @@ html="$TMP/live/docs/product/opportunity/index.html"
 if grep -q 'investing\.\.' "$html"; then echo 'Doubled full stop'; exit 1; fi
 grep -q 'Launch-market rules (1)' "$html" && grep -q 'RPwD Act' "$html" && grep -q '>official<' "$html" || { echo 'Rules or source kind missing'; exit 1; }
 if grep -q 'owner to confirm' "$html"; then echo 'Confirmed markets shown as proposed'; exit 1; fi
+edit_review "$TMP/live" "d['areas']=[{'name':'Customer app','status':'not started','owner':'[Eng]','note':'R3'}]"
+python3 "$KIT/scripts/opportunity_review.py" render "$TMP/live" >/dev/null 2>&1
+grep -q 'Where each part stands' "$TMP/live/docs/product/opportunity/index.html" || { echo 'Areas table missing'; exit 1; }
+expect_fail 'area without status' "d['areas']=[{'name':'Admin'}]"
 # The ChatGPT/Codex manifest (plugin/plugin.json) must carry the same version as the Claude one.
 python3 - "$KIT" <<'PY'
 import json, pathlib, sys

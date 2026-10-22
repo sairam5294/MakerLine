@@ -38,7 +38,7 @@ Test material for reviewers: the ClubSlot pack (`examples/idea-pack-clubslot/`) 
 
 | Component | What it can do | Why |
 |---|---|---|
-| 25 skills | Instructions only. Read and write the connected folder; the build skills create branches and commit | Idea to launch, phase by phase |
+| 26 skills | Instructions only. Read and write the connected folder; the build skills create branches and commit | Idea to launch, phase by phase |
 | 8 review and research agents (accessibility-auditor, accessibility-strategist, code-reviewer, devils-advocate, idea-champion, market-researcher, security-reviewer, ux-reviewer) | Read, Grep, Glob, WebSearch, WebFetch; all but one also have Bash (to run tests and checkers) | Reviews and research don't edit files |
 | 6 builder agents (architect, backend-developer, mobile-developer, product-strategist, qa-engineer, web-developer) | All tools, including Write, Edit and Bash | They write the docs and code for approved tasks |
 | `skills/product-kickoff/scripts/check_idea_pack.py` | Reads the Idea Pack and prints pass, warn or fail; standard library only, no network | Checks documents before the user sees them |
