@@ -15,6 +15,8 @@ One project, several AI tools (for example Claude, ChatGPT and Cursor). This con
 | `docs/product/opportunity/REVIEW.json` | The current strategic review, sources `S1…` | `product-opportunity-review` |
 | `docs/CONTEXT_PACK.md` | Generated export for a tool that can't open the folder | Regenerated, never edited |
 
+Plus `Writing:` in STATUS.md (which tool writes on which branch — one writer at a time). Folder around the repo (inbox, archive, bin, non-git files): `../../new-idea/references/workspace.md`.
+
 Templates: `templates/CONTEXT_INDEX.md` and `templates/ASSUMPTIONS.md` beside the handoff skill. Copy them; don't move existing content into them.
 
 ## 2. Stable IDs

@@ -1,6 +1,7 @@
 # Status — <product>  ·  updated <YYYY-MM-DD>  ·  Idea Pack v<version from .claude-plugin/plugin.json>
 
 Decision: PENDING   <!-- the owner's go / change / stop, with date; quote their words in DECISIONS.md -->
+Writing: –   <!-- "<tool> on <branch> since <date>" while a tool writes; set back to – at handoff. One writer per branch. -->
 
 | # | Phase | Status | Date | Notes |
 |---|---|---|---|---|

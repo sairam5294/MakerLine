@@ -69,6 +69,8 @@ Turn a launched product into evidence: what the numbers and users say, what to d
 | `docs/product/LESSONS.md` | retro: worked · didn't · change · kit improvements | every 2–4 weeks |
 | `portfolio/OUTCOMES.md` (kit) | this project's outcome row, calibration notes | weeks 4, 12, parked |
 
+In a product workspace, raw feedback exports and tester reports go to `../../05_qa/`, posts and campaigns to `../../07_launch/`; only the synthesis lives in the repo.
+
 Present to the owner (≤ 8 lines):
 
 ```

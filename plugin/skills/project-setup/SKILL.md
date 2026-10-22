@@ -50,7 +50,7 @@ Give the repo one shared source of truth that every AI tool reads, plus the file
 ## Workflow
 
 1. **Read** the inputs above.
-2. **Folder structure** → `docs/STRUCTURE.md` (`templates/STRUCTURE.md`): tree with one-line purposes, a "where does X go?" table, naming rules, what must never be created. Before code exists it's a plan — don't create app folders; the starter (`scripts/new-project.sh <path> --web | --starter`) or the first build task does.
+2. **Folder structure** → `docs/STRUCTURE.md` (`templates/STRUCTURE.md`): tree with one-line purposes, a "where does X go?" table, naming rules, what must never be created; when the repo sits in a product workspace, the template's "Workspace" section (`../new-idea/references/workspace.md`). Before code exists it's a plan — don't create app folders; the starter (`scripts/new-project.sh <path> --web | --starter`) or the first build task does.
 3. **Environment** → `.env.example` (`templates/env.example`): every variable, grouped by service, each commented — what, where to get it, public or secret (and why public is safe), environments, required, format. Never a real value; note where production values live.
 4. **Setup guide** → `docs/SETUP.md` (`templates/SETUP.md`): prerequisites, get the code (clone, CLI or ZIP — and what ZIP loses), install, env, local DB, run, test, common errors, deploy, rollback — each with the exact command and what "it worked" looks like.
 5. **README** → `README.md` (`templates/README.md`): what and for whom, screenshot slot, features, stack, quick start (≤ 5 commands), scripts, links to STRUCTURE, `docs/README.md` and the accessibility statement, contributing, licence.

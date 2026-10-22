@@ -4,9 +4,10 @@ Rules for every AI agent in this repo — Claude (via CLAUDE.md), Cursor (`.curs
 Other tools (Gemini CLI, Aider, Continue, Windsurf, Cline, Roo, Zed, Junie, Kiro, Antigravity, OpenCode, Amp): native or thin pointer — see `docs/kit/AGENT-ADAPTERS.md`.
 
 ## Start every session
-1. Read `docs/product/HANDOFF.md` (if present), `docs/product/STATUS.md` and `docs/product/OWNER.md` (who you're building with: skills, time, budget, tools).
+1. Read `docs/product/HANDOFF.md` (if present), `docs/product/STATUS.md` and `docs/product/OWNER.md` (who you're building with: skills, time, budget, tools). If STATUS `Writing:` names another tool on your branch, stop and ask; otherwise set it to you.
 2. Read only the files the current task needs (see `.agents/skills/product-standards/references/context-budget.md`).
 3. End every session with the `handoff` skill (it also updates `docs/MEMORY.md`, the project's long-lived memory).
+4. In a product workspace (this repo under `04_repos/`): outputs with no home yet go to `../../00_inbox/`; never read the workspace's `02_brand/`, `03_design/`, `05_qa/`, `06_releases/`, `90_reference/`, `98_bin/` or `99_archive/` unless the task names a file there.
 
 ## Workflow
 new-idea → evaluate-idea → design-direction → write-prd (draft) → validate-idea → **owner approval** → name-product → tech-stack → design-system → write-prd (full) → engineering-docs → project-setup → plan-build → build-feature (+ design-qa) → quality-review → test-plan → ship-checklist → post-launch.
