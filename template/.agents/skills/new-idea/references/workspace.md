@@ -12,7 +12,7 @@ One standard folder per product, so every project looks the same to you and to e
 ├── STATUS.md               pointer to the repo's docs/product/STATUS.md (never a second status)
 ├── 00_inbox/               unfiled AI outputs from any tool — emptied at each handoff
 ├── 01_research/            interviews, surveys, competitor screenshots, raw evidence (private)
-├── 02_brand/               logos/, splash/, source files
+├── 02_brand/               source files and explorations (splash/, drafts) — final logo SVGs the app uses: repo design/brand/
 ├── 03_design/              mockups/, assets/, exports/ + LINKS.md for Figma
 ├── 04_repos/<repo-name>/   git clones — docs/product/, design/tokens.json, tests live HERE
 ├── 05_qa/                  device and screen-reader recordings, bug screenshots, tester reports
