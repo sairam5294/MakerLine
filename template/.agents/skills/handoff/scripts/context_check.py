@@ -134,7 +134,10 @@ def extract_section(text: str, anchor: str) -> str | None:
     want = slug(anchor)
     for i, line in enumerate(lines):
         match = re.match(r"^(#{1,6})\s+(.*)$", line)
-        if match and (slug(match.group(2)) == want or slug(match.group(2)).startswith(want + "-")):
+        # "## 1. Orders" matches #orders and #1-orders; "## 3a. Launch unit: a venue pilot" matches #launch-unit.
+        heading = slug(match.group(2)) if match else ""
+        bare = re.sub(r"^\d+[a-z]?-", "", heading)
+        if match and any(h == want or h.startswith(want + "-") for h in (heading, bare)):
             level = len(match.group(1))
             end = len(lines)
             for j in range(i + 1, len(lines)):
@@ -307,7 +310,13 @@ def check_limits(root: pathlib.Path, report: Report) -> None:
         if lines > limit:
             report.warn(f"{rel} has {lines} lines (limit {limit}); every tool reads it at start, so keep it short")
     if not (root / "AGENTS.md").exists():
-        report.error("AGENTS.md is missing; every tool reads the project rules from it")
+        # A product split across repositories may keep its rules in a sibling repo; that's fine
+        # as long as the index's "Any session start" row points at it.
+        index_text = (root / INDEX).read_text(encoding="utf-8") if (root / INDEX).exists() else ""
+        start_row = next((r for r in (find_table(index_text, "Task type") or [])[1:] if r and r[0].lower().startswith("any")), None)
+        elsewhere = [q for q in paths_in(start_row[1]) if q.endswith("AGENTS.md") and (root / q).is_file()] if start_row and len(start_row) > 1 else []
+        if not elsewhere:
+            report.error("AGENTS.md is missing; every tool reads the project rules from it (or list the sibling repo's AGENTS.md in the 'Any session start' row)")
 
 
 def check_decisions(root: pathlib.Path, report: Report) -> set[str]:
