@@ -5,8 +5,10 @@ Run this on a real iPhone and a real Android phone after any Expo SDK upgrade, b
 ## Set up (once)
 
 1. On your Mac, in this folder: `npm ci`, then `npx expo start`.
-2. On each phone, install **Expo Go** from the App Store or Play Store, and make sure it supports the SDK in `package.json` (`expo` ~58). If Expo Go is behind, use a development build instead: `npx expo run:ios` or `npx expo run:android` with the phone plugged in.
-3. Scan the QR code from the terminal: Camera app on iPhone, Expo Go on Android.
+2. On each phone, install **Expo Go** from the App Store or Play Store. It must support the SDK in `package.json` (`expo` ~58). If it says **"Project is incompatible with this version of Expo Go"**, the store hasn't got the new Expo Go yet (it arrives a few weeks after an SDK release, even when the app says it's up to date). Then use a **development build** instead, which installs this app itself on the phone:
+   - **iPhone** (needs Xcode from the Mac App Store, and a free Apple ID): plug the phone in with a cable, unlock it, tap **Trust**, turn on **Developer Mode** (Settings → Privacy & Security → Developer Mode, restart), then run `npx expo run:ios --device` and pick your iPhone. The first build takes 10–15 minutes. If iOS says "Untrusted Developer", go to Settings → General → VPN & Device Management → your Apple ID → **Trust**.
+   - **Android** (needs Android Studio): on the phone, Settings → About phone → tap **Build number** 7 times, then Settings → Developer options → turn on **USB debugging**. Plug it in, allow the prompt, then run `npx expo run:android --device`.
+3. With Expo Go: scan the QR code from the terminal (Camera app on iPhone, Expo Go on Android). With a development build: the app opens on the phone by itself.
 
 ## Checks
 
