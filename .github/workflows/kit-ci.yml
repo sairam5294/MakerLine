@@ -32,6 +32,8 @@ jobs:
       - run: bash tests/upgrade.test.sh
       - run: bash tests/idea-pack.test.sh
       - run: bash tests/kit-ui.test.sh
+      - run: bash tests/opportunity-review.test.sh
+      - run: bash tests/context-check.test.sh
       - run: python3 scripts/build-idea-pack.py --check
       - run: python3 -m pip install --user markdown==3.10.3 && python3 scripts/build-site.py /tmp/site
       # Marketplace + plugin manifests must be valid JSON.

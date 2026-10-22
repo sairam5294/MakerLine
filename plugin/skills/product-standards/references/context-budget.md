@@ -8,6 +8,7 @@ Tokens = cost + quality. Most tokens are not the documents — they are the conv
 - Subagents return ≤ 300-word summaries; reviewers get the diff + their standard files only.
 - Living docs stay short: HANDOFF ≤ 40 lines, STATUS ≤ 60, AGENTS.md ≤ ~120.
 - One task per session. Long or off-topic session → `handoff`, then start fresh.
+- More than one AI tool: start from `docs/product/CONTEXT_INDEX.md` and read only your task's row (the `handoff` skill's shared-context guide, full kit).
 - Show the changed part, not whole files. Prefer tables over prose in docs the AI rereads.
 
 ## 2. Idea Pack depth (pick before starting; default Standard)

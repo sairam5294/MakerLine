@@ -34,3 +34,33 @@ Hallucinations spotted: none in spot checks; unverifiable inputs were labelled a
 | Same, one-file Quick guide (0.12.1) | **Checker clean first time**; verdict Pivot (Low) | 19 calls, ~120k tokens (from 157k / 30 calls at 0.11.0); 7 searches, 4 reads |
 | Quick run with budget caps (unreleased) | Checker clean first time (run 1) / after 1 fix (run 2); verdict Pivot via business lens when no goal stated | 11–12 calls, ~106–109k tokens (from 120k / 19 calls); 4 searches, ≤ 1 fetch |
 | Harness baseline: empty agent (2026-10-21) | Replies "ok", no tools | ~78k tokens: the test setup's own instructions and tools. So the kit's own share of a 0.14.0 Quick run ≈ 106k − 78k ≈ 28k (≈ 42k at 0.12.1, if that run had the same baseline). Totals above include this overhead |
+
+## Run 4 — 2026-10-22 · kit 0.14.1 + 0.15.0 changes · pilots and context recovery
+
+Opportunity review pilots (standard depth, each in a fresh agent; harness ≈ 78k included in totals):
+
+| Case | Result | Notes |
+|---|---|---|
+| RhythmBuddy (live) | **Test before investing more** (medium); check clean | 36 calls, ~137k; 8 searches, 12 fetches (2 blocked); 3 redos. Found: no access/decision step in the live route, shallow check |
+| Lekka (half-built, not a MakerLine project) | **Narrow and test** (medium); check clean | 29 calls, ~147k; 8 searches, 8 fetches; 1 redo. Found: no reading list without STATUS.md, no rules field |
+| Trust Kit (idea) | **Explore only as a test** (weak); check clean | 34 calls, ~142k; 10 searches, 13 fetches (4 failed); 1 redo. Found: conflicting approval records, no "reused" guidance, markets can't be marked proposed |
+
+All findings fixed in the pilot-fixes PR; the new `check` then caught 4 invalid evidence values in the Trust Kit record.
+
+Context recovery, RhythmBuddy, 10 questions (`context-recovery/README.md`), key written before the runs and kept outside the project:
+
+| Path | Keyword score | Hand grade | Wrong claims | Tokens | Calls |
+|---|---|---|---|---|---|
+| Folder, before the index | 9/10 | 7/10 (C02, C07 partial: no task or handoff written down; C05 fail: no expiry dates) | 0 | ~104k | 7 |
+| Folder, with `CONTEXT_INDEX.md` | 10/10 | 10/10 | 0 | ~100k | 11 |
+| Pack only (ChatGPT-style) | 10/10 | 10/10 | 0 | ~95k | 3 |
+
+The keyword scorer passed two answers that said "not recorded", so the README now asks for a hand grade too. The pack run asked for the review's source list and an explanation of the verified commit; both added.
+
+Scale test (`SCALE.md`), Tindi 1.0: 3 apps, a code monorepo and a product-docs repo (~68k words):
+
+| Case | Result | Notes |
+|---|---|---|
+| Opportunity review (partial) | **Narrow and test** (medium); check clean, no warnings | 43 calls, ~175k; 7 searches, 13 fetches (1 failed); 10 files full, 2 partial; 2 redos (week sums). Found: cross-repo evidence, per-app status, sub-country markets — all added |
+| Context recovery, folder + index across both repos | 8/10 keywords, **9/10 by hand**, 0 wrong claims | 16 calls, ~114k; 8 files (6 full). Scorer false positive on a quoted phrase; C04 partial (IDs without reasons) |
+| Task packs | Payments 1,355 · Strategy 2,763 · Customer app 4,679 words | vs ~68k words of docs |
