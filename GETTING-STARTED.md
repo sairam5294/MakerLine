@@ -79,6 +79,7 @@ You can start in two ways. **Start with A** — no terminal needed.
 
 ### A. Thinking phases in the Claude app — the Idea Pack (no code yet)
 1. In the Claude app, connect an empty folder for the idea (e.g. `~/Projects/bakery-orders`).
+   Optional, recommended once you have several products: make it a **product workspace** — one standard folder per product with the repo in `04_repos/`, plus research, brand, design, QA, releases, an inbox for AI outputs, an archive and a bin (`./scripts/new-workspace.sh ~/Projects/bakery-orders`, or ask Claude to set it up). See [docs/kit/WORKSPACE.md](docs/kit/WORKSPACE.md).
 2. Say: **"I have a new idea: …"** (2–5 sentences). Or, to get everything in one go: **"Give me the full Idea Pack for this idea: …"**
 3. Claude interviews you in short rounds → `PROJECT_BRIEF.md`, plus `CLARITY.md`: every open question with the decision it blocks.
    Add **"quick"** for a fast first look (~50–70k tokens: brief, short evaluation, top competitors, one-pager), or **"deep"** before you spend money.

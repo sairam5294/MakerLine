@@ -44,6 +44,7 @@ Understand the idea well enough to evaluate it honestly, and make every unknown 
 - The pitch (2–5 sentences) from the owner.
 - `docs/product/OWNER.md` (skills, hours, budget, accounts, preferences). None → if you're working inside a clone of the kit repo, copy its `owner/OWNER.md` (or `owner/OWNER.example.md`); with the plugin alone there is no kit folder — create `docs/product/OWNER.md` from the owner's answers (owner unavailable: the brief's owner section, fields marked *unconfirmed*).
 - `references/question-bank.md` (questions, C/O and D/F tags), `references/brief-template.md`, `references/clarity-template.md`.
+- Where files go: inside a repo, write `docs/product/` there. Not in a repo yet → offer the product workspace (`references/workspace.md`; `scripts/new-workspace.sh <folder>` from a kit clone) and write into its docs-only repo `04_repos/<slug>/`.
 - No gate: this is the first phase.
 
 ## Workflow
@@ -110,4 +111,4 @@ If **~~knowledge base** is connected:
 ## Related
 
 - Before: `product-kickoff` / `start` · After: `evaluate-idea`
-- Reads: `references/question-bank.md`, `brief-template.md`, `clarity-template.md`; `../product-kickoff/templates/STATUS.md`; the kit's `owner/OWNER.md`
+- Reads: `references/question-bank.md`, `brief-template.md`, `clarity-template.md`, `workspace.md` (only when there's no repo yet); `../product-kickoff/templates/STATUS.md`; the kit's `owner/OWNER.md`

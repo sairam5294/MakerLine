@@ -31,7 +31,7 @@ The starting split `tool-plan` adjusts to what the owner has: "Primary" does the
 
 ## Rules that keep the split working
 
-1. **The repo is the memory.** AGENTS.md, `docs/RULES.md`, `docs/MEMORY.md` and `docs/product/` are what every tool reads. Chat history is not.
+1. **The repo is the memory.** AGENTS.md, `docs/RULES.md`, `docs/MEMORY.md` and `docs/product/` are what every tool reads. Chat history and each tool's built-in memory are not — they don't sync between tools. No extra "tool" or "memory" file is needed (`../../new-idea/references/workspace.md` §4).
 2. **One owner per document.** The tool that owns a file writes it; others propose changes the owner reviews.
 3. **Context out, result back.** A tool that can't read the repo gets `docs/CONTEXT_PACK.md`; its output lands in a named file (`docs/product/research/<topic>.md`, `drafts/<name>.md`) and the owning tool reviews it.
 4. **Nothing secret leaves the repo:** no keys, tokens, `.env` contents or users' personal data in any AI tool.

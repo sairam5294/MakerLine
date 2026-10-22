@@ -26,6 +26,9 @@ _Updated {{date}} · Scoped AI rules for each folder: `.cursor/rules/` (index in
 └── .claude/ .cursor/ .github/   # AI-tool rules and CI (all point to AGENTS.md)
 ```
 
+## Workspace (only when this repo sits under a product workspace's `04_repos/`)
+`{{Product}}/` holds this repo plus what doesn't belong in git — standard: new-idea `references/workspace.md`. Docs, tokens and tests stay **here**; the workspace keeps `00_inbox/` (unfiled AI outputs), `01_research/`, `02_brand/`, `03_design/`, `05_qa/`, `06_releases/<version>/`, `07_launch/`, `08_ops/` (no secrets), `98_bin/`, `99_archive/`. Other repos of this product: {{../other-repo or none}}.
+
 ## Where does it go?
 | You're adding… | Put it in | Name it | Also update |
 |---|---|---|---|
@@ -42,6 +45,7 @@ _Updated {{date}} · Scoped AI rules for each folder: `.cursor/rules/` (index in
 | An env variable | `.env.example` (+ dashboards) | `SERVICE_NAME` | SETUP.md |
 | A test | next to the code (`*.test.ts`) or `tests/e2e/` | `<thing>.test.ts` | — |
 | An image / icon / logo | `public/` or `design/brand/` | kebab-case | alt text |
+| Source art, recordings, store screenshots, signed builds | the workspace (`02_brand/`, `05_qa/`, `06_releases/<version>/`) — not git | kebab-case | — |
 
 ## Rules
 - One home per thing: no second `utils/` or `helpers/`; search before creating.

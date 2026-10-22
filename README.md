@@ -97,6 +97,7 @@ Scheduled in Claude: a quarterly standards check (1 Jan, 1 Apr, 1 Jul, 1 Oct) an
 ## Start a project
 
 ```bash
+./scripts/new-workspace.sh ~/Projects/MyApp           # optional: standard product folder, repo in 04_repos/ (docs/kit/WORKSPACE.md)
 ./scripts/new-project.sh ~/Projects/my-app             # any stack: rules, skills, agents, safety, CI
 ./scripts/new-project.sh ~/Projects/my-app --starter   # + tested Expo + Supabase app (iOS/Android/web)
 ./scripts/new-project.sh ~/Projects/my-site --web      # + tested Next.js site (landing page, SEO, waitlist)

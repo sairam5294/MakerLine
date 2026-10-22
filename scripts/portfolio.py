@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Portfolio dashboard: one page showing every MakerLine project and the ideas' outcomes.
 
-Scans folders for docs/product/STATUS.md and writes:
+Scans folders for docs/product/STATUS.md (including repos under a product workspace's 04_repos/) and writes:
   portfolio/index.html   open in any browser (accessible, light/dark)
   portfolio/PORTFOLIO.md same data as text (AI tools can read it)
 
@@ -19,6 +19,7 @@ OUT = KIT / "portfolio"
 MAX_DEPTH = 4                 # how deep to look for projects under each folder
 STALE_DAYS = 14               # flag projects not updated for this long
 SKIP_DIRS = {"node_modules", ".git", ".expo", ".next", "Library", ".Trash"}
+WORKSPACE_SKIP = {"90_reference", "98_bin", "99_archive"}
 
 
 def find_status_files(root: pathlib.Path):
@@ -38,7 +39,11 @@ def find_status_files(root: pathlib.Path):
         try:
             for child in folder.iterdir():
                 if child.is_dir() and child.name not in SKIP_DIRS and not child.name.startswith("."):
-                    stack.append((child, depth + 1))
+                    # A product workspace (new-idea references/workspace.md): its bin, archive and reference
+                    # copies aren't projects; 04_repos/ costs no depth, so repos under it are still found.
+                    if (folder / "04_repos").is_dir() and child.name in WORKSPACE_SKIP:
+                        continue
+                    stack.append((child, depth if child.name == "04_repos" else depth + 1))
         except PermissionError:
             pass
 
@@ -56,6 +61,7 @@ def parse_status(path: pathlib.Path) -> dict:
     done = sum(1 for _, _, s in phases if s.lower().startswith(("done", "skipped")))
     current = next(((n, name, s) for n, name, s in phases if not s.lower().startswith(("done", "skipped"))), None)
     gate = re.search(r"^Evaluation:\s*(.+?)\s*(<!--|$)", text, re.M)
+    writing = re.search(r"^Writing:\s*(.+?)\s*(<!--|$)", text, re.M)
     next_step = re.search(r"^Next step:\s*(.*)$", text, re.M)
     blockers = re.search(r"^Blockers:\s*(.*)$", text, re.M)
     updated = dt.datetime.fromtimestamp(path.stat().st_mtime).date()
@@ -74,6 +80,7 @@ def parse_status(path: pathlib.Path) -> dict:
         "updated": updated,
         "stale": (dt.date.today() - updated).days > STALE_DAYS,
         "cost": cost.group(1) if cost else "—",
+        "writing": writing.group(1).strip() if writing and writing.group(1).strip() not in ("", "–", "-") else "—",
     }
 
 
@@ -98,11 +105,11 @@ def render_html(projects, outcomes_md) -> str:
         f"<td><span class='badge {'ok' if 'APPROVED' in p['gate'] else 'wait'}'>{esc(p['gate'])}</span></td>"
         f"<td><progress value='{p['done']}' max='{p['total']}' aria-label='{p['done']} of {p['total']} phases done'></progress> "
         f"{p['done']}/{p['total']}</td>"
-        f"<td>{esc(p['current'])}</td><td>{esc(p['next'])}</td><td>{esc(p['blockers'])}</td>"
+        f"<td>{esc(p['current'])}</td><td>{esc(p['next'])}</td><td>{esc(p['writing'])}</td><td>{esc(p['blockers'])}</td>"
         f"<td>{esc(p['updated'])}{STALE_BADGE if p['stale'] else ''}</td>"
         f"<td>{esc(p['cost'])}</td><td>v{esc(p['kit'])}</td></tr>"
         for p in projects
-    ) or "<tr><td colspan='9'>No projects found. Create one with scripts/new-project.sh.</td></tr>"
+    ) or "<tr><td colspan='10'>No projects found. Create one with scripts/new-project.sh.</td></tr>"
     outcome_rows = "".join(
         "<tr>" + "".join(f"<td>{esc(c.strip())}</td>" for c in r.strip("|").split("|")) + "</tr>"
         for r in outcomes_md.splitlines()
@@ -128,7 +135,7 @@ def render_html(projects, outcomes_md) -> str:
 <div class="wrap" tabindex="0" role="region" aria-label="Projects table, scrolls sideways">
 <table><caption>Projects</caption>
 <thead><tr><th scope="col">Project</th><th scope="col">Approval gate</th><th scope="col">Progress</th><th scope="col">Current phase</th>
-<th scope="col">Next step</th><th scope="col">Blockers</th><th scope="col">Updated</th><th scope="col">Cost to date</th><th scope="col">Kit</th></tr></thead>
+<th scope="col">Next step</th><th scope="col">Writing</th><th scope="col">Blockers</th><th scope="col">Updated</th><th scope="col">Cost to date</th><th scope="col">Kit</th></tr></thead>
 <tbody>{body_rows}</tbody></table></div>
 <div class="wrap" tabindex="0" role="region" aria-label="Idea outcomes table, scrolls sideways">
 <table><caption>Idea outcomes (feeds evaluate-idea calibration)</caption>
@@ -140,9 +147,9 @@ def render_html(projects, outcomes_md) -> str:
 
 def render_md(projects) -> str:
     lines = ["# Portfolio", f"_Generated {dt.date.today()}_", "",
-             "| Project | Gate | Done | Current phase | Next step | Updated | Cost | Kit |", "|---|---|---|---|---|---|---|---|"]
+             "| Project | Gate | Done | Current phase | Next step | Writing | Updated | Cost | Kit |", "|---|---|---|---|---|---|---|---|---|"]
     for p in projects:
-        lines.append(f"| {p['product']} | {p['gate']} | {p['done']}/{p['total']} | {p['current']} | {p['next']} | "
+        lines.append(f"| {p['product']} | {p['gate']} | {p['done']}/{p['total']} | {p['current']} | {p['next']} | {p['writing']} | "
                      f"{p['updated']}{' ⚠️ stale' if p['stale'] else ''} | {p['cost']} | v{p['kit']} |")
     return "\n".join(lines) + "\n"
 

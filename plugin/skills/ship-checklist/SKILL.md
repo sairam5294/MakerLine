@@ -52,7 +52,7 @@ Walk every launch gate with evidence, write `docs/product/RELEASE.md`, and stop 
 
 1. **Read** STATUS, latest review, TEST_PLAN results, TECH_STACK.
 2. **Mark each item** ✅/❌/N/A with evidence; run what can be verified (tests, build, `npm audit`, gitleaks, header check).
-3. **Write `docs/product/RELEASE.md`** (version, date, results, known issues, rollout, rollback).
+3. **Write `docs/product/RELEASE.md`** (version, date, results, known issues, rollout, rollback). In a product workspace, store screenshots, signed builds and release notes for stores go to `../../06_releases/<version>/` and launch copy to `../../07_launch/`; RELEASE.md links them.
    - Any ❌ in a MUST block stops release unless the owner accepts the risk in DECISIONS.md.
 
 ### The checklist
