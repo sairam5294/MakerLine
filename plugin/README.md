@@ -81,7 +81,8 @@ Explicit workflows, in the order the kit runs them. Each works **standalone** (y
 ### Anytime
 | Command | What you get |
 |---|---|
-| `/handoff` | Short session handoff so any tool can continue; updates `docs/MEMORY.md` |
+| `/product-opportunity-review` | What to do next with a product at any stage (idea, half-built, delayed, near launch, live): options with value and effort ranges, dated sources, launch-market rules, next actions and an accessible HTML report |
+| `/handoff` | Short session handoff so any tool can continue; keeps the shared context (`CONTEXT_INDEX.md`, assumptions, decision IDs) and checks it with `context_check.py`; a context pack for ChatGPT in the browser |
 | `/portfolio` | All your projects at a glance, phase and next step |
 | `/standards-refresh` | Are the standards still current? (WCAG, OWASP, privacy law, accessibility law, AI models, store rules) |
 | `/product-standards` | The rulebook the other skills read |

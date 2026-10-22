@@ -33,7 +33,7 @@ For a project skill, put the folder in `<project>/.agents/skills/` or `<project>
 
 GitHub Copilot supports project skills in `.github/skills/`, `.claude/skills/` or `.agents/skills/`, and personal skills in `~/.copilot/skills/` or `~/.agents/skills/`. Put the entire skill folder there, start a supported Copilot agent session, and ask it to use `/product-opportunity-review`. See [GitHub's skill instructions](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills).
 
-For another AI tool, first check whether it supports the [Agent Skills format](https://agentskills.io). If it does, place the full skill directory in its documented skills location. If it only accepts persistent rules, point its rule file at the relevant MakerLine workflow document and `AGENTS.md`; do not paste all 25 skills into an always-on prompt. The existing [agent adapter guide](../template/docs/kit/AGENT-ADAPTERS.md) covers how MakerLine project rules reach other coding tools. Test the first run: can the tool see the skill, read the project files, execute the renderer, and resume from `HANDOFF.md`?
+For another AI tool, first check whether it supports the [Agent Skills format](https://agentskills.io). If it does, place the full skill directory in its documented skills location. If it only accepts persistent rules, point its rule file at the relevant MakerLine workflow document and `AGENTS.md`; do not paste all 26 skills into an always-on prompt. The existing [agent adapter guide](../template/docs/kit/AGENT-ADAPTERS.md) covers how MakerLine project rules reach other coding tools. Test the first run: can the tool see the skill, read the project files, execute the renderer, and resume from `HANDOFF.md`?
 
 ## Verify an installation
 

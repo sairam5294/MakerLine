@@ -1,6 +1,6 @@
 # MakerLine launch kit
 
-Ready-to-post drafts for launching MakerLine. Edit them into your own voice before posting; nothing here is posted automatically. Every number is real and sourced from the repo: 25 skills, 14 agents, the ClubSlot and RhythmBuddy runs, and the token figures in `evals/results.md`.
+Ready-to-post drafts for launching MakerLine. Edit them into your own voice before posting; nothing here is posted automatically. Every number is real and sourced from the repo: 26 skills, 14 agents, the ClubSlot and RhythmBuddy runs, and the token figures in `evals/results.md`.
 
 **Links to use everywhere**
 

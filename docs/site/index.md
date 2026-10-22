@@ -22,7 +22,7 @@
 
 <section class="stats" aria-label="MakerLine in numbers" markdown="0">
 <dl>
-<div><dt>Skills, from first idea to post-launch</dt><dd>25</dd></div>
+<div><dt>Skills, from first idea to post-launch</dt><dd>26</dd></div>
 <div><dt>Specialist agents, from devil's advocate to accessibility auditor</dt><dd>14</dd></div>
 <div><dt>Lines of code written before you approve the idea</dt><dd>0</dd></div>
 <div><dt>The accessibility floor for everything it helps you build</dt><dd>2.2 AA</dd></div>

@@ -23,7 +23,7 @@
 
 <section class="stats" aria-label="MakerLine en cifras" markdown="0">
 <dl>
-<div><dt>Skills, desde la primera idea hasta después del lanzamiento</dt><dd>25</dd></div>
+<div><dt>Skills, desde la primera idea hasta después del lanzamiento</dt><dd>26</dd></div>
 <div><dt>Agentes especializados, del abogado del diablo al auditor de accesibilidad</dt><dd>14</dd></div>
 <div><dt>Líneas de código escritas antes de que apruebes la idea</dt><dd>0</dd></div>
 <div><dt>El mínimo de accesibilidad para todo lo que te ayuda a construir</dt><dd>2.2 AA</dd></div>

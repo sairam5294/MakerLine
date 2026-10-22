@@ -29,7 +29,7 @@ Licensed under [MIT](LICENSE). Contributions welcome — see [CONTRIBUTING.md](C
 
 ```
 makerline/
-├── plugin/        THE SOURCE — edit only here (25 skills, 14 agents, standards). Installs into Claude.
+├── plugin/        THE SOURCE — edit only here (26 skills, 14 agents, standards). Installs into Claude.
 ├── template/      Copied into every project: AGENTS.md, safety settings, CI, git hooks, MCP, Cursor/Codex adapters
 ├── starter/       Tested Expo (iOS/Android/Web) + Supabase app: i18n (en/te/hi), Sentry, PostHog
 ├── starter-web/   Tested Next.js site: landing page + waitlist (nonce CSP, rate limit, optional Turnstile), AI harness with evals; Lighthouse 1.0/1.0/1.0
