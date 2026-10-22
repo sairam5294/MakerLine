@@ -57,5 +57,22 @@ check "portfolio finds repo under 04_repos"       'grep -q "04_repos/lekka/docs"
 check "portfolio still finds a sibling repo"      'grep -q "Lekka/lekka/docs" <<<"$found"'
 check "portfolio skips the workspace archive"     '! grep -q "99_archive" <<<"$found"'
 
+# An empty "Blockers:" line must stay empty, not swallow the phase table below it; the page renders and escapes.
+B="$TMP/blank/app/docs/product"; mkdir -p "$B"
+printf '# Status — My <App> & Co · updated 2026-10-22 · kit v0.15.0\nEvaluation: pending\nNext step:\nBlockers:\n\n| # | Phase | Status |\n|---|---|---|\n| 1 | Brief | done |\n' > "$B/STATUS.md"
+parsed="$(cd "$KIT" && python3 -c "
+import importlib.util,sys,pathlib
+s=importlib.util.spec_from_file_location('p','scripts/portfolio.py'); m=importlib.util.module_from_spec(s); s.loader.exec_module(m)
+p=m.parse_status(pathlib.Path(sys.argv[1])); print(p['blockers'], p['next'], sep='|'); open(sys.argv[2],'w').write(m.render_html([p], ''))" "$B/STATUS.md" "$TMP/pf.html")"
+check "empty blockers and next step stay empty"   '[ "$parsed" = "—|—" ]'
+check "portfolio page escapes project names"      'grep -q "&lt;App&gt;" "$TMP/pf.html" && ! grep -q "<App>" "$TMP/pf.html"'
+printf '**The idea in one line.** For <cooks> who plan meals, a planner.\n' > "$B/ONE_PAGER.md"
+what="$(cd "$KIT" && python3 -c "
+import importlib.util,sys,pathlib
+s=importlib.util.spec_from_file_location('p','scripts/portfolio.py'); m=importlib.util.module_from_spec(s); s.loader.exec_module(m)
+print(m.one_liner(pathlib.Path(sys.argv[1])))" "$B")"
+check "portfolio card reads the one-pager line"   '[ "$what" = "For <cooks> who plan meals, a planner." ]'
+check "portfolio page works without a server"     '! grep -Eq "(src|href)=\"https?://" "$TMP/pf.html"'
+
 echo "workspace: $pass passed, $fail failed"
 [ "$fail" = 0 ]

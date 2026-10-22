@@ -76,6 +76,9 @@ edit_review "$TMP/live" "d['areas']=[{'name':'Customer app','status':'not starte
 python3 "$KIT/scripts/opportunity_review.py" render "$TMP/live" >/dev/null 2>&1
 grep -q 'Where each part stands' "$TMP/live/docs/product/opportunity/index.html" || { echo 'Areas table missing'; exit 1; }
 expect_fail 'area without status' "d['areas']=[{'name':'Admin'}]"
+expect_fail 'overview audience without who' "d['overview']={'what':'x','audience':[{'how':'y'}]}"
+expect_fail 'overview text not text' "d['overview']={'what':['x']}"
+grep -q '"overview"' "$TMP/idea/docs/product/opportunity/REVIEW.json" || { echo 'init has no overview'; exit 1; }
 # The ChatGPT/Codex manifest (plugin/plugin.json) must carry the same version as the Claude one.
 python3 - "$KIT" <<'PY'
 import json, pathlib, sys
@@ -84,4 +87,27 @@ a = json.loads((k / "plugin/.claude-plugin/plugin.json").read_text())["version"]
 b = json.loads((k / "plugin/plugin.json").read_text())["version"]
 sys.exit(0 if a == b else f"plugin/plugin.json version {b} != Claude manifest {a}")
 PY
-echo 'opportunity-review: five routes with access checks, strict records, rules table, no overwrite, safe rendering, progress, source and manifest-version checks passed'
+# Infographic report (23 Oct 2026): the shared review styles match the kit UI, and the body the kit UI embeds
+# stays inside its strict Content-Security-Policy (no inline style or script; SVG attributes are fine).
+python3 - "$KIT" "$TMP/live" <<'PY'
+import importlib.util, pathlib, re, sys
+k, project = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+def block(path):
+    css = path.read_text(encoding="utf-8")
+    return css[css.index("/* review:start"):css.index("/* review:end */")]
+if block(k / "plugin/skills/product-opportunity-review/assets/report.css") != block(k / "kit-ui/app.css"):
+    sys.exit("review:start…review:end differs between report.css and kit-ui/app.css")
+spec = importlib.util.spec_from_file_location("r", k / "plugin/skills/product-opportunity-review/scripts/opportunity_review.py")
+r = importlib.util.module_from_spec(spec); spec.loader.exec_module(r)
+body = r.render_body(r.read_review(project))
+if re.search(r"<script|\sstyle=|\son[a-z]+=", body):
+    sys.exit("review body has inline script, style or event handler (blocked by the kit UI's CSP)")
+for needle in ("ml-hero", "Current recommendation", "ml-ring", "ml-route", "review-nav", "Product at a glance", "Who it helps, and how"):
+    if needle not in body:
+        sys.exit(f"review body is missing {needle}")
+PY
+html="$TMP/live/docs/product/opportunity/index.html"
+grep -q 'Evidence mix · 1 source' "$html" || { echo 'Evidence mix bar missing'; exit 1; }
+grep -q 'Confidence: <strong>unknown</strong>' "$html" || { echo 'Confidence meter missing'; exit 1; }
+if grep -Eq '(src|href)="https?://[^"]*\.(css|js)' "$html"; then echo 'Report loads a CDN file'; exit 1; fi
+echo 'opportunity-review: five routes with access checks, strict records, rules table, no overwrite, safe rendering, progress, source, manifest-version, shared-style and CSP checks passed'
