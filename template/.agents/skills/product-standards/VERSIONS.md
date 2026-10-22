@@ -15,9 +15,9 @@
 | Apple App Review Guidelines | 16 Oct 2026 update (1.2 UGC/NCII, 2.5.19); iOS 26 SDK min, iOS 27 SDK from Apr 2027; age-rating social-media questions; Declared Age Range API | 2026-10-20 |
 | Google Play policies | target API 36 (31 Aug 2026, ext. 1 Nov 2026); developer verification app registration (30 Sep 2026); Play Age Signals API | 2026-10-20 |
 | Core Web Vitals | LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1 | 2026-09-27 |
-| Expo SDK (starter) | 57 (latest 58.0.16 = RN 0.88, React 19.3 — major bump waits for a device test on iOS and Android) | 2026-10-21 |
+| Expo SDK (starter) | 58 (RN 0.88, React 19.3, Jest 30, Sentry RN 8.28; upgraded 2026-10-21 — device test in starter/DEVICE-TEST.md before release) | 2026-10-21 |
 | Next.js (web starter) | 16.4.2, React 19.3.1 + Tailwind 4 (bumped 2026-10-21) | 2026-10-21 |
-| i18n / monitoring (Expo starter) | i18next 26, Sentry RN 7.11, PostHog RN 4.78 | 2026-09-28 |
+| i18n / monitoring (Expo starter) | i18next 26, Sentry RN 8.28, PostHog RN 4.78 | 2026-10-21 |
 | India IT Amendment Rules (synthetic media labelling) | notified 10 Feb 2026, in force 20 Feb 2026 | 2026-09-28 |
 | Google Play AI-Generated Content policy | current | 2026-09-28 |
 | Figma Code Connect | Organization/Enterprise plans, Full or Dev seat; CLI 2.x templates | 2026-09-28 |

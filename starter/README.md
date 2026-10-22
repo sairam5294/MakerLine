@@ -27,6 +27,8 @@ npx supabase test db              # runs supabase/tests (RLS/authorization tests
 | `npm run build:web && npm run test:e2e` | web build + Playwright flows + axe accessibility scan |
 | `maestro test .maestro/` | mobile smoke test on a simulator/emulator |
 
+After an Expo SDK upgrade, also run the 15-minute [device test](DEVICE-TEST.md) on a real iPhone and Android phone.
+
 ## Languages, errors, analytics
 - **Languages** (`src/i18n/`): English, Telugu, Hindi. Telugu and Hindi are machine-drafted, so get a native speaker to review them. Add a language with a new `xx.ts`; a test fails if any key or `{{placeholder}}` is missing. Telugu/Hindi get 20% taller line height automatically (no clipped matras).
 - **Error tracking** (Sentry): off until `EXPO_PUBLIC_SENTRY_DSN` is set. No user identity is sent, and emails/phones are scrubbed. For readable stack traces in store builds, add `SENTRY_AUTH_TOKEN` as an EAS secret.
