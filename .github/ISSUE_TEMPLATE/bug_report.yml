@@ -39,6 +39,7 @@ body:
         - makerline plugin
         - Expo starter (starter/)
         - Next.js starter (starter-web/)
+        - macOS starter (starter-macos/)
         - Scripts (new-project, upgrade-project, …)
         - Hooks, CI or git hooks
         - Docs site

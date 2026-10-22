@@ -1,0 +1,7 @@
+# Runtime dependencies (macOS only). Pinned exactly so every install is reproducible;
+# Dependabot (or you) proposes bumps and CI tests them before they land.
+#
+# pyobjc-framework-Cocoa             — AppKit: menu bar item, windows, buttons, colours
+# pyobjc-framework-ServiceManagement — SMAppService: optional "Open at login" (macOS 13+)
+pyobjc-framework-Cocoa==12.2.2
+pyobjc-framework-ServiceManagement==12.2.2

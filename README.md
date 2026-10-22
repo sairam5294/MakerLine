@@ -17,7 +17,7 @@ MakerLine is a free, open-source Claude plugin for designers and solo makers who
 - An **Idea Pack** for every idea before any code: honest, constructive evaluation, competitors and a differentiator test, a strengthening plan, draft design direction with clickable wireframes, a draft PRD and a one-pager, with an accessibility, inclusion and compliance lens (who it excludes, AODA / ADA / EAA / RPwD obligations by launch market). Three depths — Quick (~120k tokens measured), Standard, Deep — and `check_idea_pack.py` to verify the pack before you see it
 - 25 skills and 14 specialist agents (strategist, UX reviewer, accessibility auditor and accessibility strategist, security reviewer, QA, devil's advocate and idea champion…)
 - Standards for accessibility (WCAG 2.2 AA), UX, security, testing, backend and AI features — split into small files so only the relevant ones load
-- Two tested starters: Expo + Supabase (iOS / Android / web) and Next.js (landing page + waitlist), both with axe, Lighthouse and contrast tests
+- Three tested starters: Expo + Supabase (iOS / Android / web) and Next.js (landing page + waitlist), both with axe, Lighthouse and contrast tests, plus a Python + PyObjC macOS menu-bar app with VoiceOver-label, keyboard and contrast tests
 - Safety hooks, git hooks and GitHub Actions that block dangerous commands, leaked secrets and code before approval
 - One design-token source for Figma and code, plus evals that check the skills still catch planted flaws
 
@@ -31,12 +31,13 @@ makerline/
 ├── template/      Copied into every project: AGENTS.md, safety settings, CI, git hooks, MCP, Cursor/Codex adapters
 ├── starter/       Tested Expo (iOS/Android/Web) + Supabase app: i18n (en/te/hi), Sentry, PostHog
 ├── starter-web/   Tested Next.js site: landing page + waitlist (nonce CSP, rate limit, optional Turnstile), AI harness with evals; Lighthouse 1.0/1.0/1.0
+├── starter-macos/ Tested Python + PyObjC macOS menu-bar app: accessible reminder + Preferences windows, validated JSON settings, py2app + DMG
 ├── design/        tokens.json (single source for Figma + code) + build-tokens.mjs · Figma library: https://www.figma.com/community/file/1692097443572763844/makerline-design-system
 ├── owner/         OWNER.example.md → copy to OWNER.md (git-ignored): your profile, copied into every project
 ├── portfolio/     OUTCOMES.md (idea outcomes) + generated dashboard (index.html)
 ├── evals/         Sample cases with planted flaws + RUNBOOK (runs monthly on your Mac)
 ├── scripts/       new-project · upgrade-project · release-kit · build-plugin · portfolio · setup-github · sync · install-global
-├── .github/       Kit CI: keeps template in sync, tests both starters
+├── .github/       Kit CI: keeps template in sync, tests all three starters
 ├── CHANGELOG.md   What changed per version
 └── LESSONS.md     What the kit got wrong, fed back after each project
 ```
@@ -96,6 +97,7 @@ Scheduled in Claude: a quarterly standards check (1 Jan, 1 Apr, 1 Jul, 1 Oct) an
 ./scripts/new-project.sh ~/Projects/my-app             # any stack: rules, skills, agents, safety, CI
 ./scripts/new-project.sh ~/Projects/my-app --starter   # + tested Expo + Supabase app (iOS/Android/web)
 ./scripts/new-project.sh ~/Projects/my-site --web      # + tested Next.js site (landing page, SEO, waitlist)
+./scripts/new-project.sh ~/Projects/my-tool --macos    # + tested Python + PyObjC macOS menu-bar app
 cd ~/Projects/my-app && scripts/setup-github.sh        # private GitHub repo + push + protect main (needs: brew install gh)
 npx lefthook install                                   # git hooks (after setup-github)
 ```
