@@ -18,6 +18,7 @@ Open **http://127.0.0.1:8765/**. Stop it with Ctrl+C. Needs Python 3.9+ only: no
 |---|---|
 | **Projects** | A card per folder with `docs/product/STATUS.md`: name, current phase, approval, next step, last updated, a *Stale* badge after 14 days |
 | **Project** | Phase timeline (done, up next, waiting for you, skipped, not started, with the ★ approval gate), every `docs/**/*.md` as a readable page, and **Run next**: the folder to open and the exact prompt to paste, with a Copy button |
+| **Opportunity review** | When a project has `docs/product/opportunity/REVIEW.json`, the project page links to a read-only view of the decision, evidence, route, step progress, options, AI-tool plan and next actions. The review skill updates the JSON; the page shows the saved state on refresh. |
 | **New idea** | Pitch, depth (Quick / Standard / Deep), launch markets, platforms → a ready-to-paste `/makerline:start … — give me everything` prompt |
 | **Skills** | Every skill in `plugin/skills` with the first sentence of its description |
 

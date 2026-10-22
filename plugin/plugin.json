@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "makerline",
+  "version": "0.13.0",
+  "description": "Evaluate product ideas, review existing products, and plan, build and ship accessible software with evidence-led decisions.",
+  "author": {
+    "name": "Sairam Mogullapalli",
+    "url": "https://github.com/sairam5294"
+  },
+  "homepage": "https://sairam5294.github.io/makerline/",
+  "repository": "https://github.com/sairam5294/makerline",
+  "license": "MIT"
+}
