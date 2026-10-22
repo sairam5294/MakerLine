@@ -31,7 +31,7 @@ _Last measured 2026-10-22 · kit 0.14.1 plus the 0.15.0 changes · model: Claude
 
 1. **The shared context makes recovery more accurate, not just cheaper.** With the index or the pack, a fresh tool got all ten answers right. Without them it got seven, because the active task, the expiry dates and the last session weren't written down anywhere. The index also cut the share by about 15%, and the pack by about 35%.
 2. **A standard opportunity review costs about 60–70k of MakerLine's share**, roughly twice a Quick Idea Pack. Web pages are most of it: each fetch costs tokens, and blocked or failing pages also cost minutes (two runs lost about 10 minutes waiting on pages that never opened).
-3. **Bigger products cost more, but not in proportion.** Tindi has over 200 times RhythmBuddy's documentation; its review cost about 1.6 times as much, and a task pack holds 2–7% of the docs because the index points at sections (`SCALE.md`).
+3. **Bigger products cost more, but not in proportion.** Tindi has 10–20 times RhythmBuddy's documentation; its review cost about 1.3 times as much in total (1.6 times MakerLine's share), and a task pack holds 2–7% of the docs because the index points at sections (`SCALE.md`).
 4. **Reuse is the biggest lever.** Trust Kit reused its Idea Pack research and still spent 10 searches checking what had changed. A refresh should open only sources older than their review-by date.
 
 ## Strategy

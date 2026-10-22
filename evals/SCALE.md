@@ -7,7 +7,7 @@ Does the same MakerLine workflow (opportunity review + shared context + context 
 | | Small: RhythmBuddy | Larger: Tindi 1.0 |
 |---|---|---|
 | Shape | One macOS app, one repo | 3 apps (customer, partner, admin) + Supabase, a monorepo **and** a separate product-docs repo |
-| Docs | ~290 lines of project docs | ~68,000 words across 22 product documents (110 rules, 355 + 155 screens) |
+| Docs | ~3,500 words of project docs (~6,500 with reviews and README) | ~68,000 words across 22 product documents (110 rules, 355 + 155 screens) |
 | Plan | 15 small tasks | 5 releases, role-tagged work ([You], [Eng], [Adviser]), ~23 weeks to pilot with an engineering lead |
 | Built | Shipped v1.0 | R0 scaffold only |
 
