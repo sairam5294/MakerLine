@@ -82,7 +82,7 @@ git checkout -q docs/product/HANDOFF.md
 $CC pack . --task strategy --tool ChatGPT --today 2026-10-22 >/dev/null
 grep -q 'Created 2026-10-22 for \*\*ChatGPT\*\*' docs/CONTEXT_PACK.md && ok
 grep -q '## docs/product/ASSUMPTIONS.md' docs/product/../CONTEXT_PACK.md && ok
-grep -q -- '- Decision: Test' docs/CONTEXT_PACK.md && ok
+grep -q -- "- Decision: Test" docs/CONTEXT_PACK.md && ok
 if grep -q 'SECRET=1' docs/CONTEXT_PACK.md; then fail ".env leaked into pack"; fi; ok
 
 # 10. Pack: --public-only keeps only public files (STATUS is public in the template).
