@@ -392,6 +392,15 @@ def _glance(data: dict) -> str:
 </section>'''
 
 
+RULES_NOTE = '<p class="muted">WCAG conformance alone doesn\'t mean legal compliance.</p>'
+
+
+def _acc(anchor: str, title: str, count: int, hint: str, body: str) -> str:
+    """An accordion card: title, count badge and a one-line description, then the content."""
+    return (f'<details class="ml-acc" id="{anchor}"><summary><span class="ml-sum-title">{esc(title)} <span class="ml-count">{count}</span>'
+            f'<span class="sr-only"> items</span></span><span class="ml-sum-sub">{esc(hint)}</span></summary><div class="ml-acc-body">{body}</div></details>')
+
+
 def _steps(data: dict, steps: list, current) -> str:
     out = []
     for i, step in enumerate(steps, 1):
@@ -400,10 +409,12 @@ def _steps(data: dict, steps: list, current) -> str:
                   "Read docs/product/opportunity/REVIEW.json, record this step's finding and sources there, then regenerate the HTML report.")
         icon = STEP_ICON.get(step["status"], str(i))
         is_open = " open" if step is current else ""
+        finding = str(step.get("finding") or "").strip()
+        preview = f'<span class="ml-sum-sub ml-preview">{esc(finding)}</span>' if finding else ""
         out.append(
-            f'<li class="review-step review-step--{esc(step["status"])}"><span class="ml-step-icon" aria-hidden="true">{esc(icon)}</span>'
-            f'<details{is_open}><summary><span class="step-id">{i}.</span> {esc(step["title"])} <span class="step-state">{esc(status)}</span></summary>'
-            f'<div class="review-step-body"><p><strong>Skill:</strong> <code>{esc(step["skill"])}</code></p>'
+            f'<li class="review-step review-step--{esc(step["status"])}" id="step-{esc(step["id"])}"><span class="ml-step-icon" aria-hidden="true">{esc(icon)}</span>'
+            f'<details class="ml-acc"{is_open}><summary><span class="ml-sum-title"><span class="step-id">{i}.</span> {esc(step["title"])} <span class="step-state">{esc(status)}</span></span>{preview}</summary>'
+            f'<div class="review-step-body ml-acc-body"><p><strong>Skill:</strong> <code>{esc(step["skill"])}</code></p>'
             f'<p><strong>Finding:</strong> {esc(step.get("finding") or "Not recorded yet.")}</p>'
             f'<p><strong>Next:</strong> {esc(step.get("next") or "Complete this step and record its finding.")}</p>'
             f'<p><strong>Sources:</strong> {esc(", ".join(step.get("source_ids", [])) or "None recorded")}</p>'
@@ -454,6 +465,7 @@ def render_body(data: dict) -> str:
 <ol class="ml-route" aria-hidden="true">{route}</ol>
 <div class="meter"><progress value="{done}" max="{total}" aria-label="{done} of {total} review steps done or skipped"></progress><span>{done}/{total} steps</span></div>
 <p><strong>Now:</strong> {now}. {now_next}</p>
+<div class="ml-acc-tools js-only" role="group" aria-label="Workflow steps"><button type="button" data-acc="open" data-acc-target="#workflow">Expand all</button><button type="button" data-acc="close" data-acc-target="#workflow">Collapse all</button></div>
 <ol class="review-steps">{_steps(data, steps, current)}</ol></section>
 {_areas(data)}<section class="panel ml-section" id="options" aria-labelledby="options-h"><h2 id="options-h">Options to compare</h2>
 <p class="muted">Value, effort and evidence are estimates until a source or test confirms them. Include non-build options.</p>
@@ -465,9 +477,10 @@ def render_body(data: dict) -> str:
 {_items(data["tool_plan"], ("job", "primary", "fallback", "handoff"), "Run tool-plan to assign primary and fallback tools.")}</section>
 <section class="panel ml-section" id="evidence" aria-labelledby="evidence-h"><h2 id="evidence-h">Evidence and open questions</h2>
 {_kind_bar(data["sources"])}
-<details><summary>Launch-market rules ({len(rules)})</summary><p class="muted">Not legal advice. WCAG conformance alone doesn't mean legal compliance.</p>{_items(rules, ("market", "rule", "applies", "uncertainty", "source_ids"), "No rules recorded yet.")}</details>
-<details><summary>Sources ({len(data["sources"])})</summary>{_sources(data["sources"])}</details>
-<details><summary>Unknowns ({len(data["unknowns"])})</summary>{_items(data["unknowns"], ("question", "blocks", "how_to_answer"), "No unknowns recorded.")}</details></section>
+<div class="ml-acc-tools js-only" role="group" aria-label="Evidence lists"><button type="button" data-acc="open" data-acc-target="#evidence">Expand all</button><button type="button" data-acc="close" data-acc-target="#evidence">Collapse all</button></div>
+{_acc("ev-rules", "Launch-market rules", len(rules), "Laws and buyer requirements in each launch market. Not legal advice.", _items(rules, ("market", "rule", "applies", "uncertainty", "source_ids"), "No rules recorded yet.") + RULES_NOTE)}
+{_acc("ev-sources", "Sources", len(data["sources"]), "Every dated source behind the findings, with its kind.", _sources(data["sources"]))}
+{_acc("ev-unknowns", "Unknowns", len(data["unknowns"]), "Open questions, what they block and how to answer them.", _items(data["unknowns"], ("question", "blocks", "how_to_answer"), "No unknowns recorded."))}</section>
 <p class="muted">The saved REVIEW.json is the review record. Regenerate this page after each update; the HTML shows that saved state.</p>
 </div>'''
 
@@ -516,7 +529,7 @@ ICON_THEME = ('<svg width="20" height="20" viewBox="0 0 24 24" fill="none" strok
               '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>')
 
 
-def render_standalone(data: dict, css: str) -> str:
+def render_standalone(data: dict, css: str, js: str = "") -> str:
     body = render_body(data)
     # CSS and script are kit-controlled; all review fields are HTML-escaped above. No CDN or network needed,
     # and the page reads fine without the script (it only adds the theme switch, print and copy buttons).
@@ -525,7 +538,7 @@ def render_standalone(data: dict, css: str) -> str:
 <header class="ml-top"><div class="ml-top-inner"><span class="ml-brand">{MARK_SVG}<strong>MakerLine</strong><span class="ml-pill">Opportunity review</span></span>
 <span class="ml-actions"><button type="button" class="ml-icon js-only" id="ml-print" aria-label="Print or save as PDF" title="Print or save as PDF">{ICON_PRINT}</button><button type="button" class="ml-icon js-only" id="ml-theme" aria-label="Switch theme" title="Switch theme">{ICON_THEME}</button></span></div></header>
 <main id="main" tabindex="-1">{body}</main><footer class="foot"><p>Generated by MakerLine. Evidence and recommendations are dated; verify them before acting.</p></footer>
-<div id="ml-live" class="sr-only" aria-live="polite" aria-atomic="true"></div><script>{STANDALONE_SCRIPT}</script></body></html>'''
+<div id="ml-live" class="sr-only" aria-live="polite" aria-atomic="true"></div><script>{STANDALONE_SCRIPT}{js}</script></body></html>'''
 
 
 def read_review(project: pathlib.Path) -> dict:
@@ -574,9 +587,11 @@ def main() -> int:
     for warning in warnings(data):
         print(f"Warning: {warning}", file=sys.stderr)
     if args.command in ("init", "render"):
-        css = (pathlib.Path(__file__).resolve().parent.parent / "assets" / "report.css").read_text(encoding="utf-8")
+        assets = pathlib.Path(__file__).resolve().parent.parent / "assets"
+        css = "\n".join((assets / name).read_text(encoding="utf-8") for name in ("report.css", "ui.css"))
+        js = (assets / "ui.js").read_text(encoding="utf-8")
         report = safe_review_path(project, REPORT_FILE)
-        report.write_text(render_standalone(data, css), encoding="utf-8")
+        report.write_text(render_standalone(data, css, js), encoding="utf-8")
         print(report)
     else:
         print("Review valid")

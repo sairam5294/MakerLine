@@ -16,6 +16,8 @@ import re
 import sys
 
 KIT = pathlib.Path(__file__).resolve().parent.parent
+# Shared UI (accordions, clipped table cells, tooltip, row drawer, sortable columns): same files the review report uses.
+UI_ASSETS = KIT / "plugin" / "skills" / "product-opportunity-review" / "assets"
 OUT = KIT / "portfolio"
 MAX_DEPTH = 4                 # how deep to look for projects under each folder
 STALE_DAYS = 14               # flag projects not updated for this long
@@ -123,6 +125,7 @@ PORTFOLIO_CSS = """
 --tint:#E9EEFC;--ok:#14653F;--ok-tint:#E2F2E9;--wait:#8A4B00;--wait-tint:#FFF3DA;--warn:#B42318;--warn-tint:#FDECEA;--focus:#2337B0;
 --shadow:0 18px 40px -24px rgba(15,30,51,.35);--body:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
 --head:"Bricolage Grotesque",var(--body);--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;color-scheme:light}
+:root{--fg:var(--ink);--bg:var(--paper);--line-strong:var(--control);--accent-soft:var(--tint);--accent-fg:var(--accent-ink)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0D1522;--surface:#142033;--ink:#E8EEF6;--muted:#A8B5C7;--line:#2B3A51;--control:#7D8AA0;
 --accent:#A3B6FF;--accent-ink:#0D1522;--tint:#1B2747;--ok:#7AD9A8;--ok-tint:#123124;--wait:#FFC266;--wait-tint:#2E2410;--warn:#FF9A8F;--warn-tint:#3A1A18;--focus:#A3B6FF;
 --shadow:0 18px 40px -24px rgba(0,0,0,.7);color-scheme:dark}}
@@ -161,6 +164,10 @@ main{display:block;max-width:80rem;margin:0 auto;padding:1.5rem 1.25rem 3rem}
 .filters button span{font-family:var(--mono);font-size:.8rem;opacity:.85;margin-left:.35rem}
 .bar input{flex:1 1 14rem;min-height:44px;padding:0 .9rem;border-radius:10px;border:1px solid var(--control);background:var(--surface);color:var(--ink);font:inherit}
 .count{margin:0 .25rem;font-size:.9rem;color:var(--muted)}
+.view{display:inline-flex;margin-left:auto;padding:3px;border-radius:12px;background:var(--paper);border:1px solid var(--line)}
+.view button{font:700 .9rem var(--body);min-height:40px;min-width:44px;padding:0 .9rem;border:0;border-radius:9px;background:transparent;color:var(--muted);cursor:pointer}
+.view button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(15,30,51,.18),inset 0 0 0 1px var(--line)}
+[hidden]{display:none!important}
 .cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,22rem),1fr));gap:1rem}
 .card{display:flex;flex-direction:column;gap:.75rem;padding:1.25rem;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
 .card[hidden]{display:none}
@@ -184,8 +191,8 @@ main{display:block;max-width:80rem;margin:0 auto;padding:1.5rem 1.25rem 3rem}
 section.block{margin-top:1.5rem;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.25rem 1.5rem}
 section.block h2{margin:0 0 .75rem;font-size:1.3rem}
 details>summary{min-height:44px;padding:.55rem 0;font-weight:700;cursor:pointer}
-.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:.5rem}
-table{border-collapse:collapse;width:100%;min-width:900px;font-size:.9rem}
+.wrap{position:relative;overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:.5rem}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
 caption{text-align:left;font-weight:700;padding:.6rem .8rem}
 th,td{border-top:1px solid var(--line);padding:.6rem .8rem;text-align:left;vertical-align:top}
 thead th{background:var(--tint);font-size:.78rem;letter-spacing:.02em;white-space:nowrap}
@@ -207,22 +214,35 @@ document.documentElement.classList.add('js');
   try { var saved = localStorage.getItem('ml-theme'); if (saved) root.dataset.theme = saved; } catch (e) {}
   btn.addEventListener('click', function () { root.dataset.theme = dark() ? 'light' : 'dark'; try { localStorage.setItem('ml-theme', root.dataset.theme); } catch (e) {} label(); });
   label();
-  var bar = document.getElementById('bar'), cards = [].slice.call(document.querySelectorAll('.card')), q = document.getElementById('q');
+  var bar = document.getElementById('bar'), cards = [].slice.call(document.querySelectorAll('.card, #table-view tbody tr[data-waiting]')), q = document.getElementById('q');
   if (!cards.length) return;
   bar.hidden = false;
+  var only = cards.filter(function (c) { return c.classList.contains('card'); });
   var buttons = [].slice.call(bar.querySelectorAll('.filters button')), mode = 'all';
   buttons.forEach(function (b) {
-    var n = b.dataset.f === 'all' ? cards.length : cards.filter(function (c) { return c.dataset[b.dataset.f] === '1'; }).length;
+    var n = b.dataset.f === 'all' ? only.length : only.filter(function (c) { return c.dataset[b.dataset.f] === '1'; }).length;
     var s = document.createElement('span'); s.textContent = n; b.append(s);
     b.addEventListener('click', function () { mode = b.dataset.f; buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); apply(); });
   });
   q.addEventListener('input', apply);
   function apply() {
     var t = q.value.trim().toLowerCase(), shown = 0;
-    cards.forEach(function (c) { var ok = (mode === 'all' || c.dataset[mode] === '1') && (!t || c.textContent.toLowerCase().indexOf(t) > -1); c.hidden = !ok; shown += ok; });
-    document.getElementById('count').textContent = shown + ' of ' + cards.length + ' shown';
+    cards.forEach(function (c) {
+      var ok = (mode === 'all' || c.dataset[mode] === '1') && (!t || c.textContent.toLowerCase().indexOf(t) > -1);
+      c.hidden = !ok; if (ok && c.classList.contains('card')) shown += 1;
+    });
+    document.getElementById('count').textContent = shown + ' of ' + only.length + ' shown';
   }
   apply();
+  var views = [].slice.call(bar.querySelectorAll('.view button'));
+  function setView(v) {
+    views.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.view === v); });
+    document.getElementById('cards-view').hidden = v !== 'cards'; document.getElementById('table-view').hidden = v !== 'table';
+    try { localStorage.setItem('ml-portfolio-view', v); } catch (e) {}
+  }
+  views.forEach(function (b) { b.addEventListener('click', function () { setView(b.dataset.view); }); });
+  var saved = 'cards'; try { saved = localStorage.getItem('ml-portfolio-view') || 'cards'; } catch (e) {}
+  setView(saved);
 })();
 """
 
@@ -262,7 +282,8 @@ def render_html(projects, outcomes_md) -> str:
     cards_html = f"<ul class='cards' aria-label='Projects'>{cards}</ul>" if projects else \
         "<p class='empty'>No projects found. Create one with scripts/new-project.sh, or pass the folders to scan.</p>"
     body_rows = "".join(
-        f"<tr><th scope='row'>{esc(p['product'])}<br><span class='muted'>{esc(p['path'])}</span></th>"
+        f"<tr data-approved='{int(approved(p))}' data-waiting='{int(not approved(p))}' data-attention='{int(attention(p))}'>"
+        f"<th scope='row'>{esc(p['product'])}<br><span class='muted'>{esc(p['path'])}</span></th>"
         f"<td><span class='badge {'ok' if approved(p) else 'wait'}'>{esc(p['gate'])}</span></td>"
         f"<td><progress value='{p['done']}' max='{p['total']}' aria-label='{p['done']} of {p['total']} phases done'></progress> "
         f"{p['done']}/{p['total']}</td>"
@@ -275,6 +296,8 @@ def render_html(projects, outcomes_md) -> str:
         "<tr>" + "".join(f"<td>{esc(c.strip())}</td>" for c in r.strip("|").split("|")) + "</tr>"
         for r in outcomes_md.splitlines()
     ) or "<tr><td colspan='8'>No outcomes logged yet (post-launch adds them).</td></tr>"
+    ui_css = (UI_ASSETS / "ui.css").read_text(encoding="utf-8")
+    ui_js = (UI_ASSETS / "ui.js").read_text(encoding="utf-8")
     n = len(projects)
     n_ok = sum(approved(p) for p in projects)
     n_attn = sum(attention(p) for p in projects)
@@ -286,7 +309,7 @@ def render_html(projects, outcomes_md) -> str:
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark"><title>Product portfolio · MakerLine</title>
-<style>{PORTFOLIO_CSS}</style></head>
+<style>{PORTFOLIO_CSS}{ui_css}</style></head>
 <body><a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="top-in"><span class="brand">{mark}MakerLine <span class="pill">Portfolio</span></span>
 <button type="button" class="icon js-only" id="theme" aria-label="Switch theme" title="Switch theme">{theme_icon}</button></div></header>
@@ -302,25 +325,26 @@ def render_html(projects, outcomes_md) -> str:
 <div class="bar" id="bar" hidden>
 <div class="filters" role="group" aria-label="Show projects"><button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="attention" aria-pressed="false">Needs attention</button><button type="button" data-f="approved" aria-pressed="false">Approved</button><button type="button" data-f="waiting" aria-pressed="false">Awaiting decision</button></div>
 <label class="sr-only" for="q">Find a project</label><input id="q" type="search" placeholder="Find a project" autocomplete="off">
-<p class="count" id="count" aria-live="polite"></p></div>
-{cards_html}
-<section class="block" aria-labelledby="cmp-h"><h2 id="cmp-h">Compare in a table</h2>
-<details><summary>Projects table ({n})</summary>
+<p class="count" id="count" aria-live="polite"></p>
+<div class="view" role="group" aria-label="View"><button type="button" data-view="cards" aria-pressed="true">Cards</button><button type="button" data-view="table" aria-pressed="false">Table</button></div></div>
+<div id="cards-view">{cards_html}</div>
+<section class="block" id="table-view" aria-labelledby="cmp-h"><h2 id="cmp-h">Compare in a table</h2>
+<p class="muted">Sort by any column. Long text is shortened: hover for the full text, or choose View for the whole row.</p>
 <div class="wrap" tabindex="0" role="region" aria-label="Projects table, scrolls sideways">
-<table><caption>Projects</caption>
+<table data-ml data-sortable><caption class="sr-only">Projects</caption>
 <thead><tr><th scope="col">Project</th><th scope="col">Approval gate</th><th scope="col">Progress</th><th scope="col">Current phase</th>
 <th scope="col">Next step</th><th scope="col">Writing</th><th scope="col">Blockers</th><th scope="col">Updated</th><th scope="col">Cost to date</th><th scope="col">Kit</th></tr></thead>
-<tbody>{body_rows}</tbody></table></div></details></section>
+<tbody>{body_rows}</tbody></table></div></section>
 <section class="block" aria-labelledby="out-h"><h2 id="out-h">Idea outcomes</h2>
 <p class="muted">What happened to each idea after its verdict. Feeds evaluate-idea calibration.</p>
 <div class="wrap" tabindex="0" role="region" aria-label="Idea outcomes table, scrolls sideways">
-<table><caption>Idea outcomes (feeds evaluate-idea calibration)</caption>
+<table data-ml data-sortable><caption class="sr-only">Idea outcomes (feeds evaluate-idea calibration)</caption>
 <thead><tr><th scope="col">Date</th><th scope="col">Project</th><th scope="col">Verdict at approval</th><th scope="col">Kill criteria</th>
 <th scope="col">What happened</th><th scope="col">Metric vs target</th><th scope="col">Total cost</th><th scope="col">Lesson</th></tr></thead>
 <tbody>{outcome_rows}</tbody></table></div></section>
 </main>
 <footer><p>MakerLine · the portfolio reports each approval gate; only the owner changes it.</p></footer>
-<script>{PORTFOLIO_JS}</script>
+<script>{PORTFOLIO_JS}{ui_js}</script>
 </body></html>"""
 
 

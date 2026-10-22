@@ -72,6 +72,7 @@ import importlib.util,sys,pathlib
 s=importlib.util.spec_from_file_location('p','scripts/portfolio.py'); m=importlib.util.module_from_spec(s); s.loader.exec_module(m)
 print(m.one_liner(pathlib.Path(sys.argv[1])))" "$B")"
 check "portfolio card reads the one-pager line"   '[ "$what" = "For <cooks> who plan meals, a planner." ]'
+check "portfolio bundles the table UI and view switch" 'grep -q "window.mlUI" "$TMP/pf.html" && grep -q "data-view=\"table\"" "$TMP/pf.html" && grep -q "data-sortable" "$TMP/pf.html"'
 check "portfolio page works without a server"     '! grep -Eq "(src|href)=\"https?://" "$TMP/pf.html"'
 
 echo "workspace: $pass passed, $fail failed"

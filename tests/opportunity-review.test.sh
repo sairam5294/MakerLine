@@ -70,7 +70,7 @@ edit_review "$TMP/live" "d.update(decision='Test before investing.', markets_sta
 python3 "$KIT/scripts/opportunity_review.py" render "$TMP/live" >/dev/null 2>&1
 html="$TMP/live/docs/product/opportunity/index.html"
 if grep -q 'investing\.\.' "$html"; then echo 'Doubled full stop'; exit 1; fi
-grep -q 'Launch-market rules (1)' "$html" && grep -q 'RPwD Act' "$html" && grep -q '>official<' "$html" || { echo 'Rules or source kind missing'; exit 1; }
+grep -q 'Launch-market rules <span class="ml-count">1</span>' "$html" && grep -q 'RPwD Act' "$html" && grep -q '>official<' "$html" || { echo 'Rules or source kind missing'; exit 1; }
 if grep -q 'owner to confirm' "$html"; then echo 'Confirmed markets shown as proposed'; exit 1; fi
 edit_review "$TMP/live" "d['areas']=[{'name':'Customer app','status':'not started','owner':'[Eng]','note':'R3'}]"
 python3 "$KIT/scripts/opportunity_review.py" render "$TMP/live" >/dev/null 2>&1
@@ -97,12 +97,21 @@ def block(path):
     return css[css.index("/* review:start"):css.index("/* review:end */")]
 if block(k / "plugin/skills/product-opportunity-review/assets/report.css") != block(k / "kit-ui/app.css"):
     sys.exit("review:start…review:end differs between report.css and kit-ui/app.css")
+assets = k / "plugin/skills/product-opportunity-review/assets"
+def part(path, start, end):
+    t = path.read_text(encoding="utf-8")
+    return t[t.index(start):t.index(end)]
+if part(assets / "ui.css", "/* ml-ui:start", "/* ml-ui:end */") != part(k / "kit-ui/app.css", "/* ml-ui:start", "/* ml-ui:end */"):
+    sys.exit("ml-ui block differs between assets/ui.css and kit-ui/app.css")
+js = (assets / "ui.js").read_text(encoding="utf-8")
+if js not in (k / "kit-ui/app.js").read_text(encoding="utf-8"):
+    sys.exit("kit-ui/app.js doesn't carry the same assets/ui.js")
 spec = importlib.util.spec_from_file_location("r", k / "plugin/skills/product-opportunity-review/scripts/opportunity_review.py")
 r = importlib.util.module_from_spec(spec); spec.loader.exec_module(r)
 body = r.render_body(r.read_review(project))
 if re.search(r"<script|\sstyle=|\son[a-z]+=", body):
     sys.exit("review body has inline script, style or event handler (blocked by the kit UI's CSP)")
-for needle in ("ml-hero", "Current recommendation", "ml-ring", "ml-route", "review-nav", "Product at a glance", "Who it helps, and how"):
+for needle in ("ml-hero", "Current recommendation", "ml-ring", "ml-route", "review-nav", "Product at a glance", "Who it helps, and how", 'class="ml-acc"', 'data-acc="open"', 'id="step-'):
     if needle not in body:
         sys.exit(f"review body is missing {needle}")
 PY
@@ -110,4 +119,5 @@ html="$TMP/live/docs/product/opportunity/index.html"
 grep -q 'Evidence mix · 1 source' "$html" || { echo 'Evidence mix bar missing'; exit 1; }
 grep -q 'Confidence: <strong>unknown</strong>' "$html" || { echo 'Confidence meter missing'; exit 1; }
 if grep -Eq '(src|href)="https?://[^"]*\.(css|js)' "$html"; then echo 'Report loads a CDN file'; exit 1; fi
+grep -q 'window.mlUI' "$html" && grep -q 'ml-drawer' "$html" || { echo 'Shared table/accordion UI not bundled'; exit 1; }
 echo 'opportunity-review: five routes with access checks, strict records, rules table, no overwrite, safe rendering, progress, source, manifest-version, shared-style and CSP checks passed'
