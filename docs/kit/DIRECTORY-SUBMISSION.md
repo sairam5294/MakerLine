@@ -144,6 +144,10 @@ Screen recording at 1920 × 1080, captions burned in **and** a caption file (`.s
 - [x] `claude plugin validate ./makerline-idea` prints "Validation passed" (passed 2026-10-20)
 - [x] `claude plugin validate ./plugin` and `claude plugin validate .` (marketplace) also pass (passed 2026-10-20)
 - [ ] Portal **Validate** on `makerline-idea`: no **Blocking** findings; read every **Policy hold** and **Warning**
+  - First run, 2026-10-22 (`main @ f68dc9a`): 7 checks, 3 warnings, 1 policy hold, nothing blocking.
+    - **Policy hold, "uses a credential" (`MCP_FORWARDS_CREDENTIAL_ENV`):** the scanner read the text `pass / fail` in `validation-results-template.md` as the `pass` password-manager command. Paired with the Figma connector, that looked like a credential leaving the machine. Reworded to "pass, fail or inconclusive" everywhere in validate-idea. Re-validate after merging.
+    - **Download-and-run (`RUNTIME_FETCH_EXEC`)** in `ai.md` and `security.md`: documentation only (security rules about never executing fetched or model output); the portal says no change is needed.
+    - **`privacyPolicyUrl` unrecognized:** the directory reads it for the listing; no action. **Icon passed unread:** information only.
 - [x] `version` raised since the last published version
 
 **Things the portal checks that are worth fixing first** ([checklist](https://claude.com/docs/plugins/pre-submission-checklist))
