@@ -42,4 +42,12 @@ PY
 if python3 "$KIT/scripts/opportunity_review.py" check "$TMP/partial" >/dev/null 2>&1; then
   echo 'Unknown source was accepted'; exit 1
 fi
-echo 'opportunity-review: five routes, no overwrite, safe rendering, progress and source checks passed'
+# The ChatGPT/Codex manifest (plugin/plugin.json) must carry the same version as the Claude one.
+python3 - "$KIT" <<'PY'
+import json, pathlib, sys
+k = pathlib.Path(sys.argv[1])
+a = json.loads((k / "plugin/.claude-plugin/plugin.json").read_text())["version"]
+b = json.loads((k / "plugin/plugin.json").read_text())["version"]
+sys.exit(0 if a == b else f"plugin/plugin.json version {b} != Claude manifest {a}")
+PY
+echo 'opportunity-review: five routes, no overwrite, safe rendering, progress, source and manifest-version checks passed'
