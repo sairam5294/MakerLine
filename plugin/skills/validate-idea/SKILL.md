@@ -31,8 +31,8 @@ Get evidence that real people want this, for the least time and money.
 │  ✓ 1–3 riskiest assumptions, each with a kill criterion      │
 │  ✓ Cheapest test first: interviews · landing page · prototype│
 │    test · concierge MVP · pre-sale                           │
-│  ✓ Results mode: notes/numbers → themes with counts, pass /  │
-│    fail / inconclusive vs kill criteria → re-score           │
+│  ✓ Results mode: notes/numbers → themes with counts, pass,   │
+│    fail or inconclusive vs kill criteria → re-score          │
 ├──────────────────────────────────────────────────────────────┤
 │  SUPERCHARGED (when you connect your tools)                  │
 │  + Hosting: deploy the landing page                          │
@@ -63,7 +63,7 @@ Get evidence that real people want this, for the least time and money.
 5. **Results mode** (`/validate-idea results`, or *"here are my interview notes"*, *"the landing page got X signups"*). Write `docs/product/VALIDATION_RESULTS.md` from `references/validation-results-template.md`, one V-id per test:
    - **Anonymise first:** participants become P1, P2…; drop names, emails, phones, employers before anything is written.
    - **Synthesise:** themes with counts across *all* participants ("5 of 8"), plus counter-evidence — never a handful of cherry-picked quotes.
-   - **Compare** raw numbers with the threshold and kill criterion copied unchanged from VALIDATION.md → pass / fail / inconclusive. Small n or a broken test → inconclusive, not pass.
+   - **Compare** raw numbers with the threshold and kill criterion copied unchanged from VALIDATION.md → pass, fail or inconclusive. Small n or a broken test → inconclusive, not pass.
 6. **Close the loop.** Answered CLARITY questions move down with their V-id. Then run evaluate-idea's **Refine** step: change only scores the evidence supports, update the verdict if the scores say so, add a revision-log row and a "What changed" block citing the V-ids; fill the results file's "Effect on the evaluation" table.
    - **Kill criterion hit** → say it plainly in the first line (*"A1 failed its kill criterion: 2 of 8, needed 4"*) and recommend Pivot or Drop. Don't soften it or move the bar.
 

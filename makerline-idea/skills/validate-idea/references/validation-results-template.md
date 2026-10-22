@@ -11,7 +11,7 @@ _Updated {{date}} · Plan: `docs/product/VALIDATION.md` · Evaluation: `docs/pro
 
 | V-id | Assumption | Test | n | Result vs kill criterion | Verdict |
 |---|---|---|---|---|---|
-| V-01 | A1 | interviews / landing page / prototype / concierge / pre-sale | | e.g. 3 of 8 had the pain (kill: < 4 of 8) | pass / fail / inconclusive |
+| V-01 | A1 | interviews / landing page / prototype / concierge / pre-sale | | e.g. 3 of 8 had the pain (kill: < 4 of 8) | pass, fail or inconclusive |
 
 **Kill criterion hit?** {{No / Yes — V-xx: one plain sentence on what it means. Recommendation: Pivot / Drop.}}
 
@@ -26,7 +26,7 @@ _Updated {{date}} · Plan: `docs/product/VALIDATION.md` · Evaluation: `docs/pro
 | Raw numbers | {{counts, not just %: e.g. 1,140 visits → 37 signups (3.2 %)}} |
 | Threshold (go) | {{copied from VALIDATION.md, unchanged}} |
 | Kill criterion | {{copied from VALIDATION.md, unchanged}} |
-| Verdict | pass / fail / inconclusive — {{why, in one line}} |
+| Verdict | pass, fail or inconclusive — {{why, in one line}} |
 | What it changes | {{brief / scope / positioning / pricing / nothing}} |
 
 **Themes** (counted across all participants — not the most quotable ones):
