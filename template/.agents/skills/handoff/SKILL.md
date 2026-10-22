@@ -40,6 +40,7 @@ Leave the project in a state any AI tool (Claude, Cursor, Codex) can pick up in 
 
 - This session's work: outcomes, half-done items, decisions, failed approaches.
 - `docs/product/HANDOFF.md` (overwritten), `docs/MEMORY.md` (if it exists), `docs/product/COSTS.md`, `STATUS.md`, `DECISIONS.md`.
+- `docs/product/CONTEXT_INDEX.md` and `ASSUMPTIONS.md` when the project uses the shared context ([shared-context.md](references/shared-context.md)); always when more than one AI tool works on it.
 - Ask the owner only if money was spent and the amount isn't visible in the tool.
 
 ## Workflow
@@ -66,8 +67,13 @@ Phase/task: <phase> · <T-xx>   Branch/worktree: <name>
 2. **Promote to memory.** If `docs/MEMORY.md` exists, move anything long-lived from "Gotchas" and "Decisions" into it (environment quirks, what broke and the fix, do-not-touch areas, conventions) and condense it to ≤ 60 lines.
    - HANDOFF is for this session, MEMORY for every session.
 3. **Record costs.** Add a row to `docs/product/COSTS.md` if money was spent this session (e.g. API usage shown by the tool, a new service plan) and update its "Total to date".
-4. **Update status.** Update STATUS.md (phase, current task, date); ensure DECISIONS.md has new decisions.
-5. **Commit docs** (`docs: handoff`) if git is available. Confirm in one line.
+4. **Update status.** Update STATUS.md (phase, current task, date); ensure DECISIONS.md has new decisions, each with the next `D-xx` ID and its evidence IDs.
+5. **Update the shared context** (more than one AI tool, or the files already exist). Missing files: copy `templates/CONTEXT_INDEX.md` and `templates/ASSUMPTIONS.md` beside this skill into `docs/product/`. Then:
+   - fill the index's ten fields (`Next tool` = who picks this up); add new assumptions or risks with an owner and a review-by date;
+   - commit the docs (`docs: handoff`), write that commit's short hash in `Verified commit`, then commit the index on its own (`docs: context index`);
+   - run `python3 scripts/context_check.py check .` (from a kit clone, or `scripts/context_check.py` beside this skill) and fix every FAIL.
+   - If the next tool can't open the folder (ChatGPT in the browser): `context_check.py pack . --task "<task type>" --tool ChatGPT`, and tell the owner to attach `docs/CONTEXT_PACK.md`.
+6. **Commit docs** (`docs: handoff`) if git is available and step 5 didn't. Confirm in one line.
 
 ## Output
 
@@ -76,7 +82,8 @@ Phase/task: <phase> · <T-xx>   Branch/worktree: <name>
 | `docs/product/HANDOFF.md` | this session: done, in progress, next, decisions, gotchas, verify | ≤ 40 lines |
 | `docs/MEMORY.md` | long-lived quirks, fixes, do-not-touch areas, conventions | ≤ 60 lines |
 | `docs/product/COSTS.md` | new row + "Total to date" (only if money was spent) | — |
-| `docs/product/STATUS.md`, `DECISIONS.md` | phase, current task, date; new decisions | — |
+| `docs/product/STATUS.md`, `DECISIONS.md` | phase, current task, date; new decisions with IDs | — |
+| `docs/product/CONTEXT_INDEX.md`, `ASSUMPTIONS.md` | state in ten fields, files per task, privacy tiers; assumptions with review-by dates | short; checked by `context_check.py` |
 
 Confirm to the owner in one line.
 
@@ -91,6 +98,7 @@ If **~~chat** is connected:
 - Overwrite HANDOFF.md; never let it grow past 40 lines.
 - Every decision in the handoff is also in DECISIONS.md.
 - Gotchas record failed approaches so the next tool doesn't repeat them.
+- Cite IDs (D-xx, A-xx, S-x) instead of re-explaining; never copy secrets or personal data into any context file or pack.
 
 ## Tips
 
@@ -101,4 +109,4 @@ If **~~chat** is connected:
 ## Related
 
 - Before: any phase · After: the next session reads HANDOFF.md first (`AGENTS.md` "Start every session")
-- Reads: `../product-standards/references/context-budget.md` (HANDOFF ≤ 40, STATUS ≤ 60 lines)
+- Reads: `../product-standards/references/context-budget.md` (HANDOFF ≤ 40, STATUS ≤ 60 lines), [shared-context.md](references/shared-context.md) (files, IDs, privacy tiers, recovery test)
