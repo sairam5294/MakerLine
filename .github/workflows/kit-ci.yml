@@ -69,6 +69,7 @@ jobs:
       # The kit's own web UI meets the same WCAG 2.2 AA bar (uses this starter's Playwright + axe).
       - run: |
           mkdir -p /tmp/ui/demo/docs/product && cp ../plugin/skills/product-kickoff/templates/STATUS.md /tmp/ui/demo/docs/product/
+          python3 ../scripts/opportunity_review.py init /tmp/ui/demo --stage partial --product 'Accessibility demo' --goal 'Decide what to build next' --market Ontario
           python3 ../scripts/kit-ui.py --projects /tmp/ui --port 8799 --no-save & sleep 2
           cp ../tests/kit-ui-a11y.mjs ./kit-ui-a11y.mjs && node kit-ui-a11y.mjs http://127.0.0.1:8799
       # On failure, print Playwright's page snapshots so the cause is readable in the log without downloading anything.
