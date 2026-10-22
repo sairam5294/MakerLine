@@ -97,6 +97,9 @@ git checkout -q docs/product/HANDOFF.md
 # 12. Unknown task fails with the list of tasks.
 $CC pack . --task nonsense --tool ChatGPT | grep -q 'Choose one of' && ok
 
+# 12b. Pack to an absolute path outside the project works.
+mkdir -p "$TMP/out"; $CC pack . --task strategy --tool ChatGPT --out "$TMP/out/pack.md" >/dev/null && test -s "$TMP/out/pack.md" && ok
+
 # 13. Score: 1 pass, 1 missing, 1 wrong claim.
 cat > key.json <<'J'
 {"cases":[

@@ -413,11 +413,14 @@ def cmd_pack(args: argparse.Namespace) -> int:
         out += ["", f"## {p}", "", fence + ("json" if p.endswith(".json") else "markdown"), body.rstrip(), fence]
     out += ["", "## Not included", ""]
     out += [f"- {s}" for s in skipped] or ["- Nothing was left out."]
-    target = root / (args.out or PACK)
+    target = pathlib.Path(args.out).expanduser() if args.out else root / PACK
+    if not target.is_absolute():
+        target = root / target
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text("\n".join(out) + "\n", encoding="utf-8")
     words = sum(len(b.split()) for _, b in included)
-    print(f"PASS  wrote {target.relative_to(root)}: {len(included)} file(s), ~{words} words, {len(skipped)} left out")
+    shown = target.relative_to(root) if target.is_relative_to(root) else target
+    print(f"PASS  wrote {shown}: {len(included)} file(s), ~{words} words, {len(skipped)} left out")
     return 0
 
 

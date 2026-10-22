@@ -10,7 +10,7 @@ Does a fresh AI tool, given only a project's official context, know where the pr
    - **Pack path** (ChatGPT in the browser, a phone chat): run `context_check.py pack . --task Strategy --tool ChatGPT` and attach `docs/CONTEXT_PACK.md`.
 3. Paste the prompt below. Don't add anything else.
 4. Save the reply as `answers-<tool>.md` (outside the repo, or in `docs/product/evals/`) and score it:
-   `python3 <kit>/scripts/context_check.py score answers-<tool>.md docs/product/context-recovery.json`
+   `python3 <kit>/scripts/context_check.py score answers-<tool>.md <path-to>/context-recovery.json`
 5. Count **wrong claims** by hand (anything stated as fact that the files contradict), and note tokens and time if the tool shows them. Record a row in `evals/results.md`.
 
 ## Prompt
@@ -35,7 +35,7 @@ C10 Which project rules constrain the work (branches, accessibility, secrets)?
 
 ## Answer key format
 
-Each project writes its own key at `docs/product/context-recovery.json`, from its files, **before** running the test. Keep `must_include` to the 1–3 facts that prove the tool found the right file; give alternatives in a list.
+Each project writes its own key from its files **before** running the test, and keeps it **outside the project folder** (for example `MakerLine/projects/<name>/context-recovery.json`) so the tool being tested can't read it. Keep `must_include` to the 1–3 facts that prove the tool found the right file; give alternatives in a list.
 
 ```json
 {
@@ -49,6 +49,6 @@ Each project writes its own key at `docs/product/context-recovery.json`, from it
 }
 ```
 
-A case passes when every `must_include` item (or one of its alternatives) appears and no `must_not_include` text does. The keyword score is a floor, not the whole grade: always read the answers and count wrong claims.
+A case passes when every `must_include` item (or one of its alternatives) appears and no `must_not_include` text does. The keyword score is a floor, not the whole grade: a capable tool can hit the keywords while saying "not recorded". Always read the answers, grade each case pass / partial / fail by hand, and count wrong claims.
 
 **Pass bar:** 9/10 cases and 0 wrong claims, on each tool and each path.

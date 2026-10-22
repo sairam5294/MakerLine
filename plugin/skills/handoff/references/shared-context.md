@@ -54,7 +54,7 @@ Missing or empty index fields · index paths that don't exist · a `Verified com
 
 ## 6. Context recovery test
 
-The direct test of the contract: a tool that has **only** the official context answers ten questions. Score with `context_check.py score answers.md key.json`. Each project keeps its key at `docs/product/context-recovery.json` (format: `evals/context-recovery/README.md` in the kit). Run it at least once per tool, and after changing the contract.
+The direct test of the contract: a tool that has **only** the official context answers ten questions. Score with `context_check.py score answers.md key.json`. Each project keeps its answer key outside the project folder, so the tool being tested can't read it (format: `evals/context-recovery/README.md` in the kit). Run it at least once per tool, and after changing the contract.
 
 | Case | Lost-context situation | The receiving tool must answer |
 |---|---|---|
