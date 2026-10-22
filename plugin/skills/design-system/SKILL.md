@@ -75,7 +75,7 @@ Present ≤ 10 lines: the approach, the token tiers and any contrast fixes, the 
 
 If **~~design** (Figma) is connected:
 - Sync `design/tokens.json` to Figma variables (Light/Dark modes) and back — Option A in `references/tokens-figma-sync.md`; show the diff before committing a reverse sync.
-- Start from the kit's Community library ("Product Kit — Design System") when the owner wants a ready file.
+- Start from the kit's Community library ("MakerLine — Design System") when the owner wants a ready file.
 
 ## Rules
 

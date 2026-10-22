@@ -31,7 +31,7 @@ SITE = "docs/site"  # hand-written site pages (Markdown; simple HTML blocks allo
 PAGES = [
     (f"{SITE}/index.md", "index.html", None, "MakerLine — know if it's worth building. Then build it right."),
     (f"{SITE}/five-minutes.md", "five-minutes.html", "Start in 5 minutes", "5 minutes with MakerLine"),
-    (f"{SITE}/hi/index.md", "hi/index.html", None, "MakerLine — पहले जानिए कि बनाना सही है या नहीं। फिर सही तरीके से बनाइए।"),
+    (f"{SITE}/hi/index.md", "hi/index.html", None, "MakerLine — पहले जानिए कि यह बनाने लायक़ है या नहीं। फिर सही तरीक़े से बनाइए।"),
     (f"{SITE}/es/index.md", "es/index.html", None, "MakerLine — Descubre si vale la pena construirlo. Luego constrúyelo bien."),
     ("GETTING-STARTED.md", "getting-started.html", "Getting started", "Getting started"),
     (f"{SITE}/case-studies.md", "case-studies/index.html", "Case studies", "Case studies"),
