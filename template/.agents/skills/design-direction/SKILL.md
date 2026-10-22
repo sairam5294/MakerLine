@@ -65,6 +65,7 @@ Give the owner a draft design direction and clickable wireframes before any code
    - `../product-standards/references/inclusion.md` (global baseline: accessible worldwide, no discrimination — names, gender, languages, low-end devices, cost)
 10. **Wireframes** — copy (`cp`) `references/wireframe-template.html` to `design/wireframes/index.html`; read it once in full (its CSS kit and script contract are needed), then fill it (Standard ≤ 8 screens, Deep 12+; delete the comment when done). Phone frames for mobile products, desktop width for web tools. Keep the markup accessible (landmarks, labels, real buttons). Then run `check_idea_pack.py` (product-kickoff/scripts) for labels, links and states; if a browser is available, also open it, check every screen renders and the core flow clicks through, and fix what's broken. Each file has:
    - one section per MVP screen in grey-box fidelity with real content (no lorem ipsum)
+   - a "Product at a glance" block at the top: what it is in one line, problem → what it does → outcome, goal and how it's measured, value add over the alternative, and who it helps and how — filled from the brief, evaluation and one-pager (write "Not decided yet" rather than guess)
    - at least one empty and one error state
    - links that click through the core flow
    - a designer note per screen (what it's for, open questions)
