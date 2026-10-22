@@ -15,13 +15,13 @@
 | Apple App Review Guidelines | 16 Oct 2026 update (1.2 UGC/NCII, 2.5.19); iOS 26 SDK min, iOS 27 SDK from Apr 2027; age-rating social-media questions; Declared Age Range API | 2026-10-20 |
 | Google Play policies | target API 36 (31 Aug 2026, ext. 1 Nov 2026); developer verification app registration (30 Sep 2026); Play Age Signals API | 2026-10-20 |
 | Core Web Vitals | LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1 | 2026-09-27 |
-| Expo SDK (starter) | 57 (latest 58.0.16 = RN 0.88, React 19.3 — bump proposed) | 2026-10-20 |
-| Next.js (web starter) | 16.3 + Tailwind 4 (latest next 16.4.2, react 19.3.1, tailwindcss 4.3.3 — bump proposed) | 2026-10-20 |
+| Expo SDK (starter) | 57 (latest 58.0.16 = RN 0.88, React 19.3 — major bump waits for a device test on iOS and Android) | 2026-10-21 |
+| Next.js (web starter) | 16.4.2, React 19.3.1 + Tailwind 4 (bumped 2026-10-21) | 2026-10-21 |
 | i18n / monitoring (Expo starter) | i18next 26, Sentry RN 7.11, PostHog RN 4.78 | 2026-09-28 |
 | India IT Amendment Rules (synthetic media labelling) | notified 10 Feb 2026, in force 20 Feb 2026 | 2026-09-28 |
 | Google Play AI-Generated Content policy | current | 2026-09-28 |
 | Figma Code Connect | Organization/Enterprise plans, Full or Dev seat; CLI 2.x templates | 2026-09-28 |
 | Next.js CSP | nonce via proxy.ts (Next 16) | 2026-09-28 |
-| Test / data libs (both starters) | supabase-js 2.118.0, @playwright/test 1.64.1, axe-core + @axe-core/playwright 4.14.0 (latest; starters pin 2.117 / 1.63 / 4.13) | 2026-10-20 |
+| Test / data libs (both starters) | supabase-js 2.118, @playwright/test 1.64.1, @axe-core/playwright 4.14.0 (bumped 2026-10-21) | 2026-10-21 |
 | EU AI Act | Art. 50 transparency from 2 Aug 2026; Art. 50(2) marking grace to 2 Dec 2026 for pre-Aug systems; Annex III high-risk 2 Dec 2027 (Omnibus; OJ publication unverified) | 2026-10-20 |
 | AI model families (ai.md) | Claude Fable 5.1 / Opus 5.5 / Sonnet 5.5 / Haiku 5.5; GPT-6 Astra / GPT-6.1 Sol / GPT-6 Luna; Gemini 4 Argon / 3.8 Flash / 3.5 Flash-Lite | 2026-10-20 |

@@ -204,7 +204,7 @@ Not sure? Start with MakerLine Idea. If you decide to build, switch to MakerLine
 <h2 id="cases">See it on real projects</h2>
 <div class="cases">
 <a class="case" href="case-rhythmbuddy.md"><span class="eyebrow">Shipped app · quality review</span><strong>RhythmBuddy</strong><span class="big">8</span><span>must-fix problems found by four reviewers, in a macOS app that already had 275 passing tests.</span></a>
-<a class="case" href="case-clubslot.md"><span class="eyebrow">New idea · Idea Pack</span><strong>ClubSlot</strong><span class="big">3</span><span>real competitors found for a brief that said "no competitors", and a sharper pivot recommended.</span></a>
+<a class="case" href="case-clubslot.md"><span class="eyebrow">New idea · Idea Pack</span><strong>ClubSlot</strong><span class="big">4</span><span>direct competitors found for a brief that said "no competitors", and a sharper pivot recommended.</span></a>
 </div>
 </section>
 
@@ -212,25 +212,27 @@ Not sure? Start with MakerLine Idea. If you decide to build, switch to MakerLine
 <div class="section-intro">
 <p class="eyebrow">Measured, not promised</p>
 <h2 id="honest">Every run is logged, and every release gets lighter</h2>
-<p>Blind tests and real projects are written up in <a href="../../LESSONS.md">what the kit got wrong</a>. One result: a Quick Idea Pack now uses about a quarter fewer tokens than two releases ago, so your plan's limits go further.</p>
+<p>Blind tests and real projects are written up in <a href="../../LESSONS.md">what the kit got wrong</a>. One result: a Quick Idea Pack now uses about a third fewer tokens than three releases ago, with 12 tool calls instead of 30, so your plan's limits go further.</p>
 </div>
 <figure class="chart" data-reveal>
-<svg viewBox="0 0 640 210" role="img" aria-labelledby="chart-t chart-d" focusable="false">
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="chart-t chart-d" focusable="false">
 <title id="chart-t">Tokens used by one Quick Idea Pack run, by release</title>
-<desc id="chart-d">Release 0.11.0: about 157,000 tokens and 30 tool calls. Release 0.12.0: about 146,000 tokens and 24 calls. Release 0.12.1: about 120,000 tokens and 19 calls. The target is 70,000 to 100,000 tokens.</desc>
-<rect class="target" x="239" y="8" width="73" height="170" rx="4"/>
-<text class="t-target" x="275" y="200" text-anchor="middle">target 70–100k</text>
-<text class="t-label" x="0" y="44">0.11.0</text><rect class="bar" x="70" y="24" width="380" height="30" rx="5"/><text class="t-val" x="460" y="44">157k · 30 calls</text>
-<text class="t-label" x="0" y="100">0.12.0</text><rect class="bar" x="70" y="80" width="353" height="30" rx="5"/><text class="t-val" x="433" y="100">146k · 24 calls</text>
-<text class="t-label" x="0" y="156">0.12.1</text><rect class="bar now" x="70" y="136" width="290" height="30" rx="5"/><text class="t-val" x="370" y="156">120k · 19 calls</text>
+<desc id="chart-d">Release 0.11.0: about 157,000 tokens and 30 tool calls. 0.12.0: about 146,000 and 24 calls. 0.12.1: about 120,000 and 19 calls. 0.14.0: about 106,000 and 12 calls. The test setup alone, with no kit, uses about 78,000 tokens, so MakerLine's own share of a 0.14.0 run is about 28,000.</desc>
+<text class="t-base" x="259" y="234" text-anchor="middle">test setup alone ≈ 78k</text>
+<text class="t-label" x="0" y="39">0.11.0</text><rect class="bar" x="70" y="18" width="380" height="30" rx="5"/><text class="t-val" x="460" y="39">157k · 30 calls</text>
+<text class="t-label" x="0" y="87">0.12.0</text><rect class="bar" x="70" y="66" width="353" height="30" rx="5"/><text class="t-val" x="433" y="87">146k · 24 calls</text>
+<text class="t-label" x="0" y="135">0.12.1</text><rect class="bar" x="70" y="114" width="290" height="30" rx="5"/><text class="t-val" x="370" y="135">120k · 19 calls</text>
+<text class="t-label" x="0" y="183">0.14.0</text><rect class="bar now" x="70" y="162" width="257" height="30" rx="5"/><text class="t-val" x="337" y="183">106k · 12 calls</text>
+<line class="base" x1="259" y1="10" x2="259" y2="210"/>
 </svg>
 <ul class="chart-list">
 <li><span>0.11.0 · 157k tokens · 30 calls</span><span class="b w157"></span></li>
 <li><span>0.12.0 · 146k tokens · 24 calls</span><span class="b w146"></span></li>
-<li class="now"><span>0.12.1 · 120k tokens · 19 calls</span><span class="b w120"></span></li>
-<li class="goal">Target: 70–100k tokens</li>
+<li><span>0.12.1 · 120k tokens · 19 calls</span><span class="b w120"></span></li>
+<li class="now"><span>0.14.0 · 106k tokens · 12 calls</span><span class="b w106"></span></li>
+<li class="goal">The test setup alone uses about 78k; MakerLine's share of a 0.14.0 run is about 28k.</li>
 </ul>
-<figcaption>Tokens per Quick Idea Pack run, from the <a href="../../evals/results.md">evaluation log</a>. Still above target, and the log says so.</figcaption>
+<figcaption>Tokens per Quick Idea Pack run in our test setup, from the <a href="../../evals/results.md">evaluation log</a>. An empty run in the same setup uses about 78k, so the line marks what the kit itself adds. Your total depends on your Claude app's own setup.</figcaption>
 </figure>
 </section>
 

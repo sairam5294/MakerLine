@@ -259,10 +259,10 @@ main p,main li,main td,main th,main h1,main h2,main h3,main a{overflow-wrap:anyw
 .chart svg{display:block;width:100%;max-width:44rem}
 .chart .bar{fill:var(--accent-soft)}
 .chart .bar.now{fill:var(--accent)}
-.chart .target{fill:var(--gate-tint);stroke:var(--gate);stroke-width:2;stroke-dasharray:6 5}
+.chart .base{stroke:var(--gate);stroke-width:2;stroke-dasharray:6 5}
 .chart text{font:600 15px var(--mono);fill:var(--ink)}
 .chart .t-label{fill:var(--muted)}
-.chart .t-target{fill:var(--gate)}
+.chart .t-base{fill:var(--gate)}
 .chart-list{display:none}
 .chart figcaption{margin-top:1rem;color:var(--muted);font-size:.95rem}
 
@@ -347,7 +347,7 @@ footer.site p{margin:.5rem 0}
   .line.in .track li:nth-child(6)::before{transition-delay:1.05s}
   .reveal-ready .chart .bar{transform-box:fill-box;transform-origin:0 50%;transition:transform 1s var(--ease)}
   .reveal-ready .chart:not(.in) .bar{transform:scaleX(0)}
-  .chart.in .bar:nth-of-type(3){transition-delay:.15s}.chart.in .bar.now{transition-delay:.3s}
+  .chart.in .bar:nth-of-type(2){transition-delay:.1s}.chart.in .bar:nth-of-type(3){transition-delay:.2s}.chart.in .bar.now{transition-delay:.3s}
   /* Demo replay: the prompt, then each step ticks in, then the verdict lands (about 4 seconds, once). */
   .reveal-ready .demo:not(.in) .demo-prompt,.reveal-ready .demo:not(.in) .demo-steps li,.reveal-ready .demo:not(.in) .demo-result{opacity:0}
   .demo.in .demo-prompt{animation:rise .5s var(--ease) both}
@@ -416,7 +416,7 @@ footer.site p{margin:.5rem 0}
   .chart-list li{display:grid;gap:.3rem;max-width:none;font:600 .9rem/1.3 var(--mono)}
   .chart-list .b{display:block;height:14px;border-radius:4px;background:var(--accent-soft)}
   .chart-list .now .b{background:var(--accent)}
-  .chart-list .w157{width:100%}.chart-list .w146{width:93%}.chart-list .w120{width:76%}
+  .chart-list .w157{width:100%}.chart-list .w146{width:93%}.chart-list .w120{width:76%}.chart-list .w106{width:68%}
   .chart-list .goal{color:var(--gate)}
   .panel{padding:.25rem 1.1rem .75rem}
   footer.site .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}

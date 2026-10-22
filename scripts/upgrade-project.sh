@@ -125,6 +125,17 @@ if [ "$ADOPT" = 1 ]; then
   [ -f "$DEST/package.json" ] || echo "  ℹ  Not a Node project: the kit's lefthook.yml runs scripts/check.sh if you add one (or pytest when present); its template CI is Node-specific, so your own CI stays in charge."
 fi
 
+# Python projects: black/isort/flake8/mypy would also check the kit's own scripts in .agents/, which
+# follow the kit's style and are replaced on every upgrade. Tell the owner to exclude them instead of
+# reformatting (RhythmBuddy hit this: the formatter check failed on a kit script after an upgrade).
+if [ -f "$DEST/pyproject.toml" ] || [ -f "$DEST/.flake8" ] || [ -f "$DEST/setup.cfg" ]; then
+  if ! grep -qs '\.agents' "$DEST/pyproject.toml" "$DEST/.flake8" "$DEST/setup.cfg"; then
+    echo; echo "  ⚠️  Python project: exclude the kit's files from your linters, or their checks will fail on kit scripts:"
+    echo "     black extend-exclude and isort skip_glob: .agents, .product-kit-backup · flake8 exclude: .agents,.product-kit-backup"
+    echo "     mypy exclude: (^|/)\.agents/ · .pre-commit-config.yaml: exclude: ^(\.agents|\.product-kit-backup)/"
+  fi
+fi
+
 if [ "$APPLY" = "--apply" ]; then
   # Anything the kit added that git will silently ignore is worth knowing about.
   if git -C "$DEST" rev-parse >/dev/null 2>&1 && [ "${#added[@]}" -gt 0 ]; then

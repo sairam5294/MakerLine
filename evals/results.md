@@ -33,3 +33,4 @@ Hallucinations spotted: none in spot checks; unverifiable inputs were labelled a
 | Trust Kit, Quick → Standard continue (0.12.0) | Checker clean; gate untouched | 32 calls, ~161k tokens, 0 new searches (research reused) |
 | Same, one-file Quick guide (0.12.1) | **Checker clean first time**; verdict Pivot (Low) | 19 calls, ~120k tokens (from 157k / 30 calls at 0.11.0); 7 searches, 4 reads |
 | Quick run with budget caps (unreleased) | Checker clean first time (run 1) / after 1 fix (run 2); verdict Pivot via business lens when no goal stated | 11–12 calls, ~106–109k tokens (from 120k / 19 calls); 4 searches, ≤ 1 fetch |
+| Harness baseline: empty agent (2026-10-21) | Replies "ok", no tools | ~78k tokens: the test setup's own instructions and tools. So the kit's own share of a 0.14.0 Quick run ≈ 106k − 78k ≈ 28k (≈ 42k at 0.12.1, if that run had the same baseline). Totals above include this overhead |
