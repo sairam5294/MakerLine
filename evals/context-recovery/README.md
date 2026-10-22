@@ -49,6 +49,6 @@ Each project writes its own key from its files **before** running the test, and 
 }
 ```
 
-A case passes when every `must_include` item (or one of its alternatives) appears and no `must_not_include` text does. The keyword score is a floor, not the whole grade: a capable tool can hit the keywords while saying "not recorded". Always read the answers, grade each case pass / partial / fail by hand, and count wrong claims.
+A case passes when every `must_include` item (or one of its alternatives) appears and no `must_not_include` text does. `must_not_include` matches anywhere, including where the tool quotes a phrase to say it's absent, so use it only for phrases a correct answer would never contain. The keyword score is a floor, not the whole grade: a capable tool can hit the keywords while saying "not recorded". Always read the answers, grade each case pass / partial / fail by hand, and count wrong claims.
 
 **Pass bar:** 9/10 cases and 0 wrong claims, on each tool and each path.
