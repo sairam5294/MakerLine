@@ -1,0 +1,20 @@
+{
+  "name": "makerline-local",
+  "interface": {
+    "displayName": "MakerLine local"
+  },
+  "plugins": [
+    {
+      "name": "makerline",
+      "source": {
+        "source": "local",
+        "path": "./plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

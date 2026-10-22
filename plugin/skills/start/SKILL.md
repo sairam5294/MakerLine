@@ -6,7 +6,9 @@ argument-hint: "<idea + 'everything' | 'set it all up' | 'build it' | nothing to
 
 # /start
 
-**Quick** ("quick", "worth a weekend?"): read only `../evaluate-idea/references/quick-run.md` and follow it — it is the whole Quick run in one file; don't open the orchestrator, the phase skills or the rest of this file.
+**Existing-product decision:** when the owner asks whether to keep investing in a half-built or delayed product, whether a product is ready to launch, or what to improve in a live product, run `../product-opportunity-review/SKILL.md`. This route takes priority over the word "quick". It produces an HTML decision report and reuses existing work.
+
+**Quick new idea** ("quick", "worth a weekend?"): read only `../evaluate-idea/references/quick-run.md` and follow it — it is the whole Quick run in one file; don't open the orchestrator, the phase skills or the rest of this file.
 
 Otherwise this is the short entry point to the kit's orchestrator: read `../product-kickoff/SKILL.md` and follow it exactly, choosing the mode from what the owner said.
 
@@ -28,6 +30,7 @@ Otherwise this is the short entry point to the kit's orchestrator: read `../prod
 | a new idea + "everything" / "all of it" / "the whole pack" (add "deep" for depth) | full Idea Pack in one go: 1 → 2 → 2a → 2b → one-pager |
 | "set it all up" / "everything after approval" (STATUS must say APPROVED) | tool-plan → name + brand → stack → design system → full PRD → engineering docs → project setup |
 | "build it" / "next task" | plan-build, then one build-feature task per session |
+| half-built, delayed, near-launch, or live product decision | `../product-opportunity-review/SKILL.md` and its stage-aware route |
 | nothing specific | read STATUS.md, say the current phase in one line, and offer the next step with the one-go option |
 
 ## Rules

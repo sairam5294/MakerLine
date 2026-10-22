@@ -264,3 +264,24 @@ input[aria-invalid="true"], textarea[aria-invalid="true"] { border-color: var(--
 @media (forced-colors: active) {
   .badge, .step-icon, .btn { border: 1px solid CanvasText; }
 }
+
+/* Product opportunity review. The same rules are bundled into its offline report. */
+.review { max-width: 76rem; margin-inline: auto; }
+.review .eyebrow { color: var(--muted); font-size: 0.9rem; font-weight: 650; text-transform: uppercase; letter-spacing: 0.04em; }
+.review-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0; }
+.review-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0.45rem 0.75rem; background: var(--accent-soft); border-radius: 8px; }
+.review > .panel { margin-block: 1rem; }
+.review-steps { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
+.review-step { border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); }
+.review-step summary { cursor: pointer; padding: 0.8rem 1rem; min-height: 44px; font-weight: 600; }
+.review-step summary:hover { background: var(--accent-soft); }
+.review-step summary .step-state { white-space: normal; }
+.review-step--done { border-left: 4px solid var(--ok); }
+.review-step--in_progress { border-left: 4px solid var(--accent); }
+.review-step--blocked { border-left: 4px solid var(--warn); }
+.review-step--skipped { border-left: 4px dashed var(--line-strong); }
+.review-step-body { padding: 0 1rem 1rem; }
+.review-step-body label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+.review-step-body textarea { resize: vertical; }
+.review details > summary { min-height: 44px; padding: 0.45rem 0; font-weight: 600; cursor: pointer; }
+.review details > summary:hover { text-decoration: underline; }

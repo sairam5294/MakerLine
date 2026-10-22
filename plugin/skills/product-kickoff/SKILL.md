@@ -62,7 +62,7 @@ Run the kit's phases in order. Each phase is a skill in `../<skill>/SKILL.md`; o
 | 12 | ship-checklist | RELEASE | checklist done |
 | 13 | post-launch | METRICS, LESSONS | weekly |
 
-The **Idea Pack** (1–2b + one-pager) is everything the owner needs to decide before any code; it lives in `docs/` and `design/`, which the gate allows. **Anytime:** `tool-plan` (offer at kickoff) · `handoff` · `standards-refresh` · `portfolio` · `ai-feature`.
+The **Idea Pack** (1–2b + one-pager) is everything the owner needs to decide before any code; it lives in `docs/` and `design/`, which the gate allows. **Anytime:** `product-opportunity-review` (stage-aware investment or launch decision and HTML report) · `tool-plan` (offer at kickoff) · `handoff` · `standards-refresh` · `portfolio` · `ai-feature`.
 
 ## Inputs
 

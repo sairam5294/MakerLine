@@ -31,6 +31,13 @@ Next step: owner reads ONE_PAGER.md
 Blockers:
 EOF
 printf '# One pager\n\n<script>alert(1)</script>\n\n[bad](javascript:alert(1)) [ok](STATUS.md)\n' > "$P/docs/product/ONE_PAGER.md"
+python3 "$KIT/scripts/opportunity_review.py" init "$P" --stage partial --product 'Sample App' --goal 'Decide whether to finish' >/dev/null
+python3 - "$P" <<'PY'
+import json, pathlib, sys
+p = pathlib.Path(sys.argv[1]) / 'docs/product/opportunity/REVIEW.json'
+d = json.loads(p.read_text()); d['decision_reason'] = '<script>alert(1)</script>'
+p.write_text(json.dumps(d))
+PY
 echo "TOP-SECRET" > "$TMP/secret.md"
 
 PORT=$(python3 -c 'import socket; s=socket.socket(); s.bind(("127.0.0.1",0)); print(s.getsockname()[1]); s.close()')
@@ -48,6 +55,10 @@ has() { local body; body="$(curl -s "${@:2}")"; grep -q -- "$1" <<<"$body"; }
 check "projects page 200"                  '[ "$(code "$B/")" = 200 ]'
 check "projects page lists the sample"     'has "Sample App" "$B/"'
 check "project page 200"                   '[ "$(code "$B/project?id=sample-app")" = 200 ]'
+check "project links opportunity review"  'has "Open the interactive review" "$B/project?id=sample-app"'
+check "opportunity page 200"               '[ "$(code "$B/opportunity?id=sample-app")" = 200 ]'
+check "opportunity shows progress"         'has "0/6 steps" "$B/opportunity?id=sample-app"'
+check "opportunity escapes HTML"           '! has "<script>alert" "$B/opportunity?id=sample-app"'
 check "approval is the next move"          'has "scripts/approve.sh" "$B/project?id=sample-app"'
 check "timeline shows lettered phases"     'has "Design direction" "$B/project?id=sample-app"'
 check "doc page 200"                       '[ "$(code "$B/doc?id=sample-app&file=docs/product/ONE_PAGER.md")" = 200 ]'
@@ -64,6 +75,7 @@ refused() { c="$(code "$@")"; [ "$c" = 403 ] || [ "$c" = 404 ]; }
 check "doc traversal refused"              'refused "$B/doc?id=sample-app&file=../../../secret.md"'
 check "encoded traversal refused"          'refused "$B/doc?id=sample-app&file=..%2F..%2F..%2Fsecret.md"'
 check "project traversal refused"          'refused "$B/project?id=../"'
+check "opportunity traversal refused"      'refused "$B/opportunity?id=../"'
 check "absolute path refused"              'refused "$B/doc?id=sample-app&file=$TMP/secret.md"'
 check "non-markdown refused"               'refused "$B/doc?id=sample-app&file=../../../../etc/passwd"'
 check "secret never leaks"                 '! has TOP-SECRET "$B/doc?id=sample-app&file=../../../secret.md"'

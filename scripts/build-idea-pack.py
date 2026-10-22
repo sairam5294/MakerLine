@@ -90,7 +90,11 @@ def build(out: pathlib.Path) -> None:
         "repository": kit.get("repository", ""),
         "license": "MIT",
         "keywords": ["idea", "discovery", "evaluation", "competitors", "prd", "wireframes", "accessibility"],
+        "privacyPolicyUrl": kit.get("privacyPolicyUrl", "https://sairam5294.github.io/makerline/privacy.html"),
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    # Directory listing icon: the MakerLine Idea mark (square PNG, 512 px). The plugin directory reads
+    # .claude-plugin/icon.png the first time the plugin is submitted.
+    shutil.copy2(ROOT / "docs/kit/brand/makerline-idea-mark-512.png", out / ".claude-plugin" / "icon.png")
 
     # Every ../<skill>/ reference must resolve inside the pack.
     missing = set()

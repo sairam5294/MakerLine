@@ -2,6 +2,8 @@
 
 Plain-language guide. The kit lives in `~/Documents/makerline` on your Mac.
 
+If you already have a half-built, delayed, near-launch or live product, see [the product workflow guide](docs/PRODUCT-WORKFLOWS.md) for the skill and an example prompt. For ChatGPT, Claude, Codex, Cursor and Copilot installation choices, see [Install in AI tools](docs/INSTALL-AI-TOOLS.md).
+
 ---
 
 ## Part 1 — One-time setup (about 20 minutes)

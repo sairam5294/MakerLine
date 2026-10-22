@@ -17,7 +17,9 @@ for (const colorScheme of ["light", "dark"]) {
   const page = await (await browser.newContext({ colorScheme })).newPage();
   await page.goto(base + "/");
   const project = await page.$eval('main a[href*="project"]', (a) => a.getAttribute("href")).catch(() => null);
-  for (const path of ["/", project, "/new", "/skills"].filter(Boolean)) {
+  if (project) await page.goto(base + project);
+  const opportunity = project ? await page.$eval('a[href*="/opportunity"]', (a) => a.getAttribute("href")).catch(() => null) : null;
+  for (const path of ["/", project, opportunity, "/new", "/skills"].filter(Boolean)) {
     const res = await page.goto(base + path);
     const { violations } = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])

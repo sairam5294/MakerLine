@@ -20,5 +20,6 @@
   ],
   "homepage": "https://github.com/sairam5294/makerline",
   "repository": "https://github.com/sairam5294/makerline",
-  "license": "MIT"
+  "license": "MIT",
+  "privacyPolicyUrl": "https://sairam5294.github.io/makerline/privacy.html"
 }

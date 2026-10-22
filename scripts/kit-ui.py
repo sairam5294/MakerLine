@@ -35,6 +35,10 @@ SKILLS_DIR = KIT / "plugin" / "skills"
 _spec = importlib.util.spec_from_file_location("portfolio", KIT / "scripts" / "portfolio.py")
 portfolio = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(portfolio)
+_review_spec = importlib.util.spec_from_file_location(
+    "opportunity_review", KIT / "plugin" / "skills" / "product-opportunity-review" / "scripts" / "opportunity_review.py")
+opportunity_review = importlib.util.module_from_spec(_review_spec)
+_review_spec.loader.exec_module(opportunity_review)
 
 # Only the loopback address. 0.0.0.0 would let anyone on your Wi-Fi read your project docs.
 HOST = "127.0.0.1"
@@ -510,6 +514,11 @@ def page_project(p: dict) -> str:
     if p["waiting"]:
         names = ", ".join(f'{w["id"]} {w["name"]}' for w in p["waiting"])
         waiting = f'<p class="note"><span aria-hidden="true">◐</span> Waiting for your review: {esc(names)}.</p>'
+    opportunity = ""
+    if has_opportunity_review(p):
+        opportunity = (f'<section class="panel" aria-labelledby="opportunity-h"><h2 id="opportunity-h">Product opportunity review</h2>'
+                       f'<p>See the decision, evidence, step progress and action plan.</p>'
+                       f'<p><a href="/opportunity?id={q}">Open the interactive review</a></p></section>')
     body = f"""<p class="crumbs"><a href="/">Projects</a> <span aria-hidden="true">/</span> {esc(p["product"])}</p>
 <h1>{esc(p["product"])}</h1>
 <p class="lede">{gate_badge(p)} · updated {age_text(p)} · kit v{esc(p["kit"])}</p>
@@ -528,6 +537,7 @@ def page_project(p: dict) -> str:
       <div><dt>Cost to date</dt><dd>{esc(p["cost"])}</dd></div>
     </dl>
   </section>
+  {opportunity}
   <section class="panel" aria-labelledby="tl-h">
     <h2 id="tl-h">Phases</h2>
     {progress(p)}
@@ -539,6 +549,22 @@ def page_project(p: dict) -> str:
   </section>
 </div>"""
     return layout(p["product"], body, "projects")
+
+
+def has_opportunity_review(p: dict) -> bool:
+    try:
+        return opportunity_review.safe_review_path(p["dir"], opportunity_review.REVIEW_FILE).is_file()
+    except ValueError:
+        return False
+
+
+def page_opportunity(p: dict) -> str:
+    q = urllib.parse.quote(p["id"])
+    data = opportunity_review.read_review(p["dir"])
+    body = (f'<p class="crumbs"><a href="/">Projects</a> <span aria-hidden="true">/</span> '
+            f'<a href="/project?id={q}">{esc(p["product"])}</a> <span aria-hidden="true">/</span> Opportunity review</p>'
+            + opportunity_review.render_body(data))
+    return layout("Opportunity review", body, "projects")
 
 
 def page_doc(p: dict, rel: str, path: pathlib.Path) -> str:
@@ -729,6 +755,13 @@ def make_handler(root: pathlib.Path, port: int, can_save: bool):
                     if p is None:
                         return self.send(404, page_error(404, "No project with a docs/product/STATUS.md there."))
                     return self.send(200, page_project(p))
+                if route == "/opportunity":
+                    p = find_project(root, qs.get("id", [""])[0])
+                    if p == "forbidden":
+                        return self.send(403, page_error(403, "That folder is outside your projects folder."))
+                    if p is None or not has_opportunity_review(p):
+                        return self.send(404, page_error(404, "No opportunity review found for this project."))
+                    return self.send(200, page_opportunity(p))
                 if route == "/doc":
                     p = find_project(root, qs.get("id", [""])[0])
                     if p == "forbidden":

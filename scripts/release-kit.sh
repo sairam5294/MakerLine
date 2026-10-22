@@ -26,6 +26,7 @@ bash tests/idea-pack.test.sh
 
 # 3. Set the version everywhere it's shown.
 sed -i.bak "s/\"version\": *\"$OLD\"/\"version\": \"$NEW\"/" "$MANIFEST" && rm -f "$MANIFEST.bak"
+sed -i.bak "s/\"version\": *\"$OLD\"/\"version\": \"$NEW\"/" plugin/plugin.json && rm -f plugin/plugin.json.bak
 sed -i.bak "s/^# MakerLine (Claude plugin) v.*/# MakerLine (Claude plugin) v${NEW%.*}/" plugin/README.md && rm -f plugin/README.md.bak
 sed -i.bak "s/^# MakerLine v[0-9.]*/# MakerLine v${NEW%.*}/" README.md && rm -f README.md.bak
 

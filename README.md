@@ -12,10 +12,12 @@ MakerLine is a free, open-source Claude plugin for designers and solo makers who
 
 **Why it exists.** AI tools write working code fast, but they forget accessibility, UX heuristics, security, tests and honest evaluation unless you remind them every session, in every tool. MakerLine packages that know-how as skills, agents, standards, hooks and CI so every tool you use starts thinking like a senior product designer.
 
+**Already building or live?** Run `/makerline:product-opportunity-review` to decide whether to finish, narrow, launch, pivot or improve next. It creates a stage-aware, accessible HTML report with evidence, saved step progress, options and an action plan. See [which workflow and example prompts](docs/PRODUCT-WORKFLOWS.md) and [installation across AI tools](docs/INSTALL-AI-TOOLS.md).
+
 **What you get**
 - A 13-phase workflow from discovery interview to post-launch retro, with an approval gate AI tools cannot bypass
 - An **Idea Pack** for every idea before any code: honest, constructive evaluation, competitors and a differentiator test, a strengthening plan, draft design direction with clickable wireframes, a draft PRD and a one-pager, with an accessibility, inclusion and compliance lens (who it excludes, AODA / ADA / EAA / RPwD obligations by launch market). Three depths — Quick (~120k tokens measured), Standard, Deep — and `check_idea_pack.py` to verify the pack before you see it
-- 25 skills and 14 specialist agents (strategist, UX reviewer, accessibility auditor and accessibility strategist, security reviewer, QA, devil's advocate and idea champion…)
+- 26 skills and 14 specialist agents (strategist, UX reviewer, accessibility auditor and accessibility strategist, security reviewer, QA, devil's advocate and idea champion…)
 - Standards for accessibility (WCAG 2.2 AA), UX, security, testing, backend and AI features — split into small files so only the relevant ones load
 - Three tested starters: Expo + Supabase (iOS / Android / web) and Next.js (landing page + waitlist), both with axe, Lighthouse and contrast tests, plus a Python + PyObjC macOS menu-bar app with VoiceOver-label, keyboard and contrast tests
 - Safety hooks, git hooks and GitHub Actions that block dangerous commands, leaked secrets and code before approval
@@ -59,6 +61,7 @@ makerline/
 | 10–12 | quality-review · test-plan · ship-checklist (incl. expert review) | reviews/ · TEST_PLAN · RELEASE |
 | 13 | post-launch: weekly metrics, feedback, retros → LESSONS | METRICS · LESSONS |
 | any | **tool-plan** (which AI subscription does which job) · handoff (end of every session) · portfolio (all projects) · ai-feature (any AI feature) · standards-refresh (quarterly) | HANDOFF.md · AI_FEATURE_*.md |
+| any | **product-opportunity-review**: stage-aware decision for half-built, delayed, prelaunch or live products; can also show a fresh idea in the HTML view | opportunity/REVIEW.json · opportunity/index.html |
 
 ## What enforces the rules
 
