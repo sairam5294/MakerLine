@@ -199,6 +199,9 @@ def check(data: dict) -> list[str]:
         for sid in rule.get("source_ids", []):
             if sid not in source_ids:
                 errors.append(f"rule {rule['rule']} cites unknown source {sid}")
+    for i, area in enumerate(data.get("areas", []) or []):
+        if not isinstance(area, dict) or not all(str(area.get(f, "")).strip() for f in ("name", "status")):
+            errors.append(f"area {i + 1} needs a name and a status")
     for field in ("created", "updated"):
         if data.get(field) and not DATE.match(str(data[field])):
             errors.append(f"{field} must be a YYYY-MM-DD date")
@@ -265,6 +268,15 @@ def _sources(values: list) -> str:
     return '<div class="scroll" tabindex="0" role="region" aria-label="Scrollable source table"><table><thead><tr><th scope="col">ID</th><th scope="col">Title</th><th scope="col">Kind</th><th scope="col">Link</th><th scope="col">Checked on</th></tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>'
 
 
+def _areas(data: dict) -> str:
+    """Products with several apps, repos or teams show where each part stands."""
+    areas = data.get("areas") or []
+    if not areas:
+        return ""
+    return ('<section class="panel" id="areas" aria-labelledby="areas-h"><h2 id="areas-h">Where each part stands</h2>'
+            + _items(areas, ("name", "status", "owner", "note"), "") + "</section>\n")
+
+
 def _sentence(text: str) -> str:
     text = str(text).strip()
     return text if text.endswith((".", "!", "?")) else text + "."
@@ -303,7 +315,7 @@ def render_body(data: dict) -> str:
 <p>{esc(route)}</p><div class="meter"><progress value="{done}" max="{len(steps)}" aria-label="{done} of {len(steps)} review steps done or skipped"></progress><span>{done}/{len(steps)} steps</span></div>
 <p><strong>Now:</strong> {esc(current['title'] if current else 'Review complete')}. {esc(current.get('next', '') if current else '')}</p>
 <ol class="review-steps">{''.join(step_html)}</ol></section>
-<section class="panel" id="options" aria-labelledby="options-h"><h2 id="options-h">Options to compare</h2>
+{_areas(data)}<section class="panel" id="options" aria-labelledby="options-h"><h2 id="options-h">Options to compare</h2>
 <p class="muted">Value, effort and evidence are estimates until a source or test confirms them. Include non-build options.</p>
 {_items(data['options'], ('name', 'type', 'value_range', 'effort_range', 'evidence', 'test', 'source_ids'), 'Options have not been assessed yet.')}</section>
 <section class="panel" id="actions" aria-labelledby="actions-h"><h2 id="actions-h">Next actions</h2>
